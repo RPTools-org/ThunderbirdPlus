@@ -1,0 +1,19 @@
+Arranjo das colunas da lista de mensagens ;
+
+Esta funcionalidade permite-lhe escolher a ordem das colunas na lista de mensagens e adicionar ou remover colunas. Ao contrário do antigo arranjo de colunas, estas operações são baseadas em diálogos reais. 
+
+Para o utilizar, primeiro vá à lista de mensagens ou à árvore de pastas e prima Alt+c (o atalho NVDA+u com sotaque grave ainda existe); 
+Aparece o diálogo de estrutura de colunas. Consiste na lista de colunas e nos botões "Ajuda", "Colunas" e "Fechar". O botão "Colunas..." mostra o menu nativo de Thunderbird "Escolher colunas para exibir". 
+Quando estiver na lista de colunas, estão disponíveis os seguintes atalhos de teclado: 
+- Seta à esquerda: mostra o menu chamado "Escolher colunas para exibir". Este atalho corresponde ao botão "Colunas ..."; 
+- Espaço: para mover a coluna seleccionada, premir Espaço, depois mover para outra coluna e premir novamente Espaço para mover a coluna para esse local. Esta operação é semelhante ao corte e à colagem; 
+Também tem estes atalhos de movimento directo: 
+- Controlo + seta para cima ou seta para baixo: move a coluna seleccionada para cima ou para baixo de uma unidade; 
+- Controlo + Início ou Fim: move a coluna seleccionada para cima ou para baixo na lista; 
+- Controlo + Página para cima ou Página para baixo: move a coluna seleccionada para cima ou para baixo por três unidades; 
+As colunas são movidas por arrastar e largar com o rato. Um sinal sonoro de um milissegundo ocorre a cada 10 movimentos do ponteiro; 
+Quando o menu "Escolher colunas a exibir" está presente, estão disponíveis os seguintes novos atalhos de teclado: 
+- Seta para a direita: mostra o diálogo de disposição das colunas; 
+- Espaço: Verifica ou desmarca a coluna seleccionada no menu. A chave Enter continua a produzir o mesmo comportamento; 
+Com as setas esquerda e direita, é portanto muito fácil alternar entre o menu de selecção de colunas e o diálogo de disposição de colunas;
+

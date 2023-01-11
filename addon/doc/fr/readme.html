@@ -1,0 +1,1458 @@
+<?xml version="1.0"
+      encoding="UTF-8"
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>		Thunderbird+ pour NVDA : plus d'efficacité et de confort lors de l'utilisation de Thunderbird 102</title>
+<META HTTP-EQUIV="Content-Language" Content="fr">
+<meta name="generator" content="http://txt2tags.sf.net" />
+<link rel="stylesheet" type="text/css" href="style_t2t.css" />
+</head>
+<body bgcolor="white" text="black">
+<div align="center">
+<h1>		Thunderbird+ pour NVDA : plus d'efficacité et de confort lors de l'utilisation de Thunderbird 102</h1>
+<h3>Dernière mise à jour le 08/01/2023 - Version : 4.3.3 pour Thunderbird 102 <br /><a href="#histo">Consulter l'historique (contient des informations non reprises dans la documentation)</a></h3>
+</div>
+
+<ul>
+<li>Versions : 4.3.3 pour Thunderbird 102
+</li>
+<li>Version minimum de NVDA requise : 2019.3 Dernière version de NVDA testée : 2022.1 ; 
+</li>
+<li>Auteur originel de l'extension thunderBird : Yannick
+</li>
+<li>Adaptation à Thunderbird 68 , 78, 91, 102 et à NVDA 2019.3 et suivants : Daniel Poiraud, Pierre-Louis R et Abdel pour la version 3.1.;
+</li>
+<li>Documentation et contact : <a href="http://www.rptools.org/Outils-DV/contact.html">Pierre-Louis</a> , en Français et Anglais ;
+</li>
+<li>Traductions par ordre d'ancienneté :
+ <ul>
+ <li><a href="http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt.html">Portugais</a> : par Rui Fontes de chez TifloTecnia.com et membre de l'équipe NVDA Portugal ;
+ </li>
+ <li><a href="http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html">Anglais</a> : par Google Translate &amp; Pierre-Louis R.
+ </li>
+ <li><a href="http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html">Espagnol</a> : par Rémy Ruiz ;
+ </li>
+ </ul>
+</li>
+</ul>
+
+<p>
+<br />
+</p>
+<a id="toc" name="toc"></a>
+<h1>Sommaire</h1>
+  <ul>
+
+  </li>
+  <li><a href="#toc2">1. Présentation</a>
+  </li>
+  <li><a href="#toc3">2. Téléchargement et installation</a>
+  </li>
+  <li><a href="#toc4">3. Support et liste de diffusion</a>
+  </li>
+  <li><a href="#startup">4. Amélioration du démarrage de Thunderbird</a>
+    <ul>
+    <li><a href="#toc6">4.1. Avec Chichi</a>
+    </li>
+    <li><a href="#toc7">4.2. Avec Start with inbox</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#toc8">5. Navigation entre les panneaux de la fenêtre principale</a>
+  </li>
+  <li><a href="#toc9">6. Lecture rapide et épurée   des messages</a>
+    <ul>
+    <li><a href="#toc10">6.1. Lecture rapide des messages 'depuis la liste sans la quitter</a>
+    </li>
+    <li><a href="#toc11">6.2. Lecture rapide d'un message dans un onglet ou une fenêtre séparée</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#toc12">7. Navigation rapide entre les dossiers contenant des messages non-lus</a>
+  </li>
+  <li><a href="#toc13">8. Les alertes accessibilisées</a>
+  </li>
+  <li><a href="#toc14">9. options et commandes</a>
+    <ul>
+    <li><a href="#toc15">9.1. Modifier certains raccourcis-clavier</a>
+    </li>
+    <li><a href="#toc16">9.2. Menu des Options, Majuscule+Puissance2</a>
+    </li>
+    <li><a href="#toc17">9.3. Menu contextuel des Commandes : Puissance2</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#toc18">10. Raccourcis clavier des onglets et de la fenêtre principale</a>
+  </li>
+  <li><a href="#dossmsg">11. Dialogue des Listes filtrées des  compte et dossiers : F12</a>
+    <ul>
+    <li><a href="#toc20">11.1. Exclusion de certains dossiers de la liste des dossiers avec non lus</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#foldersList">12. Liste des dossiers de l'arborescence principale, selon 4 types : F7, NVDA+F7 ou Majuscule+F12</a>
+  </li>
+  <li><a href="#toc22">13. Raccourcis clavier de  la liste des messages</a>
+    <ul>
+    <li><a href="#toc23">13.1. Consultation des colonnes : un chiffre du clavier alphanumérique</a>
+    </li>
+    <li><a href="#toc24">13.2. Consultation des entêtes : Alt+un chiffre du clavier alphanumérique</a>
+    </li>
+    <li><a href="#toc25">13.3. Ajout et retrait d'étiquettes : Majuscule+un chiffre du clavier alphanumérique</a>
+    </li>
+    <li><a href="#toc26">13.4. Barre de filtrage rapide, lettre f ou Contrôle+Majuscule+K</a>
+      <ul>
+      <li><a href="#toc27">13.4.1. Filtrage Par étiquette</a>
+      </li>
+      </ul>
+    </li>
+    <li><a href="#cols1">13.5. Agencement des colonnes : Alt+c</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#toc29">14. Fenêtre de rédaction</a>
+    <ul>
+    <li><a href="#ortho">14.1. Dialogue de vérification orthographique : F7</a>
+    </li>
+    <li><a href="#ortho2">14.2. Mode amélioré de la vérification orthographique pendant la saisie</a>
+      <ul>
+      <li><a href="#toc32">14.2.1. Configuration préliminaire</a>
+      </li>
+      <li><a href="#toc33">14.2.2. Utilisation des raccourcis w, Majuscule+w et NVDA+F7</a>
+      </li>
+      </ul>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#toc34">15. Voir aussi</a>
+  </li>
+  <li><a href="#histo">16. Historique des changements</a>
+    <ul>
+    <li><a href="#toc36">16.1. versions 4.3.3, 08/01/2023</a>
+    </li>
+    <li><a href="#toc37">16.2. versions 4.3.2, 06/01/2023</a>
+    </li>
+    <li><a href="#toc38">16.3. versions 4.3.1, 04/01/2023</a>
+    </li>
+    <li><a href="#toc39">16.4. versions 4.3, 26/12/2022++versions 4.3, 26/12/2022</a>
+    </li>
+    <li><a href="#toc40">16.5. versions 4.2.7 pour Thunderbird 102, 24/11/2022</a>
+    </li>
+    <li><a href="#toc41">16.6. versions 4.2.5 pour Thunderbird 102, 22/11/2022</a>
+    </li>
+    <li><a href="#toc42">16.7. versions 4.1 à 4.2.1 pour Thunderbird 102, 07/11/2022</a>
+      <ul>
+      <li><a href="#toc43">16.7.1. Versions 4.1.1 à 4.2.1</a>
+      </li>
+      </ul>
+    </li>
+    <li><a href="#toc44">16.8. version 4.0.4 pour Thunderbird 102, 24/09/2022</a>
+    </li>
+    <li><a href="#toc45">16.9. version 4.0.3 pour Thunderbird 102, 03/09/2022</a>
+    </li>
+    <li><a href="#toc46">16.10. version 4.0.2 pour Thunderbird 102, 23/08/2022</a>
+    </li>
+    <li><a href="#toc47">16.11. Modification du mode d'emploi, 22/07/2022</a>
+    </li>
+    <li><a href="#toc48">16.12. version 4.0.1 pour Thunderbird 102, 20/07/2022</a>
+    </li>
+    <li><a href="#toc49">16.13. version 4.0 pour Thunderbird 102, 02/07/2022</a>
+    </li>
+    </ul>
+  </li>
+  </ul>
+
+<p></p>
+<a id="toc2" name="toc2"></a>
+<h1>1. Présentation</h1>
+<p>
+Cette extension améliore fortement le confort et l'efficacité d'utilisation du client de messagerie Mozilla Thunderbird avec NVDA.
+<br />
+</p>
+<ul>
+<li><b>Confort auditif:</b>
+ <ul>
+ <li>Les alertes  "un tel a demandé un accusé de réception" peuvent être désactivées via une option ;
+ -Les alertes "Ceci est un brouillon" et "Thunderbird pense que ce message est frauduleux " sont tout simplement passées sous silence ; 
+ </li>
+ <li>Des options permettent de désactiver l'annonce des noms de listes de diffusion, de supprimer ou regrouper les mentions "RE" et d'épurer les noms des correspondants en supprimant les nombres et autres caractères spéciaux gênants ;  
+ </li>
+ </ul>
+</li>
+<li><b>Navigation améliorée. :</b>
+ <ul>
+ <li>Le passage au panneau suivant s'effectue à l'aide de la touche TAB tandis que la touche échappe permet de revenir au panneau précédent. Ceci est plus confortable que F6 et Majuscule+F6. 
+ </li>
+ <li>Deux  dialogue des comptes et de leurs dossiers associés permet de les filtrer    par mot-clé ou de n'afficher que les dossiers avec des messages non-lus ;
+ </li>
+ <li>Dans l'arborescence des dossiers, alt+flèche bas et Alt+flèche haut  permettent de naviguer entre les dossiers avec des messages non-lus ;
+ </li>
+ <li>Toujours dans l'arborescence  des dossiers, la frappe d'une lettre ou d'un chiffre sélectionne le prochain dossier dont le nom commence par le caractère frappé. Avec la touche Majuscule, le déplacement s'effectue du bas vers le haut. De plus, le nom du compte auquel le dossier appartient est annoncé ;
+ </li>
+ <li>La touche Espace sur un dossier avec des messages non lus sélectionne le premier message non lu dans la liste ;
+ </li>
+ <li>Dans la liste de messages, trois modes  de Lecture du texte des messages sans quitter la liste :
+  <ul>
+  <li>Aperçu rapide  épuré du texte du message  avec espace, Alt+flèche bas ou F4 : les grands blocs d'entêtes dans les citations de messages sont remplacés par l'expression "Nom de l'expéditeur a écrit". NVDA annoncera également "lien cliquable" à la place de la longue adresse du lien.
+  </li>
+  <li>Aperçu rapide  des citations dans leur ordre chronologique, du bas vers le haut, via Majuscule+Espace, Alt+flèche haut ou Majuscule+F4 ;
+  </li>
+  </ul>
+ </li>
+ <li>Accès aisé aux pièces jointes par le raccourci Alt+page suivante ou le chiffre 1 du clavier alpha-numérique ; 
+ </li>
+ </ul>
+</li>
+<li><b>Fenêtre de rédaction d'un message :</b>
+ <ul>
+ <li>Alt+1 annonce l'Expéditeur,Alt+2 le destinataire, Alt+3 les pièces jointes,etc. Deux appuis place le focus sur un de ces champs ;
+ </li>
+ <li>Dans le dialogue de vérification orthographique : 
+  <ul>
+  <li>le  mot mal orthographié  est annoncé avant le mot suggéré. Les raccourcis NVDA+Tab ou Alt+flèche haut annoncent les mots mal orthographié et de remplacement : 1 appui épelle les mots à une vitesse normale, 2 appuis les épelle rapidement,3 appuis copie le mot mal orthographié dans le presse-papiers pour une analyse dans un autre champ d'édition ; 
+  </li>
+  <li>diverses combinaisons de la touche entrée actionnent les boutons Remplacer, Tout remplacer, Ignorer, Tout ignorer ou Ajouter le mot au dictionnaire ont été ajoutés pour un confort accru  de ce dialogue ; 
+  </li>
+  </ul>
+ </li>
+ <li>Amélioration de la vérification orthographique pendant la saisie : deux raccourcis pour aller au mot mal orthographié suivant et précédent. Ceci ne fonctionne pas encore sur les versions 2022.1 et supérieures de NVDA ;
+ </li>
+ </ul>
+</li>
+<li><b>Barre de filtrage rapide rendue accessible et gestion des étiquettes simplifiée. :</b>
+ <ul>
+ <li>Il est possible de naviguer parmi   Les options de filtrage à l'aide des flèches verticales. La touche Entrée permet de cocher ou décocher une option ;
+ </li>
+ <li>l'ajout ou le retrait d'étiquettes s'effectue par le simple appui sur Majuscule+un chiffre du clavier alphanumérique. Par exemple, appuyez sur 4 pour ajouter l'étiquette "A faire" à un message. On peut ensuite filtrer la liste des messages par étiquettes via la barre de filtre rapide qui est désormais accessible ;
+ </li>
+ </ul>
+</li>
+<li><b>Fonctionnalités diverses :</b>
+ <ul>
+ <li>Le choix des colonnes ainsi que leur agencement dans la liste des messages est  rendu accessible par le biais d'un dialogue simple ;
+ </li>
+ <li>Consultation des colonnes de la liste de messages : permet  de réécouter, d'épeler ou de copier facilement le nom de l'expéditeur, le sujet ou la date d'un message en pressant un chiffre du clavier alphanumérique : par exemple, 1 ou &amp;  annonce l'expéditeur, 2 appuis épelle le nom et 3 appuis le copie dans le presse-papiers ;
+ </li>
+ <li>Consultation des entêtes du volet des entêtes affiché avec F8 : avec Alt+un chiffre, 1 appui énonce un entête contenant les adresses    de l'expéditeur ou des destinataires, 2 appuis ouvre un dialogue permettant de les copier, 3 appuis ouvre le menu contextuel natif de Thunderbird associé à l'entête ;
+ </li>
+ </ul>
+</li>
+<li>Mise à jour automatique de l'extension ;
+</li>
+<li>Et bien d'autres choses que vous découvrirez en lisant la suite de cette documentation ;
+</li>
+</ul>
+
+<a id="toc3" name="toc3"></a>
+<h1>2. Téléchargement et installation</h1>
+<p>
+Si  l'extension  "Mozilla Apps Enhancements  de Javie Dominguez" est  installées sur votre ordinateur, vous devez d'abord la désactiver avant d'installer Thunderbird+ :
+</p>
+<p>
+<a href="http://www.rptools.org/?p=8610">Télécharger Thunderbird+ v4.3.3 pour Thunderbird 102 uniquement</a> ;
+</p>
+<a id="toc4" name="toc4"></a>
+<h1>3. Support et liste de diffusion</h1>
+<p>
+Pour poser une question ou soumettre un problème, placez-vous dans la fenêtre principale de   Thunderbird puis  pressez la touche Puissance2 puis Entrée sur "Ecrire au support". Ceci nous indiquera  précisément les versions de Thunderbird et de Thunderbird+ que vous utilisez.
+</p>
+<p>
+Veuillez nous écrire en Français ou en Anglais ;
+</p>
+<p>
+<br />
+<a href="http://rptools.org/thunderbird-dv.html"> Liste de diffusion francophone thunderbird-dv</a>
+</p>
+<p>
+
+</p>
+<p>
+<br />
+</p>
+<a id="startup" name="startup"></a>
+<h1>4. Amélioration du démarrage de Thunderbird</h1>
+<p>
+Nativement, après la dernière fermeture de Thunderbird, celui-ci démarre sur le dernier onglet actif et sans rien activer, ce qui est plutôt désagréable.
+<br />Pour obtenir un démarrage confortable, Il existe deux modules complémentaires qui s'installent directement sur Thunderbird :
+<br /><a href="thunderbird-chichi.html">Chichi développé par Yannick</a> : ce module est recommandé parce qu'il offre beaucoup d'autres  fonctionnalités d'accessibilité et que Thunderbird+ est conçu pour interagir avec lui ;
+<br />Start with inbox : si vous n'utilisez pas Chichi, ce module fait du bon travail ; 
+</p>
+<a id="toc6" name="toc6"></a>
+<h2>4.1. Avec Chichi</h2>
+<p>
+Pour utiliser Chichi, lisez  la section Téléchargement et installation et la section Définir le dossier de démarrage de la <a href="http://www.rptools.org/Outils-DV/thunderbird-chichi.html">page de ChichiChichi</a> ;
+</p>
+<a id="toc7" name="toc7"></a>
+<h2>4.2. Avec Start with inbox</h2>
+<p>
+En octobre 2022,  La dernière version  de ce module pour Thunderbird 102 est la 2.5.2.
+</p>
+<p>
+Caractéristiques :
+</p>
+<ul>
+<li>Installation : via une recherche sur son nom dans l'onglet Modules complémentaires" de Thunderbird ; 
+</li>
+<li>Dossier de démarrage : toujours le même, le dossier courrier entrant du compte choisi dans les réglages du module ou le dossier unifié ;
+</li>
+<li>Auto-focus : sur le dernier message de la liste de messages ou sur le dossier "Courrier entrant" de l'arborescence, selon le réglage dans les options du module. Cette seconde option est sélectionnée par défaut ; 
+</li>
+<li>Réglages : accès moins aisé. Il faut se rendre dans l'onglet Modules complémentaires, sélectionner "Start with inbox" dans la liste des extensions installées puis  presser entrée sur le bouton   "Options des modules", ce qui ouvre une nouvel on glet "Settings Start with inbox" ,
+<br />Une liste déroulante permet de choisir le compte de messagerie pour lequel le dossier courrier entrant sera sélectionné  au démarrage de Thunderbird ,
+<br />Trois boutons radio vous permettront de choisir le focus entre le dernier message ou le premier message non lu de la liste de messages ou le dossier dans l'arborescence ;
+<p></p>
+<h3>Installation</h3>
+</li>
+<li>dans Thundderbird, ouvrez le menu "Outils" puis validez sur : Modules complémentaires et thèmes ;
+</li>
+<li>Dans la page du Gestionnaire de modules,, placez-vous dans le champ de recherche. En mode navigation, vous pouvez presser la lettre e pour l'atteindre rapidement ;
+</li>
+<li>écrivez : Start with Inbox puis pressez Entrée ;
+</li>
+<li>Si vous disposez de Thunderbird+4, Attendez un instant qu'il sélectionne le module recherché dans l'onglet de résultats ;
+</li>
+<li>Sinon, sélectionnez manuellement l'onglet "Start with inbox :: Recherche :: Modules pour Thunderbird" par exemple.   pressez ensuite la touche 3 ou guillemet jusqu'à atteindre le titre de niveau 3 intitulé par le nom du module que vous avez recherché ; 
+</li>
+<li>Avec la flèche bas, Descendez  jusqu'au lien "Ajouter à Thunderbird" puis pressez Entrée dessus ;
+</li>
+<li>Suivez la procédure puis redémarrez Thunderbird ;
+</li>
+<li>Si tout s'est bien passé, Thunderbird s'ouvrira sur l'onglet principal et donnera le focus à la liste de messages ;
+</li>
+</ul>
+
+<p>
+<h3>Régler les options de Start with Inbox"</h3>
+</p>
+<ul>
+<li>Retournez dans l'onglet "Gestionnaire de modules complémentaires" ;
+</li>
+<li>Le cas échéant, quittez le champ de recherche afin de vous placer en mode navigation ;
+</li>
+<li>Pressez autant de fois que nécessaire la touche 3 pour atteindre le titre de niveau 3 intitulé    "Start with Inbox dans la liste des modules installés ;
+</li>
+<li>Validez ensuite sur le bouton : Options des modules. Ceci ouvre un nouvel onglet intitulé : Start with Inbox, Settings ;
+</li>
+<li>Voici ce qui est affiché  par défaut :
+</li>
+</ul>
+
+<p>
+En anglais :
+</p>
+<p>
+Start with Inbox - Settings 
+</p>
+<p>
+Please select the account, for which its inbox shall be displayed after start of Thunderbird. 
+</p>
+<p>
+liste déroulante : &lt;votre premier compte de messagerie&gt;
+</p>
+<p>
+Select and put the focus on:
+</p>
+<p>
+bouton radio   cliquable non coché :the latest* message. 
+</p>
+<p>
+bouton radio non coché cliquable the inbox folder in the folder tree. 
+vide
+bouton radio coché :the first unread message. 
+</p>
+<p>
+* Definition of "latest": The last message that was put into the inbox (independent from the date 
+of the message). 
+</p>
+<p>
+If the inbox contains no messages, the inbox folder in the folder tree will be selected and 
+focused.
+</p>
+<p>
+Interprétation en français : 
+</p>
+<p>
+Start with Inbox - Réglages  ;
+</p>
+<p>
+Sélectionnez le compte dont  le dossier Courrier entrant  sera affiché au démarrage de Thunderbird ; 
+</p>
+<p>
+liste déroulante : &lt;votre premier compte de messagerie&gt;
+</p>
+<p>
+Sélectionner puis placer le focus sur :
+</p>
+<p>
+bouton radio   cliquable non coché :Le dernier message de la liste ;
+</p>
+<p>
+bouton radio non coché cliquable Le dossier Courrier entrant dans l'arborescence des dossiers ;
+</p>
+<p>
+bouton radio coché :Le premier message non lu de la liste ;
+</p>
+<p>
+Si le dossier Courrier entrant ne contient aucun message, ce dossier recevra le focus dans l'arborescence des dossiers ; 
+</p>
+<p>
+Après avoir effectué vos réglages, redémarrez Thunderbird.
+</p>
+<p>
+<h3>Lanceur intégré de Thunderbird avec AltGr+Puissance2</h3>
+Pour plus de commodité et de rapidité, vous pouvez lancer Thunderbird en pressant AltGr+Puissance2. 
+</p>
+<p>
+Ce raccourci est configurable via le gestionnaire de gestes de commandes de NVDA qui offre une plus grande liberté de choix de   touches de modification que les raccourcis de Windows, limités à AltGr ;
+</p>
+<p>
+Procédez comme suit pour  ajouter un autre geste de commande :
+</p>
+<ul>
+<li>Placez  d'abord la fenêtre de Thunderbird au premier plan ;
+</li>
+<li>Ouvrez le menu NVDA et  sélectionnez "Préférences" ;
+</li>
+<li>Dans le sous-menu, validez sur : Gestes de commande" ;
+</li>
+<li>Dans le dialogue, pressez la lettre t jusqu'à entendre : "Thunderbird, Lanceur" ;
+</li>
+<li>Pressez la flèche droite pour développer cette branche ;
+</li>
+<li>Descendez sur l'élément : "Lance Thunderbird" puis pressez flèche droite pour développer ce niveau ;
+</li>
+<li>Tabulez jusqu'au bouton "Ajouter", validez puis pressez un geste de commande dans le nouveau dialogue ;
+</li>
+<li>Pressez Entrée pour valider votre choix ;
+</li>
+<li>De retour dans la liste des commandes, vérifiez la présence de votre nouveau geste de commande ;
+</li>
+<li>Fermez  le dialogue via le bouton OK.
+</li>
+</ul>
+
+<p>
+Remarques :<br />
+</p>
+<ul>
+<li>Le lanceur de Thunderbird n'est prévu que pour la version installée de Thunderbird dont les chemins de Thunderbird.exe sont prévisible. 
+</li>
+<li>Dans une configuration Windows 64 bits,  l'extension ne lancera pas la version 32 bits de Thunderbird  si les deux versions, 64 et 32 bits, sont toutes deux installées sur votre système ; 
+</li>
+</ul>
+
+<a id="toc8" name="toc8"></a>
+<h1>5. Navigation entre les panneaux de la fenêtre principale</h1>
+<ul>
+<li>TAB : passer au panneau suivant. Arborescence, liste de messages et texte du  panneau des entêtes et d'aperçu du messages s'il est affiché avec F8 ; 
+</li>
+<li>Échappe : revenir au panneau précédent ;
+</li>
+</ul>
+
+<p>
+Remarque : 
+</p>
+<p>
+Lors de la tabulation à partir de la liste de messages pour atteindre le texte, la zone des entêtes est sautée. Pour atteindre   cette zone d'entêtes, pressez Alt+un chiffre du clavier alphanumérique trois fois rapidement puis Échappe pour quitter le menu contextuel de l'entête.  Ces raccourcis Alt+chiffre réduisent la nécessité de se rendre dans la zone d'entêtes. Pour plus de détails, voyez la section "Consultation des entêtes" plus bas.  
+</p>
+<a id="toc9" name="toc9"></a>
+<h1>6. Lecture rapide et épurée   des messages</h1>
+<ul>
+<li>Les commandes de lecture rapide  d'un message sont disponibles  dans trois contextes : depuis la liste de messages, d'un message ouvert dans un onglet ou dans une fenêtre séparée ;
+</li>
+<li>Elles sont maintenant toutes compatibles avec les messages provenant de Framalistes ;
+</li>
+<li>La plupart des  raccourcis-clavier  de lecture rapide ont été concentrés  pour limiter au maximum le déplacement des mains durant une  séance  de lecture de nombreux messages ;
+</li>
+<li>Un seul appui sur la  touche principale d'un raccourci  lance la lecture épurée  du message, c'est à dire avec les entêtes des citations fortement raccourcis.
+</li>
+<li>Un double appui lance la lecture  du message dans sa forme originale. Le terme de "lecture non filtrée" est synonyme ;
+</li>
+</ul>
+
+<a id="toc10" name="toc10"></a>
+<h2>6.1. Lecture rapide des messages 'depuis la liste sans la quitter</h2>
+<p>
+Vous devez d'abord afficher le volet de lecture  des messages avec la touche F8. En pressant cette touche, vous entendrez si ce volet est présent ou absent ;
+</p>
+<p>
+Placez-vous ensuite dans la liste des messages et Utilisez  les touches suivantes :
+</p>
+<ul>
+<li>Espace, Alt+Flèche bas  ou F4 : lecture  du corps du message sans quitter  la liste. Après lecture d'un message, presser flèche vers le bas puis Espace ou Alt+flèche bas ou F4 pour écouter le message suivant ;
+</li>
+<li>En double frappe,  affiche la liste des liens du message si Chichi est actif. Si un article de flux RSS est sélectionné, il sera ouvert dans le navigateur Internet ;
+</li>
+<li>Majuscule+espace, Alt+Flèche haut ou Majuscule+f4 : idem mais lecture des citations dans leur ordre chronologique (du bas vers le haut) ;
+</li>
+<li>lettre n ou Alt+Flèche droite : sélectionner le prochain message non lu, même au travers des dossiers ;
+</li>
+<li>Alt+Page suivante ou Alt+p depuis la liste de messages : permet d'atteindre directement la zone des pièces jointes, sans devoir tabuler dans le texte ;  
+</li>
+</ul>
+
+<a id="toc11" name="toc11"></a>
+<h2>6.2. Lecture rapide d'un message dans un onglet ou une fenêtre séparée</h2>
+<p>
+A l'ouverture d'un message dans une nouvelle fenêtre, le corps du message est lu automatiquement par défaut. Les raccourcis suivants vous permettent  néanmoins de réécouter le message à tout moment.
+<br />
+</p>
+<ul>
+<li>F4 ou Alt+flèche bas : lecture rapide  du corps du message ;
+</li>
+<li>Majuscule+F4 ou Alt+flèche haut : idem mais en sens inverse ;
+</li>
+</ul>
+
+<p>
+Pour rappel,  un double appui sur ces raccourcis lance la lecture du message original.
+<br />
+<br />La lecture automatique peut bloquer NVDA sur certains PC, surtout si le compte est configuré en IMAP. Pour tenter de résoudre ce problème, le raccourci Alt+d ouvre une boîte de saisie qui vous permet d'allonger le délai entre l'ouverture de la fenêtre et le début de la lecture automatique ;
+<br />Si le réglage de ce délai ne résout pas le problème, vous pouver désactiver cette lecture automatique via le menu Majuscule+Puissance2  / Options pour la fenêtre principale / fenêtre séparée de lecture : ne pas lire automatiquement le  mmessage si provoque des blocages de NVDA ;
+<br />
+<br /><b>Remarque  :</b>
+</p>
+<p>
+Pour profiter au mieux de la lecture épurée et vous protéger du même coup des contenus distants qui ne respectent pas votre vie privée, affichez le corps des messages en HTML simple. Pour ce faire, ouvrez le menu Affichage, descendez sur Corps du message et dans le sous menu, validez l'option HTML simple.
+</p>
+<a id="toc12" name="toc12"></a>
+<h1>7. Navigation rapide entre les dossiers contenant des messages non-lus</h1>
+<p>
+Lorsque vous vous trouvez dans l'arborescence des dossiers,  vous pouvez presser :
+</p>
+<ul>
+<li>Alt+flèche bas :   pour aller au prochain dossier avec des messages non-lus ;
+</li>
+<li>Alt+flèche haut : pour aller au dossier avec des messages non lus précédent ;
+</li>
+<li>Espace : si le dossier sélectionné contient des messages non lus, sélectionne le premier message non lu de la liste. S'il n'en comporte pas, la liste des dossiers non lus est affichée si Chichi est actif. En pressant entrée sur un dossier non lu dans cette liste, ce dossier sera activé dans l'arborescence.
+<p></p>
+Ceci vous permet de prendre rapidement connaissance des dossiers qui ont reçu des messages avant de décider par lequel vous souhaitez  commencer la lecture ;
+<p></p>
+Dans cet ordre d'idées, voyez aussi ces deux dialogues :
+<p></p>
+<a href="#dossmsg">Dialogue des Listes filtrées des compte et dossiers (F12)</a> ;
+<p></p>
+<a href="#foldersList">Liste des dossiers de l'arborescence principale, selon 4 types (F7, NVDA+F7 ou Majuscule+F12)</a>
+<p></p>
++SmartReply : répondre à toutes les  listes de diffusion  en pressant  Contrôle+r+
+Si vous êtes de ceux qui oublient de presser Contrôle+Majuscule+l pour répondre à un message de liste comme GoogleGroups, cette fonction vous évitera cette erreur, vous pourrez toujours presser Contrôle+r   comme suit :
+</li>
+<li>en simple frappe : pour répondre à la liste ;
+</li>
+<li>en double frappe : pour répondre en privé à l’expéditeur du message ;
+</li>
+<li>en simple frappe pour répondre à l'expéditeur d'un message ne provenant pas d'une liste ;
+</li>
+</ul>
+
+<p>
+Remarques : 
+</p>
+<p>
+La distinction entre simple ou double frappe sur ces raccourcis  fonctionne  sur  GoogleGroups, Framalistes et FreeLists.
+<br /> Avec un seul appui,  sur une de ces trois listes, vous entendrez "à la list" avant l'ouverture de la fenêtre de rédaction. 
+</p>
+<p>
+il conviendra aussi de ne pas utiliser la commande Répondre à tous" pour répondre à une liste  pour que l'expéditeur ne reçoive pas votre réponse en privé ; 
+</p>
+<p>
+Et enfin, si vous souhaitez retrouver le comportement habituel de Contrôle+r, ouvrez le dialogue des gestes de commande de NVDA ;
+<br />Sélectionnez la catégorie Thunderbird+4 ;
+<br />Sélectionnez la ligne "Smart reply pour répondre à un destinataire ou à une liste de diffusion réduit 8 sur 8 niveau 1" et développez la avec la flèche droite ;
+<br />supprimez le raccourci Contrôle+r ;
+<br />Vous pouvez bien entendu ajouter un autre raccourci ;
+</p>
+<a id="toc13" name="toc13"></a>
+<h1>8. Les alertes accessibilisées</h1>
+<p>
+Alertes qui requièrent votre intervention :  les boutons sont accessibles et la navigation entre eux  peut s'effectuer avec les touches fléchées :
+</p>
+<ul>
+<li>installation de modules pour Thunderbird : le bouton "Installer"  est sélectionné et il suffit de presser Entrée dessus pour poursuivre l'installation ;
+</li>
+<li>Nouvelle mise à jour de Thunderbird : cette alerte est également accessibilisée ;
+</li>
+<li>Demande d'un accusé de réception du message : cele-ci peut être ignorée via une option du menu Majuscule+Puissance2 / options pour la fenêtre principale ;;
+</li>
+<li>Blocage  de l’affichage des contenus distants dans les messages : le bouton "Options" est sélectionné  et la phrase suivante est ajoutée au message : Conseil : Ouvrez le menu Affichage, descendez sur Corps du message et validez HTML simple dans le sous-menu. En appliquant les réglages proposés,  cette alerte ne s'affichera plus ;
+</li>
+</ul>
+
+<p>
+Alertes gênant   le parcours de la liste de messages :
+</p>
+<ul>
+<li>Alerte Ceci est un brouillon : cette alerte inutile     est supprimée ;
+</li>
+<li>Thunderbird pense que ce message est frauduleux : cette annonce  est remplacée par deux tonalités brèves d'une fréquence proche de la voix humaine (200 Hertz). Pour rendre le message acceptable ou indésirable, pressez la touche Puissance2 et sélectionnez l'action désirée dans le sous-menu "Alerte" ;
+</li>
+</ul>
+
+<a id="toc14" name="toc14"></a>
+<h1>9. options et commandes</h1>
+<p>
+Pour afficher le menu des commandes de l'extension, pressez la touche Puissance2 et pour le menu des options, pressez Majuscule+Puissance2.
+</p>
+<a id="toc15" name="toc15"></a>
+<h2>9.1. Modifier certains raccourcis-clavier</h2>
+<p>
+Les raccourcis-clavier dont l'emplacement dépend de la langue du clavier, comme Puissance2, peuvent être modifiés  comme suit :
+</p>
+<ul>
+<li>Pressez NVDA+n, sélectionnez "Préférences" et validez sur "Gestes de commandes" dans le sous-menu ;
+</li>
+<li>Pressez la lettre t jusqu'à atteindre  la branche "Thunderbird" de l'arborescence ;
+</li>
+<li>Pressez la flèche droite pour ouvrir cette branche et modifiez les raccourcis-clavier selon vos besoins ;
+</li>
+</ul>
+
+<a id="toc16" name="toc16"></a>
+<h2>9.2. Menu des Options, Majuscule+Puissance2</h2>
+<p>
+Options pour la fenêtre principale : 
+<br />Regrouper les mentions 'RE' multiples en une seule :par exemple, Re: Re: Re: sera transfformé en 3Re: ;
+<br />Supprimer les mentions 'RE' dans la colonne sujet s : 
+<br />Supprimer les 2 points dans les mentions 'RE' : 
+<br />Nettoyer les noms des correspondants dans la liste de messages : supprime les chiffres et certains caractères spéciaux afin de rendre l'écoute des noms des correspondants moins fatigante ;
+<br />Ajouter une ponctuation entre les colonnes : une virgule est ajoutée entre certaines colonnes afin de marquer une petite pause entre elles  lors de l'annonce d'une ligne de la liste de messages ;
+<br />Masquer les noms de listes de diffusion : supprime l'annonce des noms de listes entre crochets ou accolades pour une écoute plus agréable lorsque vous utilisez un dossier différent pour chaque liste de diffusion. Sinon, le nom d'une liste de diffusion n'est énoncé qu'une seule fois s'il apparaît plusieurs fois dans l'objet d'un message ; 
+<br />Annoncer 'indésirable' si affiché dans la colonne 'Statut indésirable' : si la colonne "statut indésirable" est présente dans le tableau des messages, cette option permet ou non d'annoncer "Indésirable"  ; 
+<br />Espace sur un dossier avec non lus  cherche le premier message non lu depuis le début de la liste de messages : Par défaut, le script relatif à cette option envoie la commande "n" pour sélectionner le prochain message non lu dans la liste de messages. Thunderbird ne sélectionne pas forcément le premier message non lu de la liste. En cochant cette option, l'extension sélectionnera le premier message non lu du dossier en faisant un détour qui peut s'entendre sur certains PC ;
+<br />Ne pas utiliser la navigation par initiale dans l'arborescence des dossiers : cette option est utile  si vous utilisez le module complémentaire "Quick folder key navigation" ;
+<br />Navigation par initiales indirecte : permet d'afficher une boîte de saisie de nom de dossier  dès que vous pressez une lettre ou un chiffre dans l'arborescence des dossiers. Si cette option est désactivée, vous pouvez afficher cette zone de recherche en pressant la lettre z ; 
+<br />Ignorer les demandes d'accusé de réception : si cette option est activée, le volet de demande d'accusé  de réception sera  passé sous silence  lorsqu'un message sera  sélectionné dans la liste de messages ;   
+<br />Ne pas émuler Majuscule+F6 avec échappe :désactive l'utilisation de la touche échappe lors de la navigation entre les panneaux de la fenêtre principale ; 
+<br />Afficher seulement les dossiers avec non lus dans la boite de dialogue 'Dossiers de l'arborescence' a :permet de n'afficher que les dossiers avec  des messages nons lus chaque fois que vous affichez ce dialogue via la touche F12 ;
+<br />fenêtre séparée de lecture : ne pas lire automatiquement le  mmessage si provoque des blocages de NVDA : Par défaut, lorsqu'on ouvre un message en pressant Entrée depuis la liste de messages, une lecture épurée du message se lance à l'ouverture de la nouvelle fenêtre. Sur certains ordinateur et lorsque le compte de messageerie est configuré en IMAP, NVDA peut se bloquer. Lorsque cette option est cochée, cette lecture automatique est désactivée pour éviter tout blocage. 
+<br />Si vous constatez effectivement un blocage   à l'ouverture de cette fenêtre, vous pouvez allonger le délai avant que la lecture automatique ne commence. Pour cela, pressez Alt+d pour saisir une autre valeur. Si vous ne parvenez pas à supprimer cele blocage, cochez alors cette option ; 
+<br />
+<br />Options pour la fenêtre de rédaction : 
+<br />Vérification orthographique : épeler le mot mal orthographié et le mot suggéré : cette option modifie les annonces dans le dialogue de vérification orthographhique ;
+<br />Activer l'amélioration de la Vérification orthographique pendant la saisie:  la commande relative à cette option ne fonctionne pas encore dans la version 2022.1 de NVDA ;
+<br />La touche Échap ferme le message en cours de rédaction ; coché l
+<br />Simple frappe pour  afficher  les menu contextuel, double frappe pour écrire Puissance2 ou Majuscule+Puissance2 ou leurs remplaçants : cette option permet d'afficher le menu contextuel  en frappant la touche  Puissance2, ce qui sera plus pratique si vous écrivez très rarement les caractères Puissance2 et Majuscule+Puissance2 ;
+<br />
+<br />Options de mise à jour :
+<br />Cette option permet de désactiver les mises à jour automatiques de Thunderbird+ ou de les réactiver ;
+<br />
+<br />Désactivations   pour Chichi et Thunderbird+ :
+<br />Le but principal de ces options est de permettre une bonne cohabitation entre Thunderbird+ et Chichi en évitant les fonctionnalités en double. Mais vous pouvez les utiliser sans Chichi pour répondre à vos préférences ;
+<br />Le terme "dossiers" ci-dessous désigne l'arborescence des dossiers ;
+<br />
+<br />Dossiers : Espace ne sélectionne pas le prochain message non lu dans la liste et n'affiche pas la liste de dossiers non lus d : Chichi ne dispose pas encore d'équivalent en fonctionnement autonome  ;
+<br />Dossiers : pas de navigation par initiales d : en activant cette option, Chichi sera utilisée.  Il  ne fonctionne que de haut en bas et n'énonce pas le nom du compte auquel appartient le dossier activé ; 
+<br />Liste messages : Espace ne lit pas le message du volet d'aperçu l : si vous cochez cette option,  ce sera Chichi qui énoncera  le message du volet d'aperçu. Contrairement à Thunderbird+, cette lecture ne sera pas épurée. En revanche, F4 et Alt+flèche bas continueront à faire appel à la lecture épurée de Thunderbird+ ; 
+<br />Liste messages : pas de SmartReply : désactive la fonctionnalité qui permet de répondre à une liste de diffusion avec Contrôle+r en simple frappe ou à l'expéditeur  avec Contrôle+r en double frappe ,
+<br />Liste messages : ne pas gérer la barre de filtrage rapide : supprime l'accès aux options de filtrage avec la flèche bas ;
+<br />fenêtre principale : Tab ne passe pas au volet suivant : cette option concerne la navigation entre l'arborescence des dossiers, la liste des messages et le volet des entêtes et du message ;
+<br />Fenêtre principale : rétablir le comportement par défaut de la touche échappe. Ceci concerne notamment la navigation entre les volets cités ci-dessus ;
+<br />Permettre    la fermeture de Thunderbird avec Contrôle+w ou Contrôle+F4 :  en cochant cette option, ces deux raccourcis ferment Thunderbird lorsqu'il ne reste plus qu'un seul onglet d'ouvert. Ce comportement   est gênant pour certaines personnes ;
+</p>
+<p>
+<br />
+<br />Sauvegarde et restauration des options :
+<br />Sauvegarder la configuration actuelle s : copie le fichier .ini  de l'extension dans un fichier .inibak ;
+<br />Restaurer la configuration sauvegardée r : copie le fichier .inibak  sur le fichier .INI et recharge les paramètres ;
+<br />Réinitialiser la configuration r : recharge les paramètres par défaut de l'extension. Au préalable, effectue  une sauvegarde s'il n'en existe pas encore ;
+</p>
+<a id="toc17" name="toc17"></a>
+<h2>9.3. Menu contextuel des Commandes : Puissance2</h2>
+<p>
+Choisir et agencer  les colonnes de la liste de messages : Affiche  le menu  de cases à cocher de Thunderbird nommé "Choisir les colonnes à afficher". A partir d'un nom de colonne, pressez la flèche droite pour ouvrir  le dialogue d'agencement des colonnes ;
+</p>
+<p>
+Ecrire au support :  cette commande ouvre une fenêtre de rédaction pré-adressée  au support de l'extension. Ceci ne fonctionne que si Thunderbird est correctement défini comme votre client de messagerie par défaut ;
+</p>
+<a id="toc18" name="toc18"></a>
+<h1>10. Raccourcis clavier des onglets et de la fenêtre principale</h1>
+<ul>
+<li>Contrôle+Tab et Contrôle+Majuscule+Tab : va à l'onglet suivant ou précédent ;
+</li>
+<li>Contrôle+un chiffre : sélectionne  l'onglet correspondant à son  numéro d'ordre dans la barre d'onglets.  Si vous pressez un chiffre supérieur au nombre d'onglets ouverts, vous serez placé dans le dernier ;
+</li>
+<li>Contrôle + Première touche à gauche de Retour arrière : affiche la liste des onglets ouverts dans un menu. Pressez entrée sur un nom d'onglet pour vous placer dans celui-ci ; 
+</li>
+<li>Alt + Première touche à gauche de Retour arrière : affiche le menu contextuel de la barre des onglets. Il comporte notamment les commandes : Fermer l'onglet actif et Fermer mes autres onglets ;  
+</li>
+<li>Contrôle+w, Contrôle+retour arrière ou Contrôle+F4 : ferme l'onglet actif ; 
+</li>
+<li>Contrôle+j : ouvre l'onglet "Fichiers enregistrés" qui regroupe les pièces jointes et téléchargements enregistrées sur votre disque dur ;
+</li>
+</ul>
+
+<a id="dossmsg" name="dossmsg"></a>
+<h1>11. Dialogue des Listes filtrées des  compte et dossiers : F12</h1>
+<p>
+Ce dialogue affiche les comptes et leurs dossiers associés dans deux listes séparées. Vous pouvez les filtrer sur base d'un mot-clé ou  restreindre la liste des dossiers à ceux comportant  des messages non lus.
+</p>
+<p>
+Configuration du mode d'affichage par défaut  :
+</p>
+<p>
+Si vous prévoyez d'afficher la plupart du temps les dossiers avec des messages non lus uniquement, placez vous d'abord dans l'arborescence des dossiers ou la liste des messages, Pressez ensuite le raccourci Majuscule+Puissance2 et dans le sous-menu des options pour la fenêtre principale, validez l'élément intitulé : Afficher seulement les dossiers avec messages non lus.
+</p>
+<p>
+Utilisation de base du dialogue :
+</p>
+<ul>
+<li>Depuis la fenêtre principale, pressez F12 pour afficher le dialogue. 
+</li>
+<li>Si vous avez configuré  l'affichage par défaut des  dossiers avec messages non lus, ceux-ci seront affichés dans la liste nommée   : Dossiers des comptes ;
+</li>
+<li>Dans le cas contraire, tous les dossiers de tous les comptes seront repris dans cette liste ;
+</li>
+<li>Vous pouvez vous déplacer dans cette liste en pressant la première lettre du nom d'un dossier ;
+</li>
+<li>Notez que  les dossiers qui ne sont pas affichés dans l'arborescence ne seront pas repris ici non plus. Cela se produit par exemple lorsque des dossiers appartiennent à un compte réduit dans l'arborescence des comptes et dossiers ;
+</li>
+<li>Si vous avez trouvé  le dossier qui vous intéresse à ce stade,  pressez Entrée dessus pour le sélectionner dans l'arborescence.  Vous pouvez aussi presser Alt+g pour simuler un simple clic-gauche sur le dossier ou Alt+d pour simuler un simple clic-droit ;
+</li>
+</ul>
+
+<p>
+Basculer les modes d'affichage :
+</p>
+<ul>
+<li>Pour vous rappeler à tout moment dans quel mode d'affichage vous vous trouvez, pressez la touche "Retour arrière"   (backspace). Après avoir entendu l'information, pressez à nouveau cette touche pour revenir à la liste des dossiers ;
+</li>
+<li>Pour basculer l'affichage du mode "seulement avec dossiers non lus" au mode "tous les dossiers" et vice4.3.3sa, pressez F12 ;
+</li>
+<li>Dans le mode "tous les dossiers", les comptes sont affichés dans la liste de gauche et les dossiers du compte sélectionné dans celle de droite. Pour passer d'une liste à l'autre, utilisez  les flèches gauche et droite ;
+</li>
+<li>un compte virtuel nommé "Tous les comptes" est sélectionné et le focus est placé dans la liste des dossiers qui reprend tous les dossiers de tous les comptes. A chaque dossier dans cette liste, le nom du compte auquel il appartient est mentionné ; 
+</li>
+</ul>
+
+<p>
+Utilisation du filtrage par mot-clé :
+</p>
+<ul>
+<li>Au préalable, vous aurez fort probablement avantage à passer en mode "Tous les dossiers" comme expliqué ci-dessus ;
+</li>
+<li>Ci-dessous, vous pouvez utiliser indifféremment les touches "Page précédente" et "Page suivante" ; 
+</li>
+<li>Depuis une liste, pressez la touche "Page précédente" pour remonter au champ d'édition de l'expression de filtrage ;
+</li>
+<li>Entrez une expression et validez-la ensuite avec la touche "Page Suivante"  pour exécuter le filtrage;
+</li>
+<li>Les résultats sont affichés dans la liste des dossiers. Si aucun dossier n'a été trouvé, vous entendrez : Aucun résultat. Si vous vous ne vous y attendiez pas, vous avez peut-être oublié de basculer dans le mode d'affichage de tous les dossiers ; 
+-Enfin, pressez  entrée sur le dossier désiré pour le sélectionner dans l'arborescence des dossiers. Comme signalé plus haut, vous pouvez simuler un clic-gauche ou droit sur le dossier en pressant Alt+g ou Alt+d ;
+</li>
+</ul>
+
+<a id="toc20" name="toc20"></a>
+<h2>11.1. Exclusion de certains dossiers de la liste des dossiers avec non lus</h2>
+<p>
+Comme évoqué ci-dessus, vous pouvez  exclure des dossiers rarement ou jamais consultés de la liste des dossiers avec des messages non lus.
+</p>
+<p>
+Il suffit pour cela de renommer un dossier à exclure en ajoutant  un tiret à la fin de son nom.
+</p>
+<p>
+Il est nécessaire de signaler ici que si ce dossier renommé faisait partie d'un filtre de messages, Thunderbird modifiera automatiquement ce filtre pour tenir compte de ce changement
+</p>
+<a id="foldersList" name="foldersList"></a>
+<h1>12. Liste des dossiers de l'arborescence principale, selon 4 types : F7, NVDA+F7 ou Majuscule+F12</h1>
+<p>
+Lorsque vous vous trouvez dans l'arborescence des dossiers ou la liste  des messages, cette commande affiche un dialogue avec une liste des dossiers qui peut adopter les quatre présentations   suivantes : 
+</p>
+<ul>
+<li>Avec messages non-lus seulement (liste plate), Alt+n ;
+</li>
+<li>Tous les dossiers (liste plate), Alt+t ;
+</li>
+<li>Avec messages non-lus seulement (arborescence complète), Alt+o ;
+</li>
+<li>Tous les dossiers (arborescence complète), Alt+u ;
+</li>
+</ul>
+
+<p>
+Pour les dossiers avec des messages non lus, les dossiers Brouillons, Corbeille et ceux dont le nom se termine par un tiret sont exclus de la liste ;
+</p>
+<p>
+Pour activer un de ces types, vous pouvez presser le raccourci-clavier associé ou Majuscule+Tab puis les touches fléchées pour changer de mode.
+</p>
+<p>
+Le type choisi sera mémorisé   et activé lors du prochain affichage de ce dialogue ;
+</p>
+<p>
+Vous pouvez également filtrer la liste par mot-clé. Pressez Tab ou Alt+e vide pour atteindre la zone de saisie.
+</p>
+<p>
+La navigation dans une  liste plate ou une arborescence  s'effectue avec les flèches haut et bas ainsi que par l'initiale d'un nom de dossier;
+</p>
+<p>
+Pour activer dans l'arborescence principale le dossier sélectionné, pressez simplement Entrée dessus.
+</p>
+<p>
+Astuce :   si vous avez pressé Entrée sur un dossier avec des messages non lus, pressez ensuite Espace pour sélectionner le premier message non lu dans le tableau des messages ;
+</p>
+<p>
+Remarque : <br />
+Les raccourci-clavier qui permettent d'afficher ce dialogue peuvent être supprimés et un autre peut être ajouté  via  le dialogue de configuration des gestes de commande. Procédez comme suit de NVDA :
+</p>
+<ul>
+<li>Placez d'abord la fenêtre de Thunderbird au premier plan ;
+</li>
+<li>Ouvrez le menu NVDA et  sélectionnez "Préférences" ;
+</li>
+<li>Dans le sous-menu, validez sur : Gestes de commande" ;
+</li>
+<li>Dans le dialogue, pressez la lettre t jusqu'à entendre : Thunderbird ;
+</li>
+<li>Pressez la flèche droite pour développer cette branche ;
+</li>
+<li>Descendez sur l'élément : "Afficher la liste des dossiers de l'arborescence principale de Thunderbird, selon plusieurs types. réduit 2 sur 4 niveau 1" puis pressez flèche droite pour développer ce niveau ;
+</li>
+<li>Tabulez jusqu'au bouton "Ajouter", validez puis pressez un geste de commande dans le nouveau dialogue ;
+</li>
+<li>Pressez Entrée pour valider votre choix ;
+</li>
+<li>De retour dans la liste des commandes, vérifiez la présence de votre nouveau geste de commande ;
+</li>
+<li>Fermez  le dialogue via le bouton OK.
+</li>
+</ul>
+
+<a id="toc22" name="toc22"></a>
+<h1>13. Raccourcis clavier de  la liste des messages</h1>
+<p>
+Ils ne sont actifs que lorsque le focus est placé sur la liste de messages. Outre les raccourcis  d'aperçu rapide des messages (espace), les raccourcis suivants sont disponibles : 
+</p>
+<p>
+Outre les raccourcis-clavier de lecture rapide de messages vus plus haut, les raccourcis suivant son disponibles :
+</p>
+<ul>
+<li>Alt+page suivante : si le panneau d'aperçu est affiché (via F8), Ouvre la liste des pièces jointes  du message sélectionné.  ;
+</li>
+<li>Alt+9 ou le chiffre 1 ou 2 : un appui énonce le nombre de pièces jointes, deux appuis ouvre la liste des pièces jointes  ;
+</li>
+<li>a : Archive ce message, avec vocalisation. Pressez Contrôle+z pour annuler  cette opération ;
+</li>
+<li>j : marque ce message comme indésirable, avec vocalisation ;
+</li>
+<li>Majuscule+j : marque ce message comme acceptable, avec vocalisation ;
+</li>
+<li>m : marque les messages sélectionnés comme non lus. Majuscule+m les marque comme lus ; 
+</li>
+</ul>
+
+<p>
+Consultation  des colonnes et entêtes :
+</p>
+<p>
+Il convient ici de faire la distinction entre colonnes et entêtes : le mot "colonne" est utilisé plus bas pour désigner la valeur d'une cellule d'une ligne dans le tableau des messages. Le  mot "entête" concerne  quant à lui le message lui-même. Les entêtes  sont consultables aussi bien dans le volet d'aperçu du message que  dans l'onglet ou fenêtre séparée d'un message ouvert ;
+</p>
+<a id="toc23" name="toc23"></a>
+<h2>13.1. Consultation des colonnes : un chiffre du clavier alphanumérique</h2>
+<p>
+Ces touches concernent les colonnes de la liste des messages uniquement. Pressez un chiffre du clavier alphanumérique sans presser la touche Majuscule :
+</p>
+<ul>
+<li>Un simple appui : énonce le nom et la valeur de la colonne correspondante ;
+</li>
+<li>Deux appuis sur un chiffre : épelle la valeur de la colonne correspondante ;
+</li>
+<li>Trois appuis rapides : copie la valeur de la colonne  dans le presse-papiers. Pour copier les adresses des divers expéditeur et destinataires, utilisez la consultation des entêtes vue plus bas ; 
+<p></p>
+NB : en réalité, les touches à presser correspondent aux lettres et symboles du clavier français-France : 
+<p></p>
+<br />1: &amp;
+<br />2 : é
+<br />3 : guillemet
+<br />4 : apostrophe
+<br />5 : parenthèse gauche
+<br />6 : tiret
+<br />7 : è
+<br />8 : souligné
+<br />9 : ç
+<br />0 : à
+<br />parenthèse droite, deuxième touche à gauche de retour arrière pour les claviers Belges, Canadiens ou Suisses ;
+<br />égal, première  touche à gauche de retour arrière pour les claviers Belges, Canadiens ou Suisses ; ;
+</li>
+</ul>
+
+<a id="toc24" name="toc24"></a>
+<h2>13.2. Consultation des entêtes : Alt+un chiffre du clavier alphanumérique</h2>
+<p>
+Ces raccourcis sont utilisables depuis la fenêtre principale si le panneau d'aperçu est affiché (via F8)  et depuis l'onglet ou la fenêtre séparée d'un message ouvert. Un appui énonce l'entête et deux appuis affiche un menu contextuel selon le cas ;
+</p>
+<ul>
+<li>Alt+1 : annonce le nom de l'expéditeur et  son adresse mail, Deux appuis   ouvre une  boîte d'édition de ces valeurs. Vous pouvez les modifier puis presser Entrée pour les copier dans le presse-papiers. 3 appuis : ouvre le menu contextuel de l'entête ;
+</li>
+<li>Alt+2 : Sujet avec le nom de la liste de diffusion le cas échéant ;
+</li>
+<li>Alt+3 : date du message ;
+</li>
+<li>Alt+4 pour : destinataires principaux du message,  Si plusieurs destinataires,  3 appuis positionne le focus sur le premier destinataire, ensuite tab  permet de passer au suivant, applications sur chaque destinataire affiche le menu contextuel ;
+</li>
+<li>Alt+5 : destinataires en copie ; 
+</li>
+<li>Alt+6 : destinataires en copie cachée ;
+</li>
+<li>Alt+7 : adresse "répondre à" ;
+</li>
+<li>Alt+8 :agent utilisateur, si les entêtes complets sont activés  via le menu Affichage / entêtes  / complets ; 
+</li>
+<li>Alt+9 : 1 appui annonce le nombre de pièces jointes, 2 appuis ouvre la liste des pièces jointes ;
+</li>
+<li>Alt+0 : liste  des étiquettes placées sur le message ;
+</li>
+<li>Alt+ Seconde touche à gauche de Retour arrière ou Alt+fin : énonce une version abrégée de la barre d'état : nombre de messages non lus,  nombre total de messages ainsi que l'expression de filtrage rapide ; 
+</li>
+<li>Alt+ Première touche à gauche de Retour arrière : ouvre le menu contextuel des onglets ;
+</li>
+<li>Contrôle + Première touche à gauche de Retour arrière :  Affiche la liste des onglets ouverts dans un menu qui permet de sélectionner l'onglet choisi ;  
+</li>
+</ul>
+
+<a id="toc25" name="toc25"></a>
+<h2>13.3. Ajout et retrait d'étiquettes : Majuscule+un chiffre du clavier alphanumérique</h2>
+<p>
+Cette fonctionnalité permet de marquer un message comme important ou à faire, par exemple. Ensuite, la barre de filtrage rapide permettra d'afficher seulement les messages ayant une ou plusieurs étiquettes. Par exemple, afficher  uniquement les messages importants dans la liste de messages ;
+</p>
+<p>
+Pour vérifier les étiquettes déjà placées sur le message, pressez Alt+0 du clavier alphanumérique. 
+</p>
+<p>
+Pour ajouter ou retirer une étiquette, pressez Majuscule+ un chiffre de 1 à 9 ; 
+</p>
+<a id="toc26" name="toc26"></a>
+<h2>13.4. Barre de filtrage rapide, lettre f ou Contrôle+Majuscule+K</h2>
+<ul>
+<li>lettre F ou Contrôle+Majuscule+K : affiche la barre de  filtrage rapide de message dans le dossier courant ;
+</li>
+<li>Filtrage par mot-clé : entrez un mot-clé puis pressez Tab pour parcourir la liste filtrée avec les flèches ;
+</li>
+<li>La flèche bas depuis la zone de saisie du mot-clé vous donne  accès à la liste des options  ci-dessous : 
+ <ul>
+ <li>1 : Conserver les filtres lors des changements de dossiers ? c
+ </li>
+ <li>2 : Afficher seulement les messages non lus l
+ </li>
+ <li>3: Afficher seulement les messages suivis
+ </li>
+ <li>4 : Afficher seulement les messages des personnes présentes dans mon carnet d’adresses d
+ </li>
+ <li>5: Afficher seulement les messages ayant des étiquettes é
+ </li>
+ <li>6 : Afficher seulement les messages ayant des pièces jointes j
+ </li>
+ <li>etc.
+ </li>
+ </ul>
+</li>
+<li>Pressez entrée  pour activer ou désactiver un ou plusieurs de ces critères ;
+</li>
+<li>Alt+fin ou Alt+ Première touche à gauche de Retour arrière : permet d'entendre un résumé des filtres actifs ainsi que le nombre de messages filtrés. Ces deux raccourcis fonctionnent également à partir de la liste de messages, pas seulement à partir de la barre de filtrage rapide ;
+</li>
+</ul>
+
+<p>
+<br />- lorsqu'un filtre rapide est actif, un fichier audio WAV est joué quand la liste ou l'onglet auquel elle appartient reçoit le focus. Le son ressemble à un souffle ;
+<br />Le fichier filter.wav se trouve dans le dossier : 
+<br />"%appdata%\NVDA\TB+sounds"
+<br />Vous pouvez y placer un son à votre goût  pour autant que votre fichier se nomme : filter.wav. Après ce changement, il faut relancer NVDA ;
+</p>
+<a id="toc27" name="toc27"></a>
+<h3>13.4.1. Filtrage Par étiquette</h3>
+<p>
+lorsque le focus est placé sur la zone d'édition de la barre de filtre rapides :
+</p>
+<ol>
+<li>Pressez  la flèche bas jusqu'à entendre "étiquettes" puis pressez Entrée pour cocher cette option ;
+</li>
+<li>Pressez ensuite la touche Tab    pour atteindre la liste déroulante des modes de filtrage par étiquettes. Si vous choisissez par exemple "à faire", seuls les messages étiquetés  comme "à faire" seront listés dans le tableau des messages ;
+</li>
+</ol>
+
+<a id="cols1" name="cols1"></a>
+<h2>13.5. Agencement des colonnes : Alt+c</h2>
+<p>
+Cette fonctionnalité permet de choisir l'ordre des colonnes de la liste de messages et d'ajouter ou supprimer des colonnes. Contrairement à l'ancienne fonction d'Organisation des colonnes, ces opérations  s'appuient sur des dialogues réels.
+</p>
+<p>
+Pour l'utiliser, placez-vous d'abord dans la liste des messages ou l'arborescence des dossier  puis pressez Alt+c (le raccourci NVDA+u accent grave existe encore)  ;
+</p>
+<p>
+Le dialogue d'agencement des colonnes apparaît. Il se compose de la liste des colonnes ainsi que des   boutons "Aide", "colonnes" et "Fermer".
+Le bouton "colonnes ..."     affiche le menu "Choisir les colonnes à afficher" natif de Thunderbird  
+</p>
+<p>
+Lorsque vous vous trouvez dans la liste des colonnes, les raccourcis-clavier suivants sont disponibles :
+</p>
+<ul>
+<li>Flèche gauche  : affiche le menu de cases à cocher nommé "Choisir les colonnes à afficher". Ce raccourci correspond au bouton "Colonnes ..." ;
+</li>
+<li>Espace : pour déplacer la colonne sélectionnée, pressez Espace puis placez-vous   sur une autre colonne et pressez à nouveau Espace pour placer  la colonne à cet endroit. Cette opération est similaire à un couper-coller ;
+</li>
+</ul>
+
+<p>
+Vous disposez également de ces raccourcis de déplacements directs :
+</p>
+<ul>
+<li>Contrôle + flèche haut ou flèche bas  :  monte ou descend  la colonne sélectionné  d'une unité ;
+</li>
+<li>Contrôle + Début ou Fin : déplace la colonne sélectionnée  en haut ou en bas de la liste ;
+</li>
+<li>Contrôle + Page précédent ou page suivante : monte ou descend  la colonne sélectionné  de trois unité ;
+</li>
+</ul>
+
+<p>
+Pour réaliser ces déplacement, Les colonnes sont en réalité déplacées en effectuant un glisser-déposer à la souris.  Un bip  d'une millisecondes se produit tous les 10 déplacement du pointeur ;
+</p>
+<p>
+Lorsque le menu "Choisir les colonnes à afficher" est   présent, vous disposez des  nouveaux raccourcis-clavier  suivants :
+</p>
+<ul>
+<li>Flèche droite : affiche le dialogue d'agencement des colonnes ;
+</li>
+<li>Espace : coche ou décoche la colonne sélectionnée dans le menu. La touche Entrée produit encore le même comportement ;
+</li>
+</ul>
+
+<p>
+Avec les flèches gauche et droite, il est donc très aisé de basculer entre le menu de choix des colonnes et le dialogue de leur agencement ;
+</p>
+<a id="toc29" name="toc29"></a>
+<h1>14. Fenêtre de rédaction</h1>
+<p>
+A l'ouverture de la fenêtre de rédaction, rien de particulier ne se remarque bien que les raccourcis clavier suivants soient disponibles :
+</p>
+<ul>
+<li>Echappe : referme la fenêtre de rédaction ;
+</li>
+<li>Consultation des entêtes de rédaction : un appui sur Alt + un chiffre annonce l'entête, deux appuis  donne  le focus à la zone de saisie correspondante :
+<br />Alt+1: Expéditeur :  une de vos adresses mail figurant   dans  la liste de vos adresses de messagerie ;
+<br />Alt+2 : pour :
+<br />Alt+3 : les noms des  pièce jointes. Deux appuis donne le focus à la liste des pièces jointes ;
+<br />les autres chiffres donnent accès aux entêtes facultatifs comme : copie à, copie cachée à et répondre à ;
+ <ul>
+ <li>Puissance2 dans le texte du message : affiche le menu contextuel suivant : - Barre d'outils Courrier puis dans le sous menu : Envoyer, Orthographe, Joindre, Sécurité, Enregistrer. 
+ </li>
+ <li>Mise en forme du texte puis dans le sous-menu : (Styles de) Paragraphe, Appliquer ou enlever une liste à puces, Appliquer ou enlever une liste numérotée, Polices, Retraits, insérer un lien, une image, une ancre, une ligne horizontale ou un tableau. 
+ </li>
+ </ul>
+</li>
+</ul>
+
+<p>
+<br />Remarque : ce menu s'obtient en une ou deux frappes sur la touche Puissance2 en fonction du réglage dans le menu des options pour la fenêtre de rédaction obtenu en pressant  une ou deux fois rapidement Majuscule+Puissance2 ;
+</p>
+<a id="ortho" name="ortho"></a>
+<h2>14.1. Dialogue de vérification orthographique : F7</h2>
+<p>
+Des raccourcis-clavier qui limitent le déplacement des mains ont été ajoutés. Lorsque le focus est placé dans le champ d'édition du mot de remplacement, vous pouvez presser les raccourcis-clavier suivants :
+</p>
+<ul>
+<li>Entrée : Actionne le bouton "Remplacer" ;
+</li>
+<li>Majuscule+Entrée : Actionne le bouton "Tout remplacer" ;
+</li>
+<li>Contrôle+Entrée : Actionne le bouton "Ignorer" ;
+</li>
+<li>Majuscule+Contrôle+Entrée : Actionne le bouton "Tout ignorer" ;
+</li>
+<li>Alt+Entrée : actionne le bouton "Ajouter le mot au dictionnaire" ;
+</li>
+</ul>
+
+<p>
+Pour bien retenir ces combinaisons de la touche Entrée,  Contrôle se rapporte à  l'action "Ignorer" et la présence de Majuscule    indique "toutes les occurrences".
+</p>
+<p>
+De plus, le raccourcis  Alt+flèche haut  épelle les mots :
+</p>
+<ul>
+<li>1 appui épelle les mots à un débit normal ;
+</li>
+<li>2 appuis épelle rapidement les mots ;
+</li>
+<li>3 appuis copie le mot mal orthographié dans le presse-papiers en vue de l'analyser dans un autre champ d'édition ;
+</li>
+</ul>
+
+<a id="ortho2" name="ortho2"></a>
+<h2>14.2. Mode amélioré de la vérification orthographique pendant la saisie</h2>
+<p>
+Malgré les épellations ajoutées au dialogue de vérification orthographique, il est parfois nécessaire de  fermer celui-ci   pour écouter le contexte de la faute dans le texte. Cela fait, ce dialogue  recommence la vérification de puis le début et s'arrête à nouveau sur les mots que l'on avait volontairement ignorés précédemment.
+</p>
+<p>
+La vérification orthographique pendant la saisie évite ces inconvénients mais peut déconcentrer le rédacteur à cause des annonces "Faute d'orthographe". 
+Afin de ne pas être distrait par les fautes d'orthographe pendant la rédaction, ce mode de vérification a été amélioré par l'ajout de trois    raccourcis clavier:
+<br />Avant de les actionner, il est nécessaire de basculer en mode navigation en pressant ;: NVDA+espace ;
+</p>
+<ul>
+<li>w et Majuscule+w pour aller respectivement à l'erreur suivante et précédente, ;
+</li>
+<li>NVDA+F7 pour afficher la liste des erreurs. Il vous suffit  de presser entrée sur une erreur pour l'atteindre dans le texte ;
+</li>
+</ul>
+
+<p>
+Ce mode de fonctionnement vous permet de désactiver l'annonce des fautes d'orthographe par NVDA ;
+</p>
+<p>
+Avant d'utiliser ce mode amélioré de vérification pendant la saisie, il est nécessaire d'effectuer une petite configuration.
+</p>
+<a id="toc32" name="toc32"></a>
+<h3>14.2.1. Configuration préliminaire</h3>
+<p>
+1. Dans Thunderbird, Activer la vérification orthographique pendant la saisie dans les préférences : 
+</p>
+<ul>
+<li>Dans la fenêtre principale, ouvrez le menu Options, descendez sur Préférences et validez ;
+</li>
+<li>Dans l'onglet préférences, tabulez  pour atteindre le champ de recherche d'options,  entrez le mot "ortho" puis pressez Tab ;
+</li>
+<li>Dans les résultats, tabulez puis cochez la case intitulée : "Activer la vérification pendant la saisie " ;
+</li>
+<li>Refermez enfin l'onglet Préférences avec  Contrôle+w ou Contrôle+Retour arrière ;
+</li>
+</ul>
+
+<p>
+2. Désactiver l'annonce des fautes d'orthographe dans NVDA
+Ce réglage est bien entendu facultatif. Si vous préférez entendre une annonce sur une faute d'orthographe, vous pouvez aussi raccourcir cette annonce en remplaçant dans votre dictionnaire de prononciation "Faute d'orthographe" par "graf", par exemple ;
+</p>
+<p>
+Pour désactiver cette annonce :
+</p>
+<ul>
+<li>Ouvrez le menu NVDA, Préférences puis validez sur : Paramètres ;
+</li>
+<li>Dans le dialogue des paramètres, placez-vous sur la catégorie "Mise en forme des documents" ;
+-  Tabulez jusqu'à entendre :"Fautes d'orthographe" puis pressez espace pour décocher cette option ;
+</li>
+<li>Refermez le dialogue en validant sur le bouton OK ;
+</li>
+</ul>
+
+<a id="toc33" name="toc33"></a>
+<h3>14.2.2. Utilisation des raccourcis w, Majuscule+w et NVDA+F7</h3>
+<ul>
+<li>Avant d'utiliser ces raccourcis,  vous devez d'abord activer le mode navigation en pressant NVDA+espace ;
+</li>
+<li>Pressez ensuite la lettre w pour vous placer sur l'erreur suivante ou Majuscule+w pour vous placer sur l'erreur précédente ou encore, pressez NVDA+F7 pour sélectionner le mot à corriger  dans une liste ;
+</li>
+<li>Lorsque le mot fautif est sélectionné dans le texte, Vous pouvez  presser la touche Applications pour afficher le menu contextuel des suggestions de remplacement ; 
+</li>
+<li>Vous pouvez aussi    écouter  facilement la phrase qui contient le mot fautif avant de procéder à sa correction ;
+</li>
+<li>Pour effectuer  une correction manuelle d'un mot, pressez d'abord NVDA+espace pour revenir en mode formulaire ;
+</li>
+</ul>
+
+<a id="toc34" name="toc34"></a>
+<h1>15. Voir aussi</h1>
+<ul>
+<li><a href="http://angouleme.avh.asso.fr/fichesinfo/fiches_nvda/thunderbird/index.htm">Fiche de Daniel Poiraud sur  l'utilisation du client de messagerie  Thunderbird</a> ;
+</li>
+<li><a href="http://angouleme.avh.asso.fr/fichesinfo/fiches_nvda/thunderbird/thunderbird_extension.htm">Fiche de Daniel Poiraud sur l'extension Thunderbird+</a> ;
+</li>
+<li><a href="https://www.nvda-fr.org/article.php?id=50">NVDA France</a> ;
+</li>
+<li><a href="https://blindhelp.github.io/Le%20coffre%20des%20Modules%20Complementaires%20pour%20NVDA.html">blindhelp: Le coffre des extensions pour NVDA</a> ;
+</li>
+<li><a href="http://www.progaccess.net">Progaccess</a> ;
+<p></p>
+
+</li>
+</ul>
+
+<a id="histo" name="histo"></a>
+<h1>16. Historique des changements</h1>
+<a id="toc36" name="toc36"></a>
+<h2>16.1. versions 4.3.3, 08/01/2023</h2>
+<ul>
+<li>Après des optimisations, la lecture des entêtes ne fonctionnait plus dans la fenêtre séparée de lecture ;
+</li>
+<li>Lorsque la langue de NVDA sélectionnée était "Utilisateur par défaut", le fichier d'aide de l'extension n'était pas trouvé quand on pressait Control+F1 ;
+</li>
+</ul>
+
+<a id="toc37" name="toc37"></a>
+<h2>16.2. versions 4.3.2, 06/01/2023</h2>
+<p>
+Correctif : la lecture des entêtes dans la fenêtre séparée d'un message ne fonctionnait plus ;
+</p>
+<a id="toc38" name="toc38"></a>
+<h2>16.3. versions 4.3.1, 04/01/2023</h2>
+<p>
+Après la traduction en trois langues de la version 4.3, des optimisations et correctifs :
+</p>
+<ul>
+<li>La détermination  de la fenêtre active  ne dépend plus de son titre, ce qui rend l'extension moins dépendante de kla langue de l'interface de Thunderbird. Si la langue de l'interface de NVDA est différente de celle de Thunderbird, les scripts les plus importants de Thunderbird+ fonctionneront correctement ; 
+</li>
+<li>En interne, la vitesses de recherche de certains objets a été accélérée : ceci a un impact sur la détermination de l'onglet actif et sur la navigation entre les volets de la fenêtre principale ;
+</li>
+<li>Le raccourci control+R pour répondre à un message ne fonctionnait pas lorsque le volet d'aperçu n'était pas affiché et que SmartReply était activé ; 
+</li>
+<li>La réactivation des mises à jour automatiques via le menu des options ne fonctionnait plus suite à un changement antérieur ;
+</li>
+</ul>
+
+<a id="toc39" name="toc39"></a>
+<h2>16.4. versions 4.3, 26/12/2022++versions 4.3, 26/12/2022</h2>
+<ul>
+<li>Première localisation de Thunderbird+4 en langue étrangère : en Portugais par Rui Fontes  de chez Tiflotecnia.com.Merci à lui d'avoir  ouvert la porte aux autres langues ;
+</li>
+<li>Traduction en Espagnol par Rémy  Ruiz ;
+</li>
+<li>Traduction en Anglais par Google Translate &amp; Pierre-Louis R. ;
+</li>
+</ul>
+
+<p>
+Remarques : 
+</p>
+<ul>
+<li>Pour que l'extension Thunderbird+  fonctionne correctement, la langue de NVDA doit être impérativement la même que celle de l'interface utilisateur de Thunderbird ;
+</li>
+<li>Pour les utilisateurs Français, les raccourcis clavier avec puissance2, parenthèse droite et égal n'ont pas   changé ;
+</li>
+<li>Pour les utilisateurs Belges, Canadiens et Suisses, ces touches peuvent avoir changé de place :
+ <ul>
+ <li>Pour afficher le menu appelé puissance2, il faudra presser la touche qui se trouve au-dessus de Tab ;
+ </li>
+ <li>Pour Les raccourcis qui impliquaient la touche égal , il faudra désormais presser la première  touche à gauche de retour arrière ;
+ </li>
+ <li>Pour Les raccourcis qui impliquaient la touche parenthèse droite, il faudra désormais presser la deuxième touche à gauche de retour arrière ; 
+ </li>
+ </ul>
+</li>
+</ul>
+
+<a id="toc40" name="toc40"></a>
+<h2>16.5. versions 4.2.7 pour Thunderbird 102, 24/11/2022</h2>
+<p>
+Une nouvelle option a été ajoutée au   menu Majuscule+Puissance2 / Options pour la fenêtre principale :
+<br />fenêtre séparée de lecture : ne pas lire automatiquement le  mmessage si provoque des blocages de NVDA
+<br />Par défaut, lorsqu'on ouvre un message en pressant Entrée depuis la liste de messages, une lecture épurée du message se lance à l'ouverture de la nouvelle fenêtre. Sur certains ordinateur et lorsque le compte de messageerie est configuré en IMAP, NVDA peut se bloquer. Lorsque cette option est cochée, cette lecture automatique est désactivée pour éviter tout blocage.
+</p>
+<a id="toc41" name="toc41"></a>
+<h2>16.6. versions 4.2.5 pour Thunderbird 102, 22/11/2022</h2>
+<p>
+<br />Liste de messages en mode groupé :
+</p>
+<ul>
+<li>L'extension annonce d'abord "Réduit" en arrivant sur une ligne de niveau 1 réduite ;
+</li>
+<li>En pressant espace, F4 ou Alt+Flèche bas pour une lecture épurée du message du volet d'aperçu, une telle ligne est d'abord développée. Ceci est nécessaire pour pouvoir récupérer le message à lire ;
+</li>
+</ul>
+
+<p>
+<br />Ouverture de la fenêtre séparée de lecture d'un message :
+</p>
+<ul>
+<li>Le titre de la fenêtre n'est plus répété 4 fois, ce problème se produisait aussi sans Thunderbird+.
+<br />A la place, le titre de la fenêtre est annoncé une fois de manière épurée et est subie  de la lecture épurée du message. Il suffit de presser une touche pour arrêter cette lecture, le curseur se trouvera au début du message.
+<br />Le titre est épuré lorsque le nom d'une liste de discussion apparaît plusieurs fois, celui-ci ne sera énoncé qu'une seule fois. De plus, le nom "Mozilla Thunderbird" est remplacé par "TB" ;
+<br />La lecture démarre après un délai de 100 milli-secondes par défaut.  Si ce délai est trop court ou trop long en fonction de la rapidité de l'ordinateur, celui-ci peut être ajusté via le raccourci Alt+d, d comme délai.
+<br />La boîte de saisie est assez rudimentaire, si vous entrez une valeur non autorisée, la boîte  se refermera en émettant un signal sonore, vous devrez presser à nouveau Alt+d pour saisir un autre délai ;
+</li>
+<li>Correctif : à la fermeture de la fenêtre et au retour dans la liste de messages, la touche échappe ne revenait pas à l'arborescence ;
+<br />Toujours dans ce contexte précis, la touche Espace ne permet pas la lecture épurée du volet d'aperçu, utilisez à la place  F4 ou Alt+flèche bas ;
+</li>
+</ul>
+
+<p>
+<br />Fenêtre de rédaction :
+En pressant Alt+1 deux fois rapidement, on atteint le champ d'adressage "De". Désormais, l'extension déroule automatiquement la liste de vos comptes de messagerie pour permettre son parcours avec les flèches verticales.  Auparavant, la flèche bas depuis ce champ passait directement au champ "Pour" ;
+</p>
+<p>
+<br />Menu des options obtenu en pressant Majuscule+Puissance2, ajout des 3 commandes ci-dessous :
+</p>
+<p>
+-  Sauvegarder la configuration actuelle s : copie le fichier .ini  de l'extension dans un fichier .inibak ;
+</p>
+<ul>
+<li>Restaurer la configuration sauvegardée r : copie le fichier .inibak  sur le fichier .INI et recharge les paramètres ;
+</li>
+<li>Réinitialiser la configuration r : recharge les paramètres par défaut de l'extension. Au préalable, effectue  une sauvegarde s'il n'en existe pas encore ;
+</li>
+</ul>
+
+<a id="toc42" name="toc42"></a>
+<h2>16.7. versions 4.1 à 4.2.1 pour Thunderbird 102, 07/11/2022</h2>
+<p>
+Note importante : Après avoir installé cette version, veuillez vérifier dans le gestionnaire d'extensions si Thunderbird+4 n'est pas installé deux fois. Le cas échéant, supprimez l'ancienne version ;
+<br />
+<br />
+La principale nouveauté de cette version est sa capacité à fonctionner en duo avec <a href="http://www.rptools.org/Outils-DV/thunderbird-chichi.html">Chichi</a> si celui-ci est installé. S'il ne l'est pas, l'extension continue à fonctionner comme avant.
+</p>
+<p>
+Il permet de démarrer Thunderbird sur un dossier quelconque que vous avez défini en pressant la touche Applications dans l'arborescence des dossiers ;
+</p>
+<p>
+Combiné à Thunderbird+, les commandes suivantes sont disponibles :
+</p>
+<ul>
+<li>Espace, F4 et Alt+flèche bas  en double frappe sur un message dans la liste des messages : ouvre la liste des liens contenus dans le message affiché dans le volet d'aperçu. En simple frappe, le message est toujours lu par Thunderbird+ ;
+</li>
+<li>Espace sur un dossier de l'arborescence : si le dossier comporte des messages non lus, un appui sélectionne le premier message non lu dans le dossier. S'il n'en contient pas, espace ouvre la liste des dossiers avec des messages non lu. Là, il suffit de presser  Entrée sur un dossier pour vous placer sur son premier message non lu. Si vous pressez Espace dans cette liste, le dossier sélectionné   sera marqué comme lu, sans demande de confirmation ;
+</li>
+<li>Pour les autres commandes de Chichi, lisez la section <a href="http://www.rptools.org/Outils-DV/thunderbird-chichi.html#toc6">Commandes de Chichi</a>
+</li>
+</ul>
+
+<p>
+De nouvelles options  ont été ajoutées au menu Majuscule+Puissance2 afin de vous permettre de désactiver certaines fonctionnalités si vous préférez utiliser leur équivalent dans Chichi. Note : en ce moment, Chichi n'offre pas encore d'alternative à certaines fonctionnalité listées ci-dessous.
+<br />Sous-menu Désactivations pour Chichi et Thunderbird+ :
+<br />Dossiers : Espace ne sélectionne pas le prochain message non lu dans la liste et n'affiche pas la liste de dossiers non lus d : Chichi ne dispose pas encore d'équivalent en fonctionnement autonome  ;
+<br />Dossiers : pas de navigation par initiales d : en activant cette option, Chichi sera utilisée.  Il  ne fonctionne que de haut en bas et n'énonce pas le nom du compte auquel appartient le dossier activé ; 
+<br />Liste messages : Espace ne lit pas le message du volet d'aperçu l : si vous cochez cette option,  ce sera Chichi qui énoncera  le message du volet d'aperçu. Contrairement à Thunderbird+, cette lecture ne sera pas épurée. En revanche, F4 et Alt+flèche bas continueront à faire appel à la lecture épurée de Thunderbird+ ; 
+<br />Liste messages : pas de SmartReply : désactive la fonctionnalité qui permet de répondre à une liste de diffusion avec Contrôle+r en simple frappe ou à l'expéditeur  avec Contrôle+r en double frappe ,
+<br />Liste messages : ne pas gérer la barre de filtrage rapide : supprime l'accès aux options de filtrage avec la flèche bas ;
+<br />fenêtre principale : Tab ne passe pas au volet suivant f
+<br />fenêtre principale : Echappe ne revient pas au volet précédent f
+</p>
+<p>
+<br /><br />
+Autres nouveautés :
+<br />NVDA+fin :  l'annonce de la barre d'état par NVDA a été rétablie et améliorée. Pour la fenêtre principale, s'il y a lieu, le nombre de message filtrés ainsi que l'expression de filtrage sont aussi annoncés. Le raccourci Alt+fin a été maintenu parce qu'il épelle le mot-clé de filtrage ;
+<br /> Le menu Puissance2 comporte deux  nouvelles entrées :
+</p>
+<ul>
+<li>Page de chichi : cette page vous explique comment télécharger et installer Chichi  et vous fournit la description de ses raccourcis-clavier ;
+</li>
+<li>Rejoindre Thunderbird-dv : ceci affiche une page qui vous explique comment vous inscrire à la liste de diffusion thunderbird-dv et vous indique les autres commandes disponibles ;
+</li>
+</ul>
+
+<p>
+<br />Fenêtre de rédaction :
+Pour  les champs d'adressage qui ne sont pas affiché par défaut, Copie à, Copie cachée à et Réponse à, les commandes Alt+chiffre ont été améliorées. Par exemple, en frappant Alt+4 :    
+<br />Avec un appui, vous entendrez : "Le champ Copie à est absent, refrappez deux fois rapidement cette commande pour l'afficher." ; 
+<br />Avec deux appuis, le champ Copie à sera affiché et prendra le focus ;
+<br />
+</p>
+<p>
+<br />Correctifs :
+</p>
+<p>
+Le raccourci r a été supprimé des gestes de commandes pour la fonction SmartReply, il causait des problèmes en mode rédaction ;
+</p>
+<p>
+La partie qui transforme les lignes de la liste de messages  a été réécrite dans une logique différente afin de pallier à certains problèmes rencontrés en mode groupé par conversations ou critère de tri ;
+</p>
+<p>
+La gestion du démarrage de Thunderbird a été supprimée de l'extension au profit de Chichi ou de Start with inbox.
+<br />Si vous continuez à utiliser ce dernier, il vient de  passé en version 2.5.2. Il permet maintenant de démarrer Thunderbird sur le premier message non lu dans le dossier Courrier entrant du compte que vous avez choisi dans ses options ;
+<br />
+</p>
+<a id="toc43" name="toc43"></a>
+<h3>16.7.1. Versions 4.1.1 à 4.2.1</h3>
+<p>
+Liste de messages : 
+</p>
+<ul>
+<li>lorsqu'un filtre rapide est actif, un fichier audio WAV est joué quand la liste ou l'onglet auquel elle appartient reçoit le focus. Le son ressemble à un souffle ;
+<br />Le fichier filter.wav se trouve dans le dossier : 
+<br />"%appdata%\NVDA\TB+sounds"
+<br />Vous pouvez y placer un son à votre goût  pour autant que votre fichier se nomme : filter.wav. Après ce changement, il faut relancer NVDA ;
+</li>
+<li>Deux Nouvelles options  dans  le menu Majuscule+Puissance2 / Désactivations diverses :
+<br />"Liste messages : Echappe ne revient pas à l'arborescence" : option non cochée par défaut ; 
+<br />"Permettre    la fermeture de Thunderbird avec Contrôle+w ou Contrôle+F4" : en activant cette option, ces raccourcis ferment Thunderbird lorsqu'il ne reste plus qu'un onglet d'ouvert ;
+</li>
+</ul>
+
+<p>
+Arborescence des dossiers :
+<br />Si le dossier sélectionné comporte des messages  non lu, un appui sur espace sélectionne le prochain ou le  premier message non lu dans la liste :
+</p>
+<ul>
+<li>Dans la configuration par défaut de Thunderbird+4, le prochain message non lu sera sélectionné, celui-ci ne sera pas forcément le premier message non lu. Ce comportement est celui du raccourci n de Thunderbird ;
+</li>
+<li>Si l'option "Espace sur un dossier avec non lus  cherche le premier message non lu depuis le début de la liste de messages"  du menu Options pour la fenêtre principale est cochée : contrairement au raccourci  "n" de Thunderbird, le script cherchera le véritable premier message non lu du dossier. Sur les ordinateurs moins rapides, ce détour peut se faire entendre ;
+</li>
+</ul>
+
+<p>
+<br />En pressant Tab sur le nom du compte sélectionné dans l'arborescence, on atteint un cadre contenant plusieurs bouton relatifs à ce compte. Dorénavant, la touche échappe permet de revenir à l'arborescence ; 
+</p>
+<p>
+<br />Lecture épurée de messages :
+<br />La touche F4 permet maintenant de lire un message  si celui-ci a le focus, que ce soit dans le volet d'aperçu, l'onglet de lecture, dans la fenêtre séparée de lecture et même dans la fenêtre de rédaction. 
+Avec Majuscule+F4, la lecture s'effectue dans l'ordre chronologie des citations ;
+<br />
+<br />Pied de messages de groups.io, comme sur NVDA-FR : en lecture épurée avec espace ou f4, tout le pied de message  est passé sous silence à partir de  la ligne de nombreux égal ;
+<br />Les lignes de plusieurs tirets sont maintenant ignorées, elles ne provoquent plus la suppression de la suite du message. Ce problème provenait de la suppression des pieds de messages des listes Yahoo ;
+<br />Si l'affichage des messages est réglé sur HTML original, les feuilles de styles ne sont plus prononcées ;
+</p>
+<a id="toc44" name="toc44"></a>
+<h2>16.8. version 4.0.4 pour Thunderbird 102, 24/09/2022</h2>
+<p>
+1. Modifications concernant la liste des messages :
+</p>
+<ul>
+<li>Lorsqu'un nom de liste de diffusion apparaît plusieurs fois dans une ligne, ce nom n'est désormais annoncé qu'une seule fois. Idem pour l'annonce de l'objet avec la touche 2 du clavier alphanumérique ;
+</li>
+<li>La lettre r frappée seule ne permet plus de répondre à un message, cela posait des problèmes dans la rédaction de messages. Les raccourcis équivalents sont : Contrôle+r ou Alt+page précédente. Ces raccourcis sont toujours configurables dans le  dialogue de configuration  des gestes de commande à la rubrique Thunderbird+4 / SmartReply ;
+</li>
+<li>Correction du problème de l'annonce des lignes de niveau 2 lorsque la liste est groupée par critère de tri. Ce problème ne se produisait que chez certains utilisateurs ;
+</li>
+</ul>
+
+<p>
+2. Nouvelle liste de diffusion thunderbird-dv :
+</p>
+<p>
+Pour plus d'informations et vous y abonner, rendez vous sur la page <a href="http://rptools.org/thunderbird-dv.html">thunderbird-dv</a> ; 
+</p>
+<a id="toc45" name="toc45"></a>
+<h2>16.9. version 4.0.3 pour Thunderbird 102, 03/09/2022</h2>
+<p>
+Correctifs suite à des changements apparus dans Thunderbird 102.2 :
+</p>
+<ul>
+<li>Ce message : alerte Pour protéger votre vie privée, Thunderbird a bloqué l’affichage du contenu distant dans ce message,était annoncé même si l'affichage des messages était réglé sur HTML simple et si l'affichage du es contenus distants était désactivé dans les paramètres de Thunderbird. Dorénavant, l'extension supprime complètement cette annonce mais sans supprimer son affichage. 
+</li>
+<li>Annonce des informations de barre d'état : le raccourci Alt+fin n'annonçait plus ces informations, tout comme NVDA avec le raccourci NVDA+fin. Ceci fonctionne à nouveau avec Alt+fin   ;
+</li>
+<li>Dans la Liste de messages, les    lignes de groupage sont maintenant annoncées de manière plus conviviale. en mode "Grouper les messages par critère de tri" : par exemple, pour une liste groupée par correspondants, vous entendrez pour ces lignes spéciales : Groupe Jean Dupont, Groupe Tartempion, etc.
+</li>
+</ul>
+
+<a id="toc46" name="toc46"></a>
+<h2>16.10. version 4.0.2 pour Thunderbird 102, 23/08/2022</h2>
+<p>
+Résolution d'un conflit de raccourci-clavier : Contrôle+Retour arrière lors de la rédaction d'un message. Ce raccourci ne ferme plus la fenêtre ; 
+</p>
+<a id="toc47" name="toc47"></a>
+<h2>16.11. Modification du mode d'emploi, 22/07/2022</h2>
+<p>
+Révision importante de la section traitant du démarrage de Thunderbird.
+<br />La section <a href="#startup">Amélioration du démarrage de Thunderbird</a> explique comment installer et configurer les modules complémentaires "Auto select latest message" et "Start with inbox"
+<br />Ces deux modules s'intègrent directement à Thunderbird, ils sont indépendants de NVDA.
+</p>
+<a id="toc48" name="toc48"></a>
+<h2>16.12. version 4.0.1 pour Thunderbird 102, 20/07/2022</h2>
+<ul>
+<li>Menu Majuscule+Puissance2 / Options pour la fenêtre de rédaction  : ajout de l'option "Activer l'amélioration de la Vérification orthographique pendant la saisie.". Cette option est désactivée par défaut, ce qui supprime la dernière cause de ralentissement potentiel de la saisie d'un message. Ce mode de vérification orthographique ne fonctionne pas encore sous NVDA 2022.1 ;
+</li>
+<li>Commande "Ecrire au support" du menu Puissance2 :  l'objet automatique du message indique la version de Thunderbird+4 et celle de Thunderbird que vous utilisez. Ceci me permet de vérifier la bonne concordance des versions,   merci d'utiliser ce canal lorsque vous avez besoin d'aide ;
+</li>
+<li>Correction de bugs mineurs ;
+</li>
+</ul>
+
+<a id="toc49" name="toc49"></a>
+<h2>16.13. version 4.0 pour Thunderbird 102, 02/07/2022</h2>
+<p>
+Cette version suit la version 3 qui reste disponible en Français uniquement ;
+</p>
+
+<!-- xhtml code generated by txt2tags 2.5 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags D:\dev-modules\00 Thunderbird+4\doc4\_doc-fr\readme.t2t -->
+</body></html>

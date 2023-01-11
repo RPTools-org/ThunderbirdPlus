@@ -1,0 +1,21 @@
+En Thunderbird+, el atajo control+retroceso se asigna al cierre de pestañas y ciertas ventanas.
+Esto causa un conflicto de atajos de teclado al escribir un mensaje.
+
+Para restaurar la eliminación de la palabra que precede al cursor mientras se escribe un mensaje, debe eliminarse esta asignación.
+
+Para esto, proceda de la siguiente manera:
+* Colóquese en la ventana principal de Thunderbird;
+* Pulse NVDA+n para abrir el menú de NVDA;
+* Pulse la letra: p, para colocarse  en el sub -menú de Preferencias;
+* Luego pulse la letra: N, para abrir el diálogo de  Gestos de Entrada;
+* En la vista en árbol, seleccione la rama: Thunderbird+4 y ábrala con la flecha derecha; 
+* Pulse la letra: e, para seleccionar la rama: Envía Control+F4 a la ventana actual, y ábrala;
+* Seleccione más abajo la rama: control+retroceso;
+* Y finalmente, pulse Tab hasta que escuche "Eliminar, botón" y luego pulse Intro;
+* Es importante cerrar este diálogo con el botón Aceptar para guardar sus cambios.
+
+Observación:
+Después de estas primeras manipulaciones, puede suceder que no funcione como se esperaba.
+Por una razón desconocida, NVDA nuevamente inserta el gesto Control+Retroceso.
+En este caso, inicie el procedimiento descrito anteriormente, esto resolverá este problema.
+ 

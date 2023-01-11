@@ -1,0 +1,18 @@
+Agencement des colonnes de la liste de messages  ;
+
+Cette fonctionnalité permet de choisir l'ordre des colonnes de la liste de messages et d'ajouter ou supprimer des colonnes. Contrairement à l'ancienne fonction d'Organisation des colonnes, ces opérations s'appuient sur des dialogues réels. 
+
+Pour l'utiliser, placez-vous d'abord dans la liste des messages ou l'arborescence des dossier puis pressez Alt+c (le raccourci NVDA+u accent grave existe encore) ; 
+Le dialogue d'agencement des colonnes apparaît. Il se compose de la liste des colonnes ainsi que des boutons "Aide", "colonnes" et "Fermer". Le bouton "colonnes ..." affiche le menu "Choisir les colonnes à afficher" natif de Thunderbird 
+Lorsque vous vous trouvez dans la liste des colonnes, les raccourcis-clavier suivants sont disponibles : 
+• Flèche gauche : affiche le menu nommé "Choisir les colonnes à afficher". Ce raccourci correspond au bouton "Colonnes ..." ; 
+• Espace : pour déplacer la colonne sélectionnée, pressez Espace puis placez-vous sur une autre colonne et pressez à nouveau Espace pour placer la colonne à cet endroit. Cette opération est similaire à un couper-coller ; 
+Vous disposez également de ces raccourcis de déplacements directs : 
+• Control + flèche haut ou flèche bas : monte ou descend la colonne sélectionné d'une unité ; 
+• Control + Début ou Fin : déplace la colonne sélectionnée en haut ou en bas de la liste ; 
+• Control + Page précédent ou page suivante : monte ou descend la colonne sélectionné de trois unité ; 
+Les colonnes sont déplacées en effectuant un glisser-déposer à la souris. Un bip d'une millisecondes se produit tous les 10 déplacement du pointeur ; 
+Lorsque le menu "Choisir les colonnes à afficher" est présent, vous disposez des nouveaux raccourcis-clavier suivants : 
+• Flèche droite : affiche le dialogue d'agencement des colonnes ; 
+• Espace : coche ou décoche la colonne sélectionnée dans le menu. La touche Entrée produit encore le même comportement ; 
+Avec les fèches gauche et droite, il est donc très aisé de basculer entre le menu de choix des colonnes et le dialogue de leur agencement ; 

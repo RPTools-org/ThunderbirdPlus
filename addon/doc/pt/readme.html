@@ -1,0 +1,1352 @@
+<?xml version="1.0"
+      encoding="UTF-8"
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>	Extra para Thunderbird+: mais eficiência e conforto na utilização do Thunderbird 102</title>
+<META HTTP-EQUIV="Content-Language" Content="pt">
+<meta name="generator" content="http://txt2tags.sf.net" />
+<link rel="stylesheet" type="text/css" href="style_t2t.css" />
+</head>
+<body bgcolor="white" text="black">
+<div align="center">
+<h1>	Extra para Thunderbird+: mais eficiência e conforto na utilização do Thunderbird 102</h1>
+<h3>Última actualização em 01/08/2023 - Versão 4.3.3 para Thunderbird 102 <br /><a href="#histo">Consulte o histórico (contém informações ainda não documentadas)</a></h3>
+</div>
+
+<ul>
+<li>Versão: 4.3.3 para Thunderbird 102 ;
+</li>
+<li>Versão mínima do NVDA requerida: 2019.3. Última versão do NVDA testada: 2022.1 ; 
+</li>
+<li>Autor original do extra thunderBird : Yannick
+</li>
+<li>Adaptação para Thunderbird 68 , 78, 91, 102 e ao NVDA 2019.3 e seguintes: Daniel Poiraud, Pierre-Louis R e Abdel para a versão 3.1.;
+</li>
+<li>Documentação e contacto: <a href="http://www.rptools.org/Outils-DV/contact.html">Pierre-Louis</a>
+</li>
+<li>Tradução : Rui Fontes de casa  TifloTecnia.com &amp; Ângelo Miguel Abrantes, Membros da equipa NVDA Portugal;
+</li>
+</ul>
+
+<a id="toc" name="toc"></a>
+<h1>Índice</h1>
+  <ul>
+
+  </li>
+  <li><a href="#toc2">1. Apresentação</a>
+  </li>
+  <li><a href="#toc3">2. Descarregar e instalar</a>
+  </li>
+  <li><a href="#startup">3. Início melhorado do Thunderbird</a>
+    <ul>
+    <li><a href="#toc5">3.1. Com Chichi</a>
+    </li>
+    <li><a href="#toc6">3.2. Com Start with inbox</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#toc7">4. Navegar entre painéis na janela principal</a>
+  </li>
+  <li><a href="#toc8">5. Leitura rápida de mensagens</a>
+    <ul>
+    <li><a href="#toc9">5.1. Ler rapidamente as mensagens da lista sem sair dela</a>
+    </li>
+    <li><a href="#toc10">5.2. Ler rapidamente uma mensagem num separador ou janela</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#toc11">6. Navegação rápida entre pastas com mensagens não lidas</a>
+  </li>
+  <li><a href="#toc12">7. SmartReply: responder às listas de e-mails pressionando Control+r</a>
+  </li>
+  <li><a href="#toc13">8. opções e comandos</a>
+    <ul>
+    <li><a href="#toc14">8.1. Alterar alguns comandos</a>
+    </li>
+    <li><a href="#toc15">8.2. Menu de opções da janela principal: Shift+\ (barra invertida)</a>
+    </li>
+    <li><a href="#toc16">8.3. Menu de contexto \ (barra invertida)</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#toc17">9. Comandos para os separadores e janela principal</a>
+  </li>
+  <li><a href="#dossmsg">10. Diálogo de listas filtradas de contas e pastas: F12</a>
+    <ul>
+    <li><a href="#toc19">10.1. Excluir certas pastas da lista de pastas não lidas</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#foldersList">11. Lista de pastas na árvore principal, de 4 tipos: F7, NVDA+F7 ou Shift+F12</a>
+  </li>
+  <li><a href="#toc21">12. Atalhos de teclado na lista de mensagens</a>
+    <ul>
+    <li><a href="#toc22">12.1. Consulta de colunas: um número do teclado alfanumérico</a>
+    </li>
+    <li><a href="#toc23">12.2. Consulta de cabeçalhos: Alt+ números no teclado alfanumérico</a>
+    </li>
+    <li><a href="#toc24">12.3. Adicionar e remover etiquetas: Shift+a número no teclado alfanumérico</a>
+    </li>
+    <li><a href="#toc25">12.4. Barra de filtro rápido, letra f ou Control+Shift+K</a>
+      <ul>
+      <li><a href="#toc26">12.4.1. Filtragem por Etiqueta</a>
+      </li>
+      </ul>
+    </li>
+    <li><a href="#cols1">12.5. Organizar coluna: Alt+c</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#toc28">13. Janela do Editor</a>
+    <ul>
+    <li><a href="#ortho">13.1. Diálogo de verificação ortográfica: F7</a>
+    </li>
+    <li><a href="#ortho2">13.2. Modo de verificação ortográfica avançada durante a digitação</a>
+      <ul>
+      <li><a href="#toc31">13.2.1. Configuração preliminar</a>
+      </li>
+      <li><a href="#toc32">13.2.2. Utilisation des raccourcis w, Maj+w et NVDA+F7</a>
+      </li>
+      </ul>
+    </li>
+    <li><a href="#toc33">13.3. Livro de Endereços</a>
+    </li>
+    </ul>
+  </li>
+  <li><a href="#toc34">14. Veja também</a>
+  </li>
+  <li><a href="#histo">15. Histórico de alterações</a>
+    <ul>
+    <li><a href="#toc36">15.1. versões 4.3.3, 01/08/2023</a>
+    </li>
+    <li><a href="#toc37">15.2. versões 4.3.2, 01/06/2023</a>
+    </li>
+    <li><a href="#toc38">15.3. versões 4.3.1, 01/04/2023</a>
+    </li>
+    <li><a href="#toc39">15.4. Versão 4.3 para Thunderbird 102, 12/26/2022</a>
+    </li>
+    <li><a href="#toc40">15.5. Versão 4.2.5 para Thunderbird 102, 11/22/2022</a>
+    </li>
+    <li><a href="#toc41">15.6. Versões 4.1 a 4.2.1 para Thunderbird 102, 07/11/2022</a>
+    </li>
+    <li><a href="#toc42">15.7. Versões 4.1.1 a 4.2.1</a>
+    </li>
+    <li><a href="#toc43">15.8. versão 4.0.4 para Thunderbird 102, 09/24/2022</a>
+    </li>
+    <li><a href="#toc44">15.9. versão 4.0.3 para Thunderbird 102, 03/09/2022</a>
+    </li>
+    <li><a href="#toc45">15.10. versão 4.0.2 para Thunderbird 102, 23/08/2022</a>
+    </li>
+    <li><a href="#toc46">15.11. Mudanças no manual do utilizador, 22/07/2022</a>
+    </li>
+    <li><a href="#toc47">15.12. versão 4.0.1 para Thunderbird 102, 20/07/2022</a>
+    </li>
+    <li><a href="#toc48">15.13. versão 4.0 para Thunderbird 102, 02/07/2022</a>
+    </li>
+    </ul>
+  </li>
+  </ul>
+
+<p></p>
+<a id="toc2" name="toc2"></a>
+<h1>1. Apresentação</h1>
+<p>
+Esta extensão melhora muito o conforto e a eficiência da utilização do cliente de correio electrónico Mozilla Thunderbird com o NVDA.
+</p>
+<ul>
+<li><b>Abertura melhorada do Thunderbird:</b> 
+Quando o Thunderbird é iniciado, o foco pode ser colocado na árvore de pastas ou na lista de mensagens, dependendo da sua escolha no menu de opções. Para outros separadores, o foco é colocado no conteúdo do separador activo;
+</li>
+<li><b>Verbosidade Reduzida:</b>
+ <ul>
+ <li>Quando o Thunderbird é iniciado, o NVDA já não anuncia informações redundantes;
+ </li>
+ <li>Os alertas "tal pessoa solicitou um recibo de recepção" podem ser desactivados através de uma opção;
+ -Os alertas "Isto é um rascunho" e "Thunderbird pensa que esta mensagem é fraudulenta" são simplesmente silenciados; - Opções para desactivar o anúncio de nomes de listas de correio, remover ou agrupar as menções "RE", e silenciar os endereços de correio electrónico na lista de mensagens;
+ </li>
+ </ul>
+</li>
+<li><b>Melhoria da navegação. :</b>
+ <ul>
+ <li>A passagem para o painel seguinte é feita com a tecla TAB enquanto a tecla Escape é utilizada para regressar ao painel anterior. Isto é mais confortável do que F6 e Shift+F6. 
+ </li>
+ <li>Dois diálogos de contas e suas pastas associadas permitem filtrá-las por palavra-chave ou exibir apenas pastas com mensagens não lidas;
+ </li>
+ <li>Na árvore de pastas, dois atalhos de teclado permitem a navegação entre pastas com mensagens não lidas;
+ </li>
+ <li>Três modos de leitura de texto de mensagem sem deixar a lista de mensagens:
+  <ul>
+  <li>Visualização rápida e filtrada do texto da mensagem com espaço, Alt+ seta para baixo ou F4: os cabeçalhos dos blocos grandes nas citações das mensagens são substituídos pela frase "O nome do remetente escreveu". O NVDA anunciará também "link" em vez do endereço longo do link.
+  </li>
+  <li>Visão rápida das citações em ordem cronológica, de baixo para cima, via Shift+Space, Alt+seta acima ou Shift+F4 ;
+  </li>
+  </ul>
+ </li>
+ <li>Fácil acesso aos anexos através do atalho Alt+ PageDown ou do número 1 no teclado alfanumérico, pressionado duas vezes; 
+ </li>
+ </ul>
+</li>
+<li><b>Janela para escrever mensagens:</b>
+ <ul>
+ <li>Alt+1 anuncia o Remetente, Alt+2 o Destinatário, Alt+3 os anexos, etc. pressionar Duas vezes coloca o foco num destes campos. Alt+m move para  o corpo da mensagem;
+ </li>
+ <li>No diálogo de verificação ortográfica : 
+  <ul>
+  <li>a palavra mal escrita é anunciada antes da palavra sugerida. Os atalhos NVDA+Tab ou Alt+seta acima anunciam as palavras mal escritas e substituídas: Pressionadas 1 vez soletram as palavras à velocidade normal, 2 vezes soletram-nas rapidamente, 3 vezes copiam a palavra mal escrita para a área de transferência, para análise num outro campo de edição; 
+  </li>
+  <li>várias combinações da tecla enter activam os botões Substituir, Substituir tudo, Ignorar, Ignorar Tudo ou Adicionar palavra ao Dicionário foram adicionados para maior comodidade neste diálogo; 
+  </li>
+  </ul>
+ </li>
+ <li>Verificação ortográfica melhorada durante a escrita: dois atalhos para a palavra seguinte e para a palavra anterior mal escrita;
+ </li>
+ </ul>
+</li>
+<li><b>Barra de filtragem rápida tornada acessível e gestão de etiquetas simplificada. :</b>
+ <ul>
+ <li>É possível navegar através das opções de filtro, utilizando as setas verticais. A tecla Enter é utilizada para verificar ou desmarcar uma opção;
+ </li>
+ <li>A adição ou remoção de etiquetas é feita pressionando Shift+um número no teclado alfanumérico. Por exemplo, pressione 4 para adicionar o rótulo "Pendente" a uma mensagem. A lista de mensagens pode então ser filtrada por etiqueta através da barra de filtro rápido que está agora disponível;
+ </li>
+ </ul>
+</li>
+<li><b>Outras características:</b>
+ <ul>
+ <li>A escolha das colunas e a sua disposição na lista de mensagens é tornada acessível através de um simples diálogo;
+ </li>
+ <li>Consulta das colunas da lista de mensagens: permite reproduzir, soletrar ou copiar facilmente o nome do remetente, o assunto ou a data de uma mensagem pressionando um número do teclado alfanumérico, por exemplo anuncia o remetente, pressionando 2 vezes soletra o nome e 3 vezes copia para a área de transferência;
+ </li>
+ <li>Consulta dos cabeçalhos do painel de cabeçalhos apresentado com F8: com Alt+número, uma vez anuncia um cabeçalho, 2 vezes abre um diálogo permitindo copiá-lo, 3 vezes abre o menu contextual nativo Thunderbird associado ao cabeçalho;
+ </li>
+ </ul>
+</li>
+</ul>
+
+<a id="toc3" name="toc3"></a>
+<h1>2. Descarregar e instalar</h1>
+<p>
+Se tiver os seguintes extras instalados no computador, deve primeiro removê-los antes de instalar o Thunderbird+:
+</p>
+<ul>
+<li>thunderBird 2.x ou 3.x, versões do Yannick;
+</li>
+<li>Mozilla Apps Enhancements de Javie Dominguez;
+</li>
+</ul>
+
+<p>
+<a href="http://www.rptools.org/?p=8610">Descarregar Thunderbird+4-v4.3.3 apenas para Thunderbird 102</a>;
+</p>
+<a id="startup" name="startup"></a>
+<h1>3. Início melhorado do Thunderbird</h1>
+<p>
+Nativamente, após o último fecho, o Thunderbird inicia no último separador activo e sem nada activado, o que é bastante desagradável.
+<br />Para obter um arranque confortável, existem dois add-ons para o Thunderbird:
+<br /><a href="thunderbird-chichi.html">Chichi desenvolvido por Yannick</a>: este add-on é recomendado porque oferece muitas outras características de acessibilidade e o Thunderbird+ está concebido para interagir com ele;
+<br />Start with inbox: se não usar Chichi, este módulo faz um bom trabalho; 
+</p>
+<a id="toc5" name="toc5"></a>
+<h2>3.1. Com Chichi</h2>
+<p>
+Para utilizar Chichi, leia a secção Descarregar e instalar e a secção Definir pasta de arranque da <a href="http://www.rptools.org/Outils-DV/thunderbird-chichi-pt.html">página</a> ;
+</p>
+<a id="toc6" name="toc6"></a>
+<h2>3.2. Com Start with inbox</h2>
+<p>
+ partir de Outubro de 2022, a última versão deste módulo para o Thunderbird 102 é 2.5.2.
+</p>
+<p>
+Características :
+</p>
+<ul>
+<li>Instalação: através de uma pesquisa no seu nome no separador "Gestor de extras" do Thunderbird ; 
+</li>
+<li>Pasta de arranque: sempre a mesma, a pasta de entrada de correio da conta escolhida nas configurações do módulo ou a pasta unificada;
+</li>
+<li>Focar: Última mensagem da lista de mensagens ou na pasta "Caixa de entrada" da árvore, dependendo da configuração nas opções do módulo. Esta segunda opção é seleccionada por padrão;
+</li>
+<li>Definições: acesso menos fácil. Ir para o separador "Gestor de extras", seleccionar "Start with inbox" da lista de extras instalados e depois pressionar o botão "Opções de extras", que abre um novo separador "Start with inbox settings",
+<br />A lista pendente permite-lhe escolher a conta de correio electrónico para a qual a pasta de correio recebido será seleccionada quando o Thunderbird iniciar,
+<br />Três botões de rádio permitem escolher o foco entre a última mensagem, a primeira mensagem não lida na lista de mensagens ou a pasta na árvore;
+</li>
+</ul>
+
+<p>
+<h3>Instalação</h3>
+</p>
+<ul>
+<li>No Thundderbird, abra o menu "Ferramentas" e escolha: Extras e temas;
+</li>
+<li>Na página Gestão de extras, vá para o campo de pesquisa. No modo de navegação, pode pressionar a letra "e" para o alcançar mais rapidamente;
+</li>
+<li>escrever: Start with Inbox e pressione Enter ;
+</li>
+<li>Se tiver o Thunderbird+4, aguarde um momento até seleccionar o módulo que procura no separador de resultados;
+</li>
+<li>Caso contrário, seleccione manualmente o separador "start with inbox :: Pesquisa :: Extras para o Thunderbird" por exemplo. Depois pressione 3 até alcançar o título de nível 3 com o nome do extra que procura; 
+</li>
+<li>Com a seta para baixo, desça até ao link "Adicionar ao Thunderbird" e pressione Enter;
+</li>
+<li>Depois destes procedimentos, reinicie o Thunderbird;
+</li>
+<li>Se tudo correr bem, o Thunderbird abrirá no separador principal e a lista de mensagens será focada;
+</li>
+</ul>
+
+<p>
+<h3>Definir configurações do "Start with Inbox"</h3>
+</p>
+<ul>
+<li>Regressar ao separador "Gestor de Complementos";
+</li>
+<li>Se necessário, deixar o campo de pesquisa e entrar no modo de navegação;
+</li>
+<li>Pressionar a tecla 3 tantas vezes quantas forem necessárias para atingir o nível 3 "Start with Inbox" na lista de extras instalados;
+</li>
+<li>Depois clicar no botão: Opções do extra. Isto abre um novo separador intitulado: Start with Inbox, Settings ;
+</li>
+<li>Aqui está o que é exibido por padrão:
+<p></p>
+Nota: No original aparece em inglês.
+</li>
+</ul>
+
+<p>
+Iniciar com a Caixa de Entrada - Configurações 
+</p>
+<p>
+Por favor, seleccione a conta, para a qual a sua caixa de entrada será exibida, após o início do Thunderbird. 
+</p>
+<p>
+lista pendente: &lt;a sua primeira conta de e-mail&gt;.
+</p>
+<p>
+Seleccionar e colocar o foco:
+</p>
+<p>
+botão de rádio clicável não verificado: a última* mensagem. 
+</p>
+<p>
+botão de rádio clicável não marcado: na pasta da caixa de entrada na árvore de pastas.
+</p>
+<p>
+botão de rádio marcado: a primeira mensagem não lida. 
+</p>
+<p>
+* Definição de "último": A última mensagem que foi colocada na caixa de entrada (independente da data 
+da mensagem). 
+</p>
+<p>
+Se a caixa de entrada não contiver mensagens, a pasta da caixa de entrada na árvore de pastas será seleccionada e recolhida.
+</p>
+<p>
+Depois de fazer as suas configurações, reinicie o Thunderbird.
+</p>
+<p>
+<h3>Iniciador do Thunderbird com o atalho Control+Alt+\ (barra invertida)</h3>
+Para maior comodidade e velocidade, pode iniciar o Thunderbird, pressionando Control+Alt+\ (barra invertida). 
+</p>
+<p>
+Este atalho é configurável através de Definir comandos do NVDA, que oferece mais liberdade na escolha de teclas modificadoras do que os atalhos do Windows, que estão limitados ao Control+alt ;
+</p>
+<p>
+Proceder como se segue para acrescentar outro  comando:
+</p>
+<ul>
+<li>Abra o menu NVDA e seleccione "Preferências" ;
+</li>
+<li>No submenu, clique em: Definir comandos";
+</li>
+<li>No diálogo, pressione a letra t até ouvir: "Thunderbird+4, lançador e actualização";
+</li>
+<li>Pressione a seta para a direita para expandir este ramo;
+</li>
+<li>Desça até ao item "Abrir Thunderbird" e pressione a seta para a direita para expandir este nível;
+</li>
+<li>Tab para o botão "Adicionar", validar e depois pressionar um atalho de comando no novo diálogo;
+</li>
+<li>Pressione Enter para validar a sua escolha;
+</li>
+<li>De volta à lista de comandos, verifique a presença do seu novo atalho de comando;
+</li>
+<li>Fechar o diálogo através do botão OK.
+</li>
+</ul>
+
+<p>
+Notas:<br />
+</p>
+<ul>
+<li>O iniciador do Thunderbird só é fornecido para a versão instalada do Thunderbird cujos caminhos Thunderbird.exe são previsíveis. 
+</li>
+<li>Numa configuração Windows de 64 bits, a extensão não lançará a versão de 32 bits do Thunderbird se ambas as versões de 64 bits e 32 bits estiverem instaladas no seu sistema; 
+</li>
+</ul>
+
+<a id="toc7" name="toc7"></a>
+<h1>4. Navegar entre painéis na janela principal</h1>
+<ul>
+<li>TAB: passar para o painel seguinte. Vista em árvore, lista de mensagens e texto do cabeçalho e painel de pré-visualização de mensagens, se exibido com F8 ; 
+</li>
+<li>Escape: regresso ao painel anterior;
+</li>
+</ul>
+
+<p>
+Nota: 
+</p>
+<p>
+Quando se sai da lista de mensagens para chegar ao texto, a área dos cabeçalhos é ignorada. Para chegar a esta área de cabeçalho, pressione Alt+a número no teclado alfanumérico três vezes rapidamente e depois Escape para sair do menu de contexto do cabeçalho.  Estes atalhos de Alt+números reduzem a necessidade de ir para a área do cabeçalho. Para mais detalhes, ver a secção "Ver cabeçalhos" abaixo.  
+</p>
+<a id="toc8" name="toc8"></a>
+<h1>5. Leitura rápida de mensagens</h1>
+<ul>
+<li>Os comandos de leitura rápida de uma mensagem estão disponíveis em três contextos: a partir da lista de mensagens, a partir de uma mensagem aberta num separador ou numa janela separada;
+</li>
+<li>São todas compatíveis com as mensagens dos Framalistas;
+</li>
+<li>São também compatíveis com linhas Braille.
+</li>
+<li>A maioria dos atalhos de leitura rápida do teclado foram concentrados para minimizar o movimento das mãos durante uma sessão de leitura de muitas mensagens;
+</li>
+<li>Uma única pressão na tecla principal de um atalho inicia a leitura filtrada da mensagem, ou seja, com os cabeçalhos das aspas fortemente encurtadas.
+</li>
+<li>Se pressionar duas vezes lê a mensagem na sua forma original. O termo "leitura não filtrada" é um sinónimo;
+</li>
+</ul>
+
+<a id="toc9" name="toc9"></a>
+<h2>5.1. Ler rapidamente as mensagens da lista sem sair dela</h2>
+<p>
+Deve primeiro exibir o painel de mensagens com a tecla F8. Ao pressionar esta tecla, ouvirá se este painel está presente ou ausente;
+</p>
+<p>
+Depois ir para a lista de mensagens e utilizar as seguintes teclas:
+</p>
+<ul>
+<li>Espaço, Alt+seta abaixo ou F4: ler o corpo da mensagem sem sair da lista. Depois de ler uma mensagem, pressionar a seta para baixo e depois a seta para o espaço ou Alt+down ou F4 para ouvir a mensagem seguinte;
+</li>
+<li>Ao pressionar duas vezes, mostra a lista de links da mensagem se Chichi estiver activo. Se for seleccionado um artigo RSS feed, este será aberto no navegador da web;
+</li>
+<li>Shift+Espaço, Alt+seta abaixo ou Shift+f4: o mesmo que acima mas lê as citações na sua ordem cronológica;
+</li>
+<li>letra n ou Alt+Seta direita: seleccionar a próxima mensagem não lida, mesmo através de pastas. Ao contrário da letra n, Alt+Seta Direita pode ser usada na árvore de pastas quando o add-on "Quick Folder Key Navigation" está instalado;
+</li>
+<li>Alt+Página abaixo ou Alt+p na lista de mensagens: permite-lhe ir directamente para a área de anexos, sem ter de tabular através do texto;  
+</li>
+</ul>
+
+<a id="toc10" name="toc10"></a>
+<h2>5.2. Ler rapidamente uma mensagem num separador ou janela</h2>
+<ul>
+<li>Alt+ seta para baixo: leitura rápida do corpo da mensagem;
+</li>
+<li>Alt+ seta para cima: a mesma mas para trás;
+</li>
+</ul>
+
+<p>
+Como lembrete, o pressionar duplo destes atalhos começará a ler a mensagem original.
+</p>
+<p>
+<b>Nota:</b>
+</p>
+<p>
+Para aproveitar ao máximo a leitura filtrada e ao mesmo tempo proteger-se de conteúdos remotos que não respeitem a sua privacidade, exiba o corpo de mensagens em HTML simples. Para o fazer, abra o menu Ver, desça para o Corpo de Mensagens e no sub-menu, valide a opção HTML Simples.
+</p>
+<a id="toc11" name="toc11"></a>
+<h1>6. Navegação rápida entre pastas com mensagens não lidas</h1>
+<p>
+Quando estiver na árvore de pastas, pode pressionar:
+</p>
+<ul>
+<li>Alt+ seta para baixo: para ir para a pasta seguinte com mensagens não lidas;
+</li>
+<li>Alt+ seta para cima: para ir para a pasta anterior com mensagens não lidas;
+</li>
+<li>Espaço: se a pasta seleccionada contiver mensagens não lidas, selecciona a primeira mensagem não lida na lista de mensagens. Se não contiver, a lista de pastas não lidas é exibida se Chichi estiver activo. Ao pressionar enter numa pasta não lida desta lista, esta pasta será activada na árvore.
+<p></p>
+Isto permite ver rapidamente quais as pastas que receberam mensagens antes de decidir por qual delas deseja começar a ler;
+<p></p>
+Neste sentido, ver também estes dois diálogos:
+<p></p>
+<a href="#dossmsg">Diálogo de contas filtradas e listas de pastas (F12)</a> ;
+<a href="#foldersList">Lista de pastas na árvore principal, por 4 tipos (F7, NVDA+F7 ou Shift+F12)</a>
+</li>
+</ul>
+
+<a id="toc12" name="toc12"></a>
+<h1>7. SmartReply: responder às listas de e-mails pressionando Control+r</h1>
+<p>
+Se é um daqueles que se esquece de carregar em control+Shift+l para responder a uma mensagem de lista como GoogleGroups, esta função evitará este erro, pode sempre carregar em control+r como se segue:
+</p>
+<ul>
+<li>Pressionar uma vez: para responder à lista;
+</li>
+<li>Pressionar duas vezes: para responder em privado ao remetente da mensagem;
+</li>
+<li>Pressionar uma vez: para responder ao remetente de uma mensagem que não é de uma lista;
+</li>
+</ul>
+
+<p>
+Notas: 
+</p>
+<p>
+A distinção entre pressionar uma ou duas vezes estes comandos funciona no GoogleGroups, Framalistes e FreeLists.
+<br /> Pressionando uma vez numa mensagem de qualquer uma destas três listas, ouvirá "para a  lista" antes de abrir a janela de edição. 
+</p>
+<p>
+Também não deve utilizar o comando "Responder a todos" para responder a uma lista, para que o remetente não receba a sua resposta em privado; 
+E finalmente, se quiser o comportamento habitual de controlo+r, abra o diálogo Definir comandos do NVDA;
+<br />Seleccione a categoria Thunderbird+4;
+<br />Seleccione a linha "Smart Reply para responder a um destinatário ou a uma lista recolhido" e expanda com seta à direita;
+<br />Remova o comando Control+r;
+<br /> Se desejar, pode adicionar outro comando.
+</p>
+<p>
++Alertas acessíveis
+</p>
+<p>
+Alertas que requerem a sua intervenção: os botões são acessíveis e a navegação entre eles pode ser feita com as setas do teclado:
+</p>
+<ul>
+<li>Instalação de extras do Thunderbird: o botão "Instalar" é seleccionado automaticamente e só tem de pressionar Enter para continuar a instalação;
+</li>
+<li>Nova actualização Thunderbird: este alerta também está acessível;
+</li>
+<li>Pedido de recibo de mensagem: o botão "Ignorar pedido" é seleccionado por defeito. Também pode seleccionar o botão "Enviar recibo".
+</li>
+</ul>
+
+<p>
+Alertas que interferem com a lista de mensagens:
+</p>
+<ul>
+<li>Alerta Este é um rascunho: este alerta desnecessário é retirado;
+</li>
+<li>O Thunderbird pensa que esta mensagem é fraudulenta: este anúncio é substituído por dois tons curtos com uma frequência próxima da voz humana (200 Hertz). Para tornar a mensagem aceitável ou indesejável, pressione a tecla \ (barra invertida) e seleccione a acção desejada no submenu "Alerta";
+</li>
+</ul>
+
+<a id="toc13" name="toc13"></a>
+<h1>8. opções e comandos</h1>
+<p>
+Para exibir o menu de comandos do extra, pressione a tecla \ (barra invertida), e para o menu de opções, pressione Shift+\ (barra invertida).
+</p>
+<a id="toc14" name="toc14"></a>
+<h2>8.1. Alterar alguns comandos</h2>
+<p>
+Os atalhos do teclado cuja localização depende do idioma do teclado, tais como power2, podem ser alterados como se segue:
+</p>
+<ul>
+<li>Pressione NVDA+n, seleccione "Preferências" e clique em "Definir comandos" no submenu;
+</li>
+<li>Pressione a letra t até chegar ao ramo "Thunderbird" da árvore;
+</li>
+<li>Pressione seta à direita para abrir este ramo e modificar os atalhos do teclado de acordo com as suas necessidades;
+</li>
+</ul>
+
+<a id="toc15" name="toc15"></a>
+<h2>8.2. Menu de opções da janela principal: Shift+\ (barra invertida)</h2>
+<p>
+Opções para a janela principal : 
+<br />Agrupar múltiplas entradas 'RE' em uma: por exemplo, Re: Re: Re: Re: será alterado para 3Re: ;
+<br />Eliminar as declarações 'RE' na coluna Assunto: 
+<br />Eliminar o caracter "dois pontos" nas entradas "RE";
+<br />Limpar os nomes dos correspondentes na lista de mensagens: remove números e alguns caracteres especiais para ouvir mais confortavelmente os nomes dos correspondentes;
+<br />Adicionar pontuação entre colunas: uma vírgula é adicionada entre algumas colunas para marcar uma pequena pausa entre elas quando se anuncia uma linha na lista de mensagens;
+<br />Ocultar os nomes de listas de correio: remove o anúncio de nomes de listas entre parênteses rectos ou chaves para uma experiência de audição mais agradável quando se utiliza uma pasta diferente para cada lista de correio; 
+<br />Anunciar "não desejado" se exibido na coluna "Estado não desejado : se a coluna "não desejado" estiver presente na tabela de mensagens, esta opção permite ou não anunciar "Não desejado; 
+<br />Não utilizar a navegação por caracteres na árvore de pastas: esta opção é útil se utilizar o extra "Quick Folder Key Navigation";
+<br />Navegação inicial indirecta: exibe uma caixa de pesquisa assim que pressionar uma letra ou número na árvore de pastas. Se esta opção estiver desactivada, pode exibir esta caixa de pesquisa pressionando a letra z ; 
+<br />Ignorar pedidos de reconhecimento: Se esta opção estiver activada, o extra irá automaticamente clicar no botão "Ignorar" no diálogo do pedido de recibo; 
+<br />Não emule Shift+F6 com escape: desactiva o uso da tecla escape ao navegar entre painéis na janela principal; 
+<br />Mostrar apenas pastas não lidas na caixa de diálogo 'Pastas de Árvores':permite-lhe exibir apenas pastas com mensagens não lidas cada vez que exibir este diálogo através da tecla F12;
+<br />
+</p>
+<p>
+Opções de arranque do Thunderbird :
+<br />Activar sempre o separador principal ao iniciar o Thunderbird: se fechar o Thunderbird no separador Preferências, por exemplo, Thunderbird abrirá no separador principal na próxima vez que começar; 
+<br />Ir para a árvore quando o Thunderbird é aberto: esta opção não é verificada por defeito e o foco será dado à lista de mensagens quando o Thunderbird é lançado. Se o marcar, o foco será a árvore de pastas; 
+<br />Não pré-seleccione nada quando o Thunderbird arranca: marque esta opção se estiver a utilizar o módulo "Start with inbox";
+<br />
+</p>
+<a id="toc16" name="toc16"></a>
+<h2>8.3. Menu de contexto \ (barra invertida)</h2>
+<p>
+Escolher e organizar colunas na lista de mensagens: Apresenta o menu da caixa de verificação Thunderbird chamado "Escolher colunas a apresentar". A partir do nome de uma coluna, pressione a seta para a direita para abrir o diálogo de layout da coluna;
+</p>
+<a id="toc17" name="toc17"></a>
+<h1>9. Comandos para os separadores e janela principal</h1>
+<ul>
+<li>Control+Tab e Control+Shift+Tab: ir para o separador seguinte ou anterior;
+</li>
+<li>Controlo+1 a 9: selecciona o separador correspondente ao seu número na barra de separadores.  Se pressionar um número superior ao número de separadores abertos, será colocado no último;
+</li>
+<li>Controlo +0: mostra a lista de separadores abertos num menu. Pressione enter num nome de separador para se deslocar para ele; 
+</li>
+<li>Alt + « : exibe o menu contextual da barra de tabulação. Inclui os comandos: Fechar a aba activa e Fechar as minhas outras abas;  
+</li>
+<li>Control+w, control+backspace ou control+F4: fecha o separador activo; 
+</li>
+<li>Control+j: abre o separador "Ficheiros guardados", que contém anexos e downloads guardados no seu disco rígido;
+</li>
+</ul>
+
+<a id="dossmsg" name="dossmsg"></a>
+<h1>10. Diálogo de listas filtradas de contas e pastas: F12</h1>
+<p>
+Este diálogo exibe as contas e pastas associadas em duas listas separadas. Pode filtrá-las por uma palavra-chave ou restringir a lista de pastas às que têm mensagens não lidas.
+</p>
+<p>
+Definir o modo de visualização por defeito :
+</p>
+<p>
+Se planeia exibir apenas pastas com mensagens não lidas na maioria das vezes, primeiro vá à árvore de pastas ou à lista de mensagens, depois pressione o comando Shift+\ (barra invertida) e no submenu de opções da janela principal, active o item intitulado: Exibir apenas pastas com mensagens não lidas.
+</p>
+<p>
+Utilização básica do diálogo :
+</p>
+<ul>
+<li>A partir da janela principal, pressione F12 para exibir o diálogo. 
+</li>
+<li>Se tiver configurado a exibição padrão de pastas com mensagens não lidas, estas serão exibidas na lista chamada: pastas de contas ;
+</li>
+<li>Caso contrário, todas as pastas de todas as contas serão incluídas nesta lista;
+</li>
+<li>Pode mover-se através desta lista pressionando a primeira letra do nome de uma pasta;
+</li>
+<li>Note-se que as pastas que não são exibidas na vista em árvore também não serão listadas aqui. Isto acontece, por exemplo, quando as pastas pertencem a uma conta reduzida na vista em árvore das contas e pastas;
+</li>
+<li>Se encontrou a pasta que lhe interessa neste momento, pressione Enter para a seleccionar na árvore.  Pode também pressionar Alt+E para simular um clique esquerdo na pasta ou Alt+d para simular um simples clique direito;
+</li>
+</ul>
+
+<p>
+Alternar os modos de visualização:
+</p>
+<ul>
+<li>Para se lembrar em qualquer altura em que modo de visualização se encontra, pressione a tecla "Backspace". Depois de ouvir a informação, pressione novamente esta tecla para voltar à lista de pastas;
+</li>
+<li>Para mudar a visualização de "apenas com pastas não lidas" para "todas as pastas" e vice versa, pressione F12 ;
+</li>
+<li>No modo "todas as pastas", as contas são exibidas na lista da esquerda e as pastas da conta seleccionada na lista da direita. Para mudar de uma lista para a outra, utilizar as setas esquerda e direita;
+</li>
+<li>uma conta virtual chamada "Todas as contas" é seleccionada e o foco é colocado na lista de pastas que contém todas as pastas de todas as contas. Em cada pasta desta lista, é mencionado o nome da conta a que pertence; 
+</li>
+</ul>
+
+<p>
+Utilização de filtragem por palavra-chave :
+</p>
+<ul>
+<li>Antes de o fazer, é provavelmente uma boa ideia mudar para o modo "Todas as pastas", como explicado acima;
+</li>
+<li>Abaixo, pode utilizar as teclas "Page Up" e "Page Down" de forma intercambiável; 
+</li>
+<li>A partir de uma lista, pressione a tecla "PageUp" para voltar ao campo de edição de expressão do filtro;
+</li>
+<li>Introduzir uma expressão e depois validá-la com a tecla "PageDown" para executar a filtragem;
+</li>
+<li>Os resultados são apresentados na lista de pastas. Se nenhuma pasta for encontrada, ouvirá : Sem resultados. Se não esperava isto, pode ter-se esquecido de mudar para o modo de exibição de todas as pastas; 
+-Finalmente, pressione enter na pasta desejada para a seleccionar na árvore de pastas. Como mencionado acima, pode simular um clique esquerdo ou direito sobre a pasta pressionando Alt+E ou Alt+d ;
+</li>
+</ul>
+
+<a id="toc19" name="toc19"></a>
+<h2>10.1. Excluir certas pastas da lista de pastas não lidas</h2>
+<p>
+Como mencionado acima, pode excluir as pastas raramente ou nunca consultadas da lista de pastas com mensagens não lidas.
+</p>
+<p>
+Para o fazer, basta renomear a pasta a ser excluída, acrescentando um traço no fim do seu nome.
+</p>
+<p>
+É necessário notar aqui que se esta pasta renomeada fizer parte de um filtro de mensagens, o Thunderbird modificará automaticamente este filtro para ter em conta esta alteração.
+</p>
+<a id="foldersList" name="foldersList"></a>
+<h1>11. Lista de pastas na árvore principal, de 4 tipos: F7, NVDA+F7 ou Shift+F12</h1>
+<p>
+Quando está na árvore de pastas ou lista de mensagens, este comando exibe um diálogo com uma lista de pastas que pode adoptar as quatro apresentações seguintes: 
+</p>
+<ul>
+<li>Apenas com mensagens não lidas (lista plana), Alt+n ;
+</li>
+<li>Todas as pastas (lista plana), Alt+t ;
+</li>
+<li>Apenas com mensagens não lidas (árvore completa), Alt+o ;
+</li>
+<li>Todas as pastas (árvore completa), Alt+u ;
+</li>
+</ul>
+
+<p>
+As pastas com mensagens não lidas, Rascunhos, Lixo e pastas com nomes terminados num traço estão excluídos da lista;
+</p>
+<p>
+Para activar um destes tipos, pode pressionar o comando associada ou Shift+Tab e depois as teclas de seta para alterar o modo.
+</p>
+<p>
+O tipo escolhido será lembrado e activado na próxima vez que este diálogo for exibido;
+</p>
+<p>
+Também é possível filtrar a lista por palavra-chave. Pressione Shift+Tab ou Alt+e para chegar ao campo de entrada.
+</p>
+<p>
+A navegação numa lista plana ou numa estrutura em árvore é feita com as setas para cima e para baixo, assim como com a inicial do nome de uma pasta;
+</p>
+<p>
+Para activar a pasta seleccionada na árvore principal, basta pressionar Enter nela.
+</p>
+<p>
+Dica: Se tiver pressionado Enter numa pasta com mensagens não lidas, então pressione Espaço para seleccionar a primeira mensagem não lida na lista de mensagens;
+</p>
+<p>
+Nota: <br />
+Os comandos que invocam este diálogo podem ser eliminados e outros adicionados através do diálogo Definir comandos do NVDA. Proceda como se segue:
+</p>
+<ul>
+<li>Primeiro coloque a janela Thunderbird em o primeiro plano;
+</li>
+<li>Abra o menu do NVDA e seleccione "Preferências";
+</li>
+<li>No submenu, clique em : Definir comando" ;
+</li>
+<li>No diálogo, pressione a letra t até ouvir: Thunderbird+4;
+</li>
+<li>Pressione a seta para a direita para expandir este ramo;
+</li>
+<li>Desça até ao item "Mostrar uma lista de pastas na árvore principal do Thunderbird, pelos vários tipos. recolhido..." e depois pressione a seta para a direita para expandir este nível;
+</li>
+<li>Tab para o botão "Adicionar", validar e depois pressionar um comando no novo diálogo;
+</li>
+<li>Pressione Enter para validar a sua escolha;
+</li>
+<li>De volta à lista de comandos, verifique a presença do novo comando;
+</li>
+<li>Fechar o diálogo através do botão OK.
+</li>
+</ul>
+
+<a id="toc21" name="toc21"></a>
+<h1>12. Atalhos de teclado na lista de mensagens</h1>
+<p>
+Estes atalhos só estão activos quando o foco está na lista de mensagens. Para além dos comandos para a leitura rápida de mensagens (espaço, F4 ou Alt+seta abaixo), estão disponíveis os seguintes atalhos: 
+</p>
+<p>
+Para além dos comandos de leitura rápida de mensagens vistos acima, estão disponíveis os seguintes comandos:
+</p>
+<ul>
+<li>Alt+PageDown: se o painel de pré-visualização estiver a ser exibido (via F8), abre a lista de anexos para a mensagem seleccionada. ;
+</li>
+<li>Alt+9 ou o número 1 ou 2: uma vez indica o número de anexos, duas vezes abre a lista de anexos;
+</li>
+<li>a : Arquivar esta mensagem, com vocalização. Pressione Control+z para cancelar esta operação;
+</li>
+<li>j : marca esta mensagem como não desejada, com vocalização;
+</li>
+<li>Shift+j: marca esta mensagem como aceitável, com vocalização;
+</li>
+<li>m: marca as mensagens seleccionadas como não lidas. Shift+m marca-as como lidas; 
+</li>
+</ul>
+
+<p>
+Visualização de colunas e cabeçalhos:
+</p>
+<p>
+Deve ser feita aqui uma distinção entre colunas e cabeçalhos: a palavra "coluna" é utilizada abaixo para se referir ao valor de uma célula numa linha na tabela de mensagens. A palavra "cabeçalho" refere-se à própria mensagem. Os cabeçalhos podem ser visualizados tanto no painel de pré-visualização de mensagens como no separador ou janela separada de uma mensagem aberta;
+</p>
+<a id="toc22" name="toc22"></a>
+<h2>12.1. Consulta de colunas: um número do teclado alfanumérico</h2>
+<p>
+Estas teclas são apenas para as colunas da lista de mensagens. pressione um número no teclado alfanumérico sem pressionar a tecla shift:
+</p>
+<ul>
+<li>Uma vez: indica o nome e o valor da coluna correspondente;
+</li>
+<li>Duas vezes: indica o valor da coluna correspondente;
+</li>
+<li>Três vezes rapidamente: copia o valor da coluna para a área de transferência. Para copiar os endereços dos vários remetentes e destinatários, utilizar a consulta de cabeçalho abaixo; 
+</li>
+</ul>
+
+<a id="toc23" name="toc23"></a>
+<h2>12.2. Consulta de cabeçalhos: Alt+ números no teclado alfanumérico</h2>
+<p>
+Estes atalhos podem ser utilizados a partir da janela principal se o painel de pré-visualização for exibido (via F8) e a partir do separador ou da janela separada de uma mensagem aberta. Uma vez anuncia o cabeçalho e duas vezes exibem o menu contextual, conforme apropriado;
+</p>
+<ul>
+<li>Alt+1: anuncia o nome e endereço de e-mail do remetente, duas vezes abre uma caixa para editar estes valores. Pode editá-lo e depois pressionar Enter para o copiar para a área de transferência. Pressionando 3 vezes: abre o menu de contexto do cabeçalho;
+</li>
+<li>Alt+2 : Assunto com o nome da lista de correio, se aplicável;
+</li>
+<li>Alt+3 : data da mensagem;
+</li>
+<li>Alt+4 para : principais destinatários da mensagem, se existirem vários destinatários, pressionando 3 vezes posiciona o foco no primeiro destinatário, depois o separador permite ir para o próximo, a tecla de aplicações em cada destinatário exibe o menu contextual;
+</li>
+<li>Alt+5 : Destinatários em cópia; 
+</li>
+<li>Alt+6 : destinatários em cópia oculta;
+</li>
+<li>Alt+7 : endereço "responder a";
+</li>
+<li>Alt+8 : agente do utilizador, se os cabeçalhos completos forem activados através do menu Ver / cabeçalhos / completo ; 
+</li>
+<li>Alt+9 : Pressionado uma vez anuncia o número de anexos, Pressionado duas vezes abre a lista de anexos;
+</li>
+<li>Alt+0 : lista de etiquetas atribuídas.
+</li>
+<li>Alt+end : declara uma versão abreviada da barra de estado: número de mensagens não lidas, número total de mensagens, bem como a expressão do filtro rápido ; 
+</li>
+</ul>
+
+<a id="toc24" name="toc24"></a>
+<h2>12.3. Adicionar e remover etiquetas: Shift+a número no teclado alfanumérico</h2>
+<p>
+Esta funcionalidade permite-lhe marcar uma mensagem como Importante ou Pendente, por exemplo. Depois, a barra de filtragem rápida mostrará apenas mensagens com uma ou mais etiquetas. Por exemplo, exibir apenas mensagens importantes na lista de mensagens;
+</p>
+<p>
+Para verificar as etiquetas já colocadas na mensagem, pressione Alt+0 no teclado alfanumérico. 
+</p>
+<p>
+Para adicionar ou remover uma etiqueta, pressionar Shift+ um número de 1 a 9; 
+</p>
+<a id="toc25" name="toc25"></a>
+<h2>12.4. Barra de filtro rápido, letra f ou Control+Shift+K</h2>
+<ul>
+<li>letra F ou Control+Shift+K: mostra a barra de filtro rápido para mensagens na pasta actual;
+</li>
+<li>Filtragem por palavra-chave: introduzir uma palavra-chave e depois pressionar Tab para navegar na lista filtrada com as setas;
+</li>
+<li>A seta para baixo da caixa de entrada de palavras-chave dá-lhe acesso à lista de opções abaixo: 
+ <ul>
+ <li>1: Manter filtros ao trocar de pastas ;
+ </li>
+ <li>2: Mostrar apenas mensagens não lidas;
+ </li>
+ <li>3: Mostrar apenas mensagens de seguimento;
+ </li>
+ <li>4: Mostrar apenas mensagens de pessoas no meu livro de endereços;
+ </li>
+ <li>5: Mostrar apenas mensagens com etiquetas;
+ </li>
+ <li>6: Mostrar apenas mensagens com anexos;
+ </li>
+ <li>e assim por diante.
+ </li>
+ </ul>
+</li>
+<li>Pressione enter para activar ou desactivar um ou mais destes critérios;
+</li>
+<li>Alt+end: ouve um resumo dos filtros activos e o número de mensagens filtradas. Este atalho também funciona a partir da lista de mensagens, e não apenas a partir da barra de filtragem rápida;
+</li>
+</ul>
+
+<a id="toc26" name="toc26"></a>
+<h3>12.4.1. Filtragem por Etiqueta</h3>
+<p>
+quando o foco é a área de edição da barra de filtragem rápida:
+</p>
+<ol>
+<li>Pressione a seta para baixo até ouvir "etiquetas" e depois pressione Enter para assinalar esta opção;
+</li>
+<li>Pressione a tecla Tab para ir para a lista pendente de modos de filtragem de etiquetas. Se escolher, por exemplo, "Pendente", apenas as mensagens etiquetadas como "Pendente" serão listadas na lista de mensagens;
+</li>
+</ol>
+
+<a id="cols1" name="cols1"></a>
+<h2>12.5. Organizar coluna: Alt+c</h2>
+<p>
+Esta funcionalidade permite-lhe escolher a ordem das colunas na lista de mensagens e adicionar ou remover colunas. Ao contrário da antiga funcionalidade Arranjo de Colunas, estas operações baseiam-se em diálogos reais.
+</p>
+<p>
+Para o utilizar, primeiro vá à lista de mensagens ou à árvore de pastas e pressione Alt+c;
+</p>
+<p>
+Abre-se o diálogo de disposição das colunas. É constituído pela lista de colunas e pelos botões "Ajuda", "Colunas" e "Fechar".
+O botão "Colunas..." mostra o menu nativo de Thunderbird "Escolher colunas para exibir".  
+</p>
+<p>
+Quando estiver na lista de colunas, estão disponíveis os seguintes atalhos de teclado:
+</p>
+<ul>
+<li>Seta à esquerda: mostra o menu da caixa de verificação chamado "Escolher colunas a exibir". Este atalho corresponde ao botão "Colunas ...";
+</li>
+<li>Espaço: para mover a coluna seleccionada, pressionar Espaço, depois mover para outra coluna e pressionar novamente Espaço para mover a coluna para esse local. Esta operação é semelhante a cortar e colar;
+</li>
+</ul>
+
+<p>
+Também tem estes atalhos de movimento directo:
+</p>
+<ul>
+<li>Controlo + seta para cima ou seta para baixo: move a coluna seleccionada para cima ou para baixo uma unidade;
+</li>
+<li>Controlo + Home ou End: move a coluna seleccionada para o início ou para o fim da lista;
+</li>
+<li>Controlo + PageUp ou PageDown: move a coluna seleccionada para cima ou para baixo três unidades;
+</li>
+</ul>
+
+<p>
+Para fazer estes movimentos, as colunas são realmente movimentadas arrastando e largando com o rato.  Um sinal sonoro de um milissegundo ocorre a cada 10 movimentos do ponteiro do rato;
+</p>
+<p>
+Quando o menu "Escolher colunas a exibir" está presente, tem os seguintes comandos novos:
+</p>
+<ul>
+<li>Seta para a direita: mostra o diálogo de disposição das colunas;
+</li>
+<li>Espaço: Marca ou desmarca a coluna seleccionada no menu. Enter continua a produzir o mesmo efeito;
+</li>
+</ul>
+
+<p>
+Com as setas esquerda e direita, é portanto muito fácil alternar entre o menu de selecção de colunas e o diálogo de disposição de colunas;
+</p>
+<a id="toc28" name="toc28"></a>
+<h1>13. Janela do Editor</h1>
+<p>
+Quando a janela de edição se abre, nada de especial é perceptível, embora estejam disponíveis os seguintes atalhos de teclado:
+</p>
+<ul>
+<li>Escape: Fecha a janela de composição;
+</li>
+<li>Ao pressionar Alt + um número anuncia o cabeçalho, duas vezes centram-se no campo de entrada correspondente:
+<br />Alt+1: Remetente: um dos seus endereços de correio electrónico da lista dos seus endereços de correio electrónico;
+<br />Alt+2: para :
+<br />Alt+3: os nomes dos anexos. Duas vezes move para a lista de anexos;
+<br /> os outros números dão acesso a cabeçalhos opcionais como: cópia para, cópia oculta para e resposta a;
+</li>
+<li>\ (barra invertida) no texto da mensagem: mostra o seguinte menu de contexto:
+ <ul>
+ <li>Barra de ferramentas do correio com os itens: Enviar, Ortografia, Anexar, Segurança, Guardar. 
+ </li>
+ <li>Formatação de texto com os seguintes itens: (Estilos de) Parágrafo, Aplicar ou remover uma lista numerada, Aplicar ou remover uma lista numerada, Fontes, Indents, inserir um link, uma imagem, uma âncora, uma linha horizontal ou uma tabela. 
+<br />Note: Este menu é obtido pressionando a tecla \ (barra invertida) uma ou duas vezes, dependendo da configuração no menu de opções para a janela de edição obtida pressionando Shift+\ (barra invertida) uma ou duas vezes rapidamente;
+ </li>
+ </ul>
+</li>
+</ul>
+
+<a id="ortho" name="ortho"></a>
+<h2>13.1. Diálogo de verificação ortográfica: F7</h2>
+<p>
+Foram acrescentados atalhos de teclado que minimizam o movimento das mãos. Quando o foco é colocado no campo de edição da palavra de substituição, pode pressionar os seguintes atalhos de teclado:
+</p>
+<ul>
+<li>Enter: Activa o botão "Substituir";
+</li>
+<li>Shift+Enter: Activa o botão "Substituir tudo";
+</li>
+<li>Control+Enter: Activa o botão "Ignorar";
+</li>
+<li>Shift+Control+Enter: Acciona o botão "Ignorar Tudo";
+</li>
+<li>Alt+Enter: Activa o botão "Adicionar palavra";
+</li>
+</ul>
+
+<p>
+Para recordar estas combinações com a tecla Enter, Controlo refere-se à acção "Ignorar" e a presença de Shift indica "todas as ocorrências".
+</p>
+<p>
+Além disso, o atalho de seta Alt+up soletra as palavras:
+</p>
+<ul>
+<li>Uma vez  soletra as palavras a um ritmo normal;
+</li>
+<li>Duas vezes soletra palavras rapidamente;
+</li>
+<li>Três vezes copiam a palavra mal escrita para a área de transferência para análise num outro campo de edição;
+</li>
+</ul>
+
+<a id="ortho2" name="ortho2"></a>
+<h2>13.2. Modo de verificação ortográfica avançada durante a digitação</h2>
+<p>
+Apesar da ortografia adicionada ao diálogo de verificação ortográfica, é por vezes necessário fechar o diálogo para ouvir o contexto do erro no texto. Quando isto é feito, o diálogo recomeça desde o início e pára novamente nas palavras que anteriormente eram ignoradas.
+</p>
+<p>
+A correcção ortográfica durante a digitação evita estes inconvenientes mas pode distrair o escritor com os anúncios de "erro ortográfico". 
+A fim de não se distrair com erros ortográficos durante a escrita, este modo de verificação foi melhorado com a adição de três atalhos de teclado:
+<br />B antes de os activar, é necessário mudar para o modo de navegação pressionando ;: NVDA+espaço ;
+</p>
+<ul>
+<li>w e Shift+w para ir para o erro seguinte ou anterior, respectivamente, ;
+</li>
+<li>NVDA+F7 para exibir a lista de erros. Basta pressionar enter sobre um erro para se mover para ele no texto;
+</li>
+</ul>
+
+<p>
+Este modo de funcionamento permite-lhe desactivar o anúncio de erros ortográficos pelo NVDA ;
+</p>
+<p>
+Antes de utilizar este modo melhorado de verificação durante a digitação, é necessária uma pequena quantidade de configuração.
+</p>
+<a id="toc31" name="toc31"></a>
+<h3>13.2.1. Configuração preliminar</h3>
+<p>
+1. Nas preferências do Thunderbird, permitir a verificação ortográfica enquanto se escreve:
+</p>
+<ul>
+<li>Na janela principal, abrir o menu Ferramentas, ir para baixo até Settings e confirmar;
+</li>
+<li>No separador Settings, no campo de opções de pesquisa, introduza a palavra "ortho" e pressione Tab ;
+</li>
+<li>Nos resultados, Tab até "Verificar ortografia ao escrever" e marcar com barra de espaços, se necessário;
+</li>
+<li>Finalmente, feche o separador Preferências com Control+w.
+<p></p>
+2. Desactivar o anúncio de erros ortográficos no NVDA
+Esta configuração é, evidentemente, opcional. Se preferir ouvir um anúncio sobre um erro ortográfico, também pode encurtar este anúncio substituindo no seu dicionário de pronúncia "Erro ortográfico" por "graf", por exemplo ;
+<p></p>
+Para desactivar este anúncio :
+</li>
+<li>Abrir o menu NVDA, Preferências e depois validar em : Configurações ;
+</li>
+<li>No diálogo de Configurações, ir para a categoria "Formatação de documentos";
+</li>
+<li>Tab até ouvir: "Erros ortográficos" e depois pressione espaço para desmarcar esta opção;
+</li>
+<li>Fechar o diálogo pressionando o botão OK ou Confirmar;
+</li>
+</ul>
+
+<h4>13.2.1.1. Utilizando os comandos w, Shift+w e NVDA+F7</h4>
+<ul>
+<li>Antes de utilizar estes atalhos, deve primeiro activar o modo de navegação, pressionando NVDA+espaço;
+</li>
+<li>Em seguida, pressione a letra w para passar ao erro seguinte ou Shift+w para passar ao erro anterior ou pressione NVDA+F7 para seleccionar a palavra a ser corrigida a partir de uma lista;
+</li>
+<li>Quando a palavra errada é seleccionada no texto, pode pressionar a tecla Aplicações para exibir o menu contextual de sugestões de substituição; 
+</li>
+<li>Também se pode ouvir facilmente a frase que contém a palavra errada antes de a corrigir;
+</li>
+<li>Para fazer uma correcção manual a uma palavra, primeiro pressione NVDA+espaço para voltar ao modo formulário;
+<p></p>
+2. Désactiver l'annonce des fautes d'orthographe dans NVDA
+Ce réglage est bien entendu facultatif. Si vous préférez entendre une annonce sur une faute d'orthographe, vous pouvez aussi raccourcir cette annonce en remplaçant dans votre dictionnaire de prononciation "Faute d'orthographe" par "graf", par exemple ;
+<p></p>
+Pour désactiver cette annonce :
+</li>
+<li>Ouvrez le menu NVDA, Préférences puis validez sur : Paramètres ;
+</li>
+<li>Dans le dialogue des paramètres, placez-vous sur la catégorie "Mise en forme des documents" ;
+-  Tabulez jusqu'à entendre :"Fautes d'orthographe" puis pressez espace pour décocher cette option ;
+</li>
+<li>Refermez le dialogue en validant sur le bouton OK ;
+</li>
+</ul>
+
+<a id="toc32" name="toc32"></a>
+<h3>13.2.2. Utilisation des raccourcis w, Maj+w et NVDA+F7</h3>
+<ul>
+<li>Avant d'utiliser ces raccourcis,  vous devez d'abord activer le mode navigation en pressant NVDA+espace ;
+</li>
+<li>Pressez ensuite la lettre w pour vous placer sur l'erreur suivante ou Maj+w pour vous placer sur l'erreur précédente ou encore, pressez NVDA+F7 pour sélectionner le mot à corriger  dans une liste ;
+</li>
+<li>Lorsque le mot fautif est sélectionné dans le texte, Vous pouvez  presser la touche Applications pour afficher le menu contextuel des suggestions de remplacement ; 
+</li>
+<li>Vous pouvez aussi    écouter  facilement la phrase qui contient le mot fautif avant de procéder à sa correction ;
+</li>
+<li>Pour effectuer  une correction manuelle d'un mot, pressez d'abord NVDA+espace pour revenir en mode formulaire ;
+</li>
+</ul>
+
+<a id="toc33" name="toc33"></a>
+<h2>13.3. Livro de Endereços</h2>
+<p>
+Para a versão 102 de Thunderbird, Mozilla concebeu uma nova interface: a lista de endereços abre-se agora numa aba na janela principal e a lista de endereços é apresentada como uma aplicação web.
+</p>
+<p>
+Isto exigiria comandos para mover contactos de um livro para outro, mas um bug no Thunderbird impede que isto seja possível: seleccionar múltiplos contactos da lista pelo teclado não funciona. 
+</p>
+<p>
+Este problema foi relatado como uma regressão de acessibilidade no BugZilla, mas ainda não foi resolvido até à data.
+</p>
+<a id="toc34" name="toc34"></a>
+<h1>14. Veja também</h1>
+<ul>
+<li><a href="http://angouleme.avh.asso.fr/fichesinfo/fiches_nvda/thunderbird/index.htm">Documento de Daniel Poiraud sobre a utilização do cliente de e-mail Thunderbird</a> ;
+</li>
+<li><a href="http://angouleme.avh.asso.fr/fichesinfo/fiches_nvda/thunderbird/thunderbird_extension.htm">Documento de Daniel Poiraud sobre o extra Thunderbird+</a>;
+</li>
+<li><a href="https://www.nvda-fr.org/article.php?id=50">NVDA França</a> ;
+</li>
+<li>blindhelp: Repositório de extras do NVDA <a href="https://blindhelp.github.io/Le%20coffre%20des%20Modules%20Complementaires%20pour%20NVDA.html">https://blindhelp.github.io/Le%20coffre%20des%20Modules%20Complementaires%20pour%20NVDA.html</a>] ;
+</li>
+<li><a href="http://www.progaccess.net">Progaccess</a> ;
+</li>
+</ul>
+
+<a id="histo" name="histo"></a>
+<h1>15. Histórico de alterações</h1>
+<a id="toc36" name="toc36"></a>
+<h2>15.1. versões 4.3.3, 01/08/2023</h2>
+<ul>
+<li>After optimizations, reading headers no longer worked in the separate reading window ;
+</li>
+<li>When the selected NVDA language was "User Default", the extension's help file was not found when pressing Control+F1;
+</li>
+</ul>
+
+<a id="toc37" name="toc37"></a>
+<h2>15.2. versões 4.3.2, 01/06/2023</h2>
+<p>
+Fix: reading headers in the separate window of a message no longer worked;
+</p>
+<a id="toc38" name="toc38"></a>
+<h2>15.3. versões 4.3.1, 01/04/2023</h2>
+<p>
+Após a tradução para três idiomas da versão 4.3, otimizações e correções:
+</p>
+<ul>
+<li>A determinação da janela ativa não depende mais do seu título, o que torna a extensão menos dependente do idioma da interface do Thunderbird. Se o idioma da interface do NVDA for diferente do Thunderbird, os scripts mais importantes do Thunderbird+ funcionarão corretamente;
+</li>
+<li>Internamente, as velocidades de busca de determinados objetos foram aceleradas: isso tem impacto na determinação da aba ativa e na navegação entre os painéis da janela principal;
+</li>
+<li>O atalho control+R para responder a uma mensagem não funcionava quando o painel de visualização não era exibido e o SmartReply estava ativado;
+</li>
+<li>A reativação das atualizações automáticas pelo menu de opções não funcionou mais após uma alteração anterior;
+</li>
+</ul>
+
+<a id="toc39" name="toc39"></a>
+<h2>15.4. Versão 4.3 para Thunderbird 102, 12/26/2022</h2>
+<ul>
+<li>primeira tradução do Thunderbird+ por  Rui Fontes de casa  TifloTecnia.com &amp; Ângelo Miguel Abrantes, Membros da equipa NVDA Portugal;
+</li>
+<li>Tradução para o espanhol por Remy Ruiz ;
+</li>
+<li>Tradução para o inglês pelo Google Translate  &amp; Pierre-Louis R. ;
+</li>
+</ul>
+
+<p>
+Nota: Para que a extra Thunderbird+ funcione corretamente, o idioma do NVDA deve ser o mesmo da interface do usuário do Thunderbird;
+</p>
+<a id="toc40" name="toc40"></a>
+<h2>15.5. Versão 4.2.5 para Thunderbird 102, 11/22/2022</h2>
+<p>
+<br />Lista de mensagens em modo agrupado:
+</p>
+<ul>
+<li>O extra anuncia primeiro "Reduzido" ao chegar a uma linha de nível 1 reduzido;
+</li>
+<li>Ao pressionar espaço, F4 ou Alt+seta abaixo para uma leitura limpa da mensagem no painel de pré-visualização, tal linha é primeiro expandida. Isto é necessário a fim de recuperar a mensagem a ser lida;
+</li>
+</ul>
+
+<p>
+<br />Abre a janela separada para a leitura de uma mensagem:
+</p>
+<ul>
+<li>O título da janela já não se repete 4 vezes, este problema também ocorre sem o Thunderbird+
+<br />Em vez disso, o título da janela é anunciado uma vez de forma limpa e é seguido pela leitura limpa da mensagem. Basta pressionar uma tecla para parar esta leitura, o cursor estará no início da mensagem.
+<br />O título é despojado quando o nome de uma lista de discussão aparece várias vezes, será anunciado apenas uma vez. Além disso, o nome "Mozilla Thunderbird" é substituído por "TB";
+<br />Reading começa após um atraso de 100 milli-segundos por defeito.  Se este atraso for demasiado curto ou demasiado longo, dependendo da velocidade do computador, pode ser ajustado através do atalho Alt+d, d para atraso.
+<br />A caixa de entrada é bastante rudimentar, se introduzir um valor não autorizado, a caixa fechará com um sinal sonoro, terá de pressionar Alt+d novamente para introduzir outro atraso;
+</li>
+<li>Correcção: ao fechar a janela e ao voltar à lista de mensagens, a tecla Escape não estava a voltar à árvore;
+<br />Alto neste contexto particular, a tecla Space não permite que o painel de pré-visualização seja lido de forma limpa, use em vez disso a seta F4 ou Alt+down;
+</li>
+</ul>
+
+<p>
+<br />Editor window :
+Pressionar Alt+1 duas vezes rapidamente chega ao campo de endereço "De". A extensão agora desenrola automaticamente a lista das suas contas de e-mail para permitir a navegação com as setas verticais.  Anteriormente, a seta para baixo deste campo ia directamente para o campo "Para";
+</p>
+<p>
+No menu Opções, obtido pressionando Shift+\ (barra invertida), adicionar os 3 comandos abaixo:
+</p>
+<ul>
+<li>Guardar configurações actuais s: copiar o ficheiro .ini da extensão para um ficheiro .inibak;
+</li>
+<li>Restaurar a configuração guardada r: copiar o ficheiro .inibak para o ficheiro .INI e recarregar as definições;
+</li>
+<li>Repor a configuração r: recarrega as configurações padrão da extensão. Antes de o fazer, faça uma cópia de segurança se ainda não existir uma;
+</li>
+</ul>
+
+<a id="toc41" name="toc41"></a>
+<h2>15.6. Versões 4.1 a 4.2.1 para Thunderbird 102, 07/11/2022</h2>
+<p>
+Nota importante: Após instalar esta versão, verificar no gestor da extensão se o Thunderbird+4 não está instalado duas vezes. Em caso afirmativo, retire a versão antiga;
+<br />
+<br />
+A principal novidade desta versão é a sua capacidade de trabalhar em conjunto com <a href="http://www.rptools.org/Outils-DV/thunderbird-chichi.html">Chichi</a> se for instalada. Se não for, a extensão continua a funcionar como antes.
+</p>
+<p>
+Permite-lhe iniciar o Thunderbird em qualquer pasta que tenha definido pressionando a tecla Applications na árvore de pastas;
+</p>
+<p>
+Em combinação com o Thunderbird+, estão disponíveis os seguintes comandos:
+</p>
+<ul>
+<li>Espaço, F4, e Alt+ seta para baixo duas vezes numa mensagem da lista de mensagens: abre a lista de links contidos na mensagem apresentada no painel de pré-visualização. Uma só vez: a mensagem é sempre lida por Thunderbird+;
+</li>
+<li>Espaço numa pasta na árvore: se a pasta contiver mensagens não lidas, pressionando selecciona a primeira mensagem não lida na pasta. Se não houver mensagens não lidas, espaço abre a lista de pastas com mensagens não lidas. Aqui, pressionando Enter numa pasta irá movê-lo para a sua primeira mensagem não lida. Se pressionar Espaço nesta lista, a pasta seleccionada será marcada como lida, sem pedir confirmação;
+</li>
+<li>Para outros comandos Chichi, ver a secção <a href="http://www.rptools.org/Outils-DV/thunderbird-chichi-pt.html#toc6">Comandos Chichi</a>
+</li>
+</ul>
+
+<p>
+Foram adicionadas novas opções ao menu Shift+\ (barra invertida) para lhe permitir desactivar certas funcionalidades se preferir utilizar as suas equivalentes em Chichi. Nota: neste momento Chichi ainda não oferece uma alternativa a algumas das funcionalidades listadas abaixo.
+<br />Desactivações para Chichi e Thunderbird+:
+<br />Pastas: Espaço não selecciona a próxima mensagem não lida na lista e não mostra a lista de pastas não lidas: Chichi ainda não tem um equivalente autônomo;
+<br />Pastas: sem navegação por iniciais: ao activar esta opção, Chichi será utilizado.  Só funciona de cima para baixo e não indica o nome da conta a que pertence a pasta activada;
+<br />Lista de mensagens: o espaço não lê a mensagem no painel de pré-visualização: se marcar esta opção, Chichi irá ler a mensagem no painel de pré-visualização. Ao contrário do Thunderbird+, esta leitura não será filtrada. Contudo, F4 e Alt+Down Arrow continuarão a utilizar a leitura filtrada de Thunderbird+;
+<br />Lista de mensagens: Sem resposta inteligente: desactiva a funcionalidade que lhe permite responder a uma lista de e-mails com Control+r ou ao remetente com pressionar duplo de Control+r;
+<br />Lista de mensagens: não gere a barra de filtro rápido: remove o acesso às opções de filtro com a seta para baixo ;
+<br />Janela principal: Tab não avança para o próximo painel;
+<br />Janela principal: Escape não regressa ao painel anterior.
+</p>
+<p>
+<br /><br />
+Outras novas funcionalidades:
+<br />NVDA+end: O anúncio da barra de estado do NVDA foi restaurado e melhorado. Para a janela principal, se aplicável, o número de mensagens filtradas e a expressão do filtro também são anunciados. O atalho Alt+end foi retido porque soletra a palavra-chave do filtro;
+<br />O menu \ (barra invertida) tem duas novas entradas:
+</p>
+<ul>
+<li>Página Chichi: esta página explica como descarregar e instalar Chichi e fornece uma descrição dos seus atalhos de teclado;
+</li>
+<li>Juntar-se a Thunderbird-dv: Esta mostra uma página que explica como juntar-se à lista de correio thunderbird-dv e mostra-lhe os outros comandos disponíveis;
+</li>
+</ul>
+
+<p>
+<br />Janela de composição:
+Para os campos de endereço que não são exibidos por padrão, Cópia para, Cópia oculta para e Responder a, os comandos Alt+números foram melhorados. Por exemplo, acertando em Alt+4 :    
+<br />Pressionando uma vez ouvirá: "O campo Copiar para está em falta, pressione este comando duas vezes rapidamente para o exibir; 
+<br />Pressionando duas vezes, o campo Copiar para será exibido e terá o foco;
+<br />
+</p>
+<p>
+<br />Correcções :
+</p>
+<p>
+O atalho "r" foi retirado dos gestos de comando para a função SmartReply, estava a causar problemas no modo de redacção;
+</p>
+<p>
+O código que transforma as linhas da lista de mensagens foi reescrita com uma lógica diferente a fim de resolver alguns problemas encontrados em modo agrupado através de conversas ou critérios de ordenação;
+</p>
+<p>
+A gestão de arranque do Thunderbird foi removida da extensão a favor de Chichi ou Start with inbox.
+<br /> Se continuar a utilizar esta última, acabou de ser actualizada para a versão 2.5.2. Permite agora ao Thunderbird iniciar a primeira mensagem não lida na pasta de correio de entrada da conta que escolheu nas suas opções;
+<br />
+</p>
+<a id="toc42" name="toc42"></a>
+<h2>15.7. Versões 4.1.1 a 4.2.1</h2>
+<p>
+Lista de mensagens : 
+</p>
+<ul>
+<li>Quando um filtro rápido está activo, um ficheiro áudio WAV é reproduzido quando a lista ou o separador a que pertence recebe o foco. O som assemelha-se a uma respiração;
+<br />O ficheiro filter.wav está localizado na pasta :
+<br />"%appdata%\NVDA\TB+sounds"
+<br /> Pode colocar um som de sua escolha desde que o seu ficheiro se chame: filter.wav.
+Após esta alteração, é necessário reiniciar o NVDA;
+</li>
+<li>Duas novas opções no menu Shift+\ (barra invertida) Várias desactivações:
+<br /> "Lista de mensagens: Escape não move para a estrutura hierárquica": opção não marcada por padrão; 
+<br /> "Permitir fechar o Thunderbird com control+w ou control+F4" : activando esta opção, estes atalhos fecham o Thunderbird quando apenas uma aba é deixada aberta;
+</li>
+</ul>
+
+<p>
+Árvore de pastas :
+Se a pasta seleccionada tiver mensagens não lidas, pressionar espaço selecciona a próxima mensagem ou a primeira mensagem não lida na lista:
+</p>
+<ul>
+<li>Na configuração padrão do Thunderbird+4, a próxima mensagem não lida será seleccionada, não será necessariamente a primeira mensagem não lida. Este é o comportamento do atalho Thunderbird n;
+</li>
+<li>Se a opção "Espaço numa pasta com mensagens não lidas procura a primeira mensagem não lida desde o início da lista de mensagens" no menu Opções para a janela principal estiver marcada: ao contrário do atalho "n" do Thunderbird, o script procurará a primeira mensagem não lida real na pasta. Em computadores mais lentos, estes desvios podem ser ouvidos;
+</li>
+</ul>
+
+<p>
+<br />Pressionando Tab no nome da conta seleccionada na árvore, chega-se a uma moldura contendo vários botões relacionados com esta conta. A partir de agora, a tecla Escape permite regressar à estrutura em árvore; 
+</p>
+<p>
+<br />Filtragem na leitura de mensagens :
+<br />A tecla F4 permite-lhe agora ler uma mensagem se tiver foco, seja no painel de pré-visualização, no separador de leitura, na janela de leitura separada e mesmo na janela de escrita. 
+Com Shift+F4, a leitura é feita na ordem cronológica das citações;
+<br />
+<br />Rodapé das mensagens em grupos.io, como em NVDA-EN: na leitura filtrada com espaço ou f4, todo o rodapé da mensagem é saltado da linha de muitos iguais;
+<br />Linhas com traços múltiplos são agora ignoradas e já não fazem com que o resto da mensagem seja apagada. Este problema foi causado pela eliminação de rodapés de mensagens das listas do Yahoo;
+<br /> Se a exibição da mensagem estiver definida para HTML original, as folhas de estilo já não são pronunciadas;
+</p>
+<a id="toc43" name="toc43"></a>
+<h2>15.8. versão 4.0.4 para Thunderbird 102, 09/24/2022</h2>
+<p>
+1. Alterações à lista de mensagens:
+</p>
+<ul>
+<li>Quando um nome de lista de correio aparece várias vezes numa linha, esse nome é agora anunciado apenas uma vez. O mesmo se aplica ao anúncio do assunto com a tecla 2 do teclado alfanumérico;
+</li>
+<li>A letra r quando digitada sozinha já não permite responder a uma mensagem, o que causou problemas ao escrever mensagens. Os atalhos equivalentes são: control+r ou Alt+ página anterior. Estes atalhos ainda são configuráveis no diálogo de configuração de gestos de comando sob Thunderbird+4 / SmartReply ;
+</li>
+<li>Resolvido o problema das linhas de nível 2 a serem anunciadas quando a lista é agrupada por critérios de ordenação. Este problema estava a ocorrer apenas para alguns utilizadores;
+</li>
+</ul>
+
+<p>
+2. Nova lista de correio thunderbird-dv:
+</p>
+<p>
+Para mais informações e para subscrever, vá a <a href="http://rptools.org/thunderbird-dv.html">thunderbird-dv</a>; 
+</p>
+<a id="toc44" name="toc44"></a>
+<h2>15.9. versão 4.0.3 para Thunderbird 102, 03/09/2022</h2>
+<p>
+Correcções para responder às alterações introduzidas no Thunderbird 102.2:
+</p>
+<ul>
+<li>A mensagem: alerta Para proteger a sua privacidade, Thunderbird bloqueou a exibição de conteúdo remoto nesta mensagem, é anunciada mesmo que a exibição da mensagem tenha sido definida para HTML simples e a exibição de conteúdo remoto tenha sido desactivada nas definições do Thunderbird. A extensão agora remove completamente este anúncio, mas não remove o visor. 
+</li>
+<li>Anúncio de informação da barra de estado: o atalho Alt+end já não anunciava esta informação, tal como o NVDA com o atalho NVDA+end. Isto funciona novamente com Alt+end;
+</li>
+<li>Na lista de mensagens, as linhas de agrupamento são agora anunciadas de uma forma mais fácil de utilizar. no modo "Mensagens de grupo por critérios de ordenação": por exemplo, para uma lista agrupada por correspondentes, ouvirá para estas linhas especiais: Grupo John Smith, Grupo Tartempion, etc.
+</li>
+</ul>
+
+<a id="toc45" name="toc45"></a>
+<h2>15.10. versão 4.0.2 para Thunderbird 102, 23/08/2022</h2>
+<p>
+Corrigido um conflito de atalhos de teclado: Control+Backspace ao escrever uma mensagem. Este atalho já não fecha a janela; 
+</p>
+<a id="toc46" name="toc46"></a>
+<h2>15.11. Mudanças no manual do utilizador, 22/07/2022</h2>
+<p>
+Grande revisão da secção que trata do arranque do Thunderbird.
+<br />A secção <a href="#startup">Início melhorado do Thunderbird</a> explica como instalar e configurar os add-ons "Auto select latest message" e "Start with inbox".
+<br /> Estes dois add-ons integram-se directamente com o Thunderbird, são independentes da NVDA.
+</p>
+<a id="toc47" name="toc47"></a>
+<h2>15.12. versão 4.0.1 para Thunderbird 102, 20/07/2022</h2>
+<ul>
+<li>Shift+\ (barra invertida) menu / Opções para a janela de composição: adicionada a opção "Activar o melhoramento da verificação ortográfica durante a digitação". Esta opção é desactivada por defeito, o que elimina a última causa potencial de desaceleração da digitação de uma mensagem. Este modo de verificação ortográfica ainda não funciona em NVDA 2022.1 ;
+</li>
+<li>Comando "Escrever para suportar" no menu power2: o assunto da mensagem automática indica a versão do Thunderbird+4 e a versão do Thunderbird que está a utilizar. Isto permite-me verificar a boa concordância das versões, obrigado por utilizar este canal quando precisar de ajuda;
+</li>
+<li>Correcções de erros menores;
+</li>
+</ul>
+
+<a id="toc48" name="toc48"></a>
+<h2>15.13. versão 4.0 para Thunderbird 102, 02/07/2022</h2>
+<p>
+<a href="http://www.rptools.org/Outils-DV/ThunderbirdPlusNew#intro">Saiba mais sobre o que há de novo na versão 4 em comparação com a versão 3</a>
+</p>
+
+<!-- xhtml code generated by txt2tags 2.5 (http://txt2tags.sf.net) -->
+<!-- cmdline: txt2tags D:\dev-modules\00 Thunderbird+4\doc4\doc-pt\readme-pt.t2t -->
+</body></html>

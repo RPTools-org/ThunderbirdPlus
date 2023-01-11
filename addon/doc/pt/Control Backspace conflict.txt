@@ -1,0 +1,21 @@
+No Thunderbird+, o atalho ctrl+backspace é atribuído a fechar abas e algumas janelas.
+Isto causa um conflito de atalhos de teclado quando se escreve uma mensagem.
+
+Para restaurar a eliminação da palavra antes do cursor numa mensagem a ser escrita, esta atribuição deve ser removida.
+
+Para o fazer, proceda da seguinte forma:
+* Ir para a janela principal do Thunderbird;
+* pressione NVDA+n para abrir o menu NVDA;
+* Pressione a letra: p, para ir para o sub-menu Preferências;
+* Pressionar a letra: C, para abrir o diálogo Definir comandos;
+* Na árvore, seleccionar o ramo: Thunderbird+4 e abri-lo com a seta para a direita; 
+* Pressionar a letra: e, para seleccionar o item: Enviar Control+F4 para a janela actual, e abri-la;
+* Seleccionar o item abaixo: controlo+Backspace ;
+* e por fim, pressione Tab até ouvir "Remover, botão" e depois pressione Enter ;
+* É importante fechar este diálogo com o botão Confirmar  para guardar as suas alterações.
+
+Nota :
+Após estas primeiras manipulações, pode acontecer que não funcione como esperado.
+Por alguma razão desconhecida, o NVDA insere novamente o gesto Control+Backspace.
+Neste caso, repita o procedimento descrito acima, isto resolverá o problema.
+

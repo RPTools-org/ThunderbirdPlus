@@ -1,0 +1,21 @@
+Dans Thunderbird+, le raccourci control+retour arrière est affecté à la fermeture d'onglets et de certaines fenêtres.
+Ceci provoque  un conflit de raccourcis-clavier  lors de la rédaction d'un message.
+
+Pour restaurer la suppression du mot précédant le curseur dans un message en cours de rédaction, il faut supprimer cette affectation.
+
+Pour cela, procédez comme suit :
+* Placez-vous dans la fenêtre principale de Thunderbird ;
+* Pressez NVDA+n pour ouvrir le menu de NVDA ;
+* Pressez la lettre : p, pour voud  placer dans le sous menu de Préférences ;
+* Pressez ensuite la lettre : G, pour ouvrir le dialogue des gestes de commandes ;
+* Dans l'arborescence, sélectionnez la branche : Thunderbird+4 et ouvrez la avec la flèche droite ; 
+* Pressez la lettre : e, pour sélectionner la branche : Envoie Control+F4 à la fenêtre courante, et ouvrez la ;
+* Sélectionnez plus bas la branche : control+retour arrière ;
+* et enfin, pressez Tab jusqu'à entendre  "Supprimer, bouton" puis pressez Entrée ;
+* Il est important de fermer ce dialogue avec le bouton OK pour enregistrer vos changements.
+
+Remarque :
+Après ces première manipulations, il peut arriver que cela ne fonctionne pas comme attendu.
+Pour une   raison inconnue, NVDA insère à nouveau le geste Control+Retour arrière.
+Dans ce cas, recommencez la procédure décrite plus haut, cela résoudra ce problème.
+ 

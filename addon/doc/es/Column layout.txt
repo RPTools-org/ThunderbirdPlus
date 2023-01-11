@@ -1,0 +1,18 @@
+Organizar columnas en la lista de mensajes;
+
+Esta función le permite elegir el orden de las columnas en la lista de mensajes y agregar o eliminar columnas. A diferencia de la antigua función de Organizar columnas, estas operaciones se basan en diálogos reales. 
+
+Para usarlo, primero ve a la lista de mensajes o a las carpetas en vista de árbol y luego pulsa Alt+c (el atajo NVDA+u acento grave todavía existe); 
+Aparece el diálogo de  Organizar columnas. Consiste en la lista de columnas, así como los botones "Ayuda", "columnas" y "Cerrar". El botón "Columnas..." muestra el menú "Seleccione las columnas que desea mostrar" nativo de Thunderbird 
+Cuando está en la lista de columnas, están disponibles los siguientes atajos: 
+• Flecha izquierda: muestra el menú de casilla de verificación denominado "Seleccione las columnas que desea mostrar". Este atajo corresponde al botón "Columnas..."; 
+• Espacio: para mover la columna seleccionada, pulse espacio y luego coloquese en otra columna y pulse espacio nuevamente para colocar la columna allí. Esta operación es similar a un cortar y pegar; 
+También tienes estos atajos de desplazamiento directo: 
+• Control + flecha arriba o flecha abajo: sube o baja la columna seleccionada de una unidad; 
+• Control + Inicio o Fin: mueve la columna seleccionada en la parte superior o inferior de la lista; 
+• Control + Retroceso página o Avance página: sube o baja la columna seleccionada de tres unidades; 
+Las columnas se mueven realizando un arrastrar y soltar con el ratón. Un pitido de audio de un milisegundos ocurre cada 10 desplazamientos del puntero; 
+Cuando está presente el menú "Seleccione las columnas que desea mostrar" tienes  los siguientes nuevos atajos de teclado: 
+• Flecha derecha: muestra el diálogo Organizar columnas; 
+• Espacio: marca o desmarca la columna seleccionada en el menú. La tecla Intro todavía produce el mismo comportamiento; 
+Con las flechas izquierda y derecha, es muy fácil de cambiar entre el menu para seleccionar las columnas y el diálogo para organizar sus columnas; 
