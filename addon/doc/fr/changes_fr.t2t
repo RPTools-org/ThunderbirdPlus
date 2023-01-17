@@ -1,0 +1,246 @@
+﻿		Thunderbird+ : historique des changements
+
+Dernière mise à jour le -date
+%!Target: xhtml
+%!style: style_t2t.css
+%!Encoding: UTF-8
+% content-language
+%!PostProc(xhtml): '\</title\>' '</title>\n<META HTTP-EQUIV="Content-Language" Content="fr">'
+%!preproc: 'àodv' 'http://www.rptools.org/Outils-DV/'
+% 
+%!PostProc(xhtml): '(?i)^.*<li><a href="#toc".+$' ''
+% Therefore, change h1 through h5 in the output to h2 through h6.
+%!PostProc(xhtml): ^<H5>(.*)</H5>$ <H6>\1</H6>
+%!PostProc(xhtml): ^<H4>(.*)</H4>$ <H5>\1</H5>
+%!PostProc(xhtml): ^<H3>(.*)</H3>$ <H4>\1</H4>
+%!PostProc(xhtml): ^<H2>(.*)</H2>$ <H3>\1</H3>
+%!PostProc(xhtml): ^<H1>(.*)</H1>$ <H2>\1</H2>
+
+% Specific
+%!PostProc(xhtml): ^<H2>(﻿Extens.*)</H2>$ <H1>\1</H1>
+% keywords prefixed by -  in order to write HTML tags.
+% Translator :Edit below the version and date on each update
+%!postproc(xhtml): '-ver' '4.4'
+%!postproc(xhtml): '-date' '17/01/2023'
+%!postproc(xhtml): '-br' '<br />'
+%!postproc(xhtml): '-lt' '<'
+%!postproc(xhtml): '-gt' '>'
+% translator :  below, the command menu key and the options menu key. In french, these are ² and shift+² which arejust above the tab key.. Replace "puissance2 byoutr mainkey and majuscule by shift in your language.
+%!postproc(xhtml): '-cmdMenu' 'Puissance2'
+%!postproc(xhtml): '-optMenu' '-shift+Puissance2'
+% transmlator : shift modifier. Replace below Majuscule by shift in your language
+%!postproc(xhtml): '-shift' 'Majuscule'
+% transmlator : ctrl  modifier. Replace below Contrôle  by control in your language
+%!postproc(xhtml): '-ctrl' 'Contrôle'
+
+% translator :  below, First key at the left of backspace. Its name depends of the language and the country. 
+%!postproc(xhtml): '-bs1' 'Première touche à gauche de Retour arrière'
+% translator :  below, Second key at the left of backspace. Its name depends of the language and the country. 
+%!postproc(xhtml): '-bs2' 'Seconde touche à gauche de Retour arrière'
+
+% Informations
+- Versions : -ver pour Thunderbird 102
+- Version minimum de NVDA requise : 2019.3 Dernière version de NVDA testée : 2022.1 ; 
+- Auteur originel de l'extension thunderBird : Yannick
+- Adaptation à Thunderbird 68 , 78, 91, 102 et à NVDA 2019.3 et suivants : Daniel Poiraud, Pierre-Louis R et Abdel pour la version 3.1.;
+- Documentation et contact : [Pierre-Louis http://www.rptools.org/Outils-DV/contact.html] , en Français et Anglais ;
+
+
+-br
+
+==Historique des changements==[histo]
+===Version 4.4, 17/01/2023===
+De nombreux changements pour rendre l'extension conforme à sa publication sur le dépôt gitHub.
+
+[Visiter le dépôt ThunderbirdPlus sur gitHub https://github.com/RPTools-org/ThunderbirdPlus]
+
+
+===versions 4.3.3, 08/01/2023===
+- Après des optimisations, la lecture des entêtes ne fonctionnait plus dans la fenêtre séparée de lecture ;
+- Lorsque la langue de NVDA sélectionnée était "Utilisateur par défaut", le fichier d'aide de l'extension n'était pas trouvé quand on pressait Control+F1 ;
+
+
+===versions 4.3.2, 06/01/2023===
+Correctif : la lecture des entêtes dans la fenêtre séparée d'un message ne fonctionnait plus ;
+
+
+===versions 4.3.1, 04/01/2023===
+Après la traduction en trois langues de la version 4.3, des optimisations et correctifs :
+
+- La détermination  de la fenêtre active  ne dépend plus de son titre, ce qui rend l'extension moins dépendante de kla langue de l'interface de Thunderbird. Si la langue de l'interface de NVDA est différente de celle de Thunderbird, les scripts les plus importants de Thunderbird+ fonctionneront correctement ; 
+- En interne, la vitesses de recherche de certains objets a été accélérée : ceci a un impact sur la détermination de l'onglet actif et sur la navigation entre les volets de la fenêtre principale ;
+- Le raccourci control+R pour répondre à un message ne fonctionnait pas lorsque le volet d'aperçu n'était pas affiché et que SmartReply était activé ; 
+- La réactivation des mises à jour automatiques via le menu des options ne fonctionnait plus suite à un changement antérieur ;
+
+
+===versions 4.3, 26/12/2022===versions 4.3, 26/12/2022===
+- Première localisation de Thunderbird+4 en langue étrangère : en Portugais par Rui Fontes  de chez Tiflotecnia.com.Merci à lui d'avoir  ouvert la porte aux autres langues ;
+- Traduction en Espagnol par Rémy  Ruiz ;
+- Traduction en Anglais par Google Translate & Pierre-Louis R. ;
+
+
+Remarques : 
+- Pour que l'extension Thunderbird+  fonctionne correctement, la langue de NVDA doit être impérativement la même que celle de l'interface utilisateur de Thunderbird ;
+- Pour les utilisateurs Français, les raccourcis clavier avec puissance2, parenthèse droite et égal n'ont pas   changé ;
+- Pour les utilisateurs Belges, Canadiens et Suisses, ces touches peuvent avoir changé de place :
+ - Pour afficher le menu appelé puissance2, il faudra presser la touche qui se trouve au-dessus de Tab ;
+ - Pour Les raccourcis qui impliquaient la touche égal , il faudra désormais presser la première  touche à gauche de retour arrière ;
+ - Pour Les raccourcis qui impliquaient la touche parenthèse droite, il faudra désormais presser la deuxième touche à gauche de retour arrière ; 
+ 
+ 
+===versions 4.2.7 pour Thunderbird 102, 24/11/2022===
+
+Une nouvelle option a été ajoutée au   menu -optMenu / Options pour la fenêtre principale :
+-brfenêtre séparée de lecture : ne pas lire automatiquement le  mmessage si provoque des blocages de NVDA
+-brPar défaut, lorsqu'on ouvre un message en pressant Entrée depuis la liste de messages, une lecture épurée du message se lance à l'ouverture de la nouvelle fenêtre. Sur certains ordinateur et lorsque le compte de messageerie est configuré en IMAP, NVDA peut se bloquer. Lorsque cette option est cochée, cette lecture automatique est désactivée pour éviter tout blocage.
+
+
+===versions 4.2.5 pour Thunderbird 102, 22/11/2022===
+-brListe de messages en mode groupé :
+
+- L'extension annonce d'abord "Réduit" en arrivant sur une ligne de niveau 1 réduite ;
+- En pressant espace, F4 ou Alt+Flèche bas pour une lecture épurée du message du volet d'aperçu, une telle ligne est d'abord développée. Ceci est nécessaire pour pouvoir récupérer le message à lire ;
+
+
+-brOuverture de la fenêtre séparée de lecture d'un message :
+- Le titre de la fenêtre n'est plus répété 4 fois, ce problème se produisait aussi sans Thunderbird+.
+-brA la place, le titre de la fenêtre est annoncé une fois de manière épurée et est subie  de la lecture épurée du message. Il suffit de presser une touche pour arrêter cette lecture, le curseur se trouvera au début du message.
+-brLe titre est épuré lorsque le nom d'une liste de discussion apparaît plusieurs fois, celui-ci ne sera énoncé qu'une seule fois. De plus, le nom "Mozilla Thunderbird" est remplacé par "TB" ;
+-brLa lecture démarre après un délai de 100 milli-secondes par défaut.  Si ce délai est trop court ou trop long en fonction de la rapidité de l'ordinateur, celui-ci peut être ajusté via le raccourci Alt+d, d comme délai.
+-brLa boîte de saisie est assez rudimentaire, si vous entrez une valeur non autorisée, la boîte  se refermera en émettant un signal sonore, vous devrez presser à nouveau Alt+d pour saisir un autre délai ;
+- Correctif : à la fermeture de la fenêtre et au retour dans la liste de messages, la touche échappe ne revenait pas à l'arborescence ;
+-brToujours dans ce contexte précis, la touche Espace ne permet pas la lecture épurée du volet d'aperçu, utilisez à la place  F4 ou Alt+flèche bas ;
+
+
+-brFenêtre de rédaction :
+En pressant Alt+1 deux fois rapidement, on atteint le champ d'adressage "De". Désormais, l'extension déroule automatiquement la liste de vos comptes de messagerie pour permettre son parcours avec les flèches verticales.  Auparavant, la flèche bas depuis ce champ passait directement au champ "Pour" ;
+
+
+-brMenu des options obtenu en pressant -optMenu, ajout des 3 commandes ci-dessous :
+
+-  Sauvegarder la configuration actuelle s : copie le fichier .ini  de l'extension dans un fichier .inibak ;
+- Restaurer la configuration sauvegardée r : copie le fichier .inibak  sur le fichier .INI et recharge les paramètres ;
+- Réinitialiser la configuration r : recharge les paramètres par défaut de l'extension. Au préalable, effectue  une sauvegarde s'il n'en existe pas encore ;
+
+
+
+===versions 4.1 à 4.2.1 pour Thunderbird 102, 07/11/2022===
+Note importante : Après avoir installé cette version, veuillez vérifier dans le gestionnaire d'extensions si Thunderbird+4 n'est pas installé deux fois. Le cas échéant, supprimez l'ancienne version ;
+-br
+-br
+La principale nouveauté de cette version est sa capacité à fonctionner en duo avec [Chichi àodvthunderbird-chichi.html] si celui-ci est installé. S'il ne l'est pas, l'extension continue à fonctionner comme avant.
+
+Il permet de démarrer Thunderbird sur un dossier quelconque que vous avez défini en pressant la touche Applications dans l'arborescence des dossiers ;
+
+Combiné à Thunderbird+, les commandes suivantes sont disponibles :
+
+- Espace, F4 et Alt+flèche bas  en double frappe sur un message dans la liste des messages : ouvre la liste des liens contenus dans le message affiché dans le volet d'aperçu. En simple frappe, le message est toujours lu par Thunderbird+ ;
+- Espace sur un dossier de l'arborescence : si le dossier comporte des messages non lus, un appui sélectionne le premier message non lu dans le dossier. S'il n'en contient pas, espace ouvre la liste des dossiers avec des messages non lu. Là, il suffit de presser  Entrée sur un dossier pour vous placer sur son premier message non lu. Si vous pressez Espace dans cette liste, le dossier sélectionné   sera marqué comme lu, sans demande de confirmation ;
+- Pour les autres commandes de Chichi, lisez la section [Commandes de Chichi http://www.rptools.org/Outils-DV/thunderbird-chichi.html#toc6]
+
+
+De nouvelles options  ont été ajoutées au menu -optMenu afin de vous permettre de désactiver certaines fonctionnalités si vous préférez utiliser leur équivalent dans Chichi. Note : en ce moment, Chichi n'offre pas encore d'alternative à certaines fonctionnalité listées ci-dessous.
+-brSous-menu Désactivations pour Chichi et Thunderbird+ :
+-brDossiers : Espace ne sélectionne pas le prochain message non lu dans la liste et n'affiche pas la liste de dossiers non lus d : Chichi ne dispose pas encore d'équivalent en fonctionnement autonome  ;
+-brDossiers : pas de navigation par initiales d : en activant cette option, Chichi sera utilisée.  Il  ne fonctionne que de haut en bas et n'énonce pas le nom du compte auquel appartient le dossier activé ; 
+-brListe messages : Espace ne lit pas le message du volet d'aperçu l : si vous cochez cette option,  ce sera Chichi qui énoncera  le message du volet d'aperçu. Contrairement à Thunderbird+, cette lecture ne sera pas épurée. En revanche, F4 et Alt+flèche bas continueront à faire appel à la lecture épurée de Thunderbird+ ; 
+-brListe messages : pas de SmartReply : désactive la fonctionnalité qui permet de répondre à une liste de diffusion avec -ctrl+r en simple frappe ou à l'expéditeur  avec -ctrl+r en double frappe ,
+-brListe messages : ne pas gérer la barre de filtrage rapide : supprime l'accès aux options de filtrage avec la flèche bas ;
+-brfenêtre principale : Tab ne passe pas au volet suivant f
+-brfenêtre principale : Echappe ne revient pas au volet précédent f
+
+-br-br
+Autres nouveautés :
+-brNVDA+fin :  l'annonce de la barre d'état par NVDA a été rétablie et améliorée. Pour la fenêtre principale, s'il y a lieu, le nombre de message filtrés ainsi que l'expression de filtrage sont aussi annoncés. Le raccourci Alt+fin a été maintenu parce qu'il épelle le mot-clé de filtrage ;
+-br Le menu -cmdMenu comporte deux  nouvelles entrées :
+- Page de chichi : cette page vous explique comment télécharger et installer Chichi  et vous fournit la description de ses raccourcis-clavier ;
+- Rejoindre Thunderbird-dv : ceci affiche une page qui vous explique comment vous inscrire à la liste de diffusion thunderbird-dv et vous indique les autres commandes disponibles ;
+
+
+-brFenêtre de rédaction :
+Pour  les champs d'adressage qui ne sont pas affiché par défaut, Copie à, Copie cachée à et Réponse à, les commandes Alt+chiffre ont été améliorées. Par exemple, en frappant Alt+4 :    
+-brAvec un appui, vous entendrez : "Le champ Copie à est absent, refrappez deux fois rapidement cette commande pour l'afficher." ; 
+-brAvec deux appuis, le champ Copie à sera affiché et prendra le focus ;
+-br
+
+-brCorrectifs :
+
+Le raccourci r a été supprimé des gestes de commandes pour la fonction SmartReply, il causait des problèmes en mode rédaction ;
+
+La partie qui transforme les lignes de la liste de messages  a été réécrite dans une logique différente afin de pallier à certains problèmes rencontrés en mode groupé par conversations ou critère de tri ;
+
+La gestion du démarrage de Thunderbird a été supprimée de l'extension au profit de Chichi ou de Start with inbox.
+-brSi vous continuez à utiliser ce dernier, il vient de  passé en version 2.5.2. Il permet maintenant de démarrer Thunderbird sur le premier message non lu dans le dossier Courrier entrant du compte que vous avez choisi dans ses options ;
+-br
+====Versions 4.1.1 à 4.2.1====
+
+Liste de messages : 
+- lorsqu'un filtre rapide est actif, un fichier audio WAV est joué quand la liste ou l'onglet auquel elle appartient reçoit le focus. Le son ressemble à un souffle ;
+-brLe fichier filter.wav se trouve dans le dossier : 
+-br"%appdata%\NVDA\TB+sounds"
+-brVous pouvez y placer un son à votre goût  pour autant que votre fichier se nomme : filter.wav. Après ce changement, il faut relancer NVDA ;
+- Deux Nouvelles options  dans  le menu -optMenu / Désactivations diverses :
+-br"Liste messages : Echappe ne revient pas à l'arborescence" : option non cochée par défaut ; 
+-br"Permettre    la fermeture de Thunderbird avec -ctrl+w ou -ctrl+F4" : en activant cette option, ces raccourcis ferment Thunderbird lorsqu'il ne reste plus qu'un onglet d'ouvert ;
+
+
+Arborescence des dossiers :
+-brSi le dossier sélectionné comporte des messages  non lu, un appui sur espace sélectionne le prochain ou le  premier message non lu dans la liste :
+- Dans la configuration par défaut de Thunderbird+4, le prochain message non lu sera sélectionné, celui-ci ne sera pas forcément le premier message non lu. Ce comportement est celui du raccourci n de Thunderbird ;
+- Si l'option "Espace sur un dossier avec non lus  cherche le premier message non lu depuis le début de la liste de messages"  du menu Options pour la fenêtre principale est cochée : contrairement au raccourci  "n" de Thunderbird, le script cherchera le véritable premier message non lu du dossier. Sur les ordinateurs moins rapides, ce détour peut se faire entendre ;
+
+
+-brEn pressant Tab sur le nom du compte sélectionné dans l'arborescence, on atteint un cadre contenant plusieurs bouton relatifs à ce compte. Dorénavant, la touche échappe permet de revenir à l'arborescence ; 
+
+-brLecture épurée de messages :
+-brLa touche F4 permet maintenant de lire un message  si celui-ci a le focus, que ce soit dans le volet d'aperçu, l'onglet de lecture, dans la fenêtre séparée de lecture et même dans la fenêtre de rédaction. 
+Avec -shift+F4, la lecture s'effectue dans l'ordre chronologie des citations ;
+-br
+-brPied de messages de groups.io, comme sur NVDA-FR : en lecture épurée avec espace ou f4, tout le pied de message  est passé sous silence à partir de  la ligne de nombreux égal ;
+-brLes lignes de plusieurs tirets sont maintenant ignorées, elles ne provoquent plus la suppression de la suite du message. Ce problème provenait de la suppression des pieds de messages des listes Yahoo ;
+-brSi l'affichage des messages est réglé sur HTML original, les feuilles de styles ne sont plus prononcées ;
+
+
+===version 4.0.4 pour Thunderbird 102, 24/09/2022===
+1. Modifications concernant la liste des messages :
+
+- Lorsqu'un nom de liste de diffusion apparaît plusieurs fois dans une ligne, ce nom n'est désormais annoncé qu'une seule fois. Idem pour l'annonce de l'objet avec la touche 2 du clavier alphanumérique ;
+- La lettre r frappée seule ne permet plus de répondre à un message, cela posait des problèmes dans la rédaction de messages. Les raccourcis équivalents sont : -ctrl+r ou Alt+page précédente. Ces raccourcis sont toujours configurables dans le  dialogue de configuration  des gestes de commande à la rubrique Thunderbird+4 / SmartReply ;
+- Correction du problème de l'annonce des lignes de niveau 2 lorsque la liste est groupée par critère de tri. Ce problème ne se produisait que chez certains utilisateurs ;
+
+
+2. Nouvelle liste de diffusion thunderbird-dv :
+
+Pour plus d'informations et vous y abonner, rendez vous sur la page [thunderbird-dv http://rptools.org/thunderbird-dv.html] ; 
+
+
+===version 4.0.3 pour Thunderbird 102, 03/09/2022===
+
+Correctifs suite à des changements apparus dans Thunderbird 102.2 :
+
+- Ce message : alerte Pour protéger votre vie privée, Thunderbird a bloqué l’affichage du contenu distant dans ce message,était annoncé même si l'affichage des messages était réglé sur HTML simple et si l'affichage du es contenus distants était désactivé dans les paramètres de Thunderbird. Dorénavant, l'extension supprime complètement cette annonce mais sans supprimer son affichage. 
+- Annonce des informations de barre d'état : le raccourci Alt+fin n'annonçait plus ces informations, tout comme NVDA avec le raccourci NVDA+fin. Ceci fonctionne à nouveau avec Alt+fin   ;
+- Dans la Liste de messages, les    lignes de groupage sont maintenant annoncées de manière plus conviviale. en mode "Grouper les messages par critère de tri" : par exemple, pour une liste groupée par correspondants, vous entendrez pour ces lignes spéciales : Groupe Jean Dupont, Groupe Tartempion, etc.
+
+
+===version 4.0.2 pour Thunderbird 102, 23/08/2022===
+Résolution d'un conflit de raccourci-clavier : -ctrl+Retour arrière lors de la rédaction d'un message. Ce raccourci ne ferme plus la fenêtre ; 
+
+
+===Modification du mode d'emploi, 22/07/2022===
+Révision importante de la section traitant du démarrage de Thunderbird.
+-brLa section [Amélioration du démarrage de Thunderbird #startup] explique comment installer et configurer les modules complémentaires "Auto select latest message" et "Start with inbox"
+-brCes deux modules s'intègrent directement à Thunderbird, ils sont indépendants de NVDA.
+
+
+===version 4.0.1 pour Thunderbird 102, 20/07/2022===
+- Menu -optMenu / Options pour la fenêtre de rédaction  : ajout de l'option "Activer l'amélioration de la Vérification orthographique pendant la saisie.". Cette option est désactivée par défaut, ce qui supprime la dernière cause de ralentissement potentiel de la saisie d'un message. Ce mode de vérification orthographique ne fonctionne pas encore sous NVDA 2022.1 ;
+- Commande "Ecrire au support" du menu -cmdMenu :  l'objet automatique du message indique la version de Thunderbird+4 et celle de Thunderbird que vous utilisez. Ceci me permet de vérifier la bonne concordance des versions,   merci d'utiliser ce canal lorsque vous avez besoin d'aide ;
+- Correction de bugs mineurs ;
+
+
+===version 4.0 pour Thunderbird 102, 02/07/2022===
+Cette version suit la version 3 qui reste disponible en Français uniquement ;
+
+
+

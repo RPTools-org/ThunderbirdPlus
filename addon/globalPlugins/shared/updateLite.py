@@ -78,16 +78,16 @@ class availableUpdateDialog(wx.Dialog):
 def getURLHelp(url) :
 	# 2022-12-20 localized
 	from languageHandler import getLanguage
-	lang = getLanguage().split("_")[0]
-	if lang == "fr" : lang = ""
-	else : lang = "-" + lang
+	lang = getLanguage()
+	if "PT" not in   lang :
+		lang = lang.split("_")[0]
 	return url.format(lang)
 	
 # Variables to configure
 baseUrl="http://www.rptools.org/"
-urlHelp = getURLHelp(baseUrl + "Outils-DV/NVDA-ThunderbirdPlus{0}.html#histo" )
+urlHelp = getURLHelp(baseUrl + "Outils-DV/changes_{0}.html#histo")
 urlFileInfos = baseUrl + "fileInfos.php?key=thunderbirdup4102"
-#urlFileInfos = baseUrl + "fileInfos.php?key=thunderbirduptest"
+# test urlFileInfos = baseUrl + "fileInfos.php?key=thunderbirduptest"
 # on peut aussi donner un lien direct : urlFileInfos = baseUrl + "dossierFichieonInfoButton/motCléExtension.txt"
 # Structure du fichier d'informations,  l'ordre des lignes doit être respecté
 # version=3.2.4
@@ -104,8 +104,9 @@ def checkUpdate(autoUp) :
 	# beep(440, 30)
 	if isDlg : return
 	nm, curVer = getCurVersion() 
+	# print("TbPlus curVer: " + nm + " curVer " + curVer)
 	# décommenter la ligne ci-dessous pour provoquer test màj
-	#curVer = "3.2.3" # pour provoquer test mise à jour 
+	# curVer = "4.3.1" # pour provoquer test mise à jour 
 	if autoUp : 
 		if not hasToUpdate(nm) : return
 	name, ver =  getLastVersion()

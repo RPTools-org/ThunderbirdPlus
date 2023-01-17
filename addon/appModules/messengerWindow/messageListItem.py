@@ -699,16 +699,17 @@ def getTreeID(fo) :
 def smartReply(msgHeader, rc) :
 	# beep(440, 20)
 	fldLabel = _("Pour: ")
-	oField = utis.findChildByID(msgHeader, "expandedreply-toRow")
-	if not oField :
-		oField = utis.findChildByID(msgHeader, "expandedtoRow")
+	#oField = utis.findChildByID(msgHeader, "expandedreply-toRow")
+	# if not oField :
+	oField = utis.findChildByID(msgHeader, "expandedtoRow")
 	if not oField :
 		message(_("Pas d'entête ") + fldLabel)
 		return KeyboardInputGesture.fromName("control+r").send()
-	#message(oField.name)
-	#return
+	# sharedVars.debugMess(oField, "SmartReply pour")
+	# return
 	oField, fldLabel, fldVal =  getRecip(oField)
-	# sharedVars.debugMess(oField, "pour")
+	# message(str(fldLabel) +" " + str(fldVal))
+	# return
 	isList = (rc == 0 and wordsMatchWord("@googlegroups;@framalist;@freelist", fldVal))
 	if isList : 
 		message(_("A la liste, "))
@@ -717,9 +718,14 @@ def smartReply(msgHeader, rc) :
 		return CallLater(25, KeyboardInputGesture.fromName("control+shift+l").send)
 	else :
 		delay = 25
-		# if "groups.io;" in fldVal :
-			# message(_(u"A deux adresses : ") + fldVal)
-			# delay = 5000
+		if "groups.io" in fldVal :
+			fldLabel = fldLabel.split(":")[0]
+			if ";" not in str(fldVal) : message(_("A la liste"))
+			else : 
+				delay = 250
+				message(fldLabel + "2 addresses") #  + fldVal)
+			return CallLater(delay, KeyboardInputGesture.fromName("control+r").send)
+		# not a list
 		CallLater(delay, replyTo, msgHeader, 0)
 
 def replyTo(msgHeader, recip) : # 0=correspondent 1=luist  

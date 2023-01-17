@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-03 08:53+0100\n"
-"PO-Revision-Date: 2023-01-03 08:55+0100\n"
+"POT-Creation-Date: 2023-01-15 06:56+0100\n"
+"PO-Revision-Date: 2023-01-15 07:11+0100\n"
 "Last-Translator: Pierre-Louis R. <plr.listes@rptools.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -86,7 +86,7 @@ msgid "%s, est déjà la dernière colonne."
 msgstr "%s, est déjà la dernière colonne."
 
 #. TRANSLATORS: the folder content has changed while this dialog was opened
-#: appModules/messengerWindow/columnManager.py:306
+#: appModules/messengerWindow/columnManager.py:305
 #, python-format
 msgid ""
 "Le dossier a changé, retournez à %s pour agencer les colonnes ou relancez "
@@ -411,51 +411,51 @@ msgstr "Ecrire au support"
 msgid "Rejoindre la liste thunderbird-dv"
 msgstr "Rejoindre la liste thunderbird-dv"
 
-#: appModules/messengerWindow/menuMain.py:81
+#: appModules/messengerWindow/menuMain.py:79
 msgid "Veuillez vous placer dans la liste des messages puis réessayez."
 msgstr "Veuillez vous placer dans la liste des messages puis réessayez."
 
-#: appModules/messengerWindow/menuMain.py:163
+#: appModules/messengerWindow/menuMain.py:161
 msgid "Pas de pièce jointe à enregistrer"
 msgstr "Pas de pièce jointe à enregistrer"
 
-#: appModules/messengerWindow/menuMain.py:168
+#: appModules/messengerWindow/menuMain.py:166
 msgid "Ouvrir la barre d'outilTB des pièces jointes"
 msgstr "Ouvrir la barre d'outilTB des pièces jointes"
 
-#: appModules/messengerWindow/menuMain.py:185
+#: appModules/messengerWindow/menuMain.py:183
 msgid "Ouvrir"
 msgstr "Ouvrir"
 
-#: appModules/messengerWindow/menuMain.py:186
+#: appModules/messengerWindow/menuMain.py:184
 msgid "plus d'option \tControl+alt+p"
 msgstr "plus d'option \tControl+alt+p"
 
-#: appModules/messengerWindow/menuMain.py:187
+#: appModules/messengerWindow/menuMain.py:185
 msgid "pièce jointe \""
 msgstr "pièce jointe \""
 
-#: appModules/messengerWindow/menuMain.py:190
+#: appModules/messengerWindow/menuMain.py:188
 msgid "jointe"
 msgstr "jointe"
 
-#: appModules/messengerWindow/menuMain.py:195
+#: appModules/messengerWindow/menuMain.py:193
 msgid "tout ... \tControl+Alt+p. "
 msgstr "tout ... \tControl+Alt+p. "
 
-#: appModules/messengerWindow/menuMain.py:196
+#: appModules/messengerWindow/menuMain.py:194
 msgid "se déplacer à la liste alt+p"
 msgstr "se déplacer à la liste alt+p"
 
-#: appModules/messengerWindow/menuMain.py:203
+#: appModules/messengerWindow/menuMain.py:201
 msgid "ouvrir"
 msgstr "ouvrir"
 
-#: appModules/messengerWindow/menuMain.py:204
+#: appModules/messengerWindow/menuMain.py:202
 msgid "plus d'options"
 msgstr "plus d'options"
 
-#: appModules/messengerWindow/menuMain.py:304
+#: appModules/messengerWindow/menuMain.py:302
 msgid ""
 "Pour obtenir tous les entêtes, veuillez ouvrir le Menu Affichage, descendre "
 "sur Entêtes puis presser sur Complets dans le sous-menu. Ensuite, affichez à "
@@ -572,6 +572,8 @@ msgid ""
 "Frappez deux fois cette commande pour marquer tous les messages comme lus "
 "dans le dossier : "
 msgstr ""
+"Frappez deux fois cette commande pour marquer tous les messages comme lus "
+"dans le dossier : "
 
 #: appModules/messengerWindow/messageListItem.py:357
 #, python-brace-format
@@ -610,11 +612,11 @@ msgstr "Inverse l'état lu et  non lu  du message sélectionné"
 
 #: appModules/messengerWindow/messageListItem.py:402
 msgid "Lu"
-msgstr ""
+msgstr "Lu"
 
 #: appModules/messengerWindow/messageListItem.py:403
 msgid "non lu"
-msgstr ""
+msgstr "Non lu"
 
 #: appModules/messengerWindow/messageListItem.py:405
 msgid "Message marqué comme "
@@ -655,7 +657,7 @@ msgid "Aucune  pièce jointe disponible dans ce contexte."
 msgstr "Aucune  pièce jointe disponible dans ce contexte."
 
 #: appModules/messengerWindow/messageListItem.py:642
-#: appModules/shared/utis.py:525
+#: appModules/shared/utis.py:528
 msgid "Pas de pièce jointe."
 msgstr "Pas de pièce jointe."
 
@@ -1142,21 +1144,21 @@ msgstr "Erreur d'enregistrement du fichier de paramètres de mise à jour."
 msgid "La mise à jour automatique a bien été désactivée."
 msgstr "La mise à jour automatique a bien été désactivée."
 
-#: appModules/shared/utis.py:414
+#: appModules/shared/utis.py:417
 msgid "La barre d'état n'est pas affichée."
 msgstr "La barre d'état n'est pas affichée."
 
-#: appModules/shared/utis.py:501
+#: appModules/shared/utis.py:504
 msgid "Copié"
 msgstr "Copié"
 
-#: appModules/shared/utis.py:575
+#: appModules/shared/utis.py:584
 msgid "Ouverture de  l'aide dans votre navigateur"
 msgstr "Ouverture de  l'aide dans votre navigateur"
 
-#: appModules/shared/utis.py:577
+#: appModules/shared/utis.py:586
 msgid "Fichier non trouvé : "
-msgstr ""
+msgstr "Fichier non trouvé : "
 
 #: appModules/thunderbird.py:130
 msgid "Choisir les col"
@@ -1220,21 +1222,21 @@ msgid "Smart reply pour répondre à un destinataire ou à une liste de diffusio
 msgstr ""
 "Smart reply pour répondre à un destinataire ou à une liste de diffusion"
 
-#: appModules/thunderbird.py:649
+#: appModules/thunderbird.py:648
 msgid "Envoie Control+F4 à la fenêtre courante."
 msgstr "Envoie Control+F4 à la fenêtre courante."
 
-#: appModules/thunderbird.py:676
+#: appModules/thunderbird.py:675
 msgid ""
 "Le volet des entêtes n'est pas affiché. Veuillez presser F8 puis réessayer"
 msgstr ""
 "Le volet des entêtes n'est pas affiché. Veuillez presser F8 puis réessayer"
 
-#: appModules/thunderbird.py:677
+#: appModules/thunderbird.py:676
 msgid "Le volet des entêtes ne contient pas d'informations ou est absent"
 msgstr "Le volet des entêtes ne contient pas d'informations ou est absent"
 
-#: appModules/thunderbird.py:688
+#: appModules/thunderbird.py:687
 msgid ""
 "Dans la fenêtre principale,  1 appui : Alt+1  à 8: lit l'entête  du message, "
 "Alt+9 annonce le nombre de pièces jointes, 2 appuis : affiche l'entête dans "
@@ -1248,7 +1250,7 @@ msgstr ""
 "appuis : atteint l'entête dans la zone des entêtes. Dans la fenêtre de "
 "rédaction, Alt1 à 4, lit les entêtes,  2 appuis atteint l'entête."
 
-#: appModules/thunderbird.py:747
+#: appModules/thunderbird.py:746
 msgid ""
 "Lecture filtrée du  document dans  le volet d'aperçu, l'onglet de lecture, "
 "la fenêtre de lecture ou de rédaction, depuis la liste de messages ou le "
@@ -1258,7 +1260,7 @@ msgstr ""
 "la fenêtre de lecture ou de rédaction, depuis la liste de messages ou le "
 "document."
 
-#: appModules/thunderbird.py:787
+#: appModules/thunderbird.py:786
 msgid ""
 "Affiche le menu contextuel des actions  disponibles dans les différentes "
 "fenêtres de Thunderbird."
@@ -1266,15 +1268,15 @@ msgstr ""
 "Affiche le menu contextuel des actions  disponibles dans les différentes "
 "fenêtres de Thunderbird."
 
-#: appModules/thunderbird.py:813
+#: appModules/thunderbird.py:812
 msgid "Affiche le menu contextuel des options de Thunderbird+"
 msgstr "Affiche le menu contextuel des options de Thunderbird+"
 
-#: appModules/thunderbird.py:824
+#: appModules/thunderbird.py:823
 msgid "Agencement des colonnes dans la liste de messages."
 msgstr "Agencement des colonnes dans la liste de messages."
 
-#: appModules/thunderbird.py:832
+#: appModules/thunderbird.py:831
 msgid ""
 "Affiche le dialogue d'édition du délai avant lecture du message de la "
 "fenêtre séparée de lecture."
@@ -1282,122 +1284,134 @@ msgstr ""
 "Affiche le dialogue d'édition du délai avant lecture du message de la "
 "fenêtre séparée de lecture."
 
-#: appModules/thunderbird.py:841
+#: appModules/thunderbird.py:840
 msgid "Présent : volet des entêtes et du message."
 msgstr "Présent : volet des entêtes et du message."
 
-#: appModules/thunderbird.py:843
+#: appModules/thunderbird.py:842
 msgid "Absent : volet des entêtes et du message."
 msgstr "Absent : volet des entêtes et du message."
 
-#: appModules/thunderbird.py:844
+#: appModules/thunderbird.py:843
 msgid "Affiche ou masque le volet des entêtes et d'aperçu du message."
 msgstr "Affiche ou masque le volet des entêtes et d'aperçu du message."
 
-#: appModules/thunderbird.py:849
+#: appModules/thunderbird.py:848
 msgid "Affiche l'aide de l'extension dans une page web"
 msgstr "Affiche l'aide de l'extension dans une page web"
 
-#: appModules/thunderbird.py:864
+#: appModules/thunderbird.py:863
 msgid "du mode de test"
 msgstr "du mode de test"
 
 #. TRANSLATORS: Thunderbird search box name
-#: appModules/thunderbird.py:932 appModules/thunderbird.py:941
-#: appModules/thunderbird.py:965 appModules/thunderbird.py:975
+#: appModules/thunderbird.py:931 appModules/thunderbird.py:940
+#: appModules/thunderbird.py:964 appModules/thunderbird.py:974
 msgid "Rechercher dans "
 msgstr "Rechercher dans "
 
 #. TRANSLATORS: message spoken when leaving the search box in Thunderbird
-#: appModules/thunderbird.py:946
+#: appModules/thunderbird.py:945
 msgid "Sorti du champ de recherche"
 msgstr "Sorti du champ de recherche"
 
 #. TRANSLATORS: a button has been unchecked
-#: appModules/thunderbird.py:993
+#: appModules/thunderbird.py:992
 msgid "décocher"
 msgstr "décocher"
 
 #. TRANSLATORS: a button has been checked
-#: appModules/thunderbird.py:996
+#: appModules/thunderbird.py:995
 msgid "cocher"
 msgstr "Cocher"
 
 #. TRANSLATORS: a button is checked
-#: appModules/thunderbird.py:1006
+#: appModules/thunderbird.py:1005
 msgid "coché"
 msgstr "coché"
 
 #. TRANSLATORS: a button is not checked
-#: appModules/thunderbird.py:1009
+#: appModules/thunderbird.py:1008
 msgid "non coché"
 msgstr "Non coché"
 
-#: appModules/thunderbird.py:1118
+#: appModules/thunderbird.py:1117
 msgid "Journal TB+4"
 msgstr "Journal TB+4"
 
-#: appModules/thunderbird.py:1176
+#: appModules/thunderbird.py:1175
 msgid "Préférences"
 msgstr "Préférences"
 
-#: appModules/thunderbird.py:1180
+#: appModules/thunderbird.py:1179
 msgid "Address Book"
 msgstr "Carnet d' Adresses"
 
 #. TRANSLATORS: "Réduit " stands for a collapsed branch in the  tree  in the message panel. In portugese : recolhido
-#: appModules/thunderbird.py:1330
+#: appModules/thunderbird.py:1329
 msgid "Réduit "
-msgstr ""
+msgstr "Réduit "
 
-#: appModules/thunderbird.py:1343
+#: appModules/thunderbird.py:1342
 msgid "Non lu "
 msgstr "Non lu "
 
-#: appModules/thunderbird.py:1344
+#: appModules/thunderbird.py:1343
 msgid "Lu "
-msgstr ""
+msgstr "Lu "
 
-#: appModules/thunderbird.py:1346
+#: appModules/thunderbird.py:1345
 msgid "PJ"
 msgstr "PJ"
 
-#: appModules/thunderbird.py:1348 appModules/thunderbird.py:1371
+#: appModules/thunderbird.py:1347 appModules/thunderbird.py:1370
 msgid " indésirable "
 msgstr " indésirable "
 
-#: appModules/thunderbird.py:1352
+#: appModules/thunderbird.py:1351
 msgid "pas de sujet"
 msgstr "pas de sujet"
 
-#: appModules/thunderbird.py:1384
+#: appModules/thunderbird.py:1383
 msgid "Ré "
 msgstr "Ré "
 
-#: appModules/thunderbird.py:1412 appModules/thunderbird.py:1441
+#: appModules/thunderbird.py:1411 appModules/thunderbird.py:1440
 msgid "Pas de filtrage  rapide."
 msgstr "Pas de filtrage  rapide."
 
-#: appModules/thunderbird.py:1413 appModules/thunderbird.py:1442
+#: appModules/thunderbird.py:1412 appModules/thunderbird.py:1441
 msgid " filtrés"
 msgstr " filtrés"
 
-#: appModules/thunderbird.py:1415 appModules/thunderbird.py:1444
+#: appModules/thunderbird.py:1414 appModules/thunderbird.py:1443
 msgid "Zone de recherche vide. "
 msgstr "Zone de recherche vide. "
 
-#: appModules/thunderbird.py:1417 appModules/thunderbird.py:1446
+#: appModules/thunderbird.py:1416 appModules/thunderbird.py:1445
 #, python-format
 msgid "Expression entrée: %s"
 msgstr "Expression entrée: %s"
 
-#: appModules/thunderbird.py:1431 appModules/thunderbird.py:1459
+#: appModules/thunderbird.py:1430 appModules/thunderbird.py:1458
 msgid "Aucune option  activée. "
 msgstr "Aucune option  activée. "
 
-#: appModules/thunderbird.py:1433 appModules/thunderbird.py:1461
+#: appModules/thunderbird.py:1432 appModules/thunderbird.py:1460
 msgid "Les options activées sont: "
 msgstr "Les options activées sont: "
+
+#: buildVars.py:22
+msgid "Thunderbird+ 4"
+msgstr "Thunderbird+ 4"
+
+#: buildVars.py:26
+msgid ""
+"This extension adds commands to Thunderbird 102 and above to make it more "
+"accessible, efficient and comfortable to use."
+msgstr ""
+"Cette extension ajoute des commandes à Thunderbird 102 pour le rendre plus "
+"accessible, efficace et confortable à utiliser"
 
 #: globalPlugins/ThunderbirdGlob.py:73
 msgid "Thunderbird est déjà en cours d'utilisation."

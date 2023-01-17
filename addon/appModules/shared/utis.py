@@ -569,7 +569,9 @@ def openListAttachment2 (fo, repeat ):
 
 def getLang() :
 	from languageHandler import getLanguage
-	return getLanguage().split("_")[0]
+	l = getLanguage() 
+	if "pt" in l : return l # pt_PT
+	return l.split("_")[0]
 
 
 def showHelp() :
@@ -577,8 +579,8 @@ def showHelp() :
 	lang = getLang()
 	# message("langue : " + str(lang)) 
 	curAddon=addonHandler.getCodeAddon()
-	# helpPath=os.path.join(curAddon.path,"doc\\fr\\readme.html")
-	helpPath=os.path.join(curAddon.path,"doc", lang, "readme.html")
+	# helpPath=os.path.join(curAddon.path,"doc\\fr\\addonUserManual.html")
+	helpPath=os.path.join(curAddon.path,"doc", lang, "addonUserManual.html")
 	message(_("Ouverture de  l'aide dans votre navigateur"))
 	try :  os.startfile (helpPath)
 	except : message(_("Fichier non trouvé : ") + helpPath)
