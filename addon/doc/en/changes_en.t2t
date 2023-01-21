@@ -1,73 +1,47 @@
-﻿Thunderbird+ : change log 
+﻿ADDON_SUMMARY add-on : change log 
+Last Version : ADDON_CUR_VERSION - %%date(%m-%d-%y)
+Authors : ADDON_AUTHOR_NAME
 
-Last update : -date
-%!Target: xhtml
-%!Encoding: UTF-8
-% content-language
-%!PostProc(xhtml): '\</title\>' '</title>\n<META HTTP-EQUIV="Content-Language" Content="en">'
-%!style: style_t2t.css
-%!preproc: 'àodv' 'http://www.rptools.org/Outils-DV/'
-% 
-%!PostProc(xhtml): '(?i)^.*<li><a href="#toc".+$' ''
-% Therefore, change h1 through h5 in the output to h2 through h6.
-%!PostProc(xhtml): ^<H5>(.*)</H5>$ <H6>\1</H6>
-%!PostProc(xhtml): ^<H4>(.*)</H4>$ <H5>\1</H5>
-%!PostProc(xhtml): ^<H3>(.*)</H3>$ <H4>\1</H4>
-%!PostProc(xhtml): ^<H2>(.*)</H2>$ <H3>\1</H3>
-%!PostProc(xhtml): ^<H1>(.*)</H1>$ <H2>\1</H2>
-
-% Specific
-%!PostProc(xhtml): ^<H2>(﻿Extens.*)</H2>$ <H1>\1</H1>
-% keywords prefixed by -  in order to write HTML tags.
-% Translator :Edit below the version and date on each update
-%!postproc(xhtml): '-ver' '4.4'
-%!postproc(xhtml): '-date' 'January 17,2023'
-%!postproc(xhtml): '-br' '<br />'
-%!postproc(xhtml): '-lt' '<'
-%!postproc(xhtml): '-gt' '>'
-% translator :  below, the command menu key and the options menu key. It is the key just above the Tab key. 
-%!postproc(xhtml): '-cmdMenu' 'Accent (Backtick)'
-%!postproc(xhtml): '-optMenu' '-Shift+accent (backtick)'
-% transmlator : shift modifier. Replace below Shift  by shift in your language
-%!postproc(xhtml): '-shift' 'Shift'
-% transmlator : ctrl  modifier. Replace below Control  by control in your language
-%!postproc(xhtml): '-ctrl' 'Control'
-
-% translator :  below, First key at the left of backspace. Its name depends of the language and the country. 
-%!postproc(xhtml): '-bs1' 'Equals'
-% translator :  below, Second key at the left of backspace. Its name depends of the language and the country. 
-%!postproc(xhtml): '-bs2' 'Minus'
--br
-% Informations
-- Versions : -ver for Thunderbird 102
-- Minimum Version  of NVDA : 2019.3 Last tested version of NVDA  : 2022.1 ; 
-- Authors : Pierre-Louis R., Daniel Poiraud
-- contact : [Pierre-Louis http://www.rptools.org/Outils-DV/contact.html] , in french or english;
-
- - 
+%!includeconf: ../addon_userManual.t2tconf
+%!includeconf: addon_informations.t2tconf
+%!includeconf: addon_keys.t2tconf
 
 -br
 
-% translator : translate only the word "Sommaire"
+URL : [RPTools.org http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html]
+
+GitHub repos: [ThunderbirdPlus repos ADDON_REPOSITORY] ;
+
+Compatibility :
+- Minimum supported NVDA  version  : MINIMUM_NVDA_VERSION
+- Last tested NVDA version : LAST_TESTED_NVDA_VERSION
 
 
-==Change log==[histo]
-===Version 4.4, 17/01/2023===
+-br
+=Table of contents=[toc]
+%%toc
+
+
+-br
+
+
+=Change log=[histo]
+==Version 4.4, 17/01/2023==
 Many changes to make the extension consistent with its publication on the gitHub repository.
 
 [Visite ThunderbirdPlus repos on gitHub https://github.com/RPTools-org/ThunderbirdPlus]
 
 
-===versions 4.3.3, January 8, 2023===
+==versions 4.3.3, January 8, 2023==
 - After optimizations, reading headers no longer worked in the separate reading window ;
 - When the selected NVDA language was "User Default", the extension's help file was not found when pressing Control+F1 ;
 
 
-===versions 4.3.2, January 6, 2023===
+==versions 4.3.2, January 6, 2023==
 Fix: reading headers in the separate window of a message no longer worked ;
 
 
-===versions 4.3.1, January 4, 2023===
+==versions 4.3.1, January 4, 2023==
 After the translation into three languages ​​of version 4.3, optimizations and fixes:
 
 - The determination of the active window no longer depends on its title, which makes the extension less dependent on the Thunderbird interface language. If the interface language of NVDA is different from that of Thunderbird, the most important scripts of Thunderbird+ will work correctly;
@@ -76,7 +50,7 @@ After the translation into three languages ​​of version 4.3, optimizations a
 - Reactivating automatic updates via the options menu no longer worked following a previous change;
 
 
-===versions 4.3, 12/26/2022===
+==versions 4.3, 12/26/2022==
 - First localization of Thunderbird+4 in a foreign language: in Portuguese by Rui Fontes from TifloTecnia.com and Ângelo Miguel Abrantes, NVDA Portugal team members ; Thanks to them for opening the door to other languages;
 - Translation in Spanish by Remy Ruiz ;
 - Translation in English from French by Google Translate & Pierre-Louis R. ;
@@ -86,14 +60,14 @@ After the translation into three languages ​​of version 4.3, optimizations a
 Note: In order to the addon to work properly, the NVDA language must be the same as the Thunderbird user interface;
 
 
-ions 4.2.7 for Thunderbird 102, 11/24/2022===
+ions 4.2.7 for Thunderbird 102, 11/24/2022==
 
 A new option has been added to the -optMenu / Options menu for the main window:
 - separate reading window: do not automatically read the mmessage if it causes NVDA crashes
 -brBy default, when you open a message by pressing Enter from the message list, a clean reading of the message starts when the new window opens. On some computers and when the email account is set to IMAP, NVDA may crash. When this option is checked, this automatic reading is deactivated to avoid any blocking.
 
 
-===versions 4.2.5 for Thunderbird 102, 11/22/2022===
+==versions 4.2.5 for Thunderbird 102, 11/22/2022==
 -brList of messages in bulk mode:
 
 - The add-on first announces "Reduced" when arriving on a reduced level 1 line;- By pressing space, F4 or Alt+Down arrow for a clean reading of the preview pane message, such a line is first expanded. This is necessary to be able to retrieve the message to be read;
@@ -121,7 +95,7 @@ By pressing Alt+1 twice quickly, we reach the "From" addressing field. Now, the 
 
 
 
-===versions 4.1 to 4.2.1 for Thunderbird 102, 07/11/2022===
+==versions 4.1 to 4.2.1 for Thunderbird 102, 07/11/2022==
 Important Note: After installing this version, please check in the add-on manager if Thunderbird+4 is not installed twice. If necessary, delete the old version;
 -br
 -br
@@ -169,7 +143,7 @@ The part that transforms the lines of the list of messages has been rewritten in
 Thunderbird startup management has been removed from the add-on in favor of Chichi or Start with inbox.
 -brIf you continue to use the latter, it has just been upgraded to version 2.5.2. It now allows you to start Thunderbird on the first unread message in the Incoming Mail folder of the account you have chosen in its options;
 -br
-===+Versions 4.1.1 to 4.2.1===+
+==+Versions 4.1.1 to 4.2.1==+
 
 List of messages:
 - when a quick filter is active, a WAV audio file is played when the list or the tab to which it belongs receives focus. The sound resembles a breath;
@@ -198,7 +172,7 @@ With -shift+F4, the reading is done in the chronological order of the citations;
 -brIf message display is set to original HTML, stylesheets are no longer spoken;
 
 
-===version 4.0.4 for Thunderbird 102, 09/24/2022===
+==version 4.0.4 for Thunderbird 102, 09/24/2022==
 1. Changes to the list of messages:
 
 - When a mailing list name appears multiple times in a line, that name is now only announced once. Ditto for the announcement of the object with key 2 of the alphanumeric keyboard;
@@ -211,27 +185,27 @@ With -shift+F4, the reading is done in the chronological order of the citations;
 For more information and to subscribe, go to [thunderbird-dv http://rptools.org/thunderbird-dv.html];
 
 
-===version 4.0.3 for Thunderbird 102, 09/03/2022===
+==version 4.0.3 for Thunderbird 102, 09/03/2022==
 
 Fixes following changes introduced in Thunderbird 102.2:
 
 - This message: alert To protect your privacy, Thunderbird has blocked the display of remote content in this message, was announced even if the display of messages was set to simple HTML and the display of remote content was disabled in Thunderbird settings. From now on, the add-on completely removes this ad but without suppressing its display.
 - Announcement of status bar information: the shortcut Alt+end no longer announced this information, just like NVDA with the shortcut NVDA+end. This works again with Alt+end;
-- In the Message List, grouping lines are now announced in a more friendly way. in "Group messages by sorting criteria" mode: for example, for a list grouped by correspondents, you will hear for these special lines: Jean Dupont group, Tartempion group, etc.===version 4.0.2 for Thunderbird 102, 08/23/2022===
+- In the Message List, grouping lines are now announced in a more friendly way. in "Group messages by sorting criteria" mode: for example, for a list grouped by correspondents, you will hear for these special lines: Jean Dupont group, Tartempion group, etc.==version 4.0.2 for Thunderbird 102, 08/23/2022==
 Fixed a hotkey conflict: -ctrl+Backspace when composing a message. This shortcut no longer closes the window;
 
 
-===Modification of the instructions for use, 07/22/2022===
+==Modification of the instructions for use, 07/22/2022==
 Significant revision to the section dealing with starting Thunderbird.
 -brThe [Thunderbird startup enhancement #startup] section explains how to install and configure the "Auto select latest message" and "Start with inbox" add-ons
 -brThese two modules integrate directly with Thunderbird, they are independent of NVDA.
 
 
-===version 4.0.1 for Thunderbird 102, 07/20/2022===
+==version 4.0.1 for Thunderbird 102, 07/20/2022==
 - Menu -optMenu / Options for the Write window: added option "Enable improved Spell check while typing.". This option is disabled by default, which removes the last cause of potential slowness in typing a message. This spell check mode does not yet work in NVDA 2022.1;
 - Command "Write to support" menu -cmdMenu: the automatic subject of the message indicates the version of Thunderbird+4 and that of Thunderbird that you are using. This allows me to check that the versions match, please use this channel when you need help;
 - Fixed minor bugs;
 
 
-===version 4.0 for Thunderbird 102, 02/07/2022===
+==version 4.0 for Thunderbird 102, 02/07/2022==
 This version follows version 3 which remains available in French only;

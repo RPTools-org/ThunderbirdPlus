@@ -1,7 +1,7 @@
-# Thunderbird+ #
+# Thunderbird+4 #
 
 * Auteur : Pierre-Louis Renaud, Daniel Poiraud
-* URL : contact : [Pierre-Louis](http://www.rptools.org/Outils-DV/contact.html] , en Français et Anglais) ;
+* URL : [Documentation](http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus.html) , [Contact](http://www.rptools.org/Outils-DV/contact.html) ;
 * Télécharger :
 	* [version stable][1]
 * Compatibilité NVDA :
@@ -40,6 +40,6 @@ Cette extension améliore fortement le confort et l'efficacité d'utilisation du
 * Et bien d'autres choses que vous découvrirez en lisant le [manuel de l'utilisateur][2] ;
 
 
-[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.4/ThunderbirdPlus-v4.4-TB102.nvda-addon
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.3.3/Thunderbird+4-v4.3.3-TB102.nvda-addon
 
 [2]: http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus.html

@@ -1,0 +1,23 @@
+% script command keys  definition
+
+% keywords prefixed by -  in order to write HTML tags.
+% Translator :Edit below the version and date on each update
+%  disabled postproc(html): '-ver' '4.4'
+% disabled  postproc(html): '-date' '17/01/2023'
+% HTML tages
+%!postproc(html): '-br' '<br />'
+%!postproc(html): '-lt' '<'
+%!postproc(html): '-gt' '>'
+% translator :  below, the command menu key and the options menu key. In french, these are ² and shift+² which arejust above the tab key.. Replace "puissance2 byoutr mainkey and majuscule by shift in your language.
+%!postproc(html): '-cmdMenu' 'Ordinal'
+%!postproc(html): '-optMenu' 'shift+Ordinal'
+% transmlator : shift modifier. Replace below Majuscule by shift in your language
+%!postproc(html): '-shift' 'Shift'
+% transmlator : ctrl  modifier. Replace below Contrôle  by control in your language
+%!postproc(html): '-ctrl' 'Control'
+
+% translator :  below, First key at the left of backspace. Its name depends of the language and the country. 
+% not used in spanish postproc(html): '-bs1' 'Equals'
+% translator :  below, Second key at the left of backspace. Its name depends of the language and the country. 
+% not used postproc(html): '-bs2' 'Minus'
+

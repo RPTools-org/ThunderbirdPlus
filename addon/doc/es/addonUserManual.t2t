@@ -1,60 +1,44 @@
-﻿Complemento Thunderbird+ para NVDA: más eficiencia y comodidad al usar  Thunderbird 102
+﻿Complemento ADDON_SUMMARY para NVDA: más eficiencia y comodidad al usar  Thunderbird 102
+Versión : ADDON_CUR_VERSION - %%date(%m/%d/%Y)
+Autor : ADDON_AUTHOR_NAME
 
-Última actualización -date - Versión -ver para Thunderbird 102 -br-lta href="changes_es.html#histo"-gtConsulte el historial (contiene información no incluida en la documentación)-lt/a-gt
-%!Target: xhtml
-%!Encoding: UTF-8
-% content-language
-%!PostProc(xhtml): '\</title\>' '</title>\n<META HTTP-EQUIV="Content-Language" Content="es">'
-%!style: style_t2t.css
-% generation of the table of contents
-%!options: --toc
-%!preproc: 'àodv' 'http://www.rptools.org/Outils-DV/'
-% 
-%!PostProc(xhtml): '(?i)^.*<li><a href="#toc".+$' ''
-% Therefore, change h1 through h5 in the output to h2 through h6.
-%!PostProc(xhtml): ^<H5>(.*)</H5>$ <H6>\1</H6>
-%!PostProc(xhtml): ^<H4>(.*)</H4>$ <H5>\1</H5>
-%!PostProc(xhtml): ^<H3>(.*)</H3>$ <H4>\1</H4>
-%!PostProc(xhtml): ^<H2>(.*)</H2>$ <H3>\1</H3>
-%!PostProc(xhtml): ^<H1>(.*)</H1>$ <H2>\1</H2>
 
-% Specific
-%!PostProc(xhtml): ^<H2>(﻿Extens.*)</H2>$ <H1>\1</H1>
-% keywords prefixed by -  in order to write HTML tags.
-% Translator :Edit below the version and date on each update
-%!postproc(xhtml): '-ver' '4.4'
-%!postproc(xhtml): '-date' '17 de enero de 2023'
-%!postproc(xhtml): '-br' '<br />'
-%!postproc(xhtml): '-lt' '<'
-%!postproc(xhtml): '-gt' '>'
-% translator :  below, the command menu key and the options menu key. In french, these are ² and shift+² which arejust above the tab key.. Replace "puissance2 byoutr mainkey and majuscule by shift in your language.
-%!postproc(xhtml): '-cmdMenu' 'Ordinal'
-%!postproc(xhtml): '-optMenu' '-shift+Ordinal'
-% translator : shift modifier. Replace below Majuscule by shift in your language
-%!postproc(xhtml): '-shift' 'Shift'
-% translator : ctrl  modifier. Replace below Contrôle  by control in your language
-%!postproc(xhtml): '-ctrl' 'Control'
+%!includeconf: ../addon_userManual.t2tconf
+%!includeconf: addon_informations.t2tconf
+%!includeconf: addon_keys.t2tconf
+
+-br
+[Consulte el historial (contiene información no incluida en la documentación) changes_es.html#histo]
+
+URL : [RPTools.org http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html]
+
+repositorio GitHub: [ThunderbirdPlus repos ADDON_REPOSITORY] ;
+
+[Descargar #dl] ;
+
+Compatibilidad :
+- - Versión mínima de NVDA requerida: MINIMUM_NVDA_VERSION
+- última versión de NVDA probada: LAST_TESTED_NVDA_VERSION
+
+
 -br
 
-% Informations
-- Versiones: -ver para Thunderbird 102
-- Versión mínima de NVDA requerida: 2019.3 Última versión de NVDA probada: 2022.1; 
+=Índice=[toc]
+%%toc
+
+
+-br
+
 - Autor original del complemento thunderBird: Yannick
 - Adaptación a Thunderbird 68 , 78, 91, 102 y a NVDA 2019.3 y siguientes: Daniel Poiraud, Pierre-Louis R y Abdel para la versión 3.1.;
-- Documentación y contacto: [Pierre-Louis http://www.rptools.org/Outils-DV/contact.html] , en Francés y Inglés;
+- [Documentación original en francés http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus.html]
 - Traducciones por orden de antigüedad:
  - [Portugués http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt_PT.html] : por Rui Fontes de TifloTecnia.com y miembro del equipo de NVDA Portugal;
  - [Español http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html] : por Rémy Ruiz;
  - [inglés http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html] : por Google Translate & Pierre-Louis R.
-- 
 
 
 -br
-
-% translator : translate only the word "Sommaire"
-=Índice=[toc]
-%%toc
-
 +Presentación+
 Este complemento mejora enormemente la comodidad y la eficiencia del uso del cliente de correo electrónico Mozilla Thunderbird con NVDA.
 -br
@@ -89,15 +73,15 @@ Este complemento mejora enormemente la comodidad y la eficiencia del uso del cli
 - Y muchas cosas más que descubrirás leyendo el resto de esta documentación;
 
 
-+Descargar e instalar+
++Descargar e instalar+[dl]
 
 Si el complemento "Mozilla Apps Enhancements" de Javie Dominguez" está instalado en su computadora, primero debe deshabilitarlo antes de instalar Thunderbird+:
 
 [Descargar Thunderbird+ v-ver solo para Thunderbird 102 http://www.rptools.org/?p=8610];
 
 +Soporte y lista de correo+
-% Translator : you have to edit support.t2t
-%!include: support.t2t 
+% Translator : you have to edit support.t2tinc
+%!include: support.t2tinc 
 
 -br
 +Mejora del inicio de Thunderbird+[startup]
@@ -673,5 +657,5 @@ Para desactivar este anuncio:
 - Para corregir manualmente una palabra, primero pulsa NVDA+espacio para volver al modo foco;
 
 
-% Translator : You have to edit seeAlso.t2t
-%!include: seeAlso.t2t
+% Translator : You have to edit seeAlso.t2tinc
+%!include: seeAlso.t2tinc

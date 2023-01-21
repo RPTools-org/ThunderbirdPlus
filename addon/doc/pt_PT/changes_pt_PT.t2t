@@ -1,64 +1,49 @@
-Thunderbird+: Histórico de alterações
+Extra ADDON_SUMMARY  : Histórico de alterações
+Última versión : ADDON_CUR_VERSION - %%date(%m/%d/%Y)
+Autor : ADDON_AUTHOR_NAME
 
-Última actualização em -date
-%Spécification du target, il peut être modifié en xhtml en cas de besoin.
-% Ne pas oublier de reporter la modification également dans les directives de PostProcesseur implémentées plus bas.
-%!Target: xhtml
-% Spécification de l'encodage.
-%!Encoding: UTF-8
-% content-language
-%!PostProc(xhtml): '\</title\>' '</title>\n<META HTTP-EQUIV="Content-Language" Content="pt">'
-%!style: style_t2t.css
-%!preproc: 'àodv' 'http://www.rptools.org/Outils-DV/'
-% Retrait du lien vers le titre du sommaire dans la table des matières.
-%!PostProc(xhtml): '(?i)^.*<li><a href="#toc".+$' ''
-% Therefore, change h1 through h5 in the output to h2 through h6.
-%!PostProc(xhtml): ^<H5>(.*)</H5>$ <H6>\1</H6>
-%!PostProc(xhtml): ^<H4>(.*)</H4>$ <H5>\1</H5>
-%!PostProc(xhtml): ^<H3>(.*)</H3>$ <H4>\1</H4>
-%!PostProc(xhtml): ^<H2>(.*)</H2>$ <H3>\1</H3>
-%!PostProc(xhtml): ^<H1>(.*)</H1>$ <H2>\1</H2>
+%!includeconf: ../addon_userManual.t2tconf
+%!includeconf: addon_informations.t2tconf
+%!includeconf: addon_keys.t2tconf
 
-% Specific
-%!PostProc(xhtml): ^<H2>(﻿Extens.*)</H2>$ <H1>\1</H1>
 
-% keywords prefixed by -  in order to write HTML tags.
-% Translator :Edit below the version and date on each update
-%!postproc(xhtml): '-ver' '4.4'
-%!postproc(xhtml): '-date' '01/17/2023'
-%!postproc(xhtml): '-br' '<br />'
-%!postproc(xhtml): '-lt' '<'
-%!postproc(xhtml): '-gt' '>'
-%!postproc(xhtml): 'àgui' '&quot;'
 -br
+URL : [Documentação http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt_PT.html]
+ ; [contacto en Français et Anglais http://www.rptools.org/Outils-DV/contact.html] ;
 
-% Informations de l'addon dans une liste non-ordonnée.
-- Versão: -ver para Thunderbird 102 ;
-- Versão mínima do NVDA requerida: 2019.3. Última versão do NVDA testada: 2022.1 ; 
-- Autor : Pierre-Louis R., Daniel Poiraud ;
-- Ccontacto: [Pierre-Louis http://www.rptools.org/Outils-DV/contact.html]
+Repositório GitHub: [ThunderbirdPlus repos ADDON_REPOSITORY] ;
+
+Compatibilidade:
+- Versão mínima do NVDA requerida: 2019.3 ;
+- Última versão do NVDA testada: 2022.1 ;
+
 
 -br
 
 
-==Histórico de alterações==[histo]
-===versões 4.4, 01/17/2023===
+=Índice=[toc]
+%%toc
+
+
+-br
+=Histórico de alterações=[histo]
+==versões 4.4, 01/17/2023==
 Muitas alterações para tornar a extensão consistente com sua publicação no repositório gitHub.
 
 [Visite o repositório ThunderbirdPlus em https://github.com/RPTools-org/ThunderbirdPlus] ;
 
 
 
-===versões 4.3.3, 01/08/2023===
+==versões 4.3.3, 01/08/2023==
 - After optimizations, reading headers no longer worked in the separate reading window ;
 - When the selected NVDA language was "User Default", the extension's help file was not found when pressing Control+F1;
 
 
-===versões 4.3.2, 01/06/2023===
+==versões 4.3.2, 01/06/2023==
 Fix: reading headers in the separate window of a message no longer worked;
 
 
-===versões 4.3.1, 01/04/2023===
+==versões 4.3.1, 01/04/2023==
 Após a tradução para três idiomas da versão 4.3, otimizações e correções:
 
 - A determinação da janela ativa não depende mais do seu título, o que torna a extensão menos dependente do idioma da interface do Thunderbird. Se o idioma da interface do NVDA for diferente do Thunderbird, os scripts mais importantes do Thunderbird+ funcionarão corretamente;
@@ -67,7 +52,7 @@ Após a tradução para três idiomas da versão 4.3, otimizações e correçõe
 - A reativação das atualizações automáticas pelo menu de opções não funcionou mais após uma alteração anterior;
 
 
-===Versão 4.3 para Thunderbird 102, 12/26/2022===
+==Versão 4.3 para Thunderbird 102, 12/26/2022==
 - primeira tradução do Thunderbird+ por  Rui Fontes de casa  TifloTecnia.com & Ângelo Miguel Abrantes, Membros da equipa NVDA Portugal;
 - Tradução para o espanhol por Remy Ruiz ;
 - Tradução para o inglês pelo Google Translate  & Pierre-Louis R. ;
@@ -76,7 +61,7 @@ Após a tradução para três idiomas da versão 4.3, otimizações e correçõe
 Nota: Para que a extra Thunderbird+ funcione corretamente, o idioma do NVDA deve ser o mesmo da interface do usuário do Thunderbird;
 
 
-===Versão 4.2.5 para Thunderbird 102, 11/22/2022===
+==Versão 4.2.5 para Thunderbird 102, 11/22/2022==
 -brLista de mensagens em modo agrupado:
 
 - O extra anuncia primeiro "Reduzido" ao chegar a uma linha de nível 1 reduzido;
@@ -104,7 +89,7 @@ No menu Opções, obtido pressionando Shift+\ (barra invertida), adicionar os 3 
 - Repor a configuração r: recarrega as configurações padrão da extensão. Antes de o fazer, faça uma cópia de segurança se ainda não existir uma;
 
 
-=== Versões 4.1 a 4.2.1 para Thunderbird 102, 07/11/2022===
+== Versões 4.1 a 4.2.1 para Thunderbird 102, 07/11/2022==
 Nota importante: Após instalar esta versão, verificar no gestor da extensão se o Thunderbird+4 não está instalado duas vezes. Em caso afirmativo, retire a versão antiga;
 -br
 -br
@@ -152,7 +137,7 @@ O código que transforma as linhas da lista de mensagens foi reescrita com uma l
 A gestão de arranque do Thunderbird foi removida da extensão a favor de Chichi ou Start with inbox.
 -br Se continuar a utilizar esta última, acabou de ser actualizada para a versão 2.5.2. Permite agora ao Thunderbird iniciar a primeira mensagem não lida na pasta de correio de entrada da conta que escolheu nas suas opções;
 -br
-===Versões 4.1.1 a 4.2.1===
+==Versões 4.1.1 a 4.2.1==
 
 Lista de mensagens : 
 - Quando um filtro rápido está activo, um ficheiro áudio WAV é reproduzido quando a lista ou o separador a que pertence recebe o foco. O som assemelha-se a uma respiração;
@@ -182,7 +167,7 @@ Com Shift+F4, a leitura é feita na ordem cronológica das citações;
 -br Se a exibição da mensagem estiver definida para HTML original, as folhas de estilo já não são pronunciadas;
 
 
-===versão 4.0.4 para Thunderbird 102, 09/24/2022===
+==versão 4.0.4 para Thunderbird 102, 09/24/2022==
 1. Alterações à lista de mensagens:
 
 - Quando um nome de lista de correio aparece várias vezes numa linha, esse nome é agora anunciado apenas uma vez. O mesmo se aplica ao anúncio do assunto com a tecla 2 do teclado alfanumérico;
@@ -195,7 +180,7 @@ Com Shift+F4, a leitura é feita na ordem cronológica das citações;
 Para mais informações e para subscrever, vá a [thunderbird-dv http://rptools.org/thunderbird-dv.html]; 
 
 
-===versão 4.0.3 para Thunderbird 102, 03/09/2022===
+==versão 4.0.3 para Thunderbird 102, 03/09/2022==
 
 Correcções para responder às alterações introduzidas no Thunderbird 102.2:
 
@@ -204,22 +189,22 @@ Correcções para responder às alterações introduzidas no Thunderbird 102.2:
 - Na lista de mensagens, as linhas de agrupamento são agora anunciadas de uma forma mais fácil de utilizar. no modo "Mensagens de grupo por critérios de ordenação": por exemplo, para uma lista agrupada por correspondentes, ouvirá para estas linhas especiais: Grupo John Smith, Grupo Tartempion, etc.
 
 
-===versão 4.0.2 para Thunderbird 102, 23/08/2022===
+==versão 4.0.2 para Thunderbird 102, 23/08/2022==
 Corrigido um conflito de atalhos de teclado: Control+Backspace ao escrever uma mensagem. Este atalho já não fecha a janela; 
 
 
-===Mudanças no manual do utilizador, 22/07/2022===
+==Mudanças no manual do utilizador, 22/07/2022==
 Grande revisão da secção que trata do arranque do Thunderbird.
 -brA secção [Início melhorado do Thunderbird #startup] explica como instalar e configurar os add-ons "Auto select latest message" e "Start with inbox".
 -br Estes dois add-ons integram-se directamente com o Thunderbird, são independentes da NVDA.
 
 
-===versão 4.0.1 para Thunderbird 102, 20/07/2022===
+==versão 4.0.1 para Thunderbird 102, 20/07/2022==
 - Shift+\ (barra invertida) menu / Opções para a janela de composição: adicionada a opção "Activar o melhoramento da verificação ortográfica durante a digitação". Esta opção é desactivada por defeito, o que elimina a última causa potencial de desaceleração da digitação de uma mensagem. Este modo de verificação ortográfica ainda não funciona em NVDA 2022.1 ;
 - Comando "Escrever para suportar" no menu power2: o assunto da mensagem automática indica a versão do Thunderbird+4 e a versão do Thunderbird que está a utilizar. Isto permite-me verificar a boa concordância das versões, obrigado por utilizar este canal quando precisar de ajuda;
 - Correcções de erros menores;
 
 
-===versão 4.0 para Thunderbird 102, 02/07/2022===
+==versão 4.0 para Thunderbird 102, 02/07/2022==
 [Saiba mais sobre o que há de novo na versão 4 em comparação com a versão 3 http://www.rptools.org/Outils-DV/ThunderbirdPlusNew#intro]
 

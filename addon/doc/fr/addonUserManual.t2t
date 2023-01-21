@@ -1,65 +1,38 @@
-﻿		Thunderbird+ pour NVDA : plus d'efficacité et de confort lors de l'utilisation de Thunderbird 102
+Extension ADDON_SUMMARY pour NVDA : plus d'efficacité et de confort lors de l'utilisation de Thunderbird 102
+Version : ADDON_CUR_VERSION - %%date(%d/%m/%Y)
+Auteur: ADDON_AUTHOR_NAME
 
-Dernière mise à jour le -date - Version : -ver pour Thunderbird 102 -br-lta href="changes_fr.html#histo"-gtConsulter l'historique (contient des informations non reprises dans la documentation)-lt/a-gt
-%!Target: xhtml
-%!style: style_t2t.css
-%!Encoding: UTF-8
-% content-language
-%!PostProc(xhtml): '\</title\>' '</title>\n<META HTTP-EQUIV="Content-Language" Content="fr">'
-
-% generation of the table of contents
-%!options: --toc
-%!preproc: 'àodv' 'http://www.rptools.org/Outils-DV/'
-% 
-%!PostProc(xhtml): '(?i)^.*<li><a href="#toc".+$' ''
-% Therefore, change h1 through h5 in the output to h2 through h6.
-%!PostProc(xhtml): ^<H5>(.*)</H5>$ <H6>\1</H6>
-%!PostProc(xhtml): ^<H4>(.*)</H4>$ <H5>\1</H5>
-%!PostProc(xhtml): ^<H3>(.*)</H3>$ <H4>\1</H4>
-%!PostProc(xhtml): ^<H2>(.*)</H2>$ <H3>\1</H3>
-%!PostProc(xhtml): ^<H1>(.*)</H1>$ <H2>\1</H2>
-
-% Specific
-%!PostProc(xhtml): ^<H2>(﻿Extens.*)</H2>$ <H1>\1</H1>
-% keywords prefixed by -  in order to write HTML tags.
-% Translator :Edit below the version and date on each update
-%!postproc(xhtml): '-ver' '4.4'
-%!postproc(xhtml): '-date' '17/01/2023'
-%!postproc(xhtml): '-br' '<br />'
-%!postproc(xhtml): '-lt' '<'
-%!postproc(xhtml): '-gt' '>'
-% translator :  below, the command menu key and the options menu key. In french, these are ² and shift+² which arejust above the tab key.. Replace "puissance2 byoutr mainkey and majuscule by shift in your language.
-%!postproc(xhtml): '-cmdMenu' 'Puissance2'
-%!postproc(xhtml): '-optMenu' '-shift+Puissance2'
-% transmlator : shift modifier. Replace below Majuscule by shift in your language
-%!postproc(xhtml): '-shift' 'Majuscule'
-% transmlator : ctrl  modifier. Replace below Contrôle  by control in your language
-%!postproc(xhtml): '-ctrl' 'Contrôle'
-
-% translator :  below, First key at the left of backspace. Its name depends of the language and the country. 
-%!postproc(xhtml): '-bs1' 'Première touche à gauche de Retour arrière'
-% translator :  below, Second key at the left of backspace. Its name depends of the language and the country. 
-%!postproc(xhtml): '-bs2' 'Seconde touche à gauche de Retour arrière'
+%!includeconf: ../addon_userManual.t2tconf
+%!includeconf: addon_informations.t2tconf
+%!includeconf: addon_keys.t2tconf
 
 -br
-% Informations
-- Versions : -ver pour Thunderbird 102
-- Version minimum de NVDA requise : 2019.3 Dernière version de NVDA testée : 2022.1 ; 
-- Auteur originel de l'extension thunderBird : Yannick
-- Adaptation à Thunderbird 68 , 78, 91, 102 et à NVDA 2019.3 et suivants : Daniel Poiraud, Pierre-Louis R et Abdel pour la version 3.1.;
-- Documentation et contact : [Pierre-Louis http://www.rptools.org/Outils-DV/contact.html] , en Français et Anglais ;
+[Consilter l'historique (contient certaines informationsnon reprises plus bas changes_fr.html#histo]
+
+URL : [RPTools.org http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus.html]
+
+Dépot GitHub: [ThunderbirdPlus repos ADDON_REPOSITORY] ;
+
+[Téléchargement #dl]
+
+Compatibilité:
+- version minimum de NVDA supportée: MINIMUM_NVDA_VERSION
+- dernière version de NVDA testée: LAST_TESTED_NVDA_VERSION
+
+-br
+
+
+=Sommaire=[toc]
+%%toc
+
+-br
+
 - Traductions par ordre d'ancienneté :
  - [Portugais http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt_PT.html] : par Rui Fontes de chez TifloTecnia.com et membre de l'équipe NVDA Portugal ;
  - [Espagnol http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html] : par Rémy Ruiz ;
  - [Anglais http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html] : par Google Translate & Pierre-Louis R.
  - 
 
-
--br
-
-% translator : translate only the word "Sommaire"
-=Sommaire=[toc]
-%%toc
 
 +Présentation+
 Cette extension améliore fortement le confort et l'efficacité d'utilisation du client de messagerie Mozilla Thunderbird avec NVDA.
@@ -95,15 +68,15 @@ Cette extension améliore fortement le confort et l'efficacité d'utilisation du
 - Et bien d'autres choses que vous découvrirez en lisant la suite de cette documentation ;
 
 
-+Téléchargement et installation+
++Téléchargement et installation+[dl]
 
 Si  l'extension  "Mozilla Apps Enhancements  de Javie Dominguez" est  installées sur votre ordinateur, vous devez d'abord la désactiver avant d'installer Thunderbird+ :
 
-[Télécharger Thunderbird+ v-ver pour Thunderbird 102 uniquement http://www.rptools.org/?p=8610] ;
+[Version stable ADDON_CUR_VERSION ADDON_DOWNLOAD_SERVER1] ; [Version stable ADDON_CUR_VERSION sur gitHub ADDON_DOWNLOAD_SERVER2] ;
 
 +Support et liste de diffusion+
-% Translator : you have to edit support.t2t
-%!include: support.t2t 
+% Translator : you have to edit support.t2tinc
+%!include: support.t2tinc
 
 -br
 +Amélioration du démarrage de Thunderbird+[startup]
@@ -681,5 +654,9 @@ Pour désactiver cette annonce :
 
 
 % Translator : You have to edit seeAlso.t2t
-%!include: seeAlso.t2t
+%!include: seeAlso.t2tinc
+
+
++Historique des changements+[histo]
+[Consilter l'historique changes_fr.html#histo]
 

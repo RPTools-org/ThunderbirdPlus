@@ -1,51 +1,39 @@
-	Extra para Thunderbird+: mais eficiência e conforto na utilização do Thunderbird 102
+Extra ADDON_SUMMARY para NVDA : mais eficiência e conforto na utilização do Thunderbird 102
+Versión : ADDON_CUR_VERSION - %%date(%m/%d/%Y)
+Autor : ADDON_AUTHOR_NAME
 
-Última actualização em -date - Versão -ver para Thunderbird 102 -br-lta href="changes_pt_PT.html#histo"-gtConsulte o histórico (contém informações ainda não documentadas)-lt/a-gt
-%Spécification du target, il peut être modifié en xhtml en cas de besoin.
-% Ne pas oublier de reporter la modification également dans les directives de PostProcesseur implémentées plus bas.
-%!Target: xhtml
-% Spécification de l'encodage.
-%!Encoding: UTF-8
-% content-language
-%!PostProc(xhtml): '\</title\>' '</title>\n<META HTTP-EQUIV="Content-Language" Content="pt">'
-%!style: style_t2t.css
-% Attribution de l'option --toc pour l'emploi d'une table des matières.
-%!options: --toc
-%!preproc: 'àodv' 'http://www.rptools.org/Outils-DV/'
-% Retrait du lien vers le titre du sommaire dans la table des matières.
-%!PostProc(xhtml): '(?i)^.*<li><a href="#toc".+$' ''
-% Therefore, change h1 through h5 in the output to h2 through h6.
-%!PostProc(xhtml): ^<H5>(.*)</H5>$ <H6>\1</H6>
-%!PostProc(xhtml): ^<H4>(.*)</H4>$ <H5>\1</H5>
-%!PostProc(xhtml): ^<H3>(.*)</H3>$ <H4>\1</H4>
-%!PostProc(xhtml): ^<H2>(.*)</H2>$ <H3>\1</H3>
-%!PostProc(xhtml): ^<H1>(.*)</H1>$ <H2>\1</H2>
+%!includeconf: ../addon_userManual.t2tconf
+%!includeconf: addon_informations.t2tconf
+%!includeconf: addon_keys.t2tconf
 
-% Specific
-%!PostProc(xhtml): ^<H2>(﻿Extens.*)</H2>$ <H1>\1</H1>
+-br
+[Consulte o histórico (contém informações ainda não documentadas) changes_pt_PT.html#histo]
 
-% keywords prefixed by -  in order to write HTML tags.
-% Translator :Edit below the version and date on each update
-%!postproc(xhtml): '-ver' '4.4'
-%!postproc(xhtml): '-date' '01/17/2023'
-%!postproc(xhtml): '-br' '<br />'
-%!postproc(xhtml): '-lt' '<'
-%!postproc(xhtml): '-gt' '>'
-%!postproc(xhtml): 'àgui' '&quot;'
+-br
+URL : [RPTools.org http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt_PT.html]
+ ; [contacto en Français et Anglais http://www.rptools.org/Outils-DV/contact.html] ;
+
+Repositório GitHub: [ThunderbirdPlus repos ADDON_REPOSITORY] ;
+
+[Descarregar #dl]
+
+Compatibilidade:
+- Versão mínima do NVDA requerida: 2019.3 ;
+- Última versão do NVDA testada: 2022.1 ;
 
 
-% Informations de l'addon dans une liste non-ordonnée.
-- Versão: -ver para Thunderbird 102 ;
-- Versão mínima do NVDA requerida: 2019.3. Última versão do NVDA testada: 2022.1 ; 
-- Autor original do extra thunderBird : Yannick
-- Adaptação para Thunderbird 68 , 78, 91, 102 e ao NVDA 2019.3 e seguintes: Daniel Poiraud, Pierre-Louis R e Abdel para a versão 3.1.;
-- Documentação e contacto: [Pierre-Louis http://www.rptools.org/Outils-DV/contact.html]
-- Tradução : Rui Fontes de casa  TifloTecnia.com & Ângelo Miguel Abrantes, Membros da equipa NVDA Portugal;
+-br
 
 
-% Création du sommaire.
 =Índice=[toc]
 %%toc
+
+
+-br
+- Autor original do extra thunderBird : Yannick
+- Adaptação para Thunderbird 68 , 78, 91, 102 e ao NVDA 2019.3 e seguintes: Daniel Poiraud, Pierre-Louis R e Abdel para a versão 3.1.;
+- Tradução : Rui Fontes de casa  TifloTecnia.com & Ângelo Miguel Abrantes, Membros da equipa NVDA Portugal;
+
 
 +Apresentação+
 Esta extensão melhora muito o conforto e a eficiência da utilização do cliente de correio electrónico Mozilla Thunderbird com o NVDA.
@@ -80,7 +68,7 @@ Quando o Thunderbird é iniciado, o foco pode ser colocado na árvore de pastas 
 
 
 
-+Descarregar e instalar+
++Descarregar e instalar+[dl]
 
 Se tiver os seguintes extras instalados no computador, deve primeiro removê-los antes de instalar o Thunderbird+:
 - thunderBird 2.x ou 3.x, versões do Yannick;

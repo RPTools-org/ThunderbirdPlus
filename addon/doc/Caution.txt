@@ -1,31 +1,12 @@
 1. About change log file
 The files name contains the language code  because the user manual and changes log are also published on the RPTools.org website.
 
-2. Attention after converting addonUserManual.t2t and changes_.t2t with txt2tags:
-
-The converter produces  addonUserManual.xhtml and changes_lang.xhtml files.
-You have to manually change the extensions xhtml to html by renaming the files.
-
-
-3. Translation of the user manual
+2. Translation of the user manual
 The user manual was originally written in French;
 The English translation was made with Google translate and revised by the author. Using this translation as the basis for a new translation could lead to errors.
 
-The Spanish translation was done by a human, Remy Ruiz;
+The Spanish translation was done by a human, Rémy Ruiz;
 
 The Portuguese translation appears to have been done by Google Translate and then lightly revised by Portuguese humans ;
 
-
-French :
-
-1. Attention après la conversion de addonUserManual.t2t avec txt2tags :
-
-Le convertisseur produit un fichier addonUserManual.xhtml. 
-Vous devez le renommer manuellement en :
-addonUserManual.html
-
-2. Traduction du manuel de l'utilisateur
-Le manuel de l'utilisateur a été originellement écrit en français ; 
-La traduction en anglais a été réalisée avec Google translate et révisée par l'auteur.   Utiliser cette traduction comme base d'une nouvelle traduction pourrait entraîner des erreurs.
-La traduction en espanol  a été réalisée par un humain, Remy Ruiz ;
-La traduction en portugais semble avoir été réalisée par Google Translate puis légèrement révisée  par des humains Portugais ;
+See also the document How to translate in this folder.

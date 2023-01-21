@@ -1,7 +1,7 @@
 # Thunderbird+ #
 
 * Authors : Pierre-Louis Renaud, Daniel Poiraud
-* URL : Contact : [Pierre-Louis](http://www.rptools.org/Outils-DV/contact.html] , en Français et Anglais) ;
+* URL : [User manual](http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html) , [Contact in French or English](http://www.rptools.org/Outils-DV/contact.html) ;
 * Download :
 	* [Stable version][1]
 * NVDA Compatibility :

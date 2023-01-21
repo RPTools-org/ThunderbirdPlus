@@ -1,53 +1,13 @@
-﻿		Thunderbird+ : historique des changements
+﻿Extension ADDON_SUMMARY - Historique des changements
+Dernière Version : ADDON_CUR_VERSION - %%date(%d/%m/%Y)
+Auteur: ADDON_AUTHOR_NAME
 
-Dernière mise à jour le -date
-%!Target: xhtml
-%!style: style_t2t.css
-%!Encoding: UTF-8
-% content-language
-%!PostProc(xhtml): '\</title\>' '</title>\n<META HTTP-EQUIV="Content-Language" Content="fr">'
-%!preproc: 'àodv' 'http://www.rptools.org/Outils-DV/'
-% 
-%!PostProc(xhtml): '(?i)^.*<li><a href="#toc".+$' ''
-% Therefore, change h1 through h5 in the output to h2 through h6.
-%!PostProc(xhtml): ^<H5>(.*)</H5>$ <H6>\1</H6>
-%!PostProc(xhtml): ^<H4>(.*)</H4>$ <H5>\1</H5>
-%!PostProc(xhtml): ^<H3>(.*)</H3>$ <H4>\1</H4>
-%!PostProc(xhtml): ^<H2>(.*)</H2>$ <H3>\1</H3>
-%!PostProc(xhtml): ^<H1>(.*)</H1>$ <H2>\1</H2>
-
-% Specific
-%!PostProc(xhtml): ^<H2>(﻿Extens.*)</H2>$ <H1>\1</H1>
-% keywords prefixed by -  in order to write HTML tags.
-% Translator :Edit below the version and date on each update
-%!postproc(xhtml): '-ver' '4.4'
-%!postproc(xhtml): '-date' '17/01/2023'
-%!postproc(xhtml): '-br' '<br />'
-%!postproc(xhtml): '-lt' '<'
-%!postproc(xhtml): '-gt' '>'
-% translator :  below, the command menu key and the options menu key. In french, these are ² and shift+² which arejust above the tab key.. Replace "puissance2 byoutr mainkey and majuscule by shift in your language.
-%!postproc(xhtml): '-cmdMenu' 'Puissance2'
-%!postproc(xhtml): '-optMenu' '-shift+Puissance2'
-% transmlator : shift modifier. Replace below Majuscule by shift in your language
-%!postproc(xhtml): '-shift' 'Majuscule'
-% transmlator : ctrl  modifier. Replace below Contrôle  by control in your language
-%!postproc(xhtml): '-ctrl' 'Contrôle'
-
-% translator :  below, First key at the left of backspace. Its name depends of the language and the country. 
-%!postproc(xhtml): '-bs1' 'Première touche à gauche de Retour arrière'
-% translator :  below, Second key at the left of backspace. Its name depends of the language and the country. 
-%!postproc(xhtml): '-bs2' 'Seconde touche à gauche de Retour arrière'
-
-% Informations
-- Versions : -ver pour Thunderbird 102
-- Version minimum de NVDA requise : 2019.3 Dernière version de NVDA testée : 2022.1 ; 
-- Auteur originel de l'extension thunderBird : Yannick
-- Adaptation à Thunderbird 68 , 78, 91, 102 et à NVDA 2019.3 et suivants : Daniel Poiraud, Pierre-Louis R et Abdel pour la version 3.1.;
-- Documentation et contact : [Pierre-Louis http://www.rptools.org/Outils-DV/contact.html] , en Français et Anglais ;
-
-
+%!includeconf: ../addon_userManual.t2tconf
+%!includeconf: addon_informations.t2tconf
+%!includeconf: addon_keys.t2tconf
 -br
-
+URL : [RPTools.org http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus.html]
+-br
 ==Historique des changements==[histo]
 ===Version 4.4, 17/01/2023===
 De nombreux changements pour rendre l'extension conforme à sa publication sur le dépôt gitHub.

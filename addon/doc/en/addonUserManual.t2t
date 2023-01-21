@@ -1,48 +1,31 @@
-﻿Thunderbird+ add-on for NVDA : more efficiency and comfort when using Thunderbird 102
+﻿ADDON_SUMMARY add-on for NVDA : more efficiency and comfort when using Thunderbird 102
+Version : ADDON_CUR_VERSION - %%date(%m-%d-%y)
+Authors : ADDON_AUTHOR_NAME
 
-Last update : -date - Version -ver for Thunderbird 102 -br-lta href="changes_en.html#histo"-gtRead the changelog (contains information not included in the documentation)-lt/a-gt
-%!Target: xhtml
-%!Encoding: UTF-8
-% content-language
-%!PostProc(xhtml): '\</title\>' '</title>\n<META HTTP-EQUIV="Content-Language" Content="en">'
-%!style: style_t2t.css
-% generation of the table of contents
-%!options: --toc
-%!preproc: 'àodv' 'http://www.rptools.org/Outils-DV/'
-% 
-%!PostProc(xhtml): '(?i)^.*<li><a href="#toc".+$' ''
-% Therefore, change h1 through h5 in the output to h2 through h6.
-%!PostProc(xhtml): ^<H5>(.*)</H5>$ <H6>\1</H6>
-%!PostProc(xhtml): ^<H4>(.*)</H4>$ <H5>\1</H5>
-%!PostProc(xhtml): ^<H3>(.*)</H3>$ <H4>\1</H4>
-%!PostProc(xhtml): ^<H2>(.*)</H2>$ <H3>\1</H3>
-%!PostProc(xhtml): ^<H1>(.*)</H1>$ <H2>\1</H2>
+%!includeconf: ../addon_userManual.t2tconf
+%!includeconf: addon_informations.t2tconf
+%!includeconf: addon_keys.t2tconf
 
-% Specific
-%!PostProc(xhtml): ^<H2>(﻿Extens.*)</H2>$ <H1>\1</H1>
-% keywords prefixed by -  in order to write HTML tags.
-% Translator :Edit below the version and date on each update
-%!postproc(xhtml): '-ver' '4.4'
-%!postproc(xhtml): '-date' 'January 17,2023'
-%!postproc(xhtml): '-br' '<br />'
-%!postproc(xhtml): '-lt' '<'
-%!postproc(xhtml): '-gt' '>'
-% translator :  below, the command menu key and the options menu key. It is the key just above the Tab key. 
-%!postproc(xhtml): '-cmdMenu' 'Accent (Backtick)'
-%!postproc(xhtml): '-optMenu' '-Shift+accent (backtick)'
-% transmlator : shift modifier. Replace below Shift  by shift in your language
-%!postproc(xhtml): '-shift' 'Shift'
-% transmlator : ctrl  modifier. Replace below Control  by control in your language
-%!postproc(xhtml): '-ctrl' 'Control'
+-br
+[Read the changelog (may contain information not included in this documentation) changes_en.html#histo]
 
-% translator :  below, First key at the left of backspace. Its name depends of the language and the country. 
-%!postproc(xhtml): '-bs1' 'Equals'
-% translator :  below, Second key at the left of backspace. Its name depends of the language and the country. 
-%!postproc(xhtml): '-bs2' 'Minus'
+URL : [RPTools.org http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html]
 
-% Informations
-- Versions : -ver for Thunderbird 102
-- Minimum Version  of NVDA : 2019.3 Last tested version of NVDA  : 2022.1 ; 
+GitHub repos: [ThunderbirdPlus repos ADDON_REPOSITORY] ;
+
+[Download #dl]
+
+Compatibility :
+- Minimum supported NVDA  version  : MINIMUM_NVDA_VERSION
+- Last tested NVDA version : LAST_TESTED_NVDA_VERSION
+
+-br
+
+
+=Table of contents=[toc]
+%%toc
+-br
+
 - Original author  of the thunderBird addon : Yannick
 - Adaptation to Thunderbird 68 , 78, 91, 102 and to NVDA 2019.3 and  above : Daniel Poiraud, Pierre-Louis R and Abdel for the  version 3.1.;
 - contact : [Pierre-Louis http://www.rptools.org/Outils-DV/contact.html] , in french or english;
@@ -51,15 +34,10 @@ Last update : -date - Version -ver for Thunderbird 102 -br-lta href="changes_en.
  - [Portuguese http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt_PT.html] : by Rui Fontes from TifloTecnia.com and Ângelo Miguel Abrantes, NVDA Portugal team members ;
  - [Spanish http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html] : by Rémy Ruiz ;
  - [English http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html] : By Google Translate and Pierre-Louis R [See also this warning #warn] ;
- - 
+- 
+
 
 -br
-
-
-
-% translator : translate only the word "Sommaire"
-=Table of contents=[toc]
-%%toc
 =Warning=[warn]
 The messages in the Thunderbird+ addon and This documentation have been translated from French to English with Google Translate. If English is your native language and you understand French well, you can submit an improved version of the translations to me;
 
@@ -68,7 +46,7 @@ Do not start your work from this webpage, please write  an email to [Pierre-Loui
 I will give you the translation source files and instructions.
 -br
 
-+Presentation+
++Introduction+
 This add-on greatly improves the comfort and efficiency of using the Mozilla Thunderbird mail client with NVDA.
 -br
 - **Hearing comfort:**
@@ -102,15 +80,15 @@ This add-on greatly improves the comfort and efficiency of using the Mozilla Thu
 - And many other things that you will discover by reading the rest of this documentation;
 
 
-+Download and install+
++Download and install+[dl]
 
 If the "Mozilla Apps Enhancements by Javie Dominguez" add-on is installed on your computer, you must first disable it before installing Thunderbird+:
 
 [Download Thunderbird+ v-ver for Thunderbird 102 only http://www.rptools.org/?p=8610];
 
 +Support and mailing list+
-% Translator: you have to edit support.t2t
-%!include: support.t2t
+% Translator: you have to edit support.t2tinc
+%!include: support.t2tinc
 
 -br
 +Thunderbird startup improvement+[startup]
@@ -661,5 +639,5 @@ To disable this ad:
 - To manually correct a word, first press NVDA+space to return to form mode;
 
 
-% Translator: You have to edit seeAlso.t2t
-%!include: seeAlso.t2t
+% Translator: You have to edit seeAlso.t2tinc
+%!include: seeAlso.t2tinc
