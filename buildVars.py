@@ -27,7 +27,7 @@ addon_info = {
 	# version
 	"addon_version": "4.4",
 	# Author(s)
-	"addon_author": u"Pierre-Louis Renaud (Thunderbird v. 78 to 102), Daniel Poiraud (TB v. 68 to 91), Abdelkrim Bensaïd  for a part of TB 78, Yannick (TB v. 38 to 60)",
+	"addon_author": u"Pierre-Louis Renaud (Thunderbird v. 78 to 102), Daniel Poiraud (TB v. 68 to 91), Abdelkrim Bensaïd for a part of TB 78, Yannick (TB v. 38 to 60)",
 	# URL for the add-on documentation support
 	"addon_url": "http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html",
 	# Documentation file name

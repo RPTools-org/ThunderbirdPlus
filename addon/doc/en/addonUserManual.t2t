@@ -157,10 +157,10 @@ If the Incoming Mail folder contains no messages, this folder will receive focus
 After making your settings, restart Thunderbird.
 
 
--lth3-gtIntegrated Thunderbird launcher with AltGr+-cmdMenu-lt/h3-gt
-For convenience and speed, you can launch Thunderbird by pressing AltGr+-cmdMenu.
+-lth3-gtIntegrated Thunderbird launcher with Control+Alt+-cmdMenu or AltGr+-cmdMenu-lt/h3-gt
+For convenience and speed, you can launch Thunderbird by pressing Control+Alt+-cmdMenu or AltGr+-cmdMenu.
 
-This hotkey is configurable via NVDA's Command Gesture Manager which offers greater freedom of choice of modifier keys than Windows hotkeys, which are limited to AltGr;
+This hotkey is configurable via NVDA's Command Gesture Manager which offers greater freedom of choice of modifier keys than Windows hotkeys, which are limited to Control+Alt or AltGr;
 
 Follow these steps to add another control gesture:
 

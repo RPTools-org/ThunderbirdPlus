@@ -8,8 +8,8 @@
 %!postproc(html): '-lt' '<'
 %!postproc(html): '-gt' '>'
 % translator :  below, the command menu key and the options menu key. In french, these are ² and shift+² which arejust above the tab key.. Replace "puissance2 byoutr mainkey and majuscule by shift in your language.
-%!postproc(html): '-cmdMenu' 'Accent'
-%!postproc(html): '-optMenu' '-shift+Puissance2'
+%!postproc(html): '-cmdMenu' 'Key-above-Tab'
+%!postproc(html): '-optMenu' 'shift+Key-above-Tab''
 % transmlator : shift modifier. Replace below Majuscule by shift in your language
 %!postproc(html): '-shift' 'Shift'
 % transmlator : ctrl  modifier. Replace below Contrôle  by control in your language
