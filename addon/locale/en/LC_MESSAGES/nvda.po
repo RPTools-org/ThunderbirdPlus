@@ -456,7 +456,7 @@ msgid ""
 "nouveau le menu puissance2."
 msgstr ""
 "To get all headers, please open the View Menu, go down to 'Headers' and then "
-"press Enter on 'All'  in the submenu. Then display the Accent menu again."
+"press Enter on 'All'  in the submenu. Then display the grave menu again."
 
 #: appModules/messengerWindow/messageListItem.py:107
 msgid "Filtre rapide fermé. Tableau"
@@ -1019,7 +1019,7 @@ msgid ""
 "Simple frappe pour  afficher  les menu contextuel, double frappe pour écrire "
 "² ou ³ ou leurs remplaçants."
 msgstr ""
-"Single press to show the context menus, double press to write Accent or "
+"Single press to show the context menus, double press to write a grave accent  or "
 "Tilde or ¬¬."
 
 #: appModules/shared/menuSettings.py:81
@@ -1487,14 +1487,14 @@ msgid ""
 "jour."
 msgstr ""
 "The update will be offered again in 3 days. In the meantime, you can press "
-"AltGr+Shift+Accent to perform an update search."
+"AltGr+Shift+grave to perform an update search."
 
 #: globalPlugins/shared/updateLite.py:231
 msgid ""
 "La mise à jour automatique a été désactivée. presser    AltGr+Maj+puissance2 "
 "pour une mise à jour manuelle."
 msgstr ""
-"Automatic update has been disabled. press AltGr+Shift+Accent for a manual "
+"Automatic update has been disabled. press AltGr+Shift+grave for a manual "
 "update."
 
 #~ msgid "Read other fields depuis messageListItem"
