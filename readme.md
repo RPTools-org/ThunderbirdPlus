@@ -8,7 +8,9 @@
 	* Minimum version : 2019.3
 	* Last tested version : 2022.1
 * Tunderbird compatibility : 102.x versions ; 
+* [See source code on GitHub][3]
 
+Note: This add-on is not compatible with the Mozilla Apps Enhancements add-on. If you have the Mozilla Apps Enhancements add-on installed, you must disable or uninstall it before using this one ;
 
 This add-on greatly improves the accessibility, efficiency and comfort of using the Mozilla Thunderbird mail client with NVDA.
 
@@ -44,3 +46,5 @@ This add-on greatly improves the accessibility, efficiency and comfort of using 
 [1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.4/ThunderbirdPlus-v4.4-TB102.nvda-addon
 
 [2]: http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html
+
+[3]: https://github.com/RPTools-org/ThunderbirdPlus/

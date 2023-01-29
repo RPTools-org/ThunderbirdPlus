@@ -8,8 +8,11 @@
 	* version minimum : 2019.3 ; 
 	* dernière version  testée: 2022.1 ;
 * Compatibilité  Thunderbird  : versions 102.x ;
+* [Voir code source sur GitHub][3]
 
-Cette extension améliore fortement le confort et l'efficacité d'utilisation du client de messagerie Mozilla Thunderbird avec NVDA.
+Note : Cette extension n'est pas compatible avec l'extension Mozilla Apps Enhancements. Si vous avez l'extension Mozilla Apps Enhancements installée, vous devez la désactiver ou la désinstaller avant d'utiliser celle-ci.
+
+Cette extension améliore considérablement le confort et l'efficacité d'utilisation du client de messagerie Mozilla Thunderbird avec NVDA.
 
 * Confort auditif:
 	* Les alertes  "un tel a demandé un accusé de réception" peuvent être désactivées via une option ;
@@ -43,3 +46,5 @@ Cette extension améliore fortement le confort et l'efficacité d'utilisation du
 [1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.3.3/Thunderbird+4-v4.3.3-TB102.nvda-addon
 
 [2]: http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus.html
+
+[3]: https://github.com/RPTools-org/ThunderbirdPlus/

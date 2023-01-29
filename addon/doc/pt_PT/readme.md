@@ -8,6 +8,9 @@
 	* versão mínima : 2019.3 ; 
 	* última versão testada: 2022.1 ;
 * Compatibilidade com Thunderbird: versões 102.x ;
+* [Veja o código-fonte no GitHub][3]
+
+Observação: esta extensão não é compatível com a extensão Mozilla Apps Enhancements. Se você tiver a extensão Mozilla Apps Enhancements instalada, deverá desativá-la ou desinstalá-la antes de usar esta extensão.
 
 Esta extensão melhora muito o conforto e a eficiência da utilização do cliente de correio electrónico Mozilla Thunderbird com o NVDA.
 
@@ -42,3 +45,5 @@ Quando o Thunderbird é iniciado, o foco pode ser colocado na árvore de pastas 
 [1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.4/ThunderbirdPlus-v4.4-TB102.nvda-addon
 
 [2]: http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt_PT.html
+
+[3]: https://github.com/RPTools-org/ThunderbirdPlus/

@@ -4,9 +4,13 @@
 * URL :   [Documentación](http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html) , [Contacto en Francés y Inglés](http://www.rptools.org/Outils-DV/contact.html) ;
 * Descargar:
 	* [versión estable][1]
-* Compatibilidad:
-	* versión mínima de NVDA requerida: 2019.3
-	* última versión de NVDA probada: 2022.1
+* Compatibilidad con NVDA:
+	* versión mínima de NVDA requerida: 2019.3 ;
+	* última versión de NVDA probada: 2022.1 ;
+* Compatibilidad con Thunderbird: versiones 102.x ;
+* [Ver código fuente en GitHub][3]
+
+Nota: este complemento no es compatible con el complemento Mozilla Apps Enhancements. Si dispones de Mozilla Apps Enhancements instalado, deberás deshabilitarlo o desinstalarlo antes de usar este.
 
 Este complemento mejora enormemente la comodidad y la eficiencia del uso del cliente de correo electrónico Mozilla Thunderbird con NVDA.
 
@@ -43,3 +47,5 @@ Este complemento mejora enormemente la comodidad y la eficiencia del uso del cli
 [1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.4/ThunderbirdPlus-v4.4-TB102.nvda-addon
 
 [2]: http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html
+
+[3]: https://github.com/RPTools-org/ThunderbirdPlus/
