@@ -13,7 +13,7 @@ https://github.com/paulber007/AllMyNVDAAddons/raw/master/NVDAExtensionGlobalPlug
 
 After install, you can update this addon by using NVDA Menu / Preferences / NVDA Extension global plugin / global settings dialog.
 
-If you have not installed this addon, you can use the scons command or click on the makeAddon.bat file. 
+If you have not installed this addon, you can use the scons command.
 
 Then follow these steps :
 

@@ -1,6 +1,6 @@
 # Thunderbird+4 #
 
-* Autor : Pierre-Louis Renaud, Daniel Poiraud
+* Autor : Pierre-Louis Renaud (Thunderbird v. 78 to 102), Daniel Poiraud (TB v. 68 to 91), Abdelkrim Bensaïd for a part of TB 78, Yannick (TB v. 38 to 60) ;
 * URL : [Documentação](http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt.html) , [contato em francês ou inglês](http://www.rptools.org/Outils-DV/contact.html) ;
 * Download :
 	* [versão estável][1]
