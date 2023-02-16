@@ -84,7 +84,7 @@ def getURLHelp(url) :
 	return url.format(lang)
 	
 # Variables to configure
-baseUrl="http://www.rptools.org/"
+baseUrl="https://www.rptools.org/"
 urlHelp = getURLHelp(baseUrl + "Outils-DV/changes_{0}.html#histo")
 urlFileInfos = baseUrl + "fileInfos.php?key=thunderbirdup4102"
 # test urlFileInfos = baseUrl + "fileInfos.php?key=thunderbirduptest"
@@ -94,7 +94,7 @@ urlFileInfos = baseUrl + "fileInfos.php?key=thunderbirdup4102"
 # dbID=identifiant pour les statistiques 
 # name=Thunderbird+
 # type=2022-01-15.nvda-addon
-# path = "http://www.monsite.orfg/dossierContenantLesFichiersInfo/"
+# path = "https://www.monsite.orfg/dossierContenantLesFichiersInfo/"
 # Le nom du fichier à télécharger est donc : path + "/" + nane + "-" + version + "-" + type
 
 isDlg = False
