@@ -1,4 +1,4 @@
-﻿# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 # Thunderbird+4
 
 try: 	from urllib import urlopen

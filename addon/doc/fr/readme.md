@@ -1,18 +1,19 @@
 # Thunderbird+4 #
 
-* Auteurs : Pierre-Louis Renaud (Thunderbird v. 78 à 102), Daniel Poiraud (TB v. 68 à 91), Abdelkrim Bensaïd pour une partie de  TB 78, Yannick (TB v. 38 à 60) ;
-* URL : [Documentation](http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus.html) , [Contact](http://www.rptools.org/Outils-DV/contact.html) ;
+* Auteur : Pierre-Louis Renaud, Daniel Poiraud
+* URL : [Documentation](https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus.html) , [Contact](https://www.rptools.org/Outils-DV/contact.html) ;
 * Télécharger :
 	* [version stable][1]
+	* [Dernière version sur RPTools.org][2]
 * Compatibilité NVDA :
 	* version minimum : 2019.3 ; 
-	* dernière version  testée: 2022.1 ;
+	* dernière version  testée: 2023.1 ;
 * Compatibilité  Thunderbird  : versions 102.x ;
 * [Voir code source sur GitHub][3]
 
 Note : Cette extension n'est pas compatible avec l'extension Mozilla Apps Enhancements. Si vous avez l'extension Mozilla Apps Enhancements installée, vous devez la désactiver ou la désinstaller avant d'utiliser celle-ci.
 
-Cette extension améliore considérablement le confort et l'efficacité d'utilisation du client de messagerie Mozilla Thunderbird avec NVDA.
+Cette extension améliore fortement le confort et l'efficacité d'utilisation du client de messagerie Mozilla Thunderbird avec NVDA.
 
 * Confort auditif:
 	* Les alertes  "un tel a demandé un accusé de réception" peuvent être désactivées via une option ;
@@ -40,11 +41,13 @@ Cette extension améliore considérablement le confort et l'efficacité d'utilis
 		*	 le  mot mal orthographié  est annoncé avant le mot suggéré. Les raccourcis NVDA+Tab ou Alt+flèche haut annoncent les mots mal orthographié et de remplacement : 1 appui épelle les mots à une vitesse normale, 2 appuis les épelle rapidement,3 appuis copie le mot mal orthographié dans le presse-papiers pour une analyse dans un autre champ d'édition ; 
 		*	 diverses combinaisons de la touche entrée actionnent les boutons Remplacer, Tout remplacer, Ignorer, Tout ignorer ou Ajouter le mot au dictionnaire ont été ajoutés pour un confort accru  de ce dialogue ; 
 * Mise à jour automatique de l'extension ;
-* Et bien d'autres choses que vous découvrirez en lisant le [manuel de l'utilisateur][2] ;
+* Et bien d'autres choses que vous découvrirez en lisant le [manuel de l'utilisateur][4] ;
 
 
-[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.3.3/Thunderbird+4-v4.3.3-TB102.nvda-addon
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.5/ThunderbirdPlus-v4.5-TB102.nvda-addon
 
-[2]: http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus.html
+[2]: https://www.rptools.org/?p=8610
 
 [3]: https://github.com/RPTools-org/ThunderbirdPlus/
+
+[4]: https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus.html

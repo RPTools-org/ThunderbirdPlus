@@ -8,7 +8,7 @@ Autor : ADDON_AUTHOR_NAME
 %!includeconf: addon_keys.t2tconf
 
 -br
-URL : [RPTools.org http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html]
+URL : [RPTools.org https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html]
 
 repositorio GitHub: [ThunderbirdPlus repos ADDON_REPOSITORY] ;
 
@@ -25,6 +25,13 @@ Compatibilidad :
 
 -br
 =Historial de cambios=[histo]
+==versiones 4.5, 13 de FEBRERO  de 2023==
+- La compatibilidad de la extensión se ha actualizado a NVDA 2023.1;
+- Dos nuevas opciones en el menú -optMenu / Opciones de la ventana principal:
+ - Para complementar la opción "Ocultar nombres de listas de correo", se ha añadido el comando "Editar palabras a ocultar en el asunto de los mensajes". Le permite no escuchar los nombres de las listas que no están entre corchetes o menciones "***", por ejemplo.
+ - Edite el retraso antes de la lectura automática de la ventana de mensaje separada. Alt+d: Dependiendo de la velocidad de la computadora, esta reproducción puede comenzar demasiado tarde o ser interrumpida por otro anuncio. El retraso predeterminado se establece en 100 milisegundos, lo cual está bien para una PC muy rápida; ;
+
+
 ==versiones 4.4, 17 de enero de 2023==
 Muchos cambios para que la extensión sea consistente con su publicación en el repositorio de gitHub.
 
@@ -103,7 +110,7 @@ En combinación con Thunderbird+, las siguientes órdenes están disponibles:
 
 - Espacio, F4 y Alt+flecha abajo con una doble pulsación en un mensaje en la lista de mensajes: abre la lista de enlaces contenidos en el mensaje que se muestra en el panel de vista. Con una simple pulsación, el mensaje es siempre leído con Thunderbird+;
 - Espacio en una carpeta en vista de árbol: si la carpeta contiene mensajes no leídos, al pulsar se selecciona el primer mensaje no leído de la carpeta. Si no es así, espacio abre la lista de carpetas con mensajes no leídos. Allí, simplemente pulse Intro en una carpeta para ir a su primer mensaje no leído. Si pulsa Espacio en esta lista, la carpeta seleccionada se marcará como leída, sin pedir confirmación;
-- Para las otras órdenes de Chichi, lea la sección [Órdenes de Chichi http://www.rptools.org/Outils-DV/thunderbird-chichi-es.html#toc6]
+- Para las otras órdenes de Chichi, lea la sección [Órdenes de Chichi https://www.rptools.org/Outils-DV/thunderbird-chichi-es.html#toc6]
 
 
 Se agregaron nuevas opciones al menú -optMenu para permitirle deshabilitar ciertas funciones si prefiere usar su equivalente en Chichi. Nota: en este momento, Chichi aún no ofrece una alternativa a algunas de las funciones que se enumeran a continuación.

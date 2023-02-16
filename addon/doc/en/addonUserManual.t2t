@@ -9,7 +9,7 @@ Version : ADDON_CUR_VERSION - %%date(%m-%d-%y)
 -br
 [Read the changelog (may contain information not included in this documentation) changes_en.html#histo]
 
-URL : [RPTools.org http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html]
+URL : [RPTools.org https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html]
 
 GitHub repos: [ThunderbirdPlus repos ADDON_REPOSITORY] ;
 
@@ -28,12 +28,12 @@ Compatibility :
 
 - Original author  of the thunderBird addon : Yannick
 - Adaptation to Thunderbird 68 , 78, 91, 102 and to NVDA 2019.3 and  above : Daniel Poiraud, Pierre-Louis R and Abdel for the  version 3.1.;
-- contact : [Pierre-Louis http://www.rptools.org/Outils-DV/contact.html] , in french or english;
-- [Original French documentation http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus.html] : by Pierre-Louis R. ;
+- contact : [Pierre-Louis https://www.rptools.org/Outils-DV/contact.html] , in french or english;
+- [Original French documentation https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus.html] : by Pierre-Louis R. ;
 - Translations in the chronological order :
- - [Portuguese http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt_PT.html] : by Rui Fontes from TifloTecnia.com and Ângelo Miguel Abrantes, NVDA Portugal team members ;
- - [Spanish http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html] : by Rémy Ruiz ;
- - [English http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html] : By Google Translate and Pierre-Louis R [See also this warning #warn] ;
+ - [Portuguese https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt_PT.html] : by Rui Fontes from TifloTecnia.com and Ângelo Miguel Abrantes, NVDA Portugal team members ;
+ - [Spanish https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html] : by Rémy Ruiz ;
+ - [English https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html] : By Google Translate and Pierre-Louis R [See also this warning #warn] ;
 - 
 
 
@@ -41,7 +41,7 @@ Compatibility :
 =Warning=[warn]
 The messages in the Thunderbird+ addon and This documentation have been translated from French to English with Google Translate. If English is your native language and you understand French well, you can submit an improved version of the translations to me;
 
-Do not start your work from this webpage, please write  an email to [Pierre-Louis http://www.rptools.org/Outils-DV/contact.html] , in french or english;
+Do not start your work from this webpage, please write  an email to [Pierre-Louis https://www.rptools.org/Outils-DV/contact.html] , in french or english;
 
 I will give you the translation source files and instructions.
 -br
@@ -84,7 +84,7 @@ This add-on greatly improves the comfort and efficiency of using the Mozilla Thu
 
 If the "Mozilla Apps Enhancements by Javie Dominguez" add-on is installed on your computer, you must first disable it before installing Thunderbird+:
 
-[Download Thunderbird+ v-ver for Thunderbird 102 only http://www.rptools.org/?p=8610];
+[Download Thunderbird+ v-ver for Thunderbird 102 only https://www.rptools.org/?p=8610];
 
 +Support and mailing list+
 % Translator: you have to edit support.t2tinc

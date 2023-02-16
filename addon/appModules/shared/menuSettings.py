@@ -1,12 +1,14 @@
-# coding:utf-8
+#-*- coding:utf-8 -*
 
 import api, config, sys, glob, shutil
 from configobj import ConfigObj
+import re
 import addonHandler,  os, sys
 import sharedVars, utis
 from wx import Menu, EVT_MENU, CallAfter, CallLater 
 from ui import  message
 from speech import cancelSpeech
+from tones import beep
 addonHandler.initTranslation()
 
 
@@ -15,6 +17,7 @@ class  Settings() :
 		# fromClass doit être une référence sur la classe AppModule ou GlobalPlugin 
 		self.refClass  = fromClass
 		self.options = self.option_messengerWindow = self.option_msgcomposeWindow = self.option_startup = self.option_chichi = None
+		self.regex_removeInSubject = None
 		curAddon=addonHandler.getCodeAddon()
 		self.addonName =  curAddon.name
 		self.iniFile = api.config.getUserDefaultConfigPath()+"\\" + self.addonName + ".ini"
@@ -56,13 +59,15 @@ class  Settings() :
 		"namesCleaned" : _("Nettoyer les noms des correspondants dans la liste de messages"),
 		"separateCols" : _("Ajouter une ponctuation entre les colonnes"),
 		"listGroupName" : _("Masquer les noms de listes de diffusion"),
+		"editWords_str" : _("Editer les mots à masquer dans l'objet de messages"),
 		"junkStatusCol" : _("Annoncer 'indésirable' si affiché dans la colonne 'Statut indésirable' "),
 		"TTFirstUnread" : _("Espace sur un dossier avec non lus  cherche le premier message non lu depuis le début de la liste"),
 		"withoutFolderKeyNav" : _("Ne pas utiliser la navigation par initiale dans l'arborescence des dossiers"),
 		"noDirectKeyNav" : _("Navigation par initiales indirecte, via une zone d'édition"),
 		"withoutReceipt" : _("Ignorer les demandes d'accusé de réception"),
 		"WwithUnread" : _("Afficher seulement les dossiers avec non lus dans la boite de dialogue 'Dossiers de l'arborescence'"),
-		"WithoutAutoRead" : _("fenêtre séparée de lecture : ne pas lire automatiquement le  mmessage si provoque des blocages de NVDA")
+		"WithoutAutoRead" : _("fenêtre séparée de lecture : ne pas lire automatiquement le  mmessage si provoque des blocages de NVDA"),
+		"editDelay_str" : _("Editer le délai avant la lecture automatique de la fenêtre séparée du message.\tAlt+d,n ")
 		}
 
 		self.option_msgcomposeWindow={
@@ -102,6 +107,12 @@ class  Settings() :
 		if not"delayReadWnd" in self.options["messengerWindow"] : 
 			self.options["messengerWindow"].update({"delayReadWnd":"100"})
 		sharedVars.delayReadWnd =    int(section.as_int ("delayReadWnd")		)
+		# words to remove from subject in the message list
+		if not "removeInSubject" in self.options["messengerWindow"] : 
+			self.options["messengerWindow"].update({"removeInSubject":""})
+		else : # option  exists   as string  in the ini file
+			self.regex_removeInSubject = re.compile(makeRegex(section["removeInSubject"]))
+		
 		# coptions for chichi : speed needed
 		section = self.options["chichi"]
 		sharedVars.FTnoNavLetter = section.as_bool ("FTnoNavLetter")
@@ -128,6 +139,12 @@ class  Settings() :
 		self.setResponseMode()
 		self.setfolderTreeNav()
 		return
+	def editWords(self) :
+		wrds = self.options["messengerWindow"]["removeInSubject"] 
+		utis.inputBox(label=_("Mots séparés par des points-virgule : "), title= _("Edition des mots à masquer  dans l'objet des messages"), postFunction=saveWords, startValue=wrds)
+
+	def editDelay(self) :
+		utis.inputBox(label=_("Délai entre 20 et 2000 milli secondes  avant  lecture épurée (défaut : 100) : "), title= _("Fenêtre séparée de lecture"), postFunction=saveDelay, startValue=sharedVars.delayReadWnd)
 
 	def backup(self) :
 		bakFile = api.config.getUserDefaultConfigPath() + "\\" + self.addonName + ".inibak"
@@ -178,7 +195,14 @@ class  Settings() :
 		if frame == "messengerWindow" :
 			menu, options, keys = Menu(), self.options, list(self.option_messengerWindow.keys())
 			#keys.sort ()
-			for e in range (len (keys)): menu.AppendCheckItem (0 + e, self.option_messengerWindow [keys[e]]).Check (options["messengerWindow"].as_bool (keys[e]))
+			
+			for e in range (len(keys)) : 
+				lbl = self.option_messengerWindow [keys[e]]
+				if keys[e].endswith("_str") : # == "editWords" :
+					menu.Append(e, lbl)
+				else : 
+					menu.AppendCheckItem (0 + e, lbl).Check (options["messengerWindow"].as_bool (keys[e]))
+				
 			mainMenu.AppendSubMenu (menu, _("Options pour la fenêtre principale"))
 		# msgCompose submenu
 		if frame in ("messengerWindow", "msgcomposeWindow") :
@@ -218,9 +242,14 @@ class  Settings() :
 		if eID < 100 : # messengerWindow, options fenêtre principale
 			IDRange = 0
 			section, keys, options = "messengerWindow", list(self.option_messengerWindow.keys()), self.options
-			key=keys[eID-IDRange]			
-			# =====
-			toFind = "mentions"
+			key = keys[eID-IDRange]			
+			# sharedVars.log(None, "choosen Key " + str(key))
+			if key ==  "editWords_str" :  # is not a check item
+				return CallLater(30, self.editWords)
+			if key ==  "editDelay_str" :  # is not a check item
+				return CallLater(30, self.editDelay)
+# =====
+			toFind = _("mentions")
 			if evt.EventObject.GetLabelText(eID).find (toFind)!=-1 :
 				for k in ("responseMentionGroup","responseMentionRemove","responseMentionDelColon"):
 					options[section][k] = False
@@ -304,3 +333,29 @@ def toggleUpdateState() :
 	def removeLabel(value, label) :
 		return  value[len(label):]
 
+def makeRegex(words) :
+	words = re.escape(str(words))
+	words = words.replace(";", "|")
+	return words
+
+def saveWords(words) :
+	words = str(words)
+	if words == "ibCancel" : return
+	sharedVars.log(None, "Mots saisis " + words)
+	# speech.cancelSpeech()
+	sharedVars.oSettings.options["messengerWindow"]["removeInSubject"] = words
+	# sharedVars.delayReadWnd = iDelay
+	sharedVars.oSettings.options["messengerWindow"].update({"removeInSubject" : words})
+	sharedVars.oSettings.options.write()
+	sharedVars.oSettings.regex_removeInSubject = re.compile(makeRegex(words))
+
+def saveDelay(strDelay) :
+	if strDelay == "ibCancel" : return
+	cancelSpeech()
+	try : iDelay = int(strDelay)
+	except : return beep(100, 50) # return CallLater(50, message, u"La valeur doit être un nombre")
+	if iDelay < 20 or iDelay > 2000 :
+		return beep(250, 50) # CallLater(50, message, u"Le délai doit être compris entre 20 et 2000 milli-secondes !")
+	sharedVars.delayReadWnd = iDelay
+	sharedVars.oSettings.options["messengerWindow"].update({"delayReadWnd":strDelay})
+	sharedVars.oSettings.options.write()

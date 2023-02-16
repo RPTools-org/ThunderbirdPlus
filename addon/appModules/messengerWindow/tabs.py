@@ -1,4 +1,4 @@
-﻿#coding :utf-8
+#-*- coding:utf-8 -*
 
 import controlTypes
 # controlTypes module compatibility with old versions of NVDA

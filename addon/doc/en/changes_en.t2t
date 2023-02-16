@@ -8,7 +8,7 @@ Last Version : ADDON_CUR_VERSION - %%date(%m-%d-%y)
 
 -br
 
-URL : [RPTools.org http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html]
+URL : [RPTools.org https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html]
 
 GitHub repos: [ThunderbirdPlus repos ADDON_REPOSITORY] ;
 
@@ -26,8 +26,15 @@ Compatibility :
 
 
 =Change log=[histo]
-==Version 4.4, 17/01/2023==
-Many changes to make the extension consistent with its publication on the gitHub repository.
+==Version 4.5, 02-13-2023==
+- Addon compatibility has been upgraded to NVDA 2023.1;
+- Two new options in the -optMenu / Main window Option :
+ - To complement the "Hide mailing list names" option, the "Edit words to be hidden in the subject of messages" command has been added. It allows you not to hear list names that are not surrounded by square brackets or "***" mentions, for example.
+ - Edit the delay before the automatic reading of the separate message window. Alt+d: Depending on the speed of the computer, this playback may start too late or be cut off by another announcement. The default delay is set at 100 milliseconds, which is fine for a very fast PC; ;
+
+
+==Version 4.4, 01-17-2023==
+Many changes to make the addon  consistent with its publication on the gitHub repository.
 
 [Visite ThunderbirdPlus repos on gitHub https://github.com/RPTools-org/ThunderbirdPlus]
 
@@ -107,7 +114,7 @@ Combined with Thunderbird+,the following commands are available:
 
 - Space, F4 and Alt+down arrow when double tapping on a message in the message list: opens the list of links contained in the message displayed in the preview pane. With a Single press, the message is always read by Thunderbird+;
 - Space on a folder in the tree structure: if the folder contains unread messages, pressing selects the first unread message in the folder. If it doesn't, space opens the list of folders with unread messages. There, just press Enter on a folder to go to its first unread message. If you press Space in this list, the selected folder will be marked as read, without asking for confirmation;
-- For other Chichi commands, read the section [Chichi Commands http://www.rptools.org/Outils-DV/thunderbird-chichi.html#toc6]
+- For other Chichi commands, read the section [Chichi Commands https://www.rptools.org/Outils-DV/thunderbird-chichi.html#toc6]
 
 
 New options have been added to the -optMenu menu to allow you to disable certain features if you prefer to use their equivalent in Chichi. Note: at this time, Chichi does not yet offer an alternative to some of the features listed below.

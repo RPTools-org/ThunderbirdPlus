@@ -77,7 +77,7 @@ class AppModule(thunderbird.AppModule):
 		# self.regExp_listGroupName = compile ("\[(.*)\]") # |\{?*\}") # first occurrence of the list group name
 		self.regExp_removeMultiBlank =compile (" {2,}")
 		self.regExp_removeSymbols =compile ("\d+|&|_|@.+|=|\.| via .*")
-		wx.CallLater(50, utis.getGroupingIndex)
+		wx.CallLater(100, utis.getGroupingIndex)
 		#wx.CallLater(25000, debugShow, self, True)
 
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
@@ -825,7 +825,7 @@ class AppModule(thunderbird.AppModule):
 
 	def script_sharedAltD(self,gesture):
 		if sharedVars.curTab == "main" :
-			wx.CallLater(10, messengerWindow.messageListItem.editDelay)
+			wx.CallLater(10, sharedVars.oSettings.editDelay)
 			return
 		return gesture.send()
 	script_sharedAltD.__doc__ = _("Affiche le dialogue d'édition du délai avant lecture du message de la fenêtre séparée de lecture.")
@@ -1350,6 +1350,10 @@ def buildRowName2(appMod, oRow):
 			elif ID == "subjectCol" :
 				if  ID in s : s = _("pas de sujet")
 				s=removeResponseMention (appMod, s,1).strip (" -_*#").replace(" - "," ")
+
+				if sharedVars.oSettings.regex_removeInSubject is not None : 
+					s =sharedVars.oSettings.regex_removeInSubject.sub ("", s)
+
 				# listgroup name repeats
 				grp = utis.strBetween(s, "[", "]")
 				# api.copyToClip("groupe " + grp)
@@ -1357,6 +1361,7 @@ def buildRowName2(appMod, oRow):
 					s= appMod.regExp_nameListGroup.sub (" ",s)
 					if  not listGroupName :
 						s =  grp + " : " +  s 
+
 				#  v4.0.1 add separator 
 				s = s + colSepar
 			elif ID in ("dateCol","receivedCol") :

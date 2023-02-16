@@ -1,4 +1,5 @@
-﻿objLooping = False
+#-*- coding:utf-8 -*
+objLooping = False
 oCurFrame = None
 groupingIdx = 35 # index of child object of role grouping in the foregroundObject children  
 curFrame = ""

@@ -9,7 +9,7 @@ Auteur: ADDON_AUTHOR_NAME
 -br
 [Consilter l'historique (contient certaines informationsnon reprises plus bas changes_fr.html#histo]
 
-URL : [RPTools.org http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus.html]
+URL : [RPTools.org https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus.html]
 
 Dépot GitHub: [ThunderbirdPlus repos ADDON_REPOSITORY] ;
 
@@ -28,14 +28,14 @@ Compatibilité:
 -br
 
 - Traductions par ordre d'ancienneté :
- - [Portugais http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt_PT.html] : par Rui Fontes de chez TifloTecnia.com et membre de l'équipe NVDA Portugal ;
- - [Espagnol http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html] : par Rémy Ruiz ;
- - [Anglais http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html] : par Google Translate & Pierre-Louis R.
+ - [Portugais https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt_PT.html] : par Rui Fontes de chez TifloTecnia.com et membre de l'équipe NVDA Portugal ;
+ - [Espagnol https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html] : par Rémy Ruiz ;
+ - [Anglais https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html] : par Google Translate & Pierre-Louis R.
  - 
 
 
 +Présentation+
-Cette extension améliore considérablement  le confort et l'efficacité d'utilisation du client de messagerie Mozilla Thunderbird avec NVDA.
+Cette extension améliore fortement le confort et l'efficacité d'utilisation du client de messagerie Mozilla Thunderbird avec NVDA.
 -br
 - **Confort auditif:**
  - Les alertes  "un tel a demandé un accusé de réception" peuvent être désactivées via une option ;

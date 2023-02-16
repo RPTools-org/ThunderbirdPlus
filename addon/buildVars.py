@@ -25,7 +25,7 @@ addon_info = {
 	# on add-on information from add-ons manager
 	"addon_description": _("""This extension adds commands to Thunderbird 102 and above to make it more accessible, efficient and comfortable to use."""),
 	# version
-	"addon_version": "4.4",
+	"addon_version": "4.5",
 	# Author(s)
 	"addon_author": u"Pierre-Louis Renaud (Thunderbird v. 78 to 102), Daniel Poiraud (TB v. 68 to 91), Abdelkrim Bensaïd for a part of TB 78, Yannick (TB v. 38 to 60)",
 	# URL for the add-on documentation support
@@ -36,7 +36,7 @@ addon_info = {
 	"addon_minimumNVDAVersion": "2019.3.0",
 	# Last NVDA version supported/tested
 	# (e.g. "2018.4", ideally more recent than minimum version)
-	"addon_lastTestedNVDAVersion": "2022.1.0",
+	"addon_lastTestedNVDAVersion": "2023.1.0",
 	# Add-on update channel (default is stable or None)
 	"addon_updateChannel": None,
 }

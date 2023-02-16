@@ -6,10 +6,18 @@ Auteur: ADDON_AUTHOR_NAME
 %!includeconf: addon_informations.t2tconf
 %!includeconf: addon_keys.t2tconf
 -br
-URL : [RPTools.org http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus.html]
+URL : [RPTools.org https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus.html]
 -br
 ==Historique des changements==[histo]
+===Version 4.5, 13/02/2023===
+- La compatibilité de l'extension a été passée à NVDA 2023.1 ;
+- Deux nouvelles options dans le menu -optMenu / Options pour la fenêtre principale :
+ - Pour compléter l'option "Masquer les noms de listes de diffusion", la commande "Editer les mots à masquer dans l'objet de messages" a été ajoutée. Elle permet de ne pas entendre des noms de listes qui ne sont pas entourés de crochets ou des mentions "***" par exemple.
+ - Editer le délai avant la lecture automatique de la fenêtre séparée du message.	Alt+d : en fonction de la rapidité de l'ordinateur, cette lecture peut démarrer trop tard ou être coupée par une autre annonce. Le délai par défaut est fixé à 100 millisecondes, ce qui convient bien à un PC très rapide  ; ;
+
+
 ===Version 4.4, 17/01/2023===
+
 De nombreux changements pour rendre l'extension conforme à sa publication sur le dépôt gitHub.
 
 [Visiter le dépôt ThunderbirdPlus sur gitHub https://github.com/RPTools-org/ThunderbirdPlus]
@@ -96,7 +104,7 @@ Combiné à Thunderbird+, les commandes suivantes sont disponibles :
 
 - Espace, F4 et Alt+flèche bas  en double frappe sur un message dans la liste des messages : ouvre la liste des liens contenus dans le message affiché dans le volet d'aperçu. En simple frappe, le message est toujours lu par Thunderbird+ ;
 - Espace sur un dossier de l'arborescence : si le dossier comporte des messages non lus, un appui sélectionne le premier message non lu dans le dossier. S'il n'en contient pas, espace ouvre la liste des dossiers avec des messages non lu. Là, il suffit de presser  Entrée sur un dossier pour vous placer sur son premier message non lu. Si vous pressez Espace dans cette liste, le dossier sélectionné   sera marqué comme lu, sans demande de confirmation ;
-- Pour les autres commandes de Chichi, lisez la section [Commandes de Chichi http://www.rptools.org/Outils-DV/thunderbird-chichi.html#toc6]
+- Pour les autres commandes de Chichi, lisez la section [Commandes de Chichi https://www.rptools.org/Outils-DV/thunderbird-chichi.html#toc6]
 
 
 De nouvelles options  ont été ajoutées au menu -optMenu afin de vous permettre de désactiver certaines fonctionnalités si vous préférez utiliser leur équivalent dans Chichi. Note : en ce moment, Chichi n'offre pas encore d'alternative à certaines fonctionnalité listées ci-dessous.

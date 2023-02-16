@@ -4,6 +4,7 @@ if exist .\addon\buildVars.py (
 	)
 
 call scons -s
+SET /P PR=Press Enter to continue...
 ren *.nvda-addon *.nvda-addonTMP
 call scons -c
 ren *.nvda-addonTMP *.nvda-addon 

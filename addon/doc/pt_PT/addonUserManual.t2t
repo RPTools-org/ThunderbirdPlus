@@ -10,8 +10,8 @@ Autor : ADDON_AUTHOR_NAME
 [Consulte o histórico (contém informações ainda não documentadas) changes_pt_PT.html#histo]
 
 -br
-URL : [RPTools.org http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt_PT.html]
- ; [contacto en Français et Anglais http://www.rptools.org/Outils-DV/contact.html] ;
+URL : [RPTools.org https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt_PT.html]
+ ; [contacto en Français et Anglais https://www.rptools.org/Outils-DV/contact.html] ;
 
 Repositório GitHub: [ThunderbirdPlus repos ADDON_REPOSITORY] ;
 
@@ -19,7 +19,7 @@ Repositório GitHub: [ThunderbirdPlus repos ADDON_REPOSITORY] ;
 
 Compatibilidade:
 - Versão mínima do NVDA requerida: 2019.3 ;
-- Última versão do NVDA testada: 2022.1 ;
+- Última versão do NVDA testada: 2023.1 ;
 
 
 -br
@@ -75,7 +75,7 @@ Se tiver os seguintes extras instalados no computador, deve primeiro removê-los
 - Mozilla Apps Enhancements de Javie Dominguez;
 
 
-[Descarregar Thunderbird+4-v-ver apenas para Thunderbird 102 http://www.rptools.org/?p=8610];
+[Descarregar ThunderbirdPlus-vADDON_CUR_VERSION apenas para Thunderbird 102 https://www.rptools.org/?p=8610];
 
 
 

@@ -1,4 +1,4 @@
-﻿#-*- coding:utf-8 -*
+#-*- coding:utf-8 -*
 # Thunderbird+ v 4.x
 # Reads the cells in a row of the message list
 #  overrlay class
@@ -19,6 +19,7 @@ from speech import speakSpelling
 from wx import CallLater
 import api
 from time import time
+from tones import beep
 import addonHandler,  os, sys
 addonHandler.initTranslation()
 _curAddon=addonHandler.getCodeAddon()
@@ -107,6 +108,8 @@ class MessageListItemFields(IAccessible):
 			# api.copyToClip(str(grp))
 			# if sharedVars.oSettings.getOption("messengerWindow", "listGroupName") :
 				# value =self.appModule.regExp_nameListGroup.sub (" ",value)
+			if sharedVars.oSettings.regex_removeInSubject is not None : 
+				value =sharedVars.oSettings.regex_removeInSubject.sub ("",value)
 
 		# if field in  "correspondentCol,recipientCol,subjectCol, senderCol" and sharedVars.oSettings.getOption("messengerWindow", "listGroupName") :
 			# value =self.appModule.regExp_nameListGroup.sub (" ",value)

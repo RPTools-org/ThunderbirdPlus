@@ -1,4 +1,4 @@
-﻿# coding:utf-8
+#-*- coding:utf-8 -*
 
 import controlTypes
 # controlTypes module compatibility with old versions of NVDA
@@ -311,9 +311,13 @@ def getIAPropertyPage (o=None) :
 				return o
 	return r
 def getGroupingIndex() :
+	# by default, sharedVars.groupingIdx = 35 # index of child object of role grouping in the foregroundObject children   
 	try : 
 		sharedVars.objLooping = True
-		o = api.getForegroundObject()
+		try : o = api.getForegroundObject()
+		except : return
+		if not o : return
+		if o.role != controlTypes.Role.FRAME : return
 		i = 39
 		try : o = o.getChild(i)
 		except : return

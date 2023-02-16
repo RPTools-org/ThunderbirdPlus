@@ -1,3 +1,4 @@
+#-*- coding:utf-8 -*
 # thunderbird4.x
 
 import wx

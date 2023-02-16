@@ -1,4 +1,4 @@
-﻿#-*- coding:utf-8 -*
+#-*- coding:utf-8 -*
 #-*- coding:utf-8 -*
 # version 4.x Thunderbird 102+
 
@@ -811,19 +811,6 @@ def chichiLinks(rc) :
 	CallLater(20, utis.sendKey, "space", rc, 0.02)
 	CallLater(100, speech.cancelSpeech) # message, "Liste de liens : ")
 	return
-
-def editDelay() :
-	utis.inputBox(label=_("Délai entre 20 et 2000 milli secondes  avant  lecture épurée (défaut : 100) : "), title= _("Fenêtre séparée de lecture"), postFunction=saveDelay, startValue=sharedVars.delayReadWnd)
-
-def saveDelay(strDelay) :
-	speech.cancelSpeech()
-	try : iDelay = int(strDelay)
-	except : return beep(100, 50) # return CallLater(50, message, u"La valeur doit être un nombre")
-	if   iDelay < 20 or iDelay > 2000 :
-		return beep(250, 50) # CallLater(50, message, u"Le délai doit être compris entre 20 et 2000 milli-secondes !")
-	sharedVars.delayReadWnd = iDelay
-	sharedVars.oSettings.options["messengerWindow"].update({"delayReadWnd":strDelay})
-	sharedVars.oSettings.options.write()
 
 def readPreview2(oRow, gesture) :
 	# sharedVars.log(None, "Dans readPreview, sharedVars.TTnoSpace=" + str(sharedVars.TTnoSpace))

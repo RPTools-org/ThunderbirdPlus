@@ -10,7 +10,7 @@ Versión : ADDON_CUR_VERSION - %%date(%m/%d/%Y)
 -br
 [Consulte el historial (contiene información no incluida en la documentación) changes_es.html#histo]
 
-URL : [RPTools.org http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html]
+URL : [RPTools.org https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html]
 
 repositorio GitHub: [ThunderbirdPlus repos ADDON_REPOSITORY] ;
 
@@ -31,11 +31,11 @@ Compatibilidad :
 
 - Autor original del complemento thunderBird: Yannick
 - Adaptación a Thunderbird 68 , 78, 91, 102 y a NVDA 2019.3 y siguientes: Daniel Poiraud, Pierre-Louis R y Abdel para la versión 3.1.;
-- [Documentación original en francés http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus.html]
+- [Documentación original en francés https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus.html]
 - Traducciones por orden de antigüedad:
- - [Portugués http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt_PT.html] : por Rui Fontes de TifloTecnia.com y miembro del equipo de NVDA Portugal;
- - [Español http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html] : por Rémy Ruiz;
- - [inglés http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html] : por Google Translate & Pierre-Louis R.
+ - [Portugués https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt_PT.html] : por Rui Fontes de TifloTecnia.com y miembro del equipo de NVDA Portugal;
+ - [Español https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html] : por Rémy Ruiz;
+ - [inglés https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html] : por Google Translate & Pierre-Louis R.
 
 
 -br
@@ -77,7 +77,7 @@ Este complemento mejora enormemente la comodidad y la eficiencia del uso del cli
 
 Si el complemento "Mozilla Apps Enhancements" de Javie Dominguez" está instalado en su computadora, primero debe deshabilitarlo antes de instalar Thunderbird+:
 
-[Descargar Thunderbird+ v-ver solo para Thunderbird 102 http://www.rptools.org/?p=8610];
+[Descargar Thunderbird+ vADDON_CUR_VERSION solo para Thunderbird 102 https://www.rptools.org/?p=8610];
 
 +Soporte y lista de correo+
 % Translator : you have to edit support.t2tinc

@@ -1,4 +1,4 @@
-﻿#coding:utf-8
+#-*- coding:utf-8 -*
 # Thunderbird+ 4.x, context menu for main Window
 
 import controlTypes

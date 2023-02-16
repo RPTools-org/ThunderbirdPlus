@@ -1,14 +1,15 @@
 # Thunderbird+ #
 
-* Authors : Pierre-Louis Renaud (Thunderbird v. 78 to 102), Daniel Poiraud (TB v. 68 to 91), Abdelkrim Bensaïd for a part of TB 78, Yannick (TB v. 38 to 60) ;
-* URL : [User manual](http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html) , [Contact in French or English](http://www.rptools.org/Outils-DV/contact.html) ;
+* Authors : Pierre-Louis Renaud (Thunderbird v. 78 to 102), Daniel Poiraud (TB v. 68 to 91), Abdelkrim Bensaïd for a part of TB 78, Yannick (TB v. 38 to 60)
+* URL : [User manual](https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html) , [Contact in French or English](https://www.rptools.org/Outils-DV/contact.html) ;
 * Download :
 	* [Stable version][1]
+	* [Latest version on RPTools.org][2]
 * NVDA Compatibility :
 	* Minimum version : 2019.3
-	* Last tested version : 2022.1
+	* Last tested version : 2023.1
 * Tunderbird compatibility : 102.x versions ; 
-* [See source code on GitHub][3]
+* [Source code on GitHub][3]
 
 Note: This add-on is not compatible with the Mozilla Apps Enhancements add-on. If you have the Mozilla Apps Enhancements add-on installed, you must disable or uninstall it before using this one ;
 
@@ -40,11 +41,13 @@ This add-on greatly improves the accessibility, efficiency and comfort of using 
 		* the misspelled word is announced before the suggested word. NVDA+Tab or Alt+up arrow shortcuts announce misspelled and replacement words: 1 tap spells the words at normal speed, 2 taps spells them fast, 3 taps copies the misspelled word to the clipboard for analysis in another edit field;
 		* various combinations of the enter key activate the buttons Replace, Replace all, Ignore, Ignore all or Add the word to the dictionary have been added for an increased comfort of this dialog;
 * Automatic extension update;
-* And many other things that you will discover by reading the [user manual][2] ;
+* And many other things that you will discover by reading the [user manual][4] ;
 
 
-[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.4/ThunderbirdPlus-v4.4-TB102.nvda-addon
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.5/ThunderbirdPlus-v4.5-TB102.nvda-addon
 
-[2]: http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html
+[2]: https://www.rptools.org/?p=8610
 
 [3]: https://github.com/RPTools-org/ThunderbirdPlus/
+
+[4]: https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html

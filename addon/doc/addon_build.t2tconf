@@ -1,7 +1,7 @@
 % NOTHING TO TRANSLATE
 % -----
 % download
-%!PreProc:ADDON_DOWNLOAD_SERVER1 http://www.rptools.org/?p=8610
+%!PreProc:ADDON_DOWNLOAD_SERVER1 https://www.rptools.org/?p=8610
 %!PreProc:ADDON_DOWNLOAD_SERVER2 https://github.com/RPTools-org/ThunderbirdPlus/releases/download/vADDON_CUR_VERSION/ThunderbirdPlus-vADDON_CUR_VERSION-TB102.nvda-addon 
 %!PreProc: ADDON_DEV_URL AllMyNVDAAddons_REPOSITORY_URL/tree/master/ADDON_NAME/dev
 %!PostProc: AllMyNVDAAddons_REPOSITORY_URL https://github.com/paulber007/AllMyNVDAAddons
@@ -11,8 +11,8 @@
 % specific add-on informations 
 %!PostProc:ADDON_NAME ThunderbirdPlus
 % current stable version
-%!PostProc (html):ADDON_CUR_VERSION 4.4
+%!PostProc (html):ADDON_CUR_VERSION 4.5
 %!PostProc (html):MINIMUM_NVDA_VERSION  2020.4
-%!PostProc (html):LAST_TESTED_NVDA_VERSION  2022.1
+%!PostProc (html):LAST_TESTED_NVDA_VERSION  2023.1
 %previous stable version
-%!PostProc (html):ADDON_PREV_VERSION 11.1
+%  !PostProc (html):ADDON_PREV_VERSION 11.1

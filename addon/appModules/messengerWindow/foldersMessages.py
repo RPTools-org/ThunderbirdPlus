@@ -1,4 +1,4 @@
-# -*- coding: iso-8859-15 -*-	
+# -*- coding:utf-8 -*
 #A part of NonVisual Desktop Access (NVDA)
 # Thunderbird+ 4.x
 
@@ -131,11 +131,14 @@ class FoldersMessagesList(wx.Dialog):
 			try : 
 				if not self.lbComptes.HasFocus and not self.lbDossiers.HasFocus : return
 			except RuntimeError: return
-			if count:
-				msg = _("%s ÈlÈments") %str(count) if count > 1 else _("Un ÈlÈment")
-				message(msg)
-			else:
-				message(_("aucun ÈlÈment"))
+			if count == 0 :
+				msg = _("aucun √©l√©ment")
+			elif count == 1 :
+				msg = _("1 √©l√©ment")
+			else :
+				msg = _("%s √©l√©ments") % str(count) 
+			message(msg)
+
 		if self._timer is not None: self._timer.Stop()
 		self._timer = wx.CallLater(200,callback, self.lbDossiers.Count) 
 
@@ -154,9 +157,9 @@ class FoldersMessagesList(wx.Dialog):
 			iSelect=nb-1
 			while iSelect and self.getlisteDossiers0()[iSelect][2]==False :
 				iSelect-=1
-			iSelect2=iSelect-1 # -1 pour barre d'Ètat?
+			iSelect2=iSelect-1 # -1 pour barre d'√©tat?
 			y2=int(self.getlisteDossiers0()[iSelect2][1][1])+8
-		if iSelect0 ==0 : # dÈbut non visible
+		if iSelect0 ==0 : # d√©but non visible
 			iSelect= 0 
 			while iSelect< 60 and self.getlisteDossiers0()[iSelect][2]==False :
 				iSelect+=1
@@ -209,8 +212,8 @@ class FoldersMessagesList(wx.Dialog):
 		evt.Skip()
 		
 	def onCaseChange(self, evt): 
-		if self.taggedObjectsCB.GetValue(): message (_("Dossiers avec non lus, cochÈ"))
-		else :message (_("Dossiers avec non lus, non cochÈ"))  #("Tous les dossiers")
+		if self.taggedObjectsCB.GetValue(): message (_("Dossiers avec non lus, coch√©"))
+		else :message (_("Dossiers avec non lus, non coch√©"))
 		self.lbComptes.Clear()
 		self.lbComptes.SetItems([obj[0] for obj in self.getlisteComptes() ]) 
 		self.lbComptes.Select(0) 
@@ -224,10 +227,10 @@ class FoldersMessagesList(wx.Dialog):
 				self.lbDossiers.Select(0) 
 			else :
 				 self.lbComptes.SetFocus() 
-				 return message (_("Aucun rÈsultat."))
+				 return message (_("Aucun r√©sultat."))
 		except : 
 			self.lbComptes.SetFocus() 
-			return message (_("Aucun rÈsultat."))
+			return message (_("Aucun r√©sultat."))
 		evt.Skip()  		 
 
 	def onObjectTypeListBoxFocus(self,evt):
@@ -333,7 +336,7 @@ class FoldersMessagesList(wx.Dialog):
 				filtre = self.zoneRecherche.GetValue()
 				if filtre =="" :
 					if keyCode ==wx.WXK_F11 : beep (330, 75) 
-					message(_("Pas d'expression entrÈe"))
+					message(_("Pas d'expression entr√©e"))
 					self.lbDossiers.SetFocus() 
 					return 
 				self.lbDossiers.Clear()
@@ -344,7 +347,7 @@ class FoldersMessagesList(wx.Dialog):
 					self.sayNumberOfElements()
 					self.lbDossiers.SetFocus()
 				else : 
-					message(_("Aucun rÈsultat, modifiez votre recherche."))
+					message(_("Aucun r√©sultat, modifiez votre recherche."))
 				self.changeSelectionComptes()
 				return 					
 		evt.Skip()		
@@ -419,7 +422,7 @@ class FoldersMessagesList(wx.Dialog):
 
 	def getlisteDossiers(self):
 		global oDeb 
-		sharedVars.objLooping = True # Èvite les biendgestures dans folderTreeItem.py
+		sharedVars.objLooping = True # √©vite les biendgestures dans folderTreeItem.py
 		filtre1=self.filtre0
 		avecNonLus = self.taggedObjectsCB.GetValue()  
 		try: 
@@ -469,7 +472,7 @@ class FoldersMessagesList(wx.Dialog):
 
 	def getlisteDossiers0(self):
 		global oDeb 
-		sharedVars.objLooping = True # Èvite les biendgestures dans folderTreeItem.py
+		sharedVars.objLooping = True # √©vite les biendgestures dans folderTreeItem.py
 		filtre1=self.filtre0
 		avecNonLus = False  #self.taggedObjectsCB.GetValue()  
 		filtre1=False

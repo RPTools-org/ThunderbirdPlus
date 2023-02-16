@@ -1,12 +1,13 @@
 # Thunderbird+ #
 
-* Autor : Pierre-Louis Renaud (Thunderbird v. 78 - 102), Daniel Poiraud (TB v. 68 - 91), Abdelkrim Bensaïd por una parte de  TB 78, Yannick (TB v. 38 - 60) ;
-* URL :   [Documentación](http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html) , [Contacto en Francés y Inglés](http://www.rptools.org/Outils-DV/contact.html) ;
+* Autor : Pierre-Louis Renaud, Daniel Poiraud
+* URL :   [Documentación](https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html) , [Contacto en Francés y Inglés](https://www.rptools.org/Outils-DV/contact.html) ;
 * Descargar:
 	* [versión estable][1]
+	* [Última versión en RPTools.org][2]
 * Compatibilidad con NVDA:
 	* versión mínima de NVDA requerida: 2019.3 ;
-	* última versión de NVDA probada: 2022.1 ;
+	* última versión de NVDA probada: 2023.1 ;
 * Compatibilidad con Thunderbird: versiones 102.x ;
 * [Ver código fuente en GitHub][3]
 
@@ -33,7 +34,7 @@ Este complemento mejora enormemente la comodidad y la eficiencia del uso del cli
 	* En el cuadro de diálogo de Revisar ortografía: 
 	*	 la palabra mal escrita se anuncia antes de la palabra sugerida. Los atajos NVDA+Tab o Alt+flecha arriba anuncian las palabras mal escritas y de reemplazo: pulsando una vez deletreará las palabras a velocidad normal, pulsando dos veces deletreará rápidamente, pulsando tres veces copiará   la palabra mal escrita al portapapeles para su análisis en otro campo de edición; 
 	*	 varias combinaciones de la tecla intro que permite un accionamiento de los botones Reemplazar, Reemplazar todo, Ignorar, Ignorar todo o Añadir palabra para que este diálogo sea más cómodo; 
-	* Mejora para revisar la ortografía mientras escribes: dos atajos para ir a la palabra mal escrita siguiente y anterior. Esto aún no funciona en las versiones 2022.1 y posteriores de NVDA;
+	* Mejora para revisar la ortografía mientras escribes: dos atajos para ir a la palabra mal escrita siguiente y anterior. Esto aún no funciona en las versiones 2023.1 y posteriores de NVDA;
 * **Barra de filtrado rápido se hace accesible y Administrar etiquetas simplificado:**
 	* Es posible navegar entre las opciones de filtrado usando las flechas verticales. La tecla Intro le permite marcar o desmarcar una opción;
 	* La adición o eliminación de etiquetas se realiza simplemente pulsando -shift+un número en el teclado alfanumérico. Por ejemplo, pulse  4 para agregar la etiqueta "Por hacer" a un mensaje. Luego puede filtrar la lista de mensajes por etiquetas a través de la barra de filtrado rápido que ahora es accesible;
@@ -42,10 +43,13 @@ Este complemento mejora enormemente la comodidad y la eficiencia del uso del cli
 	* Consulta de las columnas de la lista de mensajes: permite volver a escuchar, deletrear o copiar fácilmente el nombre del remitente, el asunto o la fecha de un mensaje pulsando un número en el teclado alfanumérico: por ejemplo, 1 o & anuncia el remitente, 2 pulsaciones deletrea el nombre y 3 pulsaciones lo copia al portapapeles;
 	* Consulta de cabeceras del panel  de cabeceras que se muestra con F8: con Alt+un número, 1 pulsación verbaliza una cabecera que contiene las direcciones del remitente o de los destinatarios, 2 pulsaciones  abre un diálogo que permite copiarlas, 3 pulsaciones abre el menú contextual nativo de Thunderbird asociado con la cabecera;
 * Actualización automática del complemento;
-* Y muchas cosas más que descubrirás leyendo el resto de [esta documentación][2];
+* Y muchas cosas más que descubrirás leyendo el resto de [esta documentación][4];
 
-[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.4/ThunderbirdPlus-v4.4-TB102.nvda-addon
 
-[2]: http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.5/ThunderbirdPlus-v4.5-TB102.nvda-addon
+
+[2]: https://www.rptools.org/?p=8610
 
 [3]: https://github.com/RPTools-org/ThunderbirdPlus/
+
+[4]: https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-es.html

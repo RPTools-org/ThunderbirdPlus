@@ -1,12 +1,13 @@
 # Thunderbird+4 #
 
-* Autor : Pierre-Louis Renaud (Thunderbird v. 78 to 102), Daniel Poiraud (TB v. 68 to 91), Abdelkrim Bensaïd for a part of TB 78, Yannick (TB v. 38 to 60) ;
-* URL : [Documentação](http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt.html) , [contato em francês ou inglês](http://www.rptools.org/Outils-DV/contact.html) ;
+* Autor : Pierre-Louis Renaud, Daniel Poiraud
+* URL : [Documentação](https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt.html) , [contato em francês ou inglês](https://www.rptools.org/Outils-DV/contact.html) ;
 * Download :
 	* [versão estável][1]
+	* [Última versão no RPTools.org][2]
 * Compatibilidade NVDA :
 	* versão mínima : 2019.3 ; 
-	* última versão testada: 2022.1 ;
+	* última versão testada: 2023.1 ;
 * Compatibilidade com Thunderbird: versões 102.x ;
 * [Veja o código-fonte no GitHub][3]
 
@@ -39,11 +40,13 @@ Quando o Thunderbird é iniciado, o foco pode ser colocado na árvore de pastas 
 	* A escolha das colunas e a sua disposição na lista de mensagens é tornada acessível através de um simples diálogo;
 	* Consulta das colunas da lista de mensagens: permite reproduzir, soletrar ou copiar facilmente o nome do remetente, o assunto ou a data de uma mensagem pressionando um número do teclado alfanumérico, por exemplo anuncia o remetente, pressionando 2 vezes soletra o nome e 3 vezes copia para a área de transferência;
 	* Consulta dos cabeçalhos do painel de cabeçalhos apresentado com F8: com Alt+número, uma vez anuncia um cabeçalho, 2 vezes abre um diálogo permitindo copiá-lo, 3 vezes abre o menu contextual nativo Thunderbird associado ao cabeçalho;
-* E muitas outras coisas que você descobrirá lendo o [manual do usuário][2] ;
+* E muitas outras coisas que você descobrirá lendo o [manual do usuário][4] ;
 
 
-[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.4/ThunderbirdPlus-v4.4-TB102.nvda-addon
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.5/ThunderbirdPlus-v4.5-TB102.nvda-addon
 
-[2]: http://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt_PT.html
+[2]: https://www.rptools.org/?p=8610
 
 [3]: https://github.com/RPTools-org/ThunderbirdPlus/
+
+[4]: https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-pt_PT.html

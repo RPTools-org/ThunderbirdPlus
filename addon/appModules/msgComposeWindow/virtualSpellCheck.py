@@ -1,3 +1,4 @@
+#-*- coding:utf-8 -*
 # thunderbird+/appModules/virtualErrors.
 
 from virtualBuffers import gecko_ia2 # Pour les besoins de l'ajout d'un mode de navigation parmi les erreurs d'orthographe lors de la rédaction d'un message.
