@@ -2,6 +2,7 @@
 
 * Authors : Pierre-Louis Renaud (Thunderbird v. 78 to 102), Daniel Poiraud (TB v. 68 to 91), Abdelkrim Bensaïd for a part of TB 78, Yannick (TB v. 38 to 60)
 * URL : [User manual](https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus-en.html) , [Contact in French or English](https://www.rptools.org/Outils-DV/contact.html) ;
+	* [Changelog](https://www.rptools.org/Outils-DV/changes_en.html)
 * Download :
 	* [Stable version][1]
 	* [Latest version on RPTools.org][2]

@@ -2,7 +2,7 @@
 
 * Auteur : Pierre-Louis Renaud, Daniel Poiraud
 * URL : [Documentation](https://www.rptools.org/Outils-DV/NVDA-ThunderbirdPlus.html) , [Contact](https://www.rptools.org/Outils-DV/contact.html) ;
-* Télécharger :
+	* [Changements](https://www.rptools.org/Outils-DV/changes_fr.html)
 	* [version stable][1]
 	* [Dernière version sur RPTools.org][2]
 * Compatibilité NVDA :
