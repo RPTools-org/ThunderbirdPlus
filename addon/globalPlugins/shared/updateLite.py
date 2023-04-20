@@ -10,8 +10,8 @@ import api, globalVars
 import os, wx
 import  gui
 from ui import  message, browseableMessage
-import addonHandler
-addonHandler.initTranslation()
+from . import translation
+translation.initTranslationWithEnglishFallback()
 import time, winUser
 import config
 from tones import beep
