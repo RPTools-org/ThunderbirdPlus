@@ -4,12 +4,12 @@ import api, config, sys, glob, shutil
 from configobj import ConfigObj
 import re
 import addonHandler,  os, sys
-import sharedVars, utis
+import translation, sharedVars, utis
 from wx import Menu, EVT_MENU, CallAfter, CallLater 
 from ui import  message
 from speech import cancelSpeech
 from tones import beep
-addonHandler.initTranslation()
+translation.initTranslationWithEnglishFallback()
 
 
 class  Settings() :
@@ -27,6 +27,7 @@ class  Settings() :
 		basePath = os.path.join(curAddon.path) 
 		# sharedVars.log(None, "basepath : " + basePath)
 		self.addonPath =basePath# + "\\AppModules"
+		self.copyTB4Ini()
 		# sharedVars.log(None, "addonpath : " + self.addonPath)
 		self.load()
 		self.initDefaults()
@@ -86,6 +87,7 @@ class  Settings() :
 			"FTnoSpace" : _("Dossiers : Espace ne sélectionne pas le prochain message non lu dans la liste et n'affiche pas la liste de dossiers non lus"),
 			"FTnoNavLetter" : _("Dossiers : pas de navigation par initiales"),
 			"TTnoSpace" : _("Liste messages : Espace ne lit pas le message du volet d'aperçu"),
+			"TTNoExpand" : _("Liste messages : Espace lit le résumé de la conversation du volet d'aperçu"),
 			"TTnoSmartReply" : _("Liste messages : pas de  SmartReply"),
 			"TTnoFilterBar" : _("Liste messages : ne pas gérer la barre de filtrage rapide"),
 			"TTnoEscape" : _("Liste messages : Echappe ne revient pas à l'arborescence"),
@@ -171,6 +173,12 @@ class  Settings() :
 			self.load()
 			self.initDefaults()
 			CallLater(30, utis.noSpeechMessage,_("La configuration a été réinitialisée à ses valeurs par défaut"))
+
+	def copyTB4Ini(self) :
+		if   os.path.exists(self.iniFile) : return
+		tb4File = api.config.getUserDefaultConfigPath() + "\\Thunderbird+4.ini"
+		if   os.path.exists(tb4File) :		
+			shutil.copyfile(tb4File, self.iniFile) 
 
 	def getOption(self, iniSect, iniKey="") : # si iniKey == "", retourne la section entière 
 		if iniSect == "messenger" : iniSect = "messengerWindow"
@@ -341,7 +349,7 @@ def makeRegex(words) :
 def saveWords(words) :
 	words = str(words)
 	if words == "ibCancel" : return
-	sharedVars.log(None, "Mots saisis " + words)
+	# sharedVars.log(None, "Mots saisis " + words)
 	# speech.cancelSpeech()
 	sharedVars.oSettings.options["messengerWindow"]["removeInSubject"] = words
 	# sharedVars.delayReadWnd = iDelay

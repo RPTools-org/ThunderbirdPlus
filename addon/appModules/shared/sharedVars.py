@@ -56,18 +56,24 @@ def log(o, msg="Objet", withStep=False):
 	if not o : 
 		debugLog = debugLog + step + msg + " : objet None, " + lastFunction + "\n"
 		return
-	foc =  ("focused, " if hasattr(o, "hasFocus") and o.hasFocus else "")
+	states =  ("focused, " if hasattr(o, "hasFocus") and o.hasFocus else "")
+	states += (", selected" if controlTypes.State.SELECTED in o.states else "non selected")
+	if o.role == controlTypes.Role.TREEVIEWITEM :
+		states += (",Collapsed" if controlTypes.State.COLLAPSED in o.states else ", Expanded")
+
 	nm = (str(o.name) if hasattr(o, "name") else "")
 	if hasattr(o, "IA2Attributes") :
 		ID = str(o.IA2Attributes.get("id"))
 	else : ID = ""
-	t =  foc + " : {0}, ID : {1}, childCount : {2} \nName : {3}".format(str(o.role), ID, o.childCount, nm)
+	t =  states + " : {0}, ID : {1}, childCount : {2} \nName : {3}".format(str(o.role), ID, o.childCount, nm)
 	debugLog = debugLog + step + lastFunction + msg +  t + "\n"
 
 def debugMess(o, msg="Objet") :
 	lastFunc = inspect.stack()[1][3]
 	foc =  ("focused, " if o.hasFocus else "")
-	sel = (", selected" if controlTypes.State.SELECTED in o.states else "non selected")
+	sel = u"Etat sélectionné" # (", selected" if controlTypes.State.SELECTED in o.states else "non selected")
+	# if o.role == controlTypes.TREEVIEWITEM :
+	sel += (",Collapsed" if controlTypes.State.COLLAPSED in o.states else ", Expanded")
 	nm = str(o.name)
 	ID = str(o.IA2Attributes.get("id"))
 	t =  foc + sel + " : role : {0}, ID : {1}, childCount : {2}name : {3}".format(o.role, ID, o.childCount, nm[:15])

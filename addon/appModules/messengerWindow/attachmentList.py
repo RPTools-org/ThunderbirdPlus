@@ -6,8 +6,14 @@ from NVDAObjects.IAccessible import IAccessible
 from ui import message
 from wx import CallAfter
 from tones import beep
-import addonHandler
-addonHandler.initTranslation()
+import addonHandler,  os, sys
+_curAddon=addonHandler.getCodeAddon()
+sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
+sys.path.append(sharedPath)
+import translation
+del sys.path[-1]
+translation.initTranslationWithEnglishFallback()
+
 
 
 class AttachmentList (IAccessible):

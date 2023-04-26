@@ -1,6 +1,5 @@
 #-*- coding:utf-8 -*
-#-*- coding:utf-8 -*
-# version 4.x Thunderbird 102+
+# version 4.x Thunderbird 102.x
 
 from tones  import beep
 # "expandedtagsBox":u"Étiquettes" 
@@ -40,17 +39,16 @@ clientObject =handler.clientObject
 GetFirstChildElement, GetNextSiblingElement, GetParentElement, GetLastChildElement    = clientObject.RawViewWalker.GetFirstChildElement, clientObject.RawViewWalker.GetNextSiblingElement, clientObject.RawViewWalker.GetParentElement, clientObject.RawViewWalker.GetLastChildElement
 from ui import message, browseableMessage
 import addonHandler,  os, sys
-addonHandler.initTranslation()
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import utis, sharedVars
+import translation, utis, sharedVars
 from utis import versionTB
 from . import foldersMessages
-from  py3compatibility import *
-from  py3compatibility import _unicode
 # import zDevTools as z
 del sys.path[-1]
+translation.initTranslationWithEnglishFallback()
+
 from time import time, sleep
 from . import contentMailRead
 
@@ -66,7 +64,7 @@ class MessageListItem(IAccessible):
 	def initOverlayClass (self):
 		if str(utis.getIA2Attribute(self.parent)) != "threadTree" : return
 		self.bindGesture ("kb:escape", "escape") 
-		for e in  range(1,10) : self.bindGestures ({"kb:shift+"+_unicode(e):"sayMessageTags"})
+		for e in  range(1,10) : self.bindGestures ({"kb:shift+"+utis._unicode(e):"sayMessageTags"})
 		self.bindGesture ("kb:shift+0", "removeMessageTags")
 		self.bindGesture ("kb:Alt+0", "sayMessageTags")
 		if self.role in (controlTypes.Role.TREEVIEWITEM , controlTypes.Role.TABLEROW, controlTypes.Role.DOCUMENT) and self.hasFocus :  #  treeviewitem or tablerow 
@@ -284,15 +282,13 @@ class MessageListItem(IAccessible):
 			# message("Lecture avec Chichi")
 			CallAfter(gesture.send)
 			return
-		# is Preview pane displayed ? 
-		# if controlTypes.State.SELECTED not in self.states : 
-			# self.doAction()
-			# sleep(0.05)
+		# sharedVars.log(self, "_readPreview with " + gesture.mainKeyName)
 		checkFocus(self, None)
-		if not utis.getMessageHeadersFromFG(False) : 
-			message(_("Le volet d'aperçu n'est pas affiché. Pressez F8 et recommencez SVP"))
-			return
-
+		oPP = utis.getPropertyPageFromFG() 
+		oPane = utis.getPreviewPane(oPP)
+		if not oPane : 
+			return message(_("Le volet d'aperçu n'est pas affiché. Pressez F8 et recommencez SVP"))
+			# determine how to read the doc
 		rc = getLastScriptRepeatCount ()
 		if _timer is None:
 			_timer = CallLater(20, self.script_readPreview, gesture)
@@ -307,8 +303,6 @@ class MessageListItem(IAccessible):
 			return CallLater(20, chichiLinks, 2)
 
 		if _timer : return
-		# checkFocus(self, None)
-		#beep(440, 50)
 		filt = True
 		if rc >0 :
 			filt = False
@@ -319,25 +313,23 @@ class MessageListItem(IAccessible):
 		if rev and not filt :
 			message (_("La lecture non filtrée en sens inverse n'est pas disponible."))
 			return
-		# recherche de l'objet document 
-		# Chemin : role FRAME=34| i37, role-GROUPING=56, , IA2ID : tabpanelcontainer | i0, role-PROPERTYPAGE=57, , IA2ID : mailContent | i14, role-INTERNALFRAME=115, , IA2ID : messagepane | i0, role-DOCUMENT=52,  , 
-		o = self
-		while o and not o.role==controlTypes.Role.PROPERTYPAGE :  #ROLE_PROPERTYPAGE
-			o=o.parent
-			
-		o=o.lastChild
-		while o :
-			role =o.role 
-			if role  ==controlTypes.Role.INTERNALFRAME  : break 
-			elif role == controlTypes.Role.EDITABLETEXT: o=False
-			else : o=o.previous
-		if not o : 
-			if getTreeID(self)  == "threadTree": return message(_("Recommencez SVP"))
-			else : return message (_("Le corps  du message est absent."))
-		#memLog.addprops(o, u"Recherche section")
-		o = o.firstChild
-		#memLog.addprops(o, u"Recherche docment")
-		#memLog.browse("debug readPreview")
+		# get   document  object
+		# path : role FRAME=34| i37, role-GROUPING=56, , IA2ID : tabpanelcontainer | i0, role-PROPERTYPAGE=57, , IA2ID : mailContent | i14, role-INTERNALFRAME=115, , IA2ID : messagepane | i0, role-DOCUMENT=52,  , 
+		i = 0
+		while i < 20 :
+			o = oPane.firstChild
+			if o and hasattr(o, "role") : 
+				if o.role == controlTypes.Role.DOCUMENT :
+					break
+			beep(350, 2)
+			sleep(0.3)
+			api.processPendingEvents()
+			i += 1
+
+		if not o :
+			return message(_("Message indisponible. Réessayez."))
+		if o.childCount == 0  :
+			return message(self.name + ", " + o.name)
 		contentMailRead.readContentMail(o, rev, filt)
 	script_readPreview.__doc__ = _("Lecture filtrée du volet d'aperçu du message sans quitter la liste.")
 	script_readPreview.category=sharedVars.scriptCategory
@@ -551,6 +543,18 @@ def readHeaders(fobj, msgHeader, k, rc, delay) : # key, repeatCount, delay
 		return
 	finally :
 		sharedVars.objLooping = False
+def setState(o, state, strAction, action=None) :
+	if state in o.states : 
+		return
+	i = 0
+	while i < 20 and state not in o.states :
+		# exception if o is a not expandable treeviewItem
+		try : o.doAction(action) 
+		except : return
+		sleep(0.05)
+		api.processPendingEvents()
+		i += 1
+	# sharedVars.log(o, "setState, {0}, count : {1}, ".format(strAction, str(i)))
 
 def checkFocus(obj, gesture=None) :
 	role = obj.role
@@ -559,20 +563,15 @@ def checkFocus(obj, gesture=None) :
 	elif role == controlTypes.Role.EDITABLETEXT : # r smartReply key for quick filter bar :
 		return None
 	elif  role == controlTypes.Role.TABLEROW : 
-		if controlTypes.State.SELECTED not in obj.states :
-			obj.doAction() # select
-			sleep(0.1)
+		setState(obj, controlTypes.State.SELECTED, "Select")
 		return obj
 	elif role == controlTypes.Role.TREEVIEWITEM  :
 		if gesture and  str(utis.getIA2Attribute	(obj.parent)) == "folderTree" :
 			if hasattr(obj, "script_keyNav") :  obj.script_keyNav(gesture)
 			return None
-		if controlTypes.State.COLLAPSED in obj.states :
-			obj.doAction(1) # "expand")		
-			sleep(0.1)
-		if controlTypes.State.SELECTED not in obj.states :
-			obj.doAction()
-			sleep(0.1)
+		setState(obj, controlTypes.State.SELECTED, "Select")
+		if sharedVars.oSettings.getOption("chichi", "TTNoExpand") == False :
+			setState(obj, controlTypes.State.EXPANDED, "Expand", action=1)
 		return obj
 	elif obj.role in (controlTypes.Role.UNKNOWN, controlTypes.Role.BUTTON) : #unknown ou button dans zone entêtes  
 		o = obj
@@ -813,7 +812,7 @@ def chichiLinks(rc) :
 	return
 
 def readPreview2(oRow, gesture) :
-	# sharedVars.log(None, "Dans readPreview, sharedVars.TTnoSpace=" + str(sharedVars.TTnoSpace))
+	# sharedVars.log(oRow, "readPreview2,oRow properties")
 	if sharedVars.TTnoSpace and gesture.mainKeyName == "space" :
 		# message("Lecture avec Chichi")
 		CallAfter(gesture.send)

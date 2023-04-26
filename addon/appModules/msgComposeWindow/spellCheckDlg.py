@@ -20,13 +20,12 @@ from ui import message
 from api import copyToClip, getForegroundObject,   processPendingEvents
 from wx import CallAfter, CallLater
 import addonHandler,  os, sys
-addonHandler.initTranslation()
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import utis, sharedVars
-from py3compatibility  import _unicode
+import translation, utis, sharedVars
 del sys.path[-1]
+translation.initTranslationWithEnglishFallback()
 
 lastWord=None
 newWord=None

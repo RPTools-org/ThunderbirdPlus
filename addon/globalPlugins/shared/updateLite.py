@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Thunderbird+4
+# Thunderbird+ 4.x
 
 try: 	from urllib import urlopen
 except Exception: from urllib.request import urlopen
@@ -10,8 +10,15 @@ import api, globalVars
 import os, wx
 import  gui
 from ui import  message, browseableMessage
+<<<<<<< HEAD
+import addonHandler
 from . import translation
 translation.initTranslationWithEnglishFallback()
+import api
+=======
+from . import translation
+translation.initTranslationWithEnglishFallback()
+>>>>>>> da773ef11633f968a3d2af47a04cb5f3f3d2820a
 import time, winUser
 import config
 from tones import beep
@@ -85,7 +92,7 @@ def getURLHelp(url) :
 	
 # Variables to configure
 baseUrl="https://www.rptools.org/"
-urlHelp = getURLHelp(baseUrl + "Outils-DV/changes_{0}.html#histo")
+urlHelp = getURLHelp(baseUrl + "NVDA-Thunderbird/changes.php?lg={0}")
 urlFileInfos = baseUrl + "fileInfos.php?key=thunderbirdup4102"
 # test urlFileInfos = baseUrl + "fileInfos.php?key=thunderbirduptest"
 # on peut aussi donner un lien direct : urlFileInfos = baseUrl + "dossierFichieonInfoButton/motCléExtension.txt"
@@ -99,6 +106,15 @@ urlFileInfos = baseUrl + "fileInfos.php?key=thunderbirdup4102"
 
 isDlg = False
 
+def isNewVersion(vLocal, vRemote) :
+	# compares only major and minor versions, not subminor
+	tmp = vLocal.split(".")
+	vLocal = tmp[0].rjust(2, "0") + tmp[1].rjust(2, "0")
+	tmp = vRemote.split(".")
+	vRemote = tmp[0].rjust(2, "0") + tmp[1].rjust(2, "0")
+	# print("vRemote : {0}, vLocal : {1}".format(vRemote, vLocal))
+	return (vRemote > vLocal)
+	
 def checkUpdate(autoUp) :
 	global isDlg, urlHelp
 	# beep(440, 30)
@@ -109,12 +125,12 @@ def checkUpdate(autoUp) :
 	# curVer = "4.3.1" # pour provoquer test mise à jour 
 	if autoUp : 
 		if not hasToUpdate(nm) : return
-	name, ver =  getLastVersion()
-	if curVer >= ver : 
+	name, remoteVer =  getRemoteVersion()
+	if not isNewVersion(curVer, remoteVer) : 
 		if not autoUp : message(name + " " + curVer + _(" est à jour."))
 		return
 	isDlg = True
-	msg = _("Voulez-vous mettre à jour la version {0} vers la version {1} ?").format(curVer, ver)
+	msg = _("Voulez-vous mettre à jour la version {0} vers la version {1} ?").format(curVer, remoteVer)
 	with availableUpdateDialog(gui.mainFrame,_("Mise à jour de l'extension Thunderbird+"), msg, releaseNoteURL=urlHelp) as dlg:  
 		result=dlg.ShowModal()
 	if result ==  6666 : # later
@@ -127,7 +143,7 @@ def checkUpdate(autoUp) :
 			browseableMessage (message = msg, title = _("Mise à jour de l'extension") + name, isHtml = False)
 	isDlg = False
 
-def getLastVersion() :
+def getRemoteVersion() :
 	global urlFileInfos
 	# bytes = getFileSizeFromURL(urlFileInfos) 
 	# return "taille : " + str(bytes), "1.0"
@@ -207,6 +223,11 @@ def doUpdate(oldVer) :
 	# lance l'installation de l'extension ou le fichier HTML
 	os.startfile (filePath)
 	return 1, "OK"
+
+def forceUpdate() :
+	result, msg = doUpdate("4.0.9")
+	if result < 1 :
+		browseableMessage (message = msg, title = _("Mise à jour de l'extension") + name, isHtml = False)
 
 import addonHandler
 import time

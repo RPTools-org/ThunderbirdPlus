@@ -21,14 +21,13 @@ import api
 from time import time
 from tones import beep
 import addonHandler,  os, sys
-addonHandler.initTranslation()
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import utis, sharedVars
-import py3compatibility
-from  py3compatibility import _unicode, u
+import translation, utis, sharedVars
 del sys.path[-1]
+translation.initTranslationWithEnglishFallback()
+
 import globalVars
 
 
@@ -41,7 +40,7 @@ class MessageListItemFields(IAccessible):
 
 	def initOverlayClass (self): 
 		k=("1","2","3","4","5","6","7","8","9","0")  #,")","=" pb si double frappe?
-		for e in k:self.bindGesture ("kb:"+_unicode (e),"readField")  		
+		for e in k:self.bindGesture ("kb:"+utis._unicode(e),"readField")  		
 
 	def getLabelMailAddress (self,s):
 		return s 
@@ -162,7 +161,7 @@ class MessageListItemFields(IAccessible):
 	def copyOrSpell (self,columnHeaderText_original , value, lastScriptRepeatCount ):
 		if lastScriptRepeatCount ==1 :speakSpelling (value)
 		else:
-			if api.copyToClip  (_unicode (value)): 
+			if api.copyToClip  (utis._unicode (value)): 
 				message (_("%s copié dans le presse papier ") % columnHeaderText_original)
 			else:
 				message (_("le champ %s n'a pas pu être copié dans le presse papier ") % columnHeaderText_original)

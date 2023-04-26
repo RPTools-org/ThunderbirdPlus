@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # globalPlugins/Thunderbird.py
-# Thunderbird+4
+# Thunderbird+ 4.x
 
 import controlTypes
 # controlTypes module compatibility with old versions of NVDA
@@ -11,7 +11,12 @@ if not hasattr(controlTypes, "Role"):
 	[(x.split("STATE_")[1], getattr(controlTypes, x)) for x in dir(controlTypes) if x.startswith("STATE_")])))
 	setattr(controlTypes, "role", type("role", (), {"_roleLabels": controlTypes.roleLabels}))
 # End of compatibility fixes
+<<<<<<< HEAD
+import globalPluginHandler, addonHandler
+from scriptHandler import getLastScriptRepeatCount
+=======
 import globalPluginHandler
+>>>>>>> da773ef11633f968a3d2af47a04cb5f3f3d2820a
 from .shared import translation
 translation.initTranslationWithEnglishFallback()
 import api
@@ -19,6 +24,7 @@ import ui
 import speech
 import wx
 from .shared import updateLite
+from .shared import notif
 from time import time
 import winUser
 from winUser import getKeyNameText 
@@ -45,7 +51,17 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		else : globalVars.TBStep = 5
 		hTaskBar = ctypes.windll.user32.FindWindowExA(None, None, b"Shell_TrayWnd", None)
 		if hTaskBar : 
-			wx.CallAfter(updateLite.checkUpdate, True) # auto
+			if notif.	checkNotif() :
+				beep(440, 30)
+				wx.CallLater(200, notif.showNotif)
+			else :
+				wx.CallLater(3000, updateLite.checkUpdate, True) # auto
+
+	def initTimer(self):
+		if self.timer is not None:
+			self.timer.Stop()
+			self.timer = None
+
 
 	def event_foreground(self, obj, nextHandler) :
 		# print("Event_foreground " + str(obj.role))
@@ -89,12 +105,17 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 		startProgramMaximized(tbPaths[idx])
 		return
 	script_startTB.__doc__ = _("Lance Thunderbird")
-	script_startTB.category=_("Thunderbird+4, lanceur et mise àjour")
+	script_startTB.category=_("Thunderbird+, lanceur et mise àjour")
 
 	def  script_searchUpdate(self, gesture) :
-		wx.CallAfter(updateLite.checkUpdate, False)
+		repeat = getLastScriptRepeatCount()
+		self.initTimer ()
+		if repeat == 0: # 1 press : search new update 
+			self.timer = wx.CallLater(300, updateLite.checkUpdate, False)
+		elif repeat == 2 : # 3 press, force update
+			self.timer = wx.CallLater(300, updateLite.forceUpdate)
 	script_searchUpdate.__doc__ = _("Recherche une mise à jour de Thunderbird+")
-	script_searchUpdate.category=_("Thunderbird+4, lanceur et mise àjour")
+	script_searchUpdate.category=_("Thunderbird+, lanceur et mise àjour")
 
 	__gestures={
 		gestureFromScanCode(41, "kb:control+alt+"): "startTB",

@@ -4,6 +4,8 @@
 
 If you want to become a new member of the tim translation of Thunderbird+ you're welcome!
 
+Note: For the addon documentations, it is not recommended to use the Spanish and Portuguese versions as bases for a new translation, they have an old structure. Documentation in English and French are the most recent.
+
 # How to translate the Thunderbird+ addon in other language? #
 
 It is very easy!
@@ -62,14 +64,6 @@ File name:
 
 nvda-poeditMadeEasy-3.1-p03.nvda-addon
 
-`3.` The manifest.ini file must be manually in  the same folder of the local language ; (not translation system).
-
-This file must be translated manually in your language; (not translation system)
-
-The file must be encoded in UTF-8 format.
-
-You can open it with Notepad of Windows.
-
 ### Instructions for translators ###
 
 `1.` Install PoEdit. It is used for editting .po catalog files on a quick and easy way.
@@ -107,23 +101,7 @@ In nvda.po file.
 
 example, "`&`Aide" (the & sign infront of a letter ) indicates that the shortcut for Aide" dialog will be A.
 
-In manifest.ini file if you create it manually; (not translation system):
-
-`1.` You should only translate manually part of the text that is in quotes (not translation system)
-
-`2.` You must not modify manually what is located to the left of the text (not translation system):
-
-example manifest.ini in English:
-
-`Start \ All Programs \ NVDA \ Explore NVDA user configuration directory \ addons \ Thunderbird+4 \manifest.ini`
-
-`summary = "Thunderbird+ 4"`
-
-`description = """This extension adds commands to Thunderbird 102 and above to make it more accessible, efficient and comfortable to use."""`
-
-place this file in "locale/xx" folder.
-
-##### Language codes and variants (as pt-br) #####
+##### Language codes and variants (as pt-br) #####
 
 [Language localisation - Wikipedia, the free encyclopedia:](https://en.wikipedia.org/wiki/Language_localisation)
 

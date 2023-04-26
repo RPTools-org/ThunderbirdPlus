@@ -12,8 +12,6 @@ if not hasattr(controlTypes, "Role"):
 # End of compatibility fixes
 import globalVars
 import utis, sharedVars
-from  py3compatibility import *
-from  py3compatibility import _unicode
 from wx import Menu,EVT_MENU, CallAfter, CallLater, ScreenDC
 from oleacc import ROLE_SYSTEM_ALERT, ROLE_SYSTEM_LINK, ROLE_SYSTEM_TOOLBAR, ROLE_SYSTEM_TEXT,STATE_SYSTEM_MARQUEED, STATE_SYSTEM_PRESSED, ROLE_SYSTEM_SEPARATOR, STATE_SYSTEM_SELECTED, STATE_SYSTEM_SELECTABLE, STATE_SYSTEM_FOCUSABLE
 from UIAHandler import handler, UIA_ControlTypePropertyId, UIA_ToolBarControlTypeId, TreeScope_Children, TreeScope_Descendants, UIA_ButtonControlTypeId, UIA_LegacyIAccessibleRolePropertyId, UIA_LegacyIAccessibleValuePropertyId, UIA_TextControlTypeId, UIA_LegacyIAccessibleStatePropertyId, UIA_ListControlTypeId, UIA_ListItemControlTypeId, IUIAutomationInvokePattern, UIA_LegacyIAccessibleKeyboardShortcutPropertyId, UIA_LegacyIAccessibleNamePropertyId, UIA_DocumentControlTypeId, UIA_EditControlTypeId, UIA_CustomControlTypeId,UIA_NamePropertyId, UIA_LegacyIAccessibleDescriptionPropertyId , UIA_TreeItemControlTypeId , UIA_NamePropertyId 
@@ -26,8 +24,9 @@ from keyboardHandler import KeyboardInputGesture
 from tones import beep
 import os
 import addonHandler
-addonHandler.initTranslation()
-
+# addonHandler.initTranslation()
+import translation
+translation.initTranslationWithEnglishFallback()
 
 class MainMenu() :
 	def __init__(self, appMod) :
@@ -82,69 +81,6 @@ class MainMenu() :
 		else : 
 			CallLater (20, chooseCols, o2.firstChild.lastChild)
 			return
-
-	def onMenuOld(self, evt):
-		id =evt.Id
-		#message ("menu ID : " + str(id))
-		n= (4 if utis.versionTB()>70 else 2)
-		if id in (21,22,23,24) : 
-			o = self.objFirstGrouping.FindAll (n, CPC (UIA_LegacyIAccessibleRolePropertyId , controlTypes.Role.UNKNOWN)).GetElement (id-20)   
-			o=GetLastChildElement(o)
-			o.GetCurrentPattern (10000 ).QueryInterface (IUIAutomationInvokePattern).Invoke ()
-			return
-		#if id== 40   : return utis.getVideoURLRSS ()
-		if id ==41 : # choisir les colonnes à afficher
-			# 2021.07.06 fix of getting threadTree object
-			# if sharedVars.debug : sharedVars.log(self.focused, "entête colonne")
-			o2=self.focused.parent # threadTree
-			if  utis.getIA2Attribute(o2)  != "threadTree" : 
-				CallLater (20, message, "Old version Veuillez vous placer dans la liste des messages puis réessayez.")
-				return
-			else : 
-				return CallLater (20, o2.firstChild.lastChild.doAction)
-		#elif id ==42 :  # Organisation colonnes
-			#oTT= utis.findChildByID(self.parent.firstChild,"threadTree")     
-			#from . import columnlistitem
-			# ne fonctionne pas
-			#return CallLater(300,columnlistitem.ColumnListItem.script_toogleKey, self, None)
-		elif id  <100 : return utis.toolBarClickButton (self.objFirstGrouping.FindAll (TreeScope_Children,CPC (UIA_ControlTypePropertyId, UIA_ToolBarControlTypeId)).GetElement (0),id-50)
-		elif id <200 : 
-			toolBars = self.objFirstGrouping.FindAll (TreeScope_Children,CPC (UIA_ControlTypePropertyId, UIA_ToolBarControlTypeId)).GetElement
-			return utis.toolBarClickButton (toolBars((1 if toolBars(0).CurrentName else 0)),id-100)
-		elif id <300 : return  alertClickButton(id, evt)
-		elif id == 400: return self.objFirstGrouping.FindFirst (TreeScope_Children,  CPC (UIA_LegacyIAccessibleRolePropertyId, ROLE_SYSTEM_LINK)).GetCurrentPattern (10000).QueryInterface (IUIAutomationInvokePattern).Invoke ()
-		elif id == 401 : 
-			o = self.objFirstGrouping.FindAll (TreeScope_Children,  CPC (UIA_LegacyIAccessibleRolePropertyId, ROLE_SYSTEM_TOOLBAR))
-			return GetFirstChildElement (o.GetElement (o.Length-1)).GetCurrentPattern (10000).QueryInterface (IUIAutomationInvokePattern).Invoke ()
-		elif id == 500:  
-			from . import messageListItem
-			return CallLater(300,messageListItem.openListAttachment, self.focused, "fake-gesture") # v3 fake-gesture pour provoque ouverture liste PJ
-		elif id  == 501 : return CallLater(300,self.script_clickToolBarAttachment)   
-		elif id == 900 : # v 2.1.3 display headers file
-			startHeadersFile()
-		elif id  <10000 :
-			self.objFirstGrouping.FindFirst(TreeScope_Children, CPC (UIA_ControlTypePropertyId, UIA_ListControlTypeId)).FindAll (TreeScope_Children, CPC (UIA_ControlTypePropertyId, UIA_ListItemControlTypeId)).GetElement ((id-602)/2).SetFocus ()
-			KeyboardInputGesture.fromName ("space").send ()
-			return KeyboardInputGesture.fromName (("enter","shift+f10")[id%2]).send ()
-		#en tête, sous-menu
-		if id == 900 : # consulter fichier entêtesfic
-			return
-		mainIndex  =int (str (id)[:len (str (id))-3])-10
-		itemIndex =int (str (id)[len (str (mainIndex))+1:])
-		o = self.objFirstGrouping.FindAll (n, CPC (UIA_LegacyIAccessibleRolePropertyId , controlTypes.Role.UNKNOWN)).GetElement (mainIndex)  #TreeScope_Children
-
-		#site web
-		value ="___"
-		firstChildElement =clientObject.RawViewWalker.GetFirstChildElement (o)
-		if firstChildElement : value = firstChildElement.GetCurrentPropertyValue (UIA_LegacyIAccessibleValuePropertyId ) ; from os import startfile
-		if value and value.startswith ("http://") :  return startfile (value)
-		#sujet
-		if not o.FindAll (TreeScope_Descendants , CPC (UIA_LegacyIAccessibleRolePropertyId , controlTypes.Role.UNKNOWN)).Length :
-			GetFirstChildElement (o).SetFocus ()
-			return KeyboardInputGesture.fromName ("shift+f10").send ()
-		o= o.FindAll (TreeScope_Descendants , clientObject.CreateOrCondition (CPC (UIA_LegacyIAccessibleRolePropertyId , ROLE_SYSTEM_LINK), CPC (UIA_LegacyIAccessibleRolePropertyId , controlTypes.Role.UNKNOWN))).GetElement (itemIndex)
-		if o.GetCurrentPropertyValue (UIA_LegacyIAccessibleRolePropertyId ) !=  ROLE_SYSTEM_LINK : o = GetFirstChildElement (o)
-		o.GetCurrentPattern (10000 ).QueryInterface (IUIAutomationInvokePattern).Invoke ()
 
 	def script_clickToolBarAttachment (self,gesture = None):
 		CPC=clientObject.CreatePropertyCondition
@@ -304,13 +240,6 @@ def headersToFile (lstHeaders) : # v 2.1.3
 	if not oFile : return
 	n = oFile.write(lstHeaders)
 	oFile.close()
-	return
-
-def startHeadersFile () : # v 2.1.3
-	#pth = api.config.getUserDefaultConfigPath() + u"\\addons\\thunderbird+\\Entêtes-mail.txt"
-	pth =  sharedVars.oSettings.addonPath + "\\Entêtes-mail.txt"
-	from os import startfile
-	startfile (pth)
 	return
 
 def chooseCols(oBtnPicker) :

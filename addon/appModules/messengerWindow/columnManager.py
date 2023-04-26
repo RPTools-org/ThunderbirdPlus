@@ -23,12 +23,12 @@ from tones import beep
 from NVDAObjects.IAccessible import IAccessible
 from keyboardHandler import KeyboardInputGesture
 import os, sys
-addonHandler.initTranslation()
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import utis, sharedVars
+import translation, utis, sharedVars
 del sys.path[-1]
+translation.initTranslationWithEnglishFallback()
 
 dlgCols = None
 
@@ -282,7 +282,8 @@ class manageColumnsDialog(wx.Dialog):
 		lang = utis.getLang()
 		helpPath=os.path.join(curAddon.path,"doc", lang, "Column layout.txt")
 		# ui.message(helpPath)
-		os.startfile (helpPath)
+		# os.startfile (helpPath)
+		utis.showTextFile(helpPath, _("Aide Agencement des colonnes"))
 		return	
 
 	def onOptionsButton(self, event):
@@ -387,3 +388,4 @@ def file_path_to_url(path):
 	except : from urllib.request import pathname2url
 #urllib.request.pathname2url.
 	return parse.urljoin('file:', pathname2url(path))
+

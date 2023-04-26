@@ -1,5 +1,5 @@
 #-*- coding:utf-8 -*
-# Thunderbird+5
+# Thunderbird+ 4.x
 
 import sys
 import speech 
@@ -11,15 +11,13 @@ except ImportError:
 from oleacc import STATE_SYSTEM_UNAVAILABLE,STATE_SYSTEM_PRESSED
 from tones import beep
 import addonHandler,  os, sys
-addonHandler.initTranslation()
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import utis, sharedVars
+import translation, utis, sharedVars
 from utis import getIA2Attribute, showNVDAMenu , versionTB,  getElementWalker
-import py3compatibility
-from  py3compatibility import _unicode
 del sys.path[-1]
+translation.initTranslationWithEnglishFallback()
 from time import sleep
 from oleacc import STATE_SYSTEM_PRESSED, ROLE_SYSTEM_PUSHBUTTON
 from keyboardHandler import KeyboardInputGesture, passNextKeyThrough

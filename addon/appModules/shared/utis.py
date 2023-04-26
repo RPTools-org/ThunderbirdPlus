@@ -24,7 +24,9 @@ import speech
 from wx import CallAfter, CallLater, Menu, MessageBox
 from winUser import setCursorPos, getKeyNameText 
 import addonHandler,  os, sys
-addonHandler.initTranslation()
+import translation
+translation.initTranslationWithEnglishFallback()
+
 import api
 from api import copyToClip
 from UIAHandler import handler,UIA_LegacyIAccessibleRolePropertyId, UIA_LegacyIAccessibleStatePropertyId, TreeScope_Children, UIA_ButtonControlTypeId, UIA_ControlTypePropertyId, IUIAutomationInvokePattern, UIA_LegacyIAccessibleKeyboardShortcutPropertyId, TreeScope_Descendants, UIA_SeparatorControlTypeId, UIA_TabItemControlTypeId,UIA_LegacyIAccessibleDescriptionPropertyId 
@@ -36,12 +38,14 @@ import sharedVars
 
 prevSpeechMode = False
 
+def _unicode(s) : return str(s)
 def isChichi() :
 	if sharedVars.chichi is not None : return sharedVars.chichi
 	# level 4,     6 of 7, name : chichi, Role.BUTTON, IA2ID : chichi_free_fr-browserAction-toolbarbutton Tag: toolbarbutton, States :  Path : Role-FRAME| i46, Role-GROUPING, , IA2ID : tabpanelcontainer | i0, Role-PROPERTYPAGE, , IA2ID : mailContent | i0, Role-TOOLBAR, , IA2ID : mail-bar3 | i6, Role-BUTTON, , IA2ID : chichi_free_fr-browserAction-toolbarbutton , IA2Attr : tag : toolbarbutton, id : chichi_free_fr-browserAction-toolbarbutton, class : toolbarbutton-1 webextension-action, explicit-name : true, setsize : 2, display : -moz-box, posinset : 1, , Actions : press,  ;
 	o = getPropertyPageFromFG()
 	# sharedVars.log(o, "prop page : ")
-	if not o or o.role == controlTypes.Role.FRAME : return False
+	if not o or not hasattr(o, "role") : return False
+	if o.role != controlTypes.Role.PROPERTYPAGE : return False
 	# i0, Role-TOOLBAR, , IA2ID : mail-bar3 | i6, Role-BUTTON, , IA2ID : chichi_free_fr-browserAction-toolbarbutton
 	o =  findChildByID(o, "mail-bar3")
 	# sharedVars.log(o, "Toolbar : ")
@@ -49,7 +53,7 @@ def isChichi() :
 	o = findChildByID(o, "chichi_free_fr-browserAction-toolbarbutton")
 	# sharedVars.log(o, "Bouton  : ")
 	sharedVars.chichi = (True if o else False)
-	sharedVars.log(o, "Chichi : " + str(sharedVars.chichi))
+	# sharedVars.log(o, "Chichi : " + str(sharedVars.chichi))
 	return sharedVars.chichi
 
 def noSpeechMessage(msg) :
@@ -339,7 +343,6 @@ def getPropertyPageFromFG() :
 		# t = time()
 		if sharedVars.curFrame == "1messageWindow" :
 			return sharedVars.oCurFrame
-			tu
 		# search for grouping : level 1,  46 of 49, Role.GROUPING, IA2ID : tabpanelcontainer Tag: tabpanels, States : , childCount  : 3 Path : Role-FRAME| i46, Role-GROUPING, , IA2ID : tabpanelcontainer , IA2Attr : display : -moz-deck, class : plain, tag : tabpanels, id : tabpanelcontainer, , Actions : click ancestor,  ;
 		try : o = sharedVars.oCurFrame.getChild(sharedVars.groupingIdx)
 		except : return None # globalVars.foregroundObject # sharedVars.oCurFrame # for separate message window.
@@ -389,6 +392,20 @@ def getPropertyPageFromFG() :
 		# sharedVars.log(None, "getPropertyPage duration : {0}".format(ms * 1000))
 		# sharedVars.objLooping = False
 
+# with collapsed brnach : level 1,  3 of 3, Role.INTERNALFRAME, IA2ID : multimessage Tag: browser, States : , FOCUSABLE, childCount  : 1 Path : Role-PROPERTYPAGE| i3, Role-INTERNALFRAME, , IA2ID : multimessage , IA2Attr : id : multimessage, display : inline, tag : browser, , Actions : click,  ;
+# with expanded branch : level 1,  4 of 5, Role.LANDMARK, IA2ID : messageHeader Tag: header, States : , FOCUSABLE, childCount  : 7 Path : Role-PROPERTYPAGE| i4, Role-LANDMARK, , IA2ID : messageHeader , IA2Attr : xml-roles : banner, display : grid, class : message-header-container scrollable, tag : header, id : messageHeader, , Actions : click ancestor,  ;
+
+def getPreviewPane(oPropPage=None) :
+	if not oPropPage  or  (oPropPage and oPropPage.role != controlTypes.Role.PROPERTYPAGE ) :
+		oPropPage = getPropertyPageFromFG() 
+		if oPropPage.role != controlTypes.Role.PROPERTYPAGE : return None, -1
+	o = oPropPage.lastChild
+	while o :
+		role =o.role 
+		if role  ==controlTypes.Role.INTERNALFRAME  : break 
+		elif role == controlTypes.Role.EDITABLETEXT: o = None
+		else : o=o.previous
+	return o
 
 def getMessageHeadersFromFG(reportNotOpen=True) :
 	# look for in main window : 7 sur 8, role.LANDMARK = 149, IA2ID : messageHeader Tag: header, états : , childCount  : 5 Chemin : role FRAME=34| i47, role-GROUPING=56, , IA2ID : tabpanelcontainer | i0, role-PROPERTYPAGE=57, , IA2ID : mailContent | i7, role-LANDMARK = 149, , IA2ID : messageHeader , IA2Attr : display : grid, id : messageHeader, tag : header, xml-roles : banner, class : message-header-container, , Actions : click ancestor,  ;
@@ -487,6 +504,18 @@ def  getTimeStamp  (t):
 		day, month, year, hour, minute = now.day, now.month, now.year, t[0], t[1]
 	return  float (mktime (datetime  (year =year,month =month, day =day, hour =hour, minute=minute).timetuple ()))
 
+def showTextFile(pth, titl) :
+	# import unicodedata
+	try :
+		with open(pth, 'r', encoding="utf-8", errors="surrogateescape") as f:
+			text = f.read()	
+	except OSError :
+		text = "File not found\n" + pth
+		pass
+		
+	# text = unicodedata.normalize('NFKD', text).encode('ascii', 'ignore')
+	browseableMessage (message = text, title = titl, isHtml = False)
+	
 
 def inputBox (label, title, postFunction, startValue=""):
 	import gui
@@ -583,9 +612,13 @@ def showHelp() :
 	lang = getLang()
 	# message("langue : " + str(lang)) 
 	curAddon=addonHandler.getCodeAddon()
-	# helpPath=os.path.join(curAddon.path,"doc\\fr\\addonUserManual.html")
-	helpPath=os.path.join(curAddon.path,"doc", lang, "addonUserManual.html")
-	message(_("Ouverture de  l'aide dans votre navigateur"))
+	if "pt_BR" in lang :
+		lang = "pt_PT"
+	helpPath=os.path.join(curAddon.path,"doc", lang, "readme.html")
+	if  not os.path.exists(helpPath) :
+		helpPath  = "https://www-rptools-org.translate.goog/NVDA-Thunderbird/ThunderbirdPlus_en.html?_x_tr_sl=en&_x_tr_tl=@lg&_x_tr_hl=@lg&_x_tr_pto=sc"
+		helpPath = helpPath.replace("@lg", lang)
+	# message(_("Ouverture de  l'aide dans votre navigateur"))
 	try :  os.startfile (helpPath)
 	except : message(_("Fichier non trouvé : ") + helpPath)
 	

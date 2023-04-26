@@ -1,6 +1,5 @@
 #-*- coding:utf-8 *-
 
-from  py3compatibility import _unicode
 from comtypes.gen.ISimpleDOM import ISimpleDOMNode
 from NVDAObjects.IAccessible import IAccessible
 import controlTypes
@@ -22,19 +21,20 @@ from wx import CallLater
 from tones import beep
 import addonHandler,  os, sys , api
 from keyboardHandler import KeyboardInputGesture
-addonHandler.initTranslation()
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import utis, sharedVars
+import translation, utis, sharedVars
 del sys.path[-1]
+translation.initTranslationWithEnglishFallback()
+
 from . import contentMailRead
 _timer = None
 
 
 class Document (IAccessible):
 	def initOverlayClass (self):
-		#for e in  range(1,9): self.bindGestures ({"kb:alt+"+_unicode(e):"readOtherField"}) 		
+		#for e in  range(1,9): self.bindGestures ({"kb:alt+"+utis._unicode(e):"readOtherField"}) 		
 		self.bindGesture ("kb:space", "readDocument")
 		self.bindGesture ("kb:shift+space", "readDocument")
 		self.bindGesture ("kb:f4", "readDocument") 

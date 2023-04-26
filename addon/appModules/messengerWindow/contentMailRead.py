@@ -30,13 +30,14 @@ from ui import message
 from tones import beep
 import controlTypes
 import addonHandler,  os, sys , api
-addonHandler.initTranslation()
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import utis, sharedVars
+import translation, utis, sharedVars
 # import zDevTools as z
 del sys.path[-1]
+translation.initTranslationWithEnglishFallback()
+
 import re # regex
 
 def readContentMail(oDoc, reverse=False, filter = True, title=""): 

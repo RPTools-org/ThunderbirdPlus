@@ -1,7 +1,7 @@
 #-*- coding:utf-8 -*
 # Thunderbird+ 4.0  for Thunderbird 102
 
-from .py3compatibility import *
+# from .py3compatibility import *
 from nvdaBuiltin.appModules import thunderbird
 from time import time, sleep
 from datetime import datetime
@@ -31,15 +31,17 @@ from re import compile,IGNORECASE
 
 # shared modules import
 import addonHandler,  os, sys
-addonHandler.initTranslation()
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import utis, sharedVars # , sendInput
+import translation, utis, sharedVars # , sendInput
 # dbg = sharedVars.log
-from  py3compatibility import *
-from  py3compatibility import _unicode
+# from  py3compatibility import *
+# from  py3compatibility import utis._unicode
 del sys.path[-1]
+translation.initTranslationWithEnglishFallback()
+import api
+
 sharedVars.scriptCategory = _curAddon.manifest['summary']
 
 # Extension modules import
@@ -77,7 +79,8 @@ class AppModule(thunderbird.AppModule):
 		# self.regExp_listGroupName = compile ("\[(.*)\]") # |\{?*\}") # first occurrence of the list group name
 		self.regExp_removeMultiBlank =compile (" {2,}")
 		self.regExp_removeSymbols =compile ("\d+|&|_|@.+|=|\.| via .*")
-		wx.CallLater(100, utis.getGroupingIndex)
+		try : wx.CallLater(100, utis.getGroupingIndex)
+		except :  pass
 		#wx.CallLater(25000, debugShow, self, True)
 
 	def chooseNVDAObjectOverlayClasses(self, obj, clsList):
@@ -335,28 +338,6 @@ class AppModule(thunderbird.AppModule):
 		if "filt" not in  n3 : # NVDA appelle 2 fois cette méthode
 			o.children[3].name = n3  + ", " + getFilterInfos(self)
 		return   o
-
-	def buildColumnIDOld (self, obj):
-		#beep(700, 30)
-		sharedVars.objLooping = True
-		o =( e for e in range (obj.firstChild.childCount-1))
-		p =obj.firstChild.getChild
-		self.columnID =[]
-		for e in o :
-			#if p(e) : self.columnID.append ((p(e).location[0],utis.getIA2Attribute (p(e))))  
-			try : # try ajouté version 3.2
-				if p(e) and int(p(e).location[2])>0: self.columnID.append ((p(e).location[0],utis.getIA2Attribute (p(e)))) 
-				else : continue
-			except :
-				continue
-
-		# sharedVars.log(None, "Avant tri : " + str(self.columnID))
-		self.columnID.sort()
-		self.columnID =[e[1] for e in self.columnID]
-		# if sharedVars.debug : 
-		# beep(100, 30)
-		# sharedVars.log(None, str(self.columnID))
-		sharedVars.objLooping = False
 
 	def buildColumnID(self, oTT):
 		try :
@@ -632,7 +613,8 @@ class AppModule(thunderbird.AppModule):
 				curAddon=addonHandler.getCodeAddon()
 				lang = utis.getLang()
 				helpPath=os.path.join(curAddon.path, "doc", lang, "Control Backspace conflict.txt")
-				os.startfile (helpPath)
+				# os.startfile (helpPath)
+				utis.showTextFile(helpPath, _("Conflit de raccourci contrôle+Retour Arrière"))
 				return	
 			if gesture.mainKeyName == "w" : return gesture.send()
 		elif sharedVars.curFrame == "messengerWindow" :
@@ -651,6 +633,8 @@ class AppModule(thunderbird.AppModule):
 	def script_sharedAltN(self, gesture) :
 		# centralise  gestion des alt+chiffre  pour éviter conflits
 		global _timer
+		if sharedVars.curTab == "main" and not utis.getPreviewPane() :
+			return ui.message(_("Le volet des entêtes n'est pas affiché. Veuillez presser F8 puis réessayer"))
 		fo = globalVars.focusObject # api.getFocusObject()
 		if hasattr(fo, "script_readAttachField") : return fo.script_readAttachField(gesture) # attachment list
 
@@ -672,8 +656,8 @@ class AppModule(thunderbird.AppModule):
 			msgHeader = utis.getMessageHeadersFromFG(False)
 			#if sharedVars.debug : sharedVars.log(msgHeader, " messsageHeader ")
 			if not msgHeader :
-				if messengerWindow.messageListItem.getTreeID(globalVars.focusObject) == "threadTree" : return ui.message(_("Le volet des entêtes n'est pas affiché. Veuillez presser F8 puis réessayer"))
-				else : return ui.message(_("Le volet des entêtes ne contient pas d'informations ou est absent"))
+				if messengerWindow.messageListItem.getTreeID(globalVars.focusObject) != "threadTree" :
+					return ui.message(_("Le volet des entêtes ne contient pas d'informations ou est absent"))
 			if repeats == 1 : 
 				#beep(440, 20)
 				delay = 300 # affichage dialogue Copier dans le presse-papiers
@@ -733,7 +717,8 @@ class AppModule(thunderbird.AppModule):
 			if parID== "folderTree" : 
 				return gesture.send()
 			elif parID== "threadTree" :
-				try : messengerWindow.messageListItem.MessageListItem.script_readPreview(o, gesture)
+				try : 
+					messengerWindow.messageListItem.MessageListItem.script_readPreview(o, gesture)
 				except : 
 					api.setFocusObject(o)					
 					messengerWindow.messageListItem.readPreview2(o, gesture)
@@ -748,6 +733,9 @@ class AppModule(thunderbird.AppModule):
 
 	def script_sharedAltPageDown(self, gesture) :
 		#beep(440, 20)
+		if sharedVars.curTab == "main" and not utis.getPreviewPane() :
+			return ui.message(_("Le volet des entêtes n'est pas affiché. Veuillez presser F8 puis réessayer"))
+
 		fo = globalVars.focusObject
 		if sharedVars.curTab in ("main", "message") :
 			if gesture.mainKeyName == "pageDown"   : repeats = 1
@@ -851,6 +839,7 @@ class AppModule(thunderbird.AppModule):
 	def script_displayDebug(self, gesture) :
 		# utis.listGestFromScanCodes()
 		# return
+		# winVerAlert()
 		if sharedVars.curFrame == "messengerWindow" :
 			utis.isChichi()
 		sharedVars.debugLog += "\nChichi : " + str(sharedVars.chichi)
@@ -1241,6 +1230,7 @@ def getFrameID(o) :
 	# language independant version and optimizes for main Windows and compose window
 	try :
 		sharedVars.objLooping = True
+		f = "NA" # fix for bug 2023 04 03
 		if not o or o.role !=  controlTypes.Role.FRAME :
 			o =  globalVars.foregroundObject
 		t = o.name
@@ -1259,7 +1249,7 @@ def getFrameID(o) :
 				# return f
 		elif ID ==  "mailContext" :
 			t = "comp"
-			f=  "msgcomposeWindow"
+			f = "msgcomposeWindow"
 		elif ID == "folderPropTabs" :
 			f = "folderprops"
 		elif ID == "filterNameLabel" : 
@@ -1383,6 +1373,7 @@ def buildRowName2(appMod, oRow):
 def removeResponseMention (appMod,s,mode):
 	mode = sharedVars.oSettings.responseMode
 	if not mode : return s
+	s = s.replace(" ", " ") # 2023-04-23 unbrekable space
 	s , n= appMod.regExp_AnnotationResponse.subn(" ",s)
 	if  mode == 1 : # "responseMentionGroup"
 		s=(str (n) if n>1 else "")+(_("Ré ") if n else "")+s
@@ -1503,3 +1494,13 @@ def ttResetFocus(oRow) :
 		# api.processPendingEvents()
 		# oRow.setFocus()
 		# api.processPendingEvents()
+
+def winVerAlert() :
+	import winVersion
+	currentWinVer = winVersion.getWinVer()
+	# WindowsVersion 22H2 (build 19045.2728)© 
+	# parts = str(currentWinVer).split(".")  
+	currentBuild = currentWinVer.build
+	sharedVars.log(None, "current build : " + str(currentWinVer))
+	return
+	

@@ -23,12 +23,12 @@ import NVDAObjects
 from NVDAObjects.IAccessible import IAccessible
 import browseMode
 import addonHandler,  os, sys
-addonHandler.initTranslation()
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import  sharedVars
+import  translation, sharedVars
 del sys.path[-1]
+translation.initTranslationWithEnglishFallback()
 
 clientObject = UIAHandler.handler.clientObject
 

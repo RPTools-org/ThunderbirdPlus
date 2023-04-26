@@ -17,16 +17,14 @@ if not hasattr(controlTypes, "Role"):
 from wx import CallAfter, CallLater
 import winUser
 import addonHandler,  os, sys
-addonHandler.initTranslation()
 from keyboardHandler import KeyboardInputGesture
 from tones import  beep
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import utis, sharedVars
-from  py3compatibility import *
-from  py3compatibility import _unicode
+import translation, utis, sharedVars
 del sys.path[-1]
+translation.initTranslationWithEnglishFallback()
 
 from re import compile,IGNORECASE
 regExp_excludeFolders =compile (_("brouillons|corbeille|\- \("), IGNORECASE)

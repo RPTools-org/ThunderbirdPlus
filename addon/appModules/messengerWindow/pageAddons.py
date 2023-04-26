@@ -20,14 +20,12 @@ from wx import CallLater
 import addonHandler,  os, sys
 from keyboardHandler import KeyboardInputGesture
 from tones import  beep
-addonHandler.initTranslation()
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import utis, sharedVars
-from  py3compatibility import *
-from  py3compatibility import _unicode
+import translation, utis, sharedVars
 del sys.path[-1]
+translation.initTranslationWithEnglishFallback()
 
 
 class AddonsPage(IAccessible):

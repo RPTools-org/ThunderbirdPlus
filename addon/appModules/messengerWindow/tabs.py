@@ -10,13 +10,13 @@ if not hasattr(controlTypes, "Role"):
 	setattr(controlTypes, "role", type("role", (), {"_roleLabels": controlTypes.roleLabels}))
 # End of compatibility fixes
 import addonHandler,  os, sys
-addonHandler.initTranslation()
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import utis, sharedVars
+import translation, utis, sharedVars
 from api import getForegroundObject
 del sys.path[-1]
+translation.initTranslationWithEnglishFallback()
 from ui import message
 from wx import Menu, EVT_MENU, ITEM_CHECK, MenuItem,CallAfter,CallLater
 from keyboardHandler import KeyboardInputGesture
@@ -118,7 +118,7 @@ def getMainTabType(tabIdx, oFocus) :
 	try :
 		prevLooping = sharedVars.objLooping
 		sharedVars.objLooping = True
-		sharedVars.log(sharedVars.oCurFrame, "mainTabType fg ")
+		# sharedVars.log(sharedVars.oCurFrame, "mainTabType fg ")
 		# search for grouping : level 1,  46 of 49, Role.GROUPING, IA2ID : tabpanelcontainer Tag: tabpanels, States : , childCount  : 3 Path : Role-FRAME| i46, Role-GROUPING, , IA2ID : tabpanelcontainer , IA2Attr : display : -moz-deck, class : plain, tag : tabpanels, id : tabpanelcontainer, , Actions : click ancestor,  ;
 		try : o = sharedVars.oCurFrame.getChild(45)
 		except : return "sp:no45"

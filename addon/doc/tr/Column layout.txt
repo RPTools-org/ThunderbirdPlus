@@ -1,0 +1,18 @@
+Mesaj listesi sütun düzeni;
+
+Bu özellik, mesaj listesindeki sütunların sırasını seçmenize ve sütun eklemenize veya kaldırmanıza olanak tanır. Eski Sütunları Düzenle işlevinin aksine, bu işlemler gerçek diyaloglara dayalıdır.
+
+Kullanmak için önce mesaj listesine veya klasör ağacına gidin, ardından Alt+c tuşlarına basın (NVDA+u ciddi vurgu kısayolu hala mevcuttur);
+"Sütun düzeni" iletişim kutusu görünür. Sütun listesinin yanı sıra "Yardım", "sütunlar" ve "Kapat" düğmelerinden oluşur. "Sütunlar..." düğmesi yerel Thunderbird "Görüntülenecek sütunları seçin" menüsünü görüntüler
+Sütun listesindeyken, aşağıdaki klavye kısayolları kullanılabilir:
+• Sol ok: "Görüntülenecek sütunları seçin" adlı menüyü görüntüler. Bu kısayol, "Sütunlar..." düğmesine karşılık gelir;
+• Boşluk: seçili sütunu taşımak için Boşluk tuşuna basın, ardından başka bir sütuna gidin ve sütunu buraya yerleştirmek için tekrar Boşluk tuşuna basın. Bu işlem kes ve yapıştır işlemine benzer;
+Ayrıca şu doğrudan hareket kısayollarına sahipsiniz:
+• Kontrol + yukarı ok veya aşağı ok: seçili sütunu bir birim yukarı veya aşağı hareket ettirin;
+• Control + Home veya End: seçilen sütunu listede yukarı veya aşağı taşır;
+• Control + Önceki sayfa veya Sonraki sayfa: seçilen sütunu üç birim yükseltir veya alçaltır;
+Sütunlar fare ile sürüklenip bırakılarak taşınır. Her 10 işaretçi hareketinde bir milisaniyelik bir bip sesi oluşur;
+"Görüntülenecek sütunları seçin" menüsü mevcut olduğunda, aşağıdaki yeni klavye kısayollarına sahipsiniz:
+• Sağ ok: "Sütun düzeni" iletişim kutusunu görüntüler;
+• Boşluk: menüde seçilen sütunu kontrol eder veya işaretini kaldırır. Enter tuşu yine aynı davranışı üretir;
+Bu nedenle, sol ve sağ oklarla, sütunları seçmek için menü ile bunların düzenlenmesi için iletişim kutusu arasında geçiş yapmak çok kolaydır;

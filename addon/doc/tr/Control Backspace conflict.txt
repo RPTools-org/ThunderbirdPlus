@@ -1,0 +1,20 @@
+Thunderbird+'da, kısayol CTRL+geri sil, sekmeleri ve belirli pencereleri kapatmak için atanır.
+Bu, bir mesaj oluştururken kısayol tuşu çakışmasına neden olur.
+
+Yazılmakta olan bir mesajda imleçten önceki kelimenin silinmesini geri yüklemek için bu atamanın silinmesi gerekir.
+
+Bunu yapmak için şu adımları izleyin:
+* Thunderbird ana penceresinin aktif olduğundan emin olun.
+* NVDA menüsünü açmak için NVDA+n tuşlarına basın;
+* Tercihler menüsü için T harfine basın;
+* Ardından Girdi hareketleri iletişim kutusunu açmak için D harfine basın;
+* Ağaç yapısında Thunderbird+4 dalını seçin ve sağ ok ile açın;
+* Şubeyi seçmek için e harfine basın: Geçerli pencereye Control+F4 gönderin ve açın;
+* Alt dalı seçin: control+backspace;
+* ve son olarak, "Sil, düğme" sözlerini duyana kadar Sekme tuşuna ve ardından Enter tuşuna basın;
+* Değişikliklerinizi kaydetmek için bu iletişim kutusunu Tamam düğmesiyle kapatmanız önemlidir.
+
+Algılanan :
+Bu ilk manipülasyonlardan sonra beklendiği gibi çalışmayabilir.
+NVDA, bilinmeyen bir nedenle Control+Backspace hareketini tekrar ekler.
+Bu durumda, yukarıda açıklanan prosedürü tekrarlayın, bu sorunu çözecektir.
