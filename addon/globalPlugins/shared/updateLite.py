@@ -10,15 +10,10 @@ import api, globalVars
 import os, wx
 import  gui
 from ui import  message, browseableMessage
-<<<<<<< HEAD
 import addonHandler
 from . import translation
 translation.initTranslationWithEnglishFallback()
 import api
-=======
-from . import translation
-translation.initTranslationWithEnglishFallback()
->>>>>>> da773ef11633f968a3d2af47a04cb5f3f3d2820a
 import time, winUser
 import config
 from tones import beep

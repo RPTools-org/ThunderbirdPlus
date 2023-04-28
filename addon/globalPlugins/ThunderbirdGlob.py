@@ -11,12 +11,8 @@ if not hasattr(controlTypes, "Role"):
 	[(x.split("STATE_")[1], getattr(controlTypes, x)) for x in dir(controlTypes) if x.startswith("STATE_")])))
 	setattr(controlTypes, "role", type("role", (), {"_roleLabels": controlTypes.roleLabels}))
 # End of compatibility fixes
-<<<<<<< HEAD
 import globalPluginHandler, addonHandler
 from scriptHandler import getLastScriptRepeatCount
-=======
-import globalPluginHandler
->>>>>>> da773ef11633f968a3d2af47a04cb5f3f3d2820a
 from .shared import translation
 translation.initTranslationWithEnglishFallback()
 import api
