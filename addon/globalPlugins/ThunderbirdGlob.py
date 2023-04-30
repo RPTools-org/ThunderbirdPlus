@@ -28,13 +28,6 @@ from tones import beep
 import winKernel, globalVars
 import os, sys
 
-def isTempNVDA() :
-	# config path on a temporary NVDA : C:\Users\user\AppData\Local\Temp\nsq147A.tmp\app\userConfig
-	# pth = api.config.getUserDefaultConfigPath()
-	if "\\Temp\\" in str(api.config.getUserDefaultConfigPath()) :
-		return True
-	return False
-	
 def gestureFromScanCode(sc, prefix) :
 	# sc stands for the scanCode  of the key
 	# prefix is "kb:modifiers"
@@ -53,13 +46,13 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			globalVars.TBStep = 0
 		else : globalVars.TBStep = 5
 		hTaskBar = ctypes.windll.user32.FindWindowExA(None, None, b"Shell_TrayWnd", None)
-		tempNVDA =  isTempNVDA()
-		if hTaskBar and not isTempNVDA() : 
-			if notif.	checkNotif() :
-				beep(440, 30)
-				wx.CallLater(200, notif.showNotif)
-			else :
-				wx.CallLater(3000, updateLite.checkUpdate, True) # auto
+		if not hTaskBar or  globalVars.appArgs.launcher : 
+			return
+		if notif.	checkNotif() :
+			beep(440, 30)
+			wx.CallLater(200, notif.showNotif)
+		else :
+			wx.CallLater(3000, updateLite.checkUpdate, True) # auto
 
 	def initTimer(self):
 		if self.timer is not None:
