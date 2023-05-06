@@ -47,7 +47,7 @@ def checkNotif() :
 	date, tsRemote = getRemoteDateTime()
 	tsLocal = getLastDisplayed()
 	# print("Remote date : {0}, Remote timestamp : {1}, Local ts : {2}".format(str(date), str(tsRemote), str(tsLocal)))
-	if tsRemote <= tsLocal :
+	if tsRemote >= tsLocal :
 		return False
 	setLastDisplayed(tsRemote)
 	return  True
@@ -60,9 +60,10 @@ def getRemoteDateTime() :
 		with urlopen  (urlFileInfos) as data :
 			data = data.read().decode()
 	except :
+		# print("error reading : " + urlFileInfos) 
 		return failDT, failTS
 	if len(data)  < 10 : 
-		#beep(100, 20)
+		beep(100, 20)
 		return failDT, failTS
 	lines = data.split("\n")
 	DT = lines[0].split("=")[1]
@@ -70,6 +71,7 @@ def getRemoteDateTime() :
 	# must convert v to time stamp
 	try : TS = dateTS(DT)
 	except : return failDT, failTS
+	# print("date notif : " +str(DT))
 	return DT, TS 
 
 def showNotif() :
@@ -100,7 +102,7 @@ def getLastDisplayed() :
 	except :
 		ut = 1000000000.0
 		pass
-	#print("TB+ update Time : " + str(ut))
+	# print("TB+ update Time : " + str(ut))
 	return ut
 	
 import api

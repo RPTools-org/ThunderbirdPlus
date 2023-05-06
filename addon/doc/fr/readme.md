@@ -706,7 +706,7 @@ Remarques :
 <!-- links section -->
 
 
-[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.6/thunderbirdPlus-4.6.3-TB102.nvda-addon
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.7/thunderbirdPlus-4.7-TB102.nvda-addon
 
 [2]: https://github.com/RPTools-org/ThunderbirdPlus/
 

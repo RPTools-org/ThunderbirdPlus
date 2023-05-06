@@ -1,7 +1,8 @@
 #-*- coding:utf-8 -*
 
 from time import sleep
-import speech
+from wx import CallLater
+import speech, winUser
 import characterProcessing
 if not hasattr(characterProcessing, "SYMLVL_SOME"):
 	SYMLVL_SOME = characterProcessing.SymbolLevel.SOME
@@ -55,22 +56,46 @@ def readContentMail(oDoc, reverse=False, filter = True, title=""):
 	o=o.firstChild # section ou paragraph
 	# message ("après  o.firstChild " + str(o.role)  + ", " + str(o.name))
 	if not o : return message(_("erreur"))
+	cCount = oDoc.childCount
 	text = title
+	# text += "\pchildCount : " + str(cCount) + "\n"
+
 	if o.next :
 		#o=o.next
+		i = 1
+		if cCount > 100 : message(str(cCount) + " objects. Press Control to stop.")
 		#html simple
 		while o :
-			obj = o.IAccessibleObject.QueryInterface(ISimpleDOMNode)
-			s=obj.innerHTML
-			if not s :s=o.name
+			try : 
+				obj = o.IAccessibleObject.QueryInterface(ISimpleDOMNode)
+				s=obj.innerHTML
+				if not s :s=o.name
+			except :
+				s = "error"
+				pass
+				
 			if s :text+=s
+			if winUser.getKeyState(winUser.VK_CONTROL)&32768:
+				beep(100, 30)
+				# CallLater(200, message, text)
+				CallLater(200, filterSpeakDoc, 		subjLastWord, text, reverse, filter)
+				return
+
+			i += 1
+			if cCount > 100 :
+				perc = (i / cCount) * 100
+				if perc % 10 == 0 :
+					if perc == 50.0 : beep(350, 20)
+					else : beep(350, 2) # message(str(int(perc)) + "%")
 			try : o=o.next
 			except : break # fix v 3.4.1
 	else: # texte brut
-		#beep(500, 30)
+		# beep(500, 30)
 		o = o.IAccessibleObject.QueryInterface(ISimpleDOMNode)
 		#text= unicode (o.innerHTML) if sys.version_info.major == 2 else str (o.innerHTML)
 		text += str(o.innerHTML)
+	# api.copyToClip (text)
+	# message("texte dans le presse-papiers")
 	filterSpeakDoc (		subjLastWord, text, reverse, filter)
 
 def filterSpeakDoc(endSubj, text, reverse, filter) :
