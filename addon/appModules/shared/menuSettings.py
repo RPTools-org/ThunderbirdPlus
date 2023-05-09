@@ -30,6 +30,8 @@ class  Settings() :
 		self.copyTB4Ini()
 		# sharedVars.log(None, "addonpath : " + self.addonPath)
 		self.load()
+		sharedVars.log(None, "Option VirtualSpellChk : " + str(self.options["msgcomposeWindow"]["virtualSpellChk"]))
+		sharedVars.log(None, "virtualSpellChk avant initDegfaults : " + str(sharedVars.virtualSpellChk)) 
 		self.initDefaults()
 
 	def initDefaults(self) :
@@ -44,7 +46,7 @@ class  Settings() :
 
 			self.options["msgcomposeWindow"]["closeMessageWithEscape"] = True
 			self.options["msgcomposeWindow"]["spellWords"] = True 
-			sharedVars.virtualSpellChk = self.options["msgcomposeWindow"]["virtualSpellChk"]
+			# self.options["msgcomposeWindow"]["virtualSpellChk"] = False
 			self.options["msgcomposeWindow"]["onePress"] = True
 		#if self.getOption ("messengerWindow", "separateCols") : self.colSepar = ", "
 		# debug logging
@@ -140,6 +142,8 @@ class  Settings() :
 		# sharedVars.log(None, str(utis.objSoundFiles))
 		self.setResponseMode()
 		self.setfolderTreeNav()
+		# set sharedVars for optimization
+		sharedVars.virtualSpellChk = self.getOption ("msgcomposeWindow", "virtualSpellChk")
 		return
 	def editWords(self) :
 		wrds = self.options["messengerWindow"]["removeInSubject"] 

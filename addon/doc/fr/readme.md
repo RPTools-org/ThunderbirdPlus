@@ -508,6 +508,53 @@ De plus, le raccourcis  Alt+flèche haut  épelle les mots :
 * 2 appuis épelle rapidement les mots ;
 * 3 appuis copie le mot mal orthographié dans le presse-papiers en vue de l'analyser dans un autre champ d'édition ;
 
+## Mode amélioré de la vérification orthographique pendant la saisie
+
+<!-- Translators : this section was added on version 4.7.1, may 08, 2023 -->
+
+Malgré les épellations ajoutées au dialogue de vérification orthographique, il est parfois nécessaire de  fermer celui-ci   pour écouter le contexte de la faute dans le texte. Cela fait, ce dialogue  recommence la vérification de puis le début et s'arrête à nouveau sur les mots que l'on avait volontairement ignorés précédemment.
+
+La vérification orthographique pendant la saisie évite ces inconvénients mais peut déconcentrer le rédacteur à cause des annonces "Faute d'orthographe".
+
+Afin de ne pas être distrait par les fautes d'orthographe pendant la rédaction, ce mode de vérification a été amélioré par l'ajout de trois    raccourcis clavier:
+
+Avant de les actionner, il est nécessaire de basculer en mode navigation en pressant : NVDA+espace ;
+
+* w et -shift+w pour aller respectivement à l'erreur suivante et précédente, ;
+* NVDA+F7 pour afficher la liste des erreurs. Il vous suffit  de presser entrée sur une erreur pour l'atteindre dans le texte ;
+
+Ce mode de fonctionnement vous permet de désactiver l'annonce des fautes d'orthographe par NVDA ;
+
+Avant d'utiliser ce mode amélioré de vérification pendant la saisie, il est nécessaire d'effectuer une petite configuration.
+
+### Configuration préliminaire
+1: Dans Thunderbird, Activer la vérification orthographique pendant la saisie dans les préférences : 
+
+* Dans la fenêtre principale, ouvrez le menu Options, descendez sur Préférences et validez ;
+* Dans l'onglet préférences, tabulez  pour atteindre le champ de recherche d'options,  entrez le mot "ortho" puis pressez Tab ;
+* Dans les résultats, tabulez puis cochez la case intitulée : "Activer la vérification pendant la saisie " ;
+* Refermez enfin l'onglet Préférences avec  -ctrl+w ou -ctrl+Retour arrière ;
+
+
+2: Désactiver l'annonce des fautes d'orthographe dans NVDA
+Ce réglage est facultatif. Si vous préférez entendre une annonce sur une faute d'orthographe, vous pouvez aussi raccourcir cette annonce en remplaçant dans votre dictionnaire de prononciation "Faute d'orthographe" par "graf", par exemple ;
+
+Pour désactiver cette annonce :
+
+* Ouvrez le menu NVDA, Préférences puis validez sur : Paramètres ;
+* Dans le dialogue des paramètres, placez-vous sur la catégorie "Mise en forme des documents" ;
+*  Tabulez jusqu'à entendre :"Fautes d'orthographe" puis pressez espace pour décocher cette option ;
+* Refermez le dialogue en validant sur le bouton OK ;
+
+
+### Utilisation des raccourcis w, -shift+w et NVDA+F7
+
+* Avant d'utiliser ces raccourcis,  vous devez d'abord activer le mode navigation en pressant NVDA+espace ;
+* Pressez ensuite la lettre w pour vous placer sur l'erreur suivante ou -shift+w pour vous placer sur l'erreur précédente ou encore, pressez NVDA+F7 pour sélectionner le mot à corriger  dans une liste ;
+* Lorsque le mot fautif est sélectionné dans le texte, Vous pouvez  presser la touche Applications pour afficher le menu contextuel des suggestions de remplacement ; 
+* Vous pouvez aussi    écouter  facilement la phrase qui contient le mot fautif avant de procéder à sa correction ;
+* Pour effectuer  une correction manuelle d'un mot, pressez d'abord NVDA+espace pour revenir en mode formulaire ;
+
 <a name="menus">
 
 ## Menus des options et commandes de ThunderbirdPlus 

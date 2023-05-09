@@ -40,11 +40,12 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	timerStartedAt = 0
 
 	def __init__(self, *args, **kwargs):
+		# beep(150, 60)
 		# self.loadCfg()
 		super (GlobalPlugin, self).__init__(*args, **kwargs)
-		if  getProcessIDFromExe("thunderbird.exe") == 0 : # TB is not  running
-			globalVars.TBStep = 0
-		else : globalVars.TBStep = 5
+		# if  getProcessIDFromExe("thunderbird.exe") == 0 : # TB is not  running
+			# globalVars.TBStep = 0
+		# else : globalVars.TBStep = 5
 		hTaskBar = ctypes.windll.user32.FindWindowExA(None, None, b"Shell_TrayWnd", None)
 		if not hTaskBar or  globalVars.appArgs.launcher : 
 			return
@@ -60,26 +61,27 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			self.timer = None
 
 
-	def event_foreground(self, obj, nextHandler) :
-		# print("Event_foreground " + str(obj.role))
-		if obj.role == controlTypes.Role.WINDOW : 
-			if "Thunderbird" not in obj.name and getProcessIDFromExe("thunderbird.exe")== 0 :
-				#beep(200, 2)
-				globalVars.TBStep=0
-		nextHandler()
+	# def event_foreground(self, obj, nextHandler) :
+		# beep(200, 2)
+		# # print("Event_foreground " + str(obj.role))
+		# if obj.role == controlTypes.Role.WINDOW : 
+			# if "Thunderbird" not in obj.name and getProcessIDFromExe("thunderbird.exe")== 0 :
+				# # beep(200, 2)
+				# globalVars.TBStep=0
+		# nextHandler()
 
-	def notifyAppmodule(self):
-		obj=api.getForegroundObject()
-		globalVars.TBExited=True
-		ui.message("fglobalVars.TBExited" + str(globalVars.TBExited))
-		appMod =  obj.appModule
-		if appMod and hasattr(appMod, "TBExited") :
-			# beep(200, 20)
-			appMod.TBExited() 
-			return True
-		return  False
-		if time() - self.timerStartedAt < 30.0 : # secondes
-			self.timer.Start()
+	# def notifyAppmodule(self):
+		# obj=api.getForegroundObject()
+		# globalVars.TBExited=True
+		# ui.message("fglobalVars.TBExited" + str(globalVars.TBExited))
+		# appMod =  obj.appModule
+		# if appMod and hasattr(appMod, "TBExited") :
+			# # beep(200, 20)
+			# appMod.TBExited() 
+			# return True
+		# return  False
+		# if time() - self.timerStartedAt < 30.0 : # secondes
+			# self.timer.Start()
 
 	def script_startTB(self, gesture) :
 		# beep(440, 30)

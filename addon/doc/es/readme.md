@@ -499,6 +499,49 @@ Además, el atajo Alt+ flecha arriba deletrea las palabras:
 * 2 pulsaciones deletreará rápidamente las palabras;
 * 3 pulsaciones copiará   la palabra mal escrita al portapapeles para su análisis en otro campo de edición;
 
+<a name="virtspell">
+
+## Modo mejorado para revisar la ortografía mientras escribes (w, NVDA+F7)
+A pesar de las epelaciones añadidas al cuadro de diálogo de Revisar ortografía, a veces es necesario cerrar el cuadro de diálogo para escuchar el contexto de la falta en el texto. Hecho esto, este diálogo reinicia la revisión desde el principio y se detiene de nuevo en las palabras que habíamos ignorado voluntariamente anteriormente.
+
+Al revisar la ortografía mientras escribes evita estos inconvenientes, pero puede distraer al redactor(a) debido al anuncio "Faute d'orthographe". 
+Para no distraerse por los errores ortográficos al escribir, este modo de revisión se ha mejorado al agregar tres atajos de teclado:
+
+Antes de activarlos, es necesario cambiar al modo Exploración pulsando: NVDA+espacio;
+
+* w y -shift+w ir al error siguiente y anterior respectivamente;
+* NVDA+F7 para mostrar la lista de errores. Solo necesita pulsar Intro en un error para alcanzarlo en el texto;
+
+Este modo de funcionamiento le permite deshabilitar el anunciado de los errores de ortografía por NVDA;
+
+Antes de usar este modo mejorado para revisar la ortografía mientras escribes, es necesario realizar una pequeña configuración.
+
+### Configuración preliminar
+1: En Thunderbird Activar corrección ortográfica al escribir en las preferencias: 
+
+* En la ventana principal, abra el menú Opciones, desplácese hacia abajo hasta Preferencias y valide;
+* En la pestaña de Preferencias, tabula   para llegar al cuadro de búsqueda de opciones, introduzca la palabra "orto" y luego pulse Tab;
+* En los resultados, tabula puis marca la casilla de verificación llamada: "Activar corrección ortográfica al escribir";
+* Finalmente cierre la pestaña de Preferencias con Control+w o Control+Retroceso;
+
+2: Desactiva el anunciado de los errores de ortografía en NVDA
+Este ajuste es, por supuesto, opcional. Si prefiere escuchar el anunciado de un error de ortografía, también puede acortar este anuncio reemplazando en su Diccionarios del habla "Error de ortografía" por "graf", por ejemplo;
+
+Para desactivar este anuncio:
+
+* Abre el menú de NVDA, Preferencias y valida en:  Opciones;
+* En el cuadro de diálogo de Opciones, vaya a la categoría "Formateado de Documento";
+* Tabula hasta que oiga: "Errores de ortografía" luego pulse la barra espaciadora para desmarcar esta opción;
+* Cerrar el cuadro de diálogo validando en el botón Aceptar;
+
+### Usando los atajos w, -shift+w y NVDA+F7
+
+* Antes de usar estos atajos, primero debe activar el modo exploración pulsando NVDA+espacio;
+* Luego pulse la letra w para pasar al siguiente error o -shift+w para pasar al error anterior o pulse NVDA+F7 para seleccionar la palabra a corregir de una lista;
+* Cuando se selecciona la palabra incorrecta en el texto, puede pulsar la tecla Aplicaciones para mostrar el menú contextual de sugerencias de reemplazo; 
+* También puedes escuchar fácilmente la frase que contiene la palabra errónea antes de corregirla;
+* Para corregir manualmente una palabra, primero pulsa NVDA+espacio para volver al modo foco;
+
 <a name="menus">
 
 ## Menús de opciones y órdenes de ThunderbirdPlus

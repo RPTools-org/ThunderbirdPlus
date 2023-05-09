@@ -1,5 +1,7 @@
 ;@echo off
-title=Build add-on
+title Build Thhunderbird+ add-on
+
+
 rem if exist .\addon\buildVars.py (
 rem 	copy .\addon\buildVars.py .
 rem 	)

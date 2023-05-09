@@ -90,12 +90,11 @@ class AppModule(thunderbird.AppModule):
 		# Niveau 1,  23 sur 24, name : Corps du message, role.INTERNALFRAME=115, IA2ID : content-frame Tag: editor, états : , FOCUSABLE, childCount  : 1 Chemin : role FRAME=34| i23, role-INTERNALFRAME=115, , IA2ID : content-frame , IA2Attr : id : content-frame, explicit-name : true, display : inline, tag : editor,  ;
 		# Niveau 2,   0 sur 0, name : Corps du message, role.DOCUMENT=controlTypes.Role.DOCUMENT Tag: body, états : , FOCUSED, MULTILINE, FOCUSABLE, EDITABLE, childCount  : 6 Chemin : role FRAME=34| i23, role-INTERNALFRAME=115, , IA2ID : content-frame | i0, role-DOCUMENT=52,  , IA2Attr : explicit-name : true, display : block, tag : body, line-number: 2,;
 		if  role == controlTypes.Role.DOCUMENT  and  controlTypes.State.EDITABLE in obj.states :
+			# beep(500, 3)
 			sharedVars.curFrame = "msgcomposeWindow"
-			# beep(300, 3)
 			sharedVars.curTab = "comp"
 			if sharedVars.virtualSpellChk :
 				clsList.insert(0, msgComposeWindow.virtualSpellCheck.ThunderbirdEditDocument)
-				#copyClsList(clsList) # copy to clip for testing
 			return
 		if role == controlTypes.Role.FRAME  : # and "Thunderb" in str(obj.name) : #obj.windowClassName: # or (self.curFrame == "messengerWindow" and self.curTab == "init") : # or not self.curFrame  :
 			sharedVars.oCurFrame = obj
@@ -842,7 +841,9 @@ class AppModule(thunderbird.AppModule):
 		# winVerAlert()
 		if sharedVars.curFrame == "messengerWindow" :
 			utis.isChichi()
-		sharedVars.debugLog += "\nChichi : " + str(sharedVars.chichi)
+			sharedVars.debugLog += "\nChichi : " + str(sharedVars.chichi)
+		sharedVars.debugLog += "\nObjLooping : " + str(sharedVars.objLooping) + "\n"
+		sharedVars.debugLog += "\nvirtualSpellChk : " + str(sharedVars.virtualSpellChk) + "\n"
 		debugShow(self, False)
 
 	def script_initDebug(self, gesture) :

@@ -493,6 +493,57 @@ Ayrıca, Alt+yukarı ok kısayolu şu sözcükleri heceler:
 * 2 basış hızlı bir şekilde kelimeleri heceler;
 * 3 basış, yanlış yazılmış kelimeyi başka bir düzenleme alanında analiz edilmek üzere panoya kopyalar;
 
+<a name="virtspell">
+
+## Yazarken geliştirilmiş yazım denetimi modu
+
+<!-- Translators : this section was translated  from French into Turkish on version 4.7.1, may 08, 2023 -->
+
+Not : Bu bölüm Google tarafından Fransızcadan Türkçeye çevrilmiştir. Hatalar mümkündür;
+
+Yazım denetimi iletişim kutusuna eklenen yazımlara rağmen, metindeki hatanın bağlamını duymak için bazen iletişim kutusunu kapatmak gerekebilir. Bu yapıldığında, bu iletişim kutusu doğrulamayı en baştan yeniden başlatır ve daha önce gönüllü olarak göz ardı ettiğimiz sözcüklerde tekrar durur.
+
+Yazarken yazım denetimi yapmak bu rahatsızlıkları ortadan kaldırır ancak "Yazım hatası" duyurularıyla yazarın dikkatini dağıtabilir.
+
+Yazarken yazım hatalarından rahatsız olmamak için, bu kontrol modu üç klavye kısayolu eklenerek geliştirilmiştir:
+
+Bunları etkinleştirmeden önce, şu tuşlara basarak navigasyon moduna geçmek gerekir: NVDA+boşluk;
+
+* w ve -shift+w sırasıyla sonraki ve önceki hataya gitmek için;
+* Hata listesini görüntülemek için NVDA+F7. Metinde bir hataya atlamak için enter tuşuna basmanız yeterlidir;
+
+Bu çalışma modu, NVDA'nın yazım hatalarını duyurmasını devre dışı bırakmanıza olanak tanır;
+
+Yazarken bu geliştirilmiş doğrulama modunu kullanmadan önce küçük bir yapılandırma yapmak gerekir.
+
+### Ön yapılandırma
+1: Thunderbird'de, tercihleri ​​yazarken yazım denetimini etkinleştirin:
+
+* Ana pencerede Seçenekler menüsünü açın, Tercihler'e gidin ve onaylayın;
+* Tercihler sekmesinde, seçenekler arama alanına ulaşmak için sekmeye "ortho" kelimesini girin ve ardından Tab'a basın;
+* Sonuçlarda tablo haline getirin ve ardından "Yazarken doğrulamayı etkinleştir" başlıklı kutuyu işaretleyin;
+* Son olarak -ctrl+w veya -ctrl+Backspace ile Tercihler sekmesini kapatın;
+
+
+2: NVDA'da yazım yanlışlarının bildirilmesini devre dışı bırakın
+Bu ayar isteğe bağlıdır. Bir yazım hatasıyla ilgili bir duyuru duymayı tercih ederseniz, bu duyuruyu telaffuz sözlüğünüzdeki "Yazım hatası" ifadesini "graf" ile değiştirerek de kısaltabilirsiniz, örneğin;
+
+Bu reklamı devre dışı bırakmak için:
+
+* NVDA menüsünü açın, Tercihler, ardından aşağıdakileri doğrulayın: Parametreler;
+* Ayarlar iletişim kutusunda "Belge biçimlendirme" kategorisine gidin;
+* Şunu duyana kadar sekmeye gidin: "Yazım hataları", ardından bu seçeneğin işaretini kaldırmak için boşluk tuşuna basın;
+* Tamam düğmesini onaylayarak iletişim kutusunu kapatın;
+
+
+### w, -shift+w ve NVDA+F7 kısayol tuşlarını kullanma
+
+* Bu kısayol tuşlarını kullanmadan önce, NVDA+boşluk tuşlarına basarak tarama modunu etkinleştirmelisiniz;
+* Daha sonra bir sonraki hataya gitmek için w harfine veya önceki hataya gitmek için -shift+w'ye veya listeden düzeltilecek kelimeyi seçmek için NVDA+F7'ye basın;
+* Metinde hatalı kelime seçildiğinde,Değiştirme önerilerinin içerik menüsünü görüntülemek için Uygulamalar tuşuna basabilirsiniz;
+* Hatalı kelimeyi içeren cümleyi düzeltmeye geçmeden önce kolayca dinleyebilir;
+* Bir kelimeyi manuel olarak düzeltmek için önce form moduna dönmek üzere NVDA+boşluk tuşlarına basın;
+
 <a name="menüler">
 
 ## ThunderbirdPlus Seçenekleri ve Komutları Menüleri

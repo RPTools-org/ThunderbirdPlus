@@ -393,19 +393,65 @@ Nota: Este menu é obtido premindo [Barra invertida](keyEquiv_pt_PT.html#aboveTa
 
 <a name=\"spellDlg\">
 
-### Diálogo de verificação ortográfica: F7 
+## Diálogo de verificação ortográfica: F7 
 
 Foram acrescentados atalhos de teclado que restringem o movimento das mãos. Quando o foco é colocado no campo de edição da palavra de substituição, é possível premir os seguintes atalhos de teclado:
+
 * Input: Activa o botão \"Replace\" (Substituir);
 * Shift+Enter: Activa o botão \"Replace All\" (Substituir tudo);
 * Control+Enter: Activa o botão \"Ignorar\";
 * Shift+Control+Enter: Activa o botão \"Ignorar Tudo\";
 * Alt+Enter: Activa o botão \"Adicionar palavra ao dicionário\";
+
 Para recordar estas combinações da tecla Enter, Controlo refere-se à acção \"Ignorar\" e a presença de Shift indica \"todas as ocorrências\".
 Além disso, o atalho de seta Alt+up soletra as palavras :
+
 * 1 pressionamento soletra as palavras a um ritmo normal;
 * 2 pressionamentos Soletra as palavras rapidamente;
 * 3 pressionamentos copiam a palavra mal escrita para a área de transferência para análise noutro campo de edição;
+
+<a name="virtspell">
+
+## Modo de verificação ortográfica avançada durante a digitação
+Apesar da ortografia adicionada ao diálogo de verificação ortográfica, é por vezes necessário fechar o diálogo para ouvir o contexto do erro no texto. Quando isto é feito, o diálogo recomeça desde o início e pára novamente nas palavras que anteriormente eram ignoradas.
+
+A correcção ortográfica durante a digitação evita estes inconvenientes mas pode distrair o escritor com os anúncios de "erro ortográfico". 
+A fim de não se distrair com erros ortográficos durante a escrita, este modo de verificação foi melhorado com a adição de três atalhos de teclado:
+
+B antes de os activar, é necessário mudar para o modo de navegação pressionando ;: NVDA+espaço ;
+
+* w e Shift+w para ir para o erro seguinte ou anterior, respectivamente, ;
+* NVDA+F7 para exibir a lista de erros. Basta pressionar enter sobre um erro para se mover para ele no texto;
+
+Este modo de funcionamento permite-lhe desactivar o anúncio de erros ortográficos pelo NVDA ;
+
+Antes de utilizar este modo melhorado de verificação durante a digitação, é necessária uma pequena quantidade de configuração.
+
+### Configuração preliminar
+1: Nas preferências do Thunderbird, permitir a verificação ortográfica enquanto se escreve:
+
+* Na janela principal, abrir o menu Ferramentas, ir para baixo até Settings e confirmar;
+* No separador Settings, no campo de opções de pesquisa, introduza a palavra "ortho" e pressione Tab ;
+* Nos resultados, Tab até "Verificar ortografia ao escrever" e marcar com barra de espaços, se necessário;
+* Finalmente, feche o separador Preferências com Control+w.
+
+2: Desactivar o anúncio de erros ortográficos no NVDA
+Esta configuração é, evidentemente, opcional. Se preferir ouvir um anúncio sobre um erro ortográfico, também pode encurtar este anúncio substituindo no seu dicionário de pronúncia "Erro ortográfico" por "graf", por exemplo ;
+
+Para desactivar este anúncio :
+
+* Abrir o menu NVDA, Preferências e depois validar em : Configurações ;
+* No diálogo de Configurações, ir para a categoria "Formatação de documentos";
+* Tab até ouvir: "Erros ortográficos" e depois pressione espaço para desmarcar esta opção;
+* Fechar o diálogo pressionando o botão OK ou Confirmar;
+
+### Utilizando os comandos w, Shift+w e NVDA+F7
+
+* Antes de utilizar estes atalhos, deve primeiro activar o modo de navegação, pressionando NVDA+espaço;
+* Em seguida, pressione a letra w para passar ao erro seguinte ou Shift+w para passar ao erro anterior ou pressione NVDA+F7 para seleccionar a palavra a ser corrigida a partir de uma lista;
+* Quando a palavra errada é seleccionada no texto, pode pressionar a tecla Aplicações para exibir o menu contextual de sugestões de substituição; 
+* Também se pode ouvir facilmente a frase que contém a palavra errada antes de a corrigir;
+* Para fazer uma correcção manual a uma palavra, primeiro pressione NVDA+espaço para voltar ao modo formulário;
 
 <a name=\"menus\">
 

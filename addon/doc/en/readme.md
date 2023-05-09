@@ -514,6 +514,56 @@ Moreover, the Alt+up arrow shortcut spells words:
 * 2 presses spell words quickly;
 * 3 presses copy the misspelled word to the clipboard for analysis in another edit field;
 
+<a name="virtspell">
+
+## Improved spell check mode while typing
+
+<!-- Translators: this section was translated by Google on version 4.7.1, may 08, 2023 -->
+
+Note : this section was translated from French into English by Google ;
+
+Despite the spellings added to the spell check dialog, it is sometimes necessary to close the dialog to hear the context of the mistake in the text. This done, this dialog restarts the spell check from the beginning and stops again on the words that we had voluntarily ignored previously.
+
+Spellchecking while typing avoids these inconveniences but can distract the writer with "Misspelling" announcements.
+
+In order not to be distracted by spelling errors while typing, this checking mode has been improved by adding three keyboard shortcuts:
+
+Before activating them, it is necessary to switch to navigation mode by pressing: NVDA+space;
+
+* w and -shift+w to go to the next and previous error respectively;
+* NVDA+F7 to display the list of mispelled words. You just need to press enter on an mispelled word to jump to it in the text;
+
+This mode of operation allows you to disable NVDA announcing mispelled words ;
+
+Before using this improved mode of spell chech while typing, it is necessary to carry out a small configuration.
+
+### Preliminary configuration
+1: In Thunderbird, Enable spell check while typing in Settings :
+
+* In the main window, open the Options menu, go down to Settings and press Enter ;
+* In the Settings  tab, tab to reach the options search field, enter the word "spell" then press Tab;
+* In the results, tabulate then check the box entitled: "Enable spell check while typing";
+* Finally close the Settings tab with Control+w or -ctrl+Backspace;
+
+
+2: Disable reporting of misspellings in NVDA
+This setting is optional. If you prefer to hear an announcement about a mispelled word, you can also shorten this announcement by replacing in your pronunciation dictionary "mispelled word" by "misp", for example;
+
+To disable this ad:
+
+* Open the NVDA menu, Preferences then press Enter  on: Settings ;
+* In the settings dialog, go to the "Document formatting" category;
+* Tab until you hear: "Spelling errors" then press space to uncheck this option;
+* Close the dialog by validating on the OK button;
+
+
+### Using w, -shift+w and NVDA+F7 hotkeys
+
+* Before using these hotkeys, you must first activate browse mode by pressing NVDA+space;
+* Then press the letter w to go to the next error or -shift+w to go to the previous error or press NVDA+F7 to select the word to correct from a list;* When the faulty word is selected in the text, You can press the Applications key to display the contextual menu of replacement suggestions;
+* You can also easily listen to the sentence that contains the faulty word before proceeding to correct it;
+* To manually correct a word, first press NVDA+space to return to form mode;
+
 <a name="menus">
 
 ## Thunderbird+ Options And Commands Menus 

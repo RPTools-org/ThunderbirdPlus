@@ -47,10 +47,10 @@ def checkNotif() :
 	date, tsRemote = getRemoteDateTime()
 	tsLocal = getLastDisplayed()
 	# print("Remote date : {0}, Remote timestamp : {1}, Local ts : {2}".format(str(date), str(tsRemote), str(tsLocal)))
-	if tsRemote >= tsLocal :
-		return False
-	setLastDisplayed(tsRemote)
-	return  True
+	if tsRemote > tsLocal :
+		setLastDisplayed(tsRemote)
+		return  True
+	return False
 
 def getRemoteDateTime() :
 	global urlFileInfos
