@@ -11,6 +11,9 @@ import os, wx
 import  gui
 from ui import  message, browseableMessage
 import addonHandler
+import core
+
+
 from . import translation
 translation.initTranslationWithEnglishFallback()
 import api
@@ -89,8 +92,8 @@ def getURLHelp(url) :
 baseUrl="https://www.rptools.org/"
 urlHelp = getURLHelp(baseUrl + "NVDA-Thunderbird/changes.php?lg={0}")
 urlFileInfos = baseUrl + "fileInfos.php?key=thunderbirdup4102"
-# test urlFileInfos = baseUrl + "fileInfos.php?key=thunderbirduptest"
-# on peut aussi donner un lien direct : urlFileInfos = baseUrl + "dossierFichieonInfoButton/motCléExtension.txt"
+# for test urlFileInfos = baseUrl + "fileInfos.php?key=thunderbirduptest"
+# on peut aussi donner un lien direct : urlFileInfos = baseUrl ttt+ "dossierFichieonInfoButton/motCléExtension.txt"
 # Structure du fichier d'informations,  l'ordre des lignes doit être respecté
 # version=3.2.4
 # dbID=identifiant pour les statistiques 
@@ -156,7 +159,7 @@ def getRemoteVersion() :
 	n = 	 lines[2].split("=")[1] # name
 	return n, v
 
-def doUpdate(oldVer) :
+def doUpdate(oldVer, forced="") :
 	global baseUrl, urlFileInfos
 	beep(337, 1)
 	try :
@@ -168,6 +171,8 @@ def doUpdate(oldVer) :
 		return -1, _("Erreur de récupération des informations du fichier")
 	lines = data.split("\n")
 	ver = lines[0].split("=")[1]
+	# return -1, "oldVer={0}, ver={1}".format(oldVer, ver)
+	# message("From {0} to {1}".format(oldVer, ver))
 	dbID = lines[1].split("=")[1]
 	name = 	 lines[2].split("=")[1]
 	dlFile= lines[3].split("=")[1]
@@ -204,23 +209,44 @@ def doUpdate(oldVer) :
 	# v 3.4.2 vérif taille fichier écrit 
 	if os.path.getsize(filePath)  < lenData :
 		return  - -4, _("Erreur d'enregistrement de l'extension dans un fichier temporaire.")
-	# updateinfos
+	# update infos
 	try:
 		from urllib import parse
 	except Exception:
 		from urllib.request import parse
-	urlFile = baseUrl + "updateInfos.php?p=" + dbID + "&a=" + name + "-" + ver + "-old%20" + str(oldVer) + "&u=" + parse.quote(os.getenv('username') .encode('latin-1'))
-	try :
-		with urlopen  (urlFile) as data :
-			data = data.read()
-	except :
-		pass
+	if ver > oldVer :
+		if forced : forced =  "%20" + forced + "%20"
+		oldV = forced + str(oldVer)
+		urlFile = baseUrl + "updateInfos.php?p=" + dbID + "&a=" + name + "-" + ver + "-old%20" + oldV + "&u=" + parse.quote(os.getenv('username') .encode('latin-1'))
+		try :
+			with urlopen  (urlFile) as data :
+				data = data.read()
+		except :
+			pass
 	# lance l'installation de l'extension ou le fichier HTML
-	os.startfile (filePath)
+	# os.startfile (filePath)
+	installAddon(filePath)
 	return 1, "OK"
 
+def installAddon(file):
+	for addon in addonHandler.getAvailableAddons():
+		if addon.name == "thunderbirdPlus" :
+			beep(440, 5)
+			addon.requestRemove()
+		if addon.name == "ThunderbirdPlus" :
+			beep(440, 5)
+			addon.requestRemove()
+	# to install the new version
+	bundle = addonHandler.AddonBundle(file)
+	addonHandler.installAddonBundle(bundle)
+	# to restart NVDA
+	core.restart()
+
+
+
 def forceUpdate() :
-	result, msg = doUpdate("4.0.9")
+	nm, ver = getCurVersion()
+	result, msg = doUpdate(ver, "Forc")
 	if result < 1 :
 		browseableMessage (message = msg, title = _("Mise à jour de l'extension") + name, isHtml = False)
 

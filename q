@@ -1,4 +1,16 @@
-[33mcommit 8853a121d66c181cbb880852712a192712512d2c[m[33m ([m[1;36mHEAD -> [m[1;32mstable[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+[33mcommit 866cde9a5698a3f8bcc5278d75fa900a531b269c[m[33m ([m[1;36mHEAD -> [m[1;32mstable[m[33m, [m[1;31morigin/stable[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: Pierre-Louis R <plr.listes@rptools.org>
+Date:   Tue May 9 14:57:22 2023 +0200
+
+    V 4.7.2 Changes in source code and in all readme.md
+
+[33mcommit 625d73a718194bbd2eebe593307635e2e5aa0270[m[33m ([m[1;33mtag: v4.7[m[33m)[m
+Author: Pierre-Louis R <plr.listes@rptools.org>
+Date:   Sat May 6 07:12:51 2023 +0200
+
+    V 4.7 Fixes for big HTML mails and notifications display
+
+[33mcommit 8853a121d66c181cbb880852712a192712512d2c[m
 Author: Pierre-Louis R <plr.listes@rptools.org>
 Date:   Sun Apr 30 07:23:43 2023 +0200
 
@@ -22,7 +34,7 @@ Date:   Fri Apr 28 08:53:15 2023 +0200
 
     Version 4.6 of ThunderbirdPlus
 
-[33mcommit 5521fa2b4c5d50e58b907dfaff357cca246aecc0[m[33m ([m[1;31morigin/stable┬á[m[33m, [m[1;31morigin/stable[m[33m, [m[1;32mstable┬á[m[33m)[m
+[33mcommit 5521fa2b4c5d50e58b907dfaff357cca246aecc0[m[33m ([m[1;31morigin/stable┬á[m[33m, [m[1;32mstable┬á[m[33m)[m
 Author: Pierre-Louis R <plr.listes@rptools.org>
 Date:   Wed Apr 26 19:02:23 2023 +0200
 
