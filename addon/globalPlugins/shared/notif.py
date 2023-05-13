@@ -44,9 +44,15 @@ urlFileInfos = baseUrl + "fileInfos.php?key=tbNotif"
 
 
 def checkNotif() :
+	# tsFar  pour rattraper une erreur de date dans  le fichier de dernière notification
+	# tsFar = dateTS("2123-01-01 08:00") 
+	tsFar = 4828230000.0
+	# print("Far date : {0}, far timestamp : {1} ".format("2123-01-01 08:00", str(tsFar)))
+	# for test setLastDisplayed(tsFar + 10000)
 	date, tsRemote = getRemoteDateTime()
 	tsLocal = getLastDisplayed()
 	# print("Remote date : {0}, Remote timestamp : {1}, Local ts : {2}".format(str(date), str(tsRemote), str(tsLocal)))
+	if tsLocal > tsFar : tsLocal = 1000000000.0
 	if tsRemote > tsLocal :
 		setLastDisplayed(tsRemote)
 		return  True

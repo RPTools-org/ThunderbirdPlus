@@ -739,6 +739,6 @@ Notlar :
 <!-- links section -->
 
 
-[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.7/thunderbirdPlus-4.7-TB102.nvda-addon
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.8/thunderbirdPlus-4.8.0-TB102.nvda-addon
 
 [2]: https://github.com/RPTools-org/ThunderbirdPlus/
