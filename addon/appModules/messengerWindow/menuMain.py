@@ -40,6 +40,11 @@ class MainMenu() :
 		# 4 Choose columns
 		mainMenu.Append (4, _("Choisir et agencer les colonnes de la liste de messages"))
 		mainMenu.Append (8, _("Aide\tCtrlF1"))
+
+		mainMenu.Append (12, _("Historique des changements"))
+		mainMenu.Append (13, _("Page de notifications"))
+		mainMenu.Append (14, _("Faire un don"))
+
 		mainMenu.Append (11, _("Page de Chichi"))
 		mainMenu.Append (9, _("Ecrire au support"))
 		mainMenu.Append (10, _("Rejoindre la liste thunderbird-dv"))
@@ -68,7 +73,12 @@ class MainMenu() :
 		elif ID == 11 :
 			lang = utis.getLang()
 			return CallAfter(os.startfile, "http://www.rptools.org/Outils-DV/thunderbird-chichi-" + lang + ".html")
-
+		elif ID == 12 : #history
+			return CallAfter(showTranslatedHTML, "TB+-history.html")
+		elif ID == 13 : # notifications
+			return CallAfter(showTranslatedHTML, "notifications.html")
+		elif ID == 14 : # donate
+			return CallAfter(os.startfile, "https://www.paypal.com/donate/?business=QQJT2CCNR66G4&no_recurring=0&item_name=Thunderbird%2Badd-on+for+NVDA++donations.+%0AMany+thanks+%21+%3B&currency_code=EUR")
 	def showColumnPicker(self) :
 		utis.setSpeech(False)
 		#sharedVars.debugMess(self.focused, " focused ")
@@ -247,3 +257,14 @@ def chooseCols(oBtnPicker) :
 	oBtnPicker.doAction()
 	# w
 	return
+
+def showTranslatedHTML(pageName) :
+	from languageHandler import getLanguage
+	lang = getLanguage()
+	if "fr" in lang :
+		url = "https://www.rptools.org/NVDA-Thunderbird/" + pageName
+	else :
+		url = "https://www-rptools-org.translate.goog/NVDA-Thunderbird/" + pageName + "?_x_tr_sl=fr&_x_tr_tl=@lg&_x_tr_hl=@lg&_x_tr_pto=sc"
+		url = url.replace("@lg", lang)
+	#  the translated content is displayeed via javascript so it cannot be displayed with ui.browseableMessage()
+	os.startfile (url)

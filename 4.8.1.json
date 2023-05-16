@@ -3,13 +3,13 @@
 	"displayName": "Thunderbird+",
 	"URL": "",
 	"description": "This add-on adds commands to Thunderbird 102.x to make it more accessible, efficient and comfortable to use.",
-	"sha256": "292792b6ff35eda9bef19a36b28ee364ab2621019b002096cd02ed560a93ef73",
+	"sha256": "5ac345e3598135141a7fca20f94fdc3e7d7639015eb69a2cb408f398a5010c3c",
 	"homepage": "https://\u0013\u0013www.rptools.org/NVDA-Thunderbird/toContact.html",
-	"addonVersionName": "4.8.0",
+	"addonVersionName": "4.8.1",
 	"addonVersionNumber": {
 		"major": 4,
 		"minor": 8,
-		"patch": 0
+		"patch": 1
 	},
 	"minNVDAVersion": {
 		"major": 2019,
