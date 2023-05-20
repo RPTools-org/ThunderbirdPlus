@@ -398,7 +398,8 @@ def getPropertyPageFromFG() :
 def getPreviewPane(oPropPage=None) :
 	if not oPropPage  or  (oPropPage and oPropPage.role != controlTypes.Role.PROPERTYPAGE ) :
 		oPropPage = getPropertyPageFromFG() 
-		if oPropPage.role != controlTypes.Role.PROPERTYPAGE : return None, -1
+		# 2023-05-18 bug fix, added is None
+		if oPropPage is None or oPropPage.role != controlTypes.Role.PROPERTYPAGE : return None, -1
 	o = oPropPage.lastChild
 	while o :
 		role =o.role 
