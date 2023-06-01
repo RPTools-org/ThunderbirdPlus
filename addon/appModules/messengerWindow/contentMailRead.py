@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*
+ #-*- coding:utf-8 -*
 
 from time import sleep
 from wx import CallLater
@@ -97,6 +97,11 @@ def readContentMail(oDoc, reverse=False, filter = True, title=""):
 	# api.copyToClip (text)
 	# message("texte dans le presse-papiers")
 	filterSpeakDoc (		subjLastWord, text, reverse, filter)
+def shortenUrl(lnk, label) :
+	lnk = lnk.replace("https://", label)
+	lnk = lnk.replace("http://", label)
+	return lnk.split("/")[0]
+	
 
 def filterSpeakDoc(endSubj, text, reverse, filter) :
 	# beep(700, 30)
@@ -121,15 +126,20 @@ def filterSpeakDoc(endSubj, text, reverse, filter) :
 		regExp = re.compile ("\<style\>.+?\</style\>")
 		text=regExp.sub (" ",text)
 
-	#remplacement de la balise lien (<a...</>
+	# remplacement de la balise lien (<a...</>
 	regExp = re.compile ("(\<a .+?\>(.+?)\</a\>)")
+	lbl = _(" lien %s ").replace(" %s", "")
+
+	# 2023-05-29 : added call to shortenUrl()
 	l=regExp.findall (text)
 	for e in l :
 		text_link = e[1]
 		if "mailto" in e[0]: continue
-		elif text_link.startswith ("http"):text =text.replace (e[0],_(u" lien cliquable "))
-		#elif e[0].find ("yahoo.com")!=-1:text=text.replace (e[0]," ")
-		else: text =text.replace (e[0],_(u" lien %s ") % text_link)
+		elif text_link.startswith ("http") :
+			text = text.replace (e[0], shortenUrl(text_link, lbl))
+		# else :
+			# text =text.replace (e[0],_(u" lien %s ") % text_link)
+		
 	#remplacement des objets youtube par du texte  (dans le flus rss)
 	reg = re.compile ("\<iframe.+?\</iframe\>")
 	text =reg.sub (_(u"objet youtube présent. "),text)
@@ -190,11 +200,11 @@ def filterSpeakDoc(endSubj, text, reverse, filter) :
 		else:
 			text =text.replace (e[0],_("\n. %s a écrit.") % x)
 	text=text.strip ()
-	#modification de lien 
+	#modification de lien  non cliquables
 	reg = re.compile ("https?://.+?\s?.+?\s")
 	l=reg.findall (text)
 	for e in l : 
-		text =text.replace (e,_(". lien cliquable…. "))
+		text =text.replace (e, shortenUrl(e, " URL "))
 	if reverse :
 		text=text.split ("\n")
 		text.reverse ()
