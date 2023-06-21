@@ -1,0 +1,18 @@
+Sloupcové uspořádání seznamu zpráv;
+
+Tato funkce umožňuje zvolit pořadí sloupců v seznamu zpráv a přidat nebo odebrat sloupce.
+
+Chcete-li jej použít, nejprve vyberte seznam zpráv nebo strom složek a poté stiskněte Alt+c;
+Zobrazí se dialogové okno Rozvržení sloupců. Skládá se ze seznamu sloupců a také z tlačítek „Nápověda“, „Sloupce“ a „Zavřít“. Tlačítko „Sloupce...“ zobrazuje nativní nabídku Thunderbird „Vyberte sloupce k zobrazení“.
+Když jste v seznamu sloupců, jsou k dispozici následující klávesové zkratky:
+• Šipka doleva: zobrazí nabídku s názvem „Vyberte sloupce k zobrazení“. Tato zkratka odpovídá tlačítku "Sloupce...";
+• Mezerník: Chcete-li přesunout vybraný sloupec, stiskněte Mezerník, přejděte na jiný sloupec a znovu stiskněte Mezerník, abyste tam sloupec umístili. Tato operace je podobná operaci vyjmutí a vložení;
+Máte také tyto zkratky přímého pohybu:
+• Ctrl + šipka nahoru nebo Ctrl + šipka dolů: přesunutí vybraného sloupce nahoru nebo dolů o jednu pozici;
+• Control + Home nebo End: přesune vybraný sloupec na začátek nebo konec seznamu;
+• Control + Předchozí stránka nebo Následující stránka: zvýší nebo sníží vybraný sloupec o tři pozice;
+Sloupce se přesouvají přetažením myší. Každých 10 pohybů kurzoru myši se ozve jedno milisekundové pípnutí;
+Když je k dispozici nabídka „Vybrat sloupce k zobrazení“, máte k dispozici následující nové klávesové zkratky:
+• Šipka vpravo: zobrazí dialog "Rozvržení sloupců" ;
+• Mezerník: zaškrtne nebo zruší zaškrtnutí sloupce vybraného v nabídce;
+Šipkou doleva a doprava je tedy velmi snadné přepínat mezi nabídkou volby sloupců a dialogem pro jejich rozložení.

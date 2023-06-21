@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Thunderbird+\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 07:12+0200\n"
-"PO-Revision-Date: 2023-05-16 07:14+0200\n"
+"POT-Creation-Date: 2023-06-16 08:09+0200\n"
+"PO-Revision-Date: 2023-06-16 08:13+0200\n"
 "Last-Translator: Pierre-Louis R. <plr.listes@rptools.org>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -95,42 +95,38 @@ msgstr "Le dossier a changé, retournez à %s pour agencer les colonnes ou relan
 msgid "erreur"
 msgstr "erreur"
 
-#: appModules/messengerWindow/contentMailRead.py:106
+#: appModules/messengerWindow/contentMailRead.py:111
 msgid "Lecture non filtrée."
 msgstr "Lecture non filtrée."
 
-#: appModules/messengerWindow/contentMailRead.py:108
+#: appModules/messengerWindow/contentMailRead.py:113
 msgid "Vous recevez ce message, car vous êtes abonné au groupe"
 msgstr "Vous recevez ce message, car vous êtes abonné au groupe"
 
-#: appModules/messengerWindow/contentMailRead.py:114
+#: appModules/messengerWindow/contentMailRead.py:119
 msgid "Groups.io Links"
 msgstr "Groups.io Links"
 
-#: appModules/messengerWindow/contentMailRead.py:130
-msgid " lien cliquable "
-msgstr " lien cliquable "
-
-#: appModules/messengerWindow/contentMailRead.py:132
+#: appModules/messengerWindow/contentMailRead.py:131
 #, python-format
 msgid " lien %s "
 msgstr " lien %s "
 
-#: appModules/messengerWindow/contentMailRead.py:135
+#: appModules/messengerWindow/contentMailRead.py:145
 msgid "objet youtube présent. "
 msgstr "objet youtube présent. "
 
-#: appModules/messengerWindow/contentMailRead.py:163
+#: appModules/messengerWindow/contentMailRead.py:173
 #, python-brace-format
 msgid "(\\s+|\\-{5} ?(E-mail d'origine|Message d'origine|Original Message) ?\\-{5})"
 msgstr "(\\s+|\\-{5} ?(E-mail d'origine|Message d'origine|Original Message) ?\\-{5})"
 
-#: appModules/messengerWindow/contentMailRead.py:165
+#: appModules/messengerWindow/contentMailRead.py:175
 #, python-format
 msgid "((((From|De|Expéditeur):.+?(Sujet|Subject|Objet):.+?%s)))"
 msgstr "((((From|De|Expéditeur):.+?(Sujet|Subject|Objet):.+?%s)))"
 
-#: appModules/messengerWindow/contentMailRead.py:174
+#: appModules/messengerWindow/contentMailRead.py:184
 #, python-format
 msgid ""
 "\n"
@@ -139,15 +135,15 @@ msgstr ""
 "\n"
 ". %s a écrit . "
 
-#: appModules/messengerWindow/contentMailRead.py:179
+#: appModules/messengerWindow/contentMailRead.py:189
 msgid ">> > C'aurait été con. >> > >> > J.-F. >> > >> >"
 msgstr ">> > C'aurait été con. >> > >> > J.-F. >> > >> >"
 
-#: appModules/messengerWindow/contentMailRead.py:181
+#: appModules/messengerWindow/contentMailRead.py:191
 msgid "((\\s*(Dans un e\\-mail daté du|Le) (\\d\\d[\\-/]\\d\\d[\\-/ ]|\\d\\d .+? )\\d{2,4}( (. )?\\d\\d:\\d\\d(:\\d\\d .+?, .+?)?)?,\\s*(.+?)a écrit:))"
 msgstr "((\\s*(Dans un e\\-mail daté du|Le) (\\d\\d[\\-/]\\d\\d[\\-/ ]|\\d\\d .+? )\\d{2,4}( (. )?\\d\\d:\\d\\d(:\\d\\d .+?, .+?)?)?,\\s*(.+?)a écrit:))"
 
-#: appModules/messengerWindow/contentMailRead.py:189
+#: appModules/messengerWindow/contentMailRead.py:199
 #, python-format
 msgid ""
 "\n"
@@ -156,7 +152,7 @@ msgstr ""
 "\n"
 ". %s a écrit. "
 
-#: appModules/messengerWindow/contentMailRead.py:191
+#: appModules/messengerWindow/contentMailRead.py:201
 #, python-format
 msgid ""
 "\n"
@@ -165,11 +161,7 @@ msgstr ""
 "\n"
 ". %s a écrit."
 
-#: appModules/messengerWindow/contentMailRead.py:197
-msgid ". lien cliquable…. "
-msgstr ". lien cliquable…. "
-
-#: appModules/messengerWindow/contentMailRead.py:204
+#: appModules/messengerWindow/contentMailRead.py:214
 msgid "pas de texte "
 msgstr "pas de texte "
 
@@ -204,6 +196,10 @@ msgstr "Non lu"
 #: appModules/messengerWindow/folderTreeItem.py:79
 msgid "sélectionne le premier message non lu dans la liste depuis l'arborescence des dossiers."
 msgstr "sélectionne le premier message non lu dans la liste depuis l'arborescence des dossiers."
+
+#: appModules/messengerWindow/folderTreeItem.py:126
+msgid " compte"
+msgstr " Compte."
 
 #: appModules/messengerWindow/folderTreeItem.py:129
 msgid " dans "
@@ -513,7 +509,7 @@ msgstr "Liens"
 
 #: appModules/messengerWindow/messageListItem.py:330
 msgid "Message indisponible. Réessayez."
-msgstr ""
+msgstr "Message indisponible. Réessayez."
 
 #: appModules/messengerWindow/messageListItem.py:334
 msgid "Lecture filtrée du volet d'aperçu du message sans quitter la liste."
@@ -608,7 +604,7 @@ msgstr "Fenêtre non trouvée"
 msgid "Aucune  pièce jointe disponible dans ce contexte."
 msgstr "Aucune  pièce jointe disponible dans ce contexte."
 
-#: appModules/messengerWindow/messageListItem.py:641 appModules/shared/utis.py:561
+#: appModules/messengerWindow/messageListItem.py:641 appModules/shared/utis.py:562
 msgid "Pas de pièce jointe."
 msgstr "Pas de pièce jointe."
 
@@ -969,7 +965,7 @@ msgstr "Liste messages : Espace ne lit pas le message du volet d'aperçu"
 
 #: appModules/shared/menuSettings.py:92
 msgid "Liste messages : Espace lit le résumé de la conversation du volet d'aperçu"
-msgstr ""
+msgstr "Liste messages : Espace lit le résumé de la conversation du volet d'aperçu"
 
 #: appModules/shared/menuSettings.py:93
 msgid "Liste messages : pas de  SmartReply"
@@ -1071,15 +1067,15 @@ msgstr "Erreur d'enregistrement du fichier de paramètres de mise à jour."
 msgid "La mise à jour automatique a bien été désactivée."
 msgstr "La mise à jour automatique a bien été désactivée."
 
-#: appModules/shared/utis.py:438
+#: appModules/shared/utis.py:439
 msgid "La barre d'état n'est pas affichée."
 msgstr "La barre d'état n'est pas affichée."
 
-#: appModules/shared/utis.py:537
+#: appModules/shared/utis.py:538
 msgid "Copié"
 msgstr "Copié"
 
-#: appModules/shared/utis.py:623
+#: appModules/shared/utis.py:624
 msgid "Fichier non trouvé : "
 msgstr "Fichier non trouvé : "
 
@@ -1412,229 +1408,8 @@ msgstr "Thunderbird+4 est installé et sera remplacée par Thunderbird+. "
 msgid "Désinstallation de Thunderbird+4"
 msgstr "Désinstallation de Thunderbird+4"
 
-#~ msgid "Recommencez SVP"
-#~ msgstr "Recommencez SVP"
-
-#~ msgid "Ouverture de  l'aide dans votre navigateur"
-#~ msgstr "Ouverture de  l'aide dans votre navigateur"
-
-#~ msgid "Thunderbird+ 4"
-#~ msgstr "Thunderbird+ 4"
-
-#~ msgid "Un élément"
-#~ msgstr "Un élément"
-
-#~ msgid "Read other fields depuis messageListItem"
-#~ msgstr "Read other fields depuis messageListItem"
-
-#~ msgid "Frappez deux fois cette commande pour marquer tous les messages cpomme lus dans le dossier : "
-#~ msgstr "Frappez deux fois cette commande pour marquer tous les messages comme lus dans le dossier : "
-
-#~ msgid "tab Sélectionné"
-#~ msgstr "tab Sélectionné"
-
-#~ msgid "Copie du journal"
-#~ msgstr "Copie du journal"
-
-#~ msgid "Non trouvé"
-#~ msgstr "Non trouvé"
-
-#~ msgid "vous n'êtes pas dans une fenêtre de message"
-#~ msgstr "vous n'êtes pas dans une fenêtre de message"
-
-#~ msgid "empty"
-#~ msgstr "vide"
-
-#~ msgid "loading"
-#~ msgstr "loading"
-
-#~ msgid "kb:shift+²"
-#~ msgstr "kb:shift+²"
-
-#~ msgid "kb:shift+control+²"
-#~ msgstr "kb:shift+control+²"
-
-#~ msgid "kb:²"
-#~ msgstr "kb:²"
-
-#~ msgid "kb:control+²"
-#~ msgstr "kb:control+²"
-
-#~ msgid "kb:control+alt+²"
-#~ msgstr "kb:control+alt+²"
-
-#~ msgid "kb:control+alt+shift+²"
-#~ msgstr "kb:control+alt+shift+²"
-
-#~ msgid "mozilla Firefox"
-#~ msgstr "Mozilla Firefox"
-
-#~ msgid "Not available here"
-#~ msgstr "Non disponible ici"
-
-#, python-format
-#~ msgid "Status bar: %s"
-#~ msgstr "Barre d'état : %s"
-
-#~ msgid "Status bar not found"
-#~ msgstr "Barre d'état introuvable"
-
-#~ msgid "Copied to clipboard"
-#~ msgstr "Copié dans le presse-papier"
-
-#~ msgid "Reads the status bar. If pressed twice quickly, copies it to clipboard."
-#~ msgstr "Lit la barre d'état. Si vous appuyez deux fois rapidement, le copie dans le presse-papiers."
-
-#~ msgid "Insecure connection"
-#~ msgstr "Connexion non sécurisée"
-
-#, python-format
-#~ msgid "Page address is: %s (%s)"
-#~ msgstr "L'adresse de la page est: %s (%s)"
-
-#~ msgid "Reads the page address. If pressed twice quickly, copies it to clipboard."
-#~ msgstr "Lit l'adresse de la page. Si vous appuyez deux fois rapidement, le copie dans le presse-papiers."
-
-#~ msgid "Tool bar not found"
-#~ msgstr "Barre d'outils introuvable"
-
-#~ msgid "Shows a list of opened tabs. If pressed twice quickly, shows buttons of tool bar."
-#~ msgstr "Affiche une liste des onglets ouverts. Si vous appuyez deux fois rapidement, affiche les boutons de la barre d'outils."
-
-#~ msgid "Notification History"
-#~ msgstr "Historique des notifications"
-
-#, python-format
-#~ msgid "Last alert, %s: %s"
-#~ msgstr "Dernière alerte, %s: %s"
-
-#~ msgid "There is no notification"
-#~ msgstr "Il y a aucune notification"
-
-#~ msgid "Reads the last notification and it takes the system focus to it if it is possible. By pressing two times quickly shows the history of notifications."
-#~ msgstr "Lit la dernière notification et prend le focus système si possible. En pressant deux fois rapidement, affiche l'historique des notifications."
-
-#~ msgid "Brings the focus to the document"
-#~ msgstr "Emmène le focus sur le document"
-
-#~ msgid "Opened tabs"
-#~ msgstr "Onglets ouverts"
-
-#~ msgid "Tool Bar Buttons"
-#~ msgstr "Boutons de la barre d'outils"
-
-#~ msgid "&Go"
-#~ msgstr "&Aller"
-
-#~ msgid "&Options"
-#~ msgstr "&Options"
-
-#~ msgid "Close"
-#~ msgstr "Fermer"
-
-#~ msgid "Reads the subject of the message."
-#~ msgstr "Lit le sujet du message."
-
-#~ msgid "Reads date of the message."
-#~ msgstr "Lit la date du message."
-
-#~ msgid "You are not in a list of messages"
-#~ msgstr "Vous n'êtes pas dans une liste de messages"
-
-#~ msgid "Column headers not found"
-#~ msgstr "En-têtes de colonne non trouvés"
-
-#~ msgid "Allows you to change the order of the columns in the messages list"
-#~ msgstr "Vous permet de changer l'ordre des colonnes dans la liste des messages"
-
-#~ msgid "There are No attachments"
-#~ msgstr "Il n’y a pas de pièces jointes"
-
-#~ msgid "Brings the focus to the list of attachments, if any."
-#~ msgstr "Emmène le focus sur la liste des pièces jointes, le cas échéant."
-
-#~ msgid "Brings the focus to the text of the open message."
-#~ msgstr "Emmène le focus sur le texte du message ouvert."
-
-#~ msgid "There are not more columns"
-#~ msgstr "Il n’y a pas davantage de colonnes"
-
-#~ msgid "Expand the conversation to display messages"
-#~ msgstr "Développez la conversation pour afficher les messages"
-
-#~ msgid "Preview pane is not active or message has not been loaded yet"
-#~ msgstr "Le volet d'aperçu n'est pas actif ou le message n'a pas encore été chargé"
-
-#~ msgid "In message list, reads the selected message without leaving the list."
-#~ msgstr "Dans la liste des messages, lit le message sélectionné sans quitter la liste."
-
-#~ msgid "Manage columns"
-#~ msgstr "agencer les colonnes"
-
-#~ msgid "&up"
-#~ msgstr "&monter"
-
-#~ msgid "&down"
-#~ msgstr "&descendre"
-
-#, python-format
-#~ msgid "Can't move %s, it is already the first column."
-#~ msgstr "Impossible de déplacer %s, il s’agit déjà de la première colonne."
-
-#, python-format
-#~ msgid "%s before %s"
-#~ msgstr "%s avant %s"
-
-#, python-format
-#~ msgid "Can't move %s, it is already the last column."
-#~ msgstr "Impossible de déplacer %s, il s’agit déjà de la dernière colonne."
-
-#, python-format
-#~ msgid "%s after %s"
-#~ msgstr "%s après %s"
-
-#~ msgid "Yesterday"
-#~ msgstr "Hier"
-
-#, python-format
-#~ msgid "%d days ago"
-#~ msgstr "il y a %d jours"
-
-#~ msgid "About an hour ago"
-#~ msgstr "Il y a environ une heure"
-
-#, python-format
-#~ msgid "About %d hours ago"
-#~ msgstr "Il y a environ %d heures"
-
-#~ msgid "About a minute ago"
-#~ msgstr "Il y a environ une minute"
-
-#, python-format
-#~ msgid "About %d minutes ago"
-#~ msgstr "Il y a environ %d minutes"
-
-#~ msgid "a second ago"
-#~ msgstr "il y a une seconde"
-
-#, python-format
-#~ msgid "%d seconds ago"
-#~ msgstr "il y a %d secondes"
-
-#~ msgid "Couldn't capture the text of this notification"
-#~ msgstr "Impossible de capturer le texte de cette notification"
-
-#~ msgid "If there is any notification opens"
-#~ msgstr "Abre la notificación si la hay"
-
-#~ msgid "Reads the sender and recipients of the message. If pressed twice quickly, opens the options menu."
-#~ msgstr "Lee el remitente y los destinatarios del mensaje. Si se pulsa dos veces rápidamente, abre el menú de opciones. "
-
-#~ msgid "Property page not found"
-#~ msgstr "No se encontró la página de propiedades"
-
-#~ msgid "Reads the sender of the message. If pressed twice quickly, opens the options menu."
-#~ msgstr "Lee el remitente del mensaje. Si se pulsa dos veces rápidamente, abre el menú de opciones. "
-
-#~ msgid "Reads the recipient of the message. If pressed twice quickly, opens the options menu."
-#~ msgstr "Lee el destinatario del mensaje. Si se pulsa dos veces rápidamente, abre el menú de opciones. "
+#~ msgid " lien cliquable "
+#~ msgstr " lien cliquable "
+
+#~ msgid ". lien cliquable…. "
+#~ msgstr ". lien cliquable…. "

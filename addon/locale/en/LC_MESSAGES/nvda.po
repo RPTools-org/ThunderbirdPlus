@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Thunderbird+ 4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-16 07:06+0200\n"
-"PO-Revision-Date: 2023-05-16 07:10+0200\n"
+"POT-Creation-Date: 2023-06-16 07:31+0200\n"
+"PO-Revision-Date: 2023-06-16 07:33+0200\n"
 "Last-Translator: Pierre-Louis R. <plr.listes@rptools.org>\n"
 "Language-Team: Google Translate, Pierre-Louis Renaud\n"
 "Language: en\n"
@@ -96,42 +96,38 @@ msgstr "Folder has changed, return to %s to manage columns or restart this dialo
 msgid "erreur"
 msgstr "error"
 
-#: appModules/messengerWindow/contentMailRead.py:106
+#: appModules/messengerWindow/contentMailRead.py:111
 msgid "Lecture non filtrée."
 msgstr "Unfiltered reading."
 
-#: appModules/messengerWindow/contentMailRead.py:108
+#: appModules/messengerWindow/contentMailRead.py:113
 msgid "Vous recevez ce message, car vous êtes abonné au groupe"
 msgstr "You are receiving this message because you are subscribed to the group"
 
-#: appModules/messengerWindow/contentMailRead.py:114
+#: appModules/messengerWindow/contentMailRead.py:119
 msgid "Groups.io Links"
 msgstr "Groups.io Links"
 
-#: appModules/messengerWindow/contentMailRead.py:130
-msgid " lien cliquable "
-msgstr "clickable link"
-
-#: appModules/messengerWindow/contentMailRead.py:132
+#: appModules/messengerWindow/contentMailRead.py:131
 #, python-format
 msgid " lien %s "
 msgstr " link %s "
 
-#: appModules/messengerWindow/contentMailRead.py:135
+#: appModules/messengerWindow/contentMailRead.py:145
 msgid "objet youtube présent. "
 msgstr "youtube object present."
 
-#: appModules/messengerWindow/contentMailRead.py:163
+#: appModules/messengerWindow/contentMailRead.py:173
 #, python-brace-format
 msgid "(\\s+|\\-{5} ?(E-mail d'origine|Message d'origine|Original Message) ?\\-{5})"
 msgstr "(\\s+|\\-{5} ?(E-original mail|Original Message) ?\\-{5})"
 
-#: appModules/messengerWindow/contentMailRead.py:165
+#: appModules/messengerWindow/contentMailRead.py:175
 #, python-format
 msgid "((((From|De|Expéditeur):.+?(Sujet|Subject|Objet):.+?%s)))"
 msgstr "((((From|De):.+?(Sujet|Subject|Objet):.+?%s)))"
 
-#: appModules/messengerWindow/contentMailRead.py:174
+#: appModules/messengerWindow/contentMailRead.py:184
 #, python-format
 msgid ""
 "\n"
@@ -140,15 +136,15 @@ msgstr ""
 "\n"
 ". %s wrote . "
 
-#: appModules/messengerWindow/contentMailRead.py:179
+#: appModules/messengerWindow/contentMailRead.py:189
 msgid ">> > C'aurait été con. >> > >> > J.-F. >> > >> >"
 msgstr ">> > C'aurait été con. >> > >> > J.-F. >> > >> >"
 
-#: appModules/messengerWindow/contentMailRead.py:181
+#: appModules/messengerWindow/contentMailRead.py:191
 msgid "((\\s*(Dans un e\\-mail daté du|Le) (\\d\\d[\\-/]\\d\\d[\\-/ ]|\\d\\d .+? )\\d{2,4}( (. )?\\d\\d:\\d\\d(:\\d\\d .+?, .+?)?)?,\\s*(.+?)a écrit:))"
 msgstr "((\\s*(In an email dated|At) (\\d\\d[\\-/]\\d\\d[\\-/ ]|\\d\\d .+? )\\d{2,4}( (. )?\\d\\d:\\d\\d(:\\d\\d .+?, .+?)?)?,\\s*(.+?)a écrit:))"
 
-#: appModules/messengerWindow/contentMailRead.py:189
+#: appModules/messengerWindow/contentMailRead.py:199
 #, python-format
 msgid ""
 "\n"
@@ -157,7 +153,7 @@ msgstr ""
 "\n"
 ". %s wrote. "
 
-#: appModules/messengerWindow/contentMailRead.py:191
+#: appModules/messengerWindow/contentMailRead.py:201
 #, python-format
 msgid ""
 "\n"
@@ -166,11 +162,7 @@ msgstr ""
 "\n"
 ". %s wrote."
 
-#: appModules/messengerWindow/contentMailRead.py:197
-msgid ". lien cliquable…. "
-msgstr ".Clickable link …. "
-
-#: appModules/messengerWindow/contentMailRead.py:204
+#: appModules/messengerWindow/contentMailRead.py:214
 msgid "pas de texte "
 msgstr "No text"
 
@@ -205,6 +197,10 @@ msgstr "Not read"
 #: appModules/messengerWindow/folderTreeItem.py:79
 msgid "sélectionne le premier message non lu dans la liste depuis l'arborescence des dossiers."
 msgstr "selects the first unread message in the list from the folder tree."
+
+#: appModules/messengerWindow/folderTreeItem.py:126
+msgid " compte"
+msgstr "Account"
 
 #: appModules/messengerWindow/folderTreeItem.py:129
 msgid " dans "
@@ -610,7 +606,7 @@ msgstr "Window not found"
 msgid "Aucune  pièce jointe disponible dans ce contexte."
 msgstr "No attachments available in this context."
 
-#: appModules/messengerWindow/messageListItem.py:641 appModules/shared/utis.py:561
+#: appModules/messengerWindow/messageListItem.py:641 appModules/shared/utis.py:562
 msgid "Pas de pièce jointe."
 msgstr "No Attachement."
 
@@ -997,91 +993,91 @@ msgstr "Main window: restore the default behavior of the escape key"
 msgid "Permettre    la fermeture de Thunderbird avec control+w ou control+F4"
 msgstr "Allow Thunderbird to close with control+w or control+F4"
 
-#: appModules/shared/menuSettings.py:150
+#: appModules/shared/menuSettings.py:151
 msgid "Mots séparés par des points-virgule : "
 msgstr "Words separated by semicolons :"
 
-#: appModules/shared/menuSettings.py:150
+#: appModules/shared/menuSettings.py:151
 msgid "Edition des mots à masquer  dans l'objet des messages"
 msgstr "Edit words to hide in the subject of messages"
 
-#: appModules/shared/menuSettings.py:153
+#: appModules/shared/menuSettings.py:154
 msgid "Délai entre 20 et 2000 milli secondes  avant  lecture épurée (défaut : 100) : "
 msgstr "Delay between 20 and 2000 milliseconds before filtered reading (default: 100):"
 
-#: appModules/shared/menuSettings.py:153
+#: appModules/shared/menuSettings.py:154
 msgid "Fenêtre séparée de lecture"
 msgstr "Separate reading window"
 
-#: appModules/shared/menuSettings.py:168
+#: appModules/shared/menuSettings.py:169
 msgid "Fichier de sauvegarde inexistant."
 msgstr "Backup file does not exist."
 
-#: appModules/shared/menuSettings.py:179
+#: appModules/shared/menuSettings.py:180
 msgid "La configuration a été réinitialisée à ses valeurs par défaut"
 msgstr "The configuration has been reset to its default values"
 
-#: appModules/shared/menuSettings.py:218
+#: appModules/shared/menuSettings.py:219
 msgid "Options pour la fenêtre principale"
 msgstr "Mmain window options"
 
-#: appModules/shared/menuSettings.py:224
+#: appModules/shared/menuSettings.py:225
 msgid "Options pour la fenêtre de rédaction"
 msgstr "Write window options"
 
-#: appModules/shared/menuSettings.py:233
+#: appModules/shared/menuSettings.py:234
 msgid "Options de  Mise à jour"
 msgstr "Update options"
 
-#: appModules/shared/menuSettings.py:239
+#: appModules/shared/menuSettings.py:240
 msgid "Désactivations   pour Chichi et pour Thunderbird+"
 msgstr "Deactivations for Chichi and for Thunderbird+"
 
-#: appModules/shared/menuSettings.py:242
+#: appModules/shared/menuSettings.py:243
 msgid "Sauvegarder la configuration actuelle"
 msgstr "Backup current configuration file"
 
-#: appModules/shared/menuSettings.py:243
+#: appModules/shared/menuSettings.py:244
 msgid "Restaurer la configuration sauvegardée"
 msgstr "Restore backed up configuration file"
 
-#: appModules/shared/menuSettings.py:244
+#: appModules/shared/menuSettings.py:245
 msgid "Réinitialiser la configuration"
 msgstr "Reset configuration"
 
-#: appModules/shared/menuSettings.py:264
+#: appModules/shared/menuSettings.py:265
 msgid "mentions"
 msgstr "Mentions"
 
-#: appModules/shared/menuSettings.py:322
+#: appModules/shared/menuSettings.py:323
 msgid "Activer la mise à jour automatique"
 msgstr "Enable automatic update"
 
-#: appModules/shared/menuSettings.py:323
+#: appModules/shared/menuSettings.py:324
 msgid "Désactiver la mise à jour automatique"
 msgstr "Disable automatic update"
 
-#: appModules/shared/menuSettings.py:331
+#: appModules/shared/menuSettings.py:332
 msgid "La mise à jour automatique a bien été activée. Vous pouvez redémarrer NVDA pour rechercher une mise à jour."
 msgstr "Automatic update has been enabled. You can restart NVDA to check for an update."
 
-#: appModules/shared/menuSettings.py:341
+#: appModules/shared/menuSettings.py:342
 msgid "Erreur d'enregistrement du fichier de paramètres de mise à jour."
 msgstr "Error saving update settings file."
 
-#: appModules/shared/menuSettings.py:342
+#: appModules/shared/menuSettings.py:343
 msgid "La mise à jour automatique a bien été désactivée."
 msgstr "Automatic update has been disabled."
 
-#: appModules/shared/utis.py:438
+#: appModules/shared/utis.py:439
 msgid "La barre d'état n'est pas affichée."
 msgstr "The status bar is not displayed."
 
-#: appModules/shared/utis.py:537
+#: appModules/shared/utis.py:538
 msgid "Copié"
 msgstr "Copied"
 
-#: appModules/shared/utis.py:623
+#: appModules/shared/utis.py:624
 msgid "Fichier non trouvé : "
 msgstr "File not found"
 
@@ -1318,15 +1314,15 @@ msgstr "Starting Thunderbird."
 msgid "Thunderbird.exe non trouvé dans C:\\Program files"
 msgstr "Thunderbird.exe not found in C:\\Program files"
 
-#: globalPlugins/ThunderbirdGlob.py:106
+#: globalPlugins/ThunderbirdGlob.py:107
 msgid "Lance Thunderbird"
 msgstr "Starts Thunderbird"
 
-#: globalPlugins/ThunderbirdGlob.py:107 globalPlugins/ThunderbirdGlob.py:117
+#: globalPlugins/ThunderbirdGlob.py:108 globalPlugins/ThunderbirdGlob.py:118
 msgid "Thunderbird+, lanceur et mise àjour"
 msgstr "Thunderbird+, launcher and update"
 
-#: globalPlugins/ThunderbirdGlob.py:116
+#: globalPlugins/ThunderbirdGlob.py:117
 msgid "Recherche une mise à jour de Thunderbird+"
 msgstr "Check for Thunderbird+ update"
 
@@ -1417,5 +1413,8 @@ msgstr ""
 msgid "Désinstallation de Thunderbird+4"
 msgstr "Uninstalling Thunderbird+4"
 
-#~ msgid "Ouverture de  l'aide dans votre navigateur"
-#~ msgstr "Opening Help in your browser"
+#~ msgid " lien cliquable "
+#~ msgstr "clickable link"
+
+#~ msgid ". lien cliquable…. "
+#~ msgstr ".Clickable link …. "

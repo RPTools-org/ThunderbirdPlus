@@ -1,0 +1,20 @@
+V Thunderbirdu+ je zkratka control+backspace přiřazena k zavření karet a určitých oken.
+To způsobí konflikt klávesových zkratek při psaní zprávy.
+
+Chcete-li obnovit smazání slova před kurzorem v psané zprávě, musíte toto přiřazení odstranit.
+
+Chcete-li to provést, postupujte takto:
+* Umístěte se do hlavního okna Thunderbirdu;
+* Stisknutím NVDA+n otevřete nabídku NVDA;
+* Stiskněte písmeno: p pro umístění do podnabídky Předvolby;
+* Poté stiskněte písmeno: N pro otevření dialogu Vstupní gesta;
+* Ve stromové struktuře vyberte větev: Thunderbird+ a otevřete ji šipkou doprava;
+* Stiskněte písmeno: S, vyberte větev: Pošlete Control+F4 do aktuálního okna a otevřete je;
+* Vyberte spodní větev: control+backspace;
+* a nakonec stiskněte klávesu Tab, dokud neuslyšíte "Delete, button" a poté stiskněte Enter;
+* Pro uložení změn je důležité tento dialog zavřít tlačítkem OK.
+
+Všiml si:
+Po těchto prvních manipulacích se může stát, že to nebude fungovat podle očekávání.
+Z nějakého neznámého důvodu NVDA znovu vloží gesto Control+Backspace.
+V tomto případě opakujte výše popsaný postup, tím se tento problém vyřeší.

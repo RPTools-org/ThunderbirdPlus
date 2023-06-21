@@ -123,7 +123,7 @@ class FolderTreeItem (IAccessible):
 
 	def getAccountName(self, ti) :
 		if not ti : return ""
-		if utis.getIA2Attribute(ti,"1", "level") : return " compte" # (" compte." if sharedVars.directKeyNav else ", compte.")
+		if utis.getIA2Attribute(ti,"1", "level") : return _(" compte") # (" compte." if sharedVars.directKeyNav else ", compte.")
 		while ti :
 			if utis.getIA2Attribute(ti,"1", "level") :
 				return _(" dans ") + ti.name

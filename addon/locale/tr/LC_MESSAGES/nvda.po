@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Thunderbird+ 4\n"
 "Report-Msgid-Bugs-To: nvda-translations@freelists.org\n"
-"POT-Creation-Date: 2023-05-16 07:25+0200\n"
-"PO-Revision-Date: 2023-05-16 07:29+0200\n"
+"POT-Creation-Date: 2023-06-16 07:45+0200\n"
+"PO-Revision-Date: 2023-06-16 07:47+0200\n"
 "Last-Translator: Pierre-Louis R. <plr.listes@rptools.org>\n"
 "Language-Team: Umut KORKMAZ <umutkork@gmail.com>\n"
 "Language: tr_TR\n"
@@ -96,42 +96,38 @@ msgstr "Klasör değişti, sütunları düzenlemek için %s'ye geri dönün veya
 msgid "erreur"
 msgstr "hata"
 
-#: appModules/messengerWindow/contentMailRead.py:106
+#: appModules/messengerWindow/contentMailRead.py:111
 msgid "Lecture non filtrée."
 msgstr "Filtrelenmemiş okuma."
 
-#: appModules/messengerWindow/contentMailRead.py:108
+#: appModules/messengerWindow/contentMailRead.py:113
 msgid "Vous recevez ce message, car vous êtes abonné au groupe"
 msgstr "Bu mesajı gruba abone olduğunuz için alıyorsunuz"
 
-#: appModules/messengerWindow/contentMailRead.py:114
+#: appModules/messengerWindow/contentMailRead.py:119
 msgid "Groups.io Links"
 msgstr "Groups.io Bağlantıları"
 
-#: appModules/messengerWindow/contentMailRead.py:130
-msgid " lien cliquable "
-msgstr " tıklanabilir bağlantı "
-
-#: appModules/messengerWindow/contentMailRead.py:132
+#: appModules/messengerWindow/contentMailRead.py:131
 #, python-format
 msgid " lien %s "
 msgstr " bağlantı %s "
 
-#: appModules/messengerWindow/contentMailRead.py:135
+#: appModules/messengerWindow/contentMailRead.py:145
 msgid "objet youtube présent. "
 msgstr "youtube nesnesi mevcut. "
 
-#: appModules/messengerWindow/contentMailRead.py:163
+#: appModules/messengerWindow/contentMailRead.py:173
 #, python-brace-format
 msgid "(\\s+|\\-{5} ?(E-mail d'origine|Message d'origine|Original Message) ?\\-{5})"
 msgstr "(\\s+|\\-{5} ?(E-orijinal posta|Orijinal ileti) ?\\-{5})"
 
-#: appModules/messengerWindow/contentMailRead.py:165
+#: appModules/messengerWindow/contentMailRead.py:175
 #, python-format
 msgid "((((From|De|Expéditeur):.+?(Sujet|Subject|Objet):.+?%s)))"
 msgstr "((((Kimden|Kimden):.+?(Konu|Konu|Konu):.+?%s)))"
 
-#: appModules/messengerWindow/contentMailRead.py:174
+#: appModules/messengerWindow/contentMailRead.py:184
 #, python-format
 msgid ""
 "\n"
@@ -140,15 +136,15 @@ msgstr ""
 "\n"
 ". %s yazdı . "
 
-#: appModules/messengerWindow/contentMailRead.py:179
+#: appModules/messengerWindow/contentMailRead.py:189
 msgid ">> > C'aurait été con. >> > >> > J.-F. >> > >> >"
 msgstr ">> > Aptalca olurdu. >> > >> > J.-F. >> > >> >"
 
-#: appModules/messengerWindow/contentMailRead.py:181
+#: appModules/messengerWindow/contentMailRead.py:191
 msgid "((\\s*(Dans un e\\-mail daté du|Le) (\\d\\d[\\-/]\\d\\d[\\-/ ]|\\d\\d .+? )\\d{2,4}( (. )?\\d\\d:\\d\\d(:\\d\\d .+?, .+?)?)?,\\s*(.+?)a écrit:))"
 msgstr "((\\s*(tarihli bir e\\-postada|\\-de) (\\d\\d[\\-/]\\d\\d[\\-/ ]|\\d\\d .+? )\\d{2,4}( (. )?\\d\\d:\\d\\d(:\\d\\d .+?, .+?)?)?,\\s*(.+?)a écrit:))"
 
-#: appModules/messengerWindow/contentMailRead.py:189
+#: appModules/messengerWindow/contentMailRead.py:199
 #, python-format
 msgid ""
 "\n"
@@ -157,7 +153,7 @@ msgstr ""
 "\n"
 ". %s yazdı. "
 
-#: appModules/messengerWindow/contentMailRead.py:191
+#: appModules/messengerWindow/contentMailRead.py:201
 #, python-format
 msgid ""
 "\n"
@@ -166,11 +162,7 @@ msgstr ""
 "\n"
 ". %s yazdı."
 
-#: appModules/messengerWindow/contentMailRead.py:197
-msgid ". lien cliquable…. "
-msgstr ". tıklanabilir bağlantı…. "
-
-#: appModules/messengerWindow/contentMailRead.py:204
+#: appModules/messengerWindow/contentMailRead.py:214
 msgid "pas de texte "
 msgstr "metin yok "
 
@@ -205,6 +197,10 @@ msgstr "Okunmadı"
 #: appModules/messengerWindow/folderTreeItem.py:79
 msgid "sélectionne le premier message non lu dans la liste depuis l'arborescence des dossiers."
 msgstr "klasör ağacından listedeki ilk okunmamış mesajı seçer."
+
+#: appModules/messengerWindow/folderTreeItem.py:126
+msgid " compte"
+msgstr "Hesap."
 
 #: appModules/messengerWindow/folderTreeItem.py:129
 msgid " dans "
@@ -609,7 +605,7 @@ msgstr "Pencere bulunamadı"
 msgid "Aucune  pièce jointe disponible dans ce contexte."
 msgstr "Bu bağlamda kullanılabilir ek yok."
 
-#: appModules/messengerWindow/messageListItem.py:641 appModules/shared/utis.py:561
+#: appModules/messengerWindow/messageListItem.py:641 appModules/shared/utis.py:562
 msgid "Pas de pièce jointe."
 msgstr "Ek yok."
 
@@ -996,91 +992,91 @@ msgstr "Ana pencere: escape tuşunun varsayılan davranışını geri yükle"
 msgid "Permettre    la fermeture de Thunderbird avec control+w ou control+F4"
 msgstr "Thunderbird'ün control+w veya control+F4 ile kapanmasına izin ver"
 
-#: appModules/shared/menuSettings.py:150
+#: appModules/shared/menuSettings.py:151
 msgid "Mots séparés par des points-virgule : "
 msgstr "Noktalı virgülle ayrılan sözcükler: "
 
-#: appModules/shared/menuSettings.py:150
+#: appModules/shared/menuSettings.py:151
 msgid "Edition des mots à masquer  dans l'objet des messages"
 msgstr "Mesajların konu alanında gizlenecek kelimeleri düzenleme"
 
-#: appModules/shared/menuSettings.py:153
+#: appModules/shared/menuSettings.py:154
 msgid "Délai entre 20 et 2000 milli secondes  avant  lecture épurée (défaut : 100) : "
 msgstr "Filtrelenmiş okumadan önce 20 ile 2000 milisaniye arasındaki gecikme (varsayılan: 100): "
 
-#: appModules/shared/menuSettings.py:153
+#: appModules/shared/menuSettings.py:154
 msgid "Fenêtre séparée de lecture"
 msgstr "Ayrı okuma penceresi"
 
-#: appModules/shared/menuSettings.py:168
+#: appModules/shared/menuSettings.py:169
 msgid "Fichier de sauvegarde inexistant."
 msgstr "Yedekleme dosyası mevcut değil."
 
-#: appModules/shared/menuSettings.py:179
+#: appModules/shared/menuSettings.py:180
 msgid "La configuration a été réinitialisée à ses valeurs par défaut"
 msgstr "Yapılandırma, varsayılan değerlerine sıfırlandı"
 
-#: appModules/shared/menuSettings.py:218
+#: appModules/shared/menuSettings.py:219
 msgid "Options pour la fenêtre principale"
 msgstr "Ana pencere için seçenekler"
 
-#: appModules/shared/menuSettings.py:224
+#: appModules/shared/menuSettings.py:225
 msgid "Options pour la fenêtre de rédaction"
 msgstr "Oluştur pencere seçenekleri"
 
-#: appModules/shared/menuSettings.py:233
+#: appModules/shared/menuSettings.py:234
 msgid "Options de  Mise à jour"
 msgstr "Güncelleme seçenekleri"
 
-#: appModules/shared/menuSettings.py:239
+#: appModules/shared/menuSettings.py:240
 msgid "Désactivations   pour Chichi et pour Thunderbird+"
 msgstr "Chichi ve Thunderbird+ için devre dışı bırakmalar"
 
-#: appModules/shared/menuSettings.py:242
+#: appModules/shared/menuSettings.py:243
 msgid "Sauvegarder la configuration actuelle"
 msgstr "Geçerli yapılandırma dosyasını yedekle"
 
-#: appModules/shared/menuSettings.py:243
+#: appModules/shared/menuSettings.py:244
 msgid "Restaurer la configuration sauvegardée"
 msgstr "Yedeklenen yapılandırmayı geri yükleyin"
 
-#: appModules/shared/menuSettings.py:244
+#: appModules/shared/menuSettings.py:245
 msgid "Réinitialiser la configuration"
 msgstr "Yapılandırmayı sıfırla"
 
-#: appModules/shared/menuSettings.py:264
+#: appModules/shared/menuSettings.py:265
 msgid "mentions"
 msgstr "bahsetmeler"
 
-#: appModules/shared/menuSettings.py:322
+#: appModules/shared/menuSettings.py:323
 msgid "Activer la mise à jour automatique"
 msgstr "Otomatik güncellemeyi etkinleştir"
 
-#: appModules/shared/menuSettings.py:323
+#: appModules/shared/menuSettings.py:324
 msgid "Désactiver la mise à jour automatique"
 msgstr "Otomatik güncellemeyi devre dışı bırak"
 
-#: appModules/shared/menuSettings.py:331
+#: appModules/shared/menuSettings.py:332
 msgid "La mise à jour automatique a bien été activée. Vous pouvez redémarrer NVDA pour rechercher une mise à jour."
 msgstr "Otomatik güncelleme etkinleştirildi. Bir güncelleme olup olmadığını denetlemek için NVDA'yı yeniden başlatabilirsiniz."
 
-#: appModules/shared/menuSettings.py:341
+#: appModules/shared/menuSettings.py:342
 msgid "Erreur d'enregistrement du fichier de paramètres de mise à jour."
 msgstr "Güncelleme ayarları dosyası kaydedilirken hata oluştu."
 
-#: appModules/shared/menuSettings.py:342
+#: appModules/shared/menuSettings.py:343
 msgid "La mise à jour automatique a bien été désactivée."
 msgstr "Otomatik güncelleme devre dışı bırakıldı."
 
-#: appModules/shared/utis.py:438
+#: appModules/shared/utis.py:439
 msgid "La barre d'état n'est pas affichée."
 msgstr "Durum çubuğu görüntülenmiyor."
 
-#: appModules/shared/utis.py:537
+#: appModules/shared/utis.py:538
 msgid "Copié"
 msgstr "Kopyalandı"
 
-#: appModules/shared/utis.py:623
+#: appModules/shared/utis.py:624
 msgid "Fichier non trouvé : "
 msgstr "Dosya bulunamadı "
 
@@ -1317,15 +1313,15 @@ msgstr "Thunderbird başlatılıyor."
 msgid "Thunderbird.exe non trouvé dans C:\\Program files"
 msgstr "Thunderbird.exe C:\\Program files içerisinde bulunamadı"
 
-#: globalPlugins/ThunderbirdGlob.py:106
+#: globalPlugins/ThunderbirdGlob.py:107
 msgid "Lance Thunderbird"
 msgstr "Thunderbird'ü başlatır"
 
-#: globalPlugins/ThunderbirdGlob.py:107 globalPlugins/ThunderbirdGlob.py:117
+#: globalPlugins/ThunderbirdGlob.py:108 globalPlugins/ThunderbirdGlob.py:118
 msgid "Thunderbird+, lanceur et mise àjour"
 msgstr "Thunderbird+, başlatıcı ve güncelleme"
 
-#: globalPlugins/ThunderbirdGlob.py:116
+#: globalPlugins/ThunderbirdGlob.py:117
 msgid "Recherche une mise à jour de Thunderbird+"
 msgstr "Thunderbird+ güncellemesini denetle"
 
@@ -1416,232 +1412,8 @@ msgstr ""
 msgid "Désinstallation de Thunderbird+4"
 msgstr "Thunderbird+4'ü Kaldırma"
 
-#~ msgid "Ouverture de  l'aide dans votre navigateur"
-#~ msgstr "Yardımı tarayıcıda açar"
-
-#~ msgid "Recommencez SVP"
-#~ msgstr "Lütfen tekrar deneyin"
-
-#~ msgid "Thunderbird+ 4"
-#~ msgstr "Thunderbird+ 4"
-
-#~ msgid "This add-on adds commands to Thunderbird 102 and above to make it more accessible, efficient and comfortable to use."
-#~ msgstr "Bu Eklenti, daha erişilebilir, verimli ve kullanımı rahat hale getirmek için Thunderbird 102 ve sonraki sürümlerine komutlar ekler."
-
-#~ msgid "Thunderbird+4, lanceur et mise àjour"
-#~ msgstr "Thunderbird+4, başlatıcı ve güncelleyici"
-
-#~ msgid "Read other fields depuis messageListItem"
-#~ msgstr "Read other fields depuis messageListItem"
-
-#~ msgid "tab Sélectionné"
-#~ msgstr "Selected tab"
-
-#~ msgid "Copie du journal"
-#~ msgstr "Log Copying"
-
-#~ msgid "Non trouvé"
-#~ msgstr "Not found"
-
-#~ msgid "vous n'êtes pas dans une fenêtre de message"
-#~ msgstr "you are not in a message window"
-
-#~ msgid "empty"
-#~ msgstr "empty"
-
-#~ msgid "Rédaction"
-#~ msgstr "Write"
-
-#~ msgid "Règles de filtrage"
-#~ msgstr "Filter Rules"
-
-#~ msgid "loading"
-#~ msgstr "loading"
-
-#~ msgid "kb:shift+²"
-#~ msgstr "kb:shift+²"
-
-#~ msgid "kb:shift+control+²"
-#~ msgstr "kb:shift+control+²"
-
-#~ msgid "kb:²"
-#~ msgstr "kb:²"
-
-#~ msgid "kb:control+²"
-#~ msgstr "kb:control+²"
-
-#~ msgid "kb:control+alt+²"
-#~ msgstr "kb:control+alt+²"
-
-#~ msgid "kb:control+alt+shift+²"
-#~ msgstr "kb:control+alt+shift+²"
-
-#~ msgid "mozilla Firefox"
-#~ msgstr "Mozilla Firefox"
-
-#~ msgid "Not available here"
-#~ msgstr "Non disponible ici"
-
-#, python-format
-#~ msgid "Status bar: %s"
-#~ msgstr "Barre d'état : %s"
-
-#~ msgid "Status bar not found"
-#~ msgstr "Barre d'état introuvable"
-
-#~ msgid "Copied to clipboard"
-#~ msgstr "Copié dans le presse-papier"
-
-#~ msgid "Reads the status bar. If pressed twice quickly, copies it to clipboard."
-#~ msgstr "Lit la barre d'état. Si vous appuyez deux fois rapidement, le copie dans le presse-papiers."
-
-#~ msgid "Insecure connection"
-#~ msgstr "Connexion non sécurisée"
-
-#, python-format
-#~ msgid "Page address is: %s (%s)"
-#~ msgstr "L'adresse de la page est: %s (%s)"
-
-#~ msgid "Reads the page address. If pressed twice quickly, copies it to clipboard."
-#~ msgstr "Lit l'adresse de la page. Si vous appuyez deux fois rapidement, le copie dans le presse-papiers."
-
-#~ msgid "Tool bar not found"
-#~ msgstr "Barre d'outils introuvable"
-
-#~ msgid "Shows a list of opened tabs. If pressed twice quickly, shows buttons of tool bar."
-#~ msgstr "Affiche une liste des onglets ouverts. Si vous appuyez deux fois rapidement, affiche les boutons de la barre d'outils."
-
-#~ msgid "Notification History"
-#~ msgstr "Historique des notifications"
-
-#, python-format
-#~ msgid "Last alert, %s: %s"
-#~ msgstr "Dernière alerte, %s: %s"
-
-#~ msgid "There is no notification"
-#~ msgstr "Il y a aucune notification"
-
-#~ msgid "Reads the last notification and it takes the system focus to it if it is possible. By pressing two times quickly shows the history of notifications."
-#~ msgstr "Lit la dernière notification et prend le focus système si possible. En pressant deux fois rapidement, affiche l'historique des notifications."
-
-#~ msgid "Brings the focus to the document"
-#~ msgstr "Emmène le focus sur le document"
-
-#~ msgid "Opened tabs"
-#~ msgstr "Onglets ouverts"
-
-#~ msgid "Tool Bar Buttons"
-#~ msgstr "Boutons de la barre d'outils"
-
-#~ msgid "&Go"
-#~ msgstr "&Aller"
-
-#~ msgid "Close"
-#~ msgstr "Fermer"
-
-#~ msgid "Reads the subject of the message."
-#~ msgstr "Lit le sujet du message."
-
-#~ msgid "Reads date of the message."
-#~ msgstr "Lit la date du message."
-
-#~ msgid "You are not in a list of messages"
-#~ msgstr "Vous n'êtes pas dans une liste de messages"
-
-#~ msgid "Column headers not found"
-#~ msgstr "En-têtes de colonne non trouvés"
-
-#~ msgid "Allows you to change the order of the columns in the messages list"
-#~ msgstr "Vous permet de changer l'ordre des colonnes dans la liste des messages"
-
-#~ msgid "There are No attachments"
-#~ msgstr "Il n’y a pas de pièces jointes"
-
-#~ msgid "Brings the focus to the list of attachments, if any."
-#~ msgstr "Emmène le focus sur la liste des pièces jointes, le cas échéant."
-
-#~ msgid "Brings the focus to the text of the open message."
-#~ msgstr "Emmène le focus sur le texte du message ouvert."
-
-#~ msgid "There are not more columns"
-#~ msgstr "Il n’y a pas davantage de colonnes"
-
-#~ msgid "Expand the conversation to display messages"
-#~ msgstr "Développez la conversation pour afficher les messages"
-
-#~ msgid "Preview pane is not active or message has not been loaded yet"
-#~ msgstr "Le volet d'aperçu n'est pas actif ou le message n'a pas encore été chargé"
-
-#~ msgid "In message list, reads the selected message without leaving the list."
-#~ msgstr "Dans la liste des messages, lit le message sélectionné sans quitter la liste."
-
-#~ msgid "Manage columns"
-#~ msgstr "agencer les colonnes"
-
-#~ msgid "&up"
-#~ msgstr "&monter"
-
-#~ msgid "&down"
-#~ msgstr "&descendre"
-
-#, python-format
-#~ msgid "Can't move %s, it is already the first column."
-#~ msgstr "Impossible de déplacer %s, il s’agit déjà de la première colonne."
-
-#, python-format
-#~ msgid "%s before %s"
-#~ msgstr "%s avant %s"
-
-#, python-format
-#~ msgid "Can't move %s, it is already the last column."
-#~ msgstr "Impossible de déplacer %s, il s’agit déjà de la dernière colonne."
-
-#, python-format
-#~ msgid "%s after %s"
-#~ msgstr "%s après %s"
-
-#~ msgid "Yesterday"
-#~ msgstr "Hier"
-
-#, python-format
-#~ msgid "%d days ago"
-#~ msgstr "il y a %d jours"
-
-#~ msgid "About an hour ago"
-#~ msgstr "Il y a environ une heure"
-
-#, python-format
-#~ msgid "About %d hours ago"
-#~ msgstr "Il y a environ %d heures"
-
-#~ msgid "About a minute ago"
-#~ msgstr "Il y a environ une minute"
-
-#, python-format
-#~ msgid "About %d minutes ago"
-#~ msgstr "Il y a environ %d minutes"
-
-#~ msgid "a second ago"
-#~ msgstr "il y a une seconde"
-
-#, python-format
-#~ msgid "%d seconds ago"
-#~ msgstr "il y a %d secondes"
-
-#~ msgid "Couldn't capture the text of this notification"
-#~ msgstr "Impossible de capturer le texte de cette notification"
-
-#~ msgid "If there is any notification opens"
-#~ msgstr "Abre la notificación si la hay"
-
-#~ msgid "Reads the sender and recipients of the message. If pressed twice quickly, opens the options menu."
-#~ msgstr "Lee el remitente y los destinatarios del mensaje. Si se pulsa dos veces rápidamente, abre el menú de opciones. "
-
-#~ msgid "Property page not found"
-#~ msgstr "No se encontró la página de propiedades"
-
-#~ msgid "Reads the sender of the message. If pressed twice quickly, opens the options menu."
-#~ msgstr "Lee el remitente del mensaje. Si se pulsa dos veces rápidamente, abre el menú de opciones. "
-
-#~ msgid "Reads the recipient of the message. If pressed twice quickly, opens the options menu."
-#~ msgstr "Lee el destinatario del mensaje. Si se pulsa dos veces rápidamente, abre el menú de opciones. "
+#~ msgid " lien cliquable "
+#~ msgstr " tıklanabilir bağlantı "
+
+#~ msgid ". lien cliquable…. "
+#~ msgstr ". tıklanabilir bağlantı…. "
