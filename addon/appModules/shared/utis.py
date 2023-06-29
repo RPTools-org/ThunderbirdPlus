@@ -615,8 +615,10 @@ def showHelp() :
 	curAddon=addonHandler.getCodeAddon()
 	if "pt_BR" in lang :
 		lang = "pt_PT"
-	helpPath=os.path.join(curAddon.path,"doc", lang, "readme.html")
-	if  not os.path.exists(helpPath) :
+	helpPath=os.path.join(curAddon.path,"doc", lang, "userManual.html")
+	if  os.path.exists(helpPath) :
+		helpPath = "file:///" + helpPath.replace("\\", "/") # does not work > + "#navpanels"
+	else :
 		helpPath  = "https://www-rptools-org.translate.goog/NVDA-Thunderbird/ThunderbirdPlus_en.html?_x_tr_sl=en&_x_tr_tl=@lg&_x_tr_hl=@lg&_x_tr_pto=sc"
 		helpPath = helpPath.replace("@lg", lang)
 	# message(_("Ouverture de  l'aide dans votre navigateur"))

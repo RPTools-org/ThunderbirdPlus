@@ -630,13 +630,20 @@ class AppModule(thunderbird.AppModule):
 	script_sendCtrlF4.category=sharedVars.scriptCategory
 
 	def script_sharedAltN(self, gesture) :
-		# centralise  gestion des alt+chiffre  pour éviter conflits
 		global _timer
-		if sharedVars.curTab == "main" and not utis.getPreviewPane() :
-			return ui.message(_("Le volet des entêtes n'est pas affiché. Veuillez presser F8 puis réessayer"))
+		# 2023-06.25 : for good reliability, it is necessary to recalculate the context curFrame and curTab
+		setContextVars()
+		# the line below is an optimisation
+		if sharedVars.curTab not in "main,comp,1msgWnd,message" : 
+			return gesture.send()
+		# ui.message("Recalculé, curFrame : {}, curTab : {} ".format(sharedVars.curFrame, sharedVars.curTab))
+		# return
+		if sharedVars.curTab == "main" and not utis.getPreviewPane() :			
+			ui.message(_("Le volet des entêtes n'est pas affiché. Veuillez presser F8 puis réessayer"))
+			return 
 		fo = globalVars.focusObject # api.getFocusObject()
-		if hasattr(fo, "script_readAttachField") : return fo.script_readAttachField(gesture) # attachment list
-
+		if hasattr(fo, "script_readAttachField") : 
+			return fo.script_readAttachField(gesture) # attachment list
 		if fo.role not in (controlTypes.Role.UNKNOWN, controlTypes.Role.EDITABLETEXT, controlTypes.Role.BUTTON, controlTypes.Role.LISTITEM, controlTypes.Role.TREEVIEWITEM , controlTypes.Role.TABLEROW, controlTypes.Role.DOCUMENT) : 
 			return gesture.send()
 		#ui.message("curTab = " + sharedVars.curFrame)
@@ -646,11 +653,11 @@ class AppModule(thunderbird.AppModule):
 		if _timer is not None:
 			_timer.Stop()
 			_timer = None
-		if sharedVars.curTab in ("main", "message") :
+		if sharedVars.curTab in "main,1msgWnd,message" :
 			#beep(440, 20)
 			fo = messengerWindow.messageListItem.checkFocus(fo)
 			if not fo:
-				beep(337, 2)
+				ui.message("Error checkFocus") # beep(337, 2)
 				return
 			msgHeader = utis.getMessageHeadersFromFG(False)
 			#if sharedVars.debug : sharedVars.log(msgHeader, " messsageHeader ")
@@ -666,7 +673,8 @@ class AppModule(thunderbird.AppModule):
 			self.initObjCompose()
 			self.objCompose.readField(gesture.mainKeyName, repeats)
 		else : #autres frames
-			beep(440, 20)
+			ui.message("Context error")
+			# beep(440, 20)
 	script_sharedAltN.__doc__ = _("Dans la fenêtre principale,  1 appui : Alt+1  à 8: lit l'entête  du message, Alt+9 annonce le nombre de pièces jointes, 2 appuis : affiche l'entête dans une boîte d'édition ou pour Alt+9, atteint la liste des pièces jointes, 3 appuis : atteint l'entête dans la zone des entêtes. Dans la fenêtre de rédaction, Alt1 à 4, lit les entêtes,  2 appuis atteint l'entête.")
 	script_sharedAltN.category=sharedVars.scriptCategory
 
@@ -836,6 +844,9 @@ class AppModule(thunderbird.AppModule):
 	script_showHelp.category = sharedVars.scriptCategory
 
 	def script_displayDebug(self, gesture) :
+		p = r"C:\Users\user\AppData\Roaming\nvda\addons\filezilla.pendingInstall"
+		oldVer = getOldVersion("filezilla", p)
+		sharedVars.log(None, "filezilla oldVersion : "  + oldVer)
 		# utis.listGestFromScanCodes()
 		# return
 		# winVerAlert()
@@ -1268,6 +1279,18 @@ def getFrameID(o) :
 		sharedVars.objLooping = False
 		return f
 
+def setContextVars() :
+	sharedVars.curFrame = getFrameID(None)
+	if sharedVars.curFrame == "1messageWindow" :
+		sharedVars.curTab = "1msgWnd"
+	elif sharedVars.curFrame == "messengerWindow" :
+		ct, n = messengerWindow.tabs.findCurTab(None)
+		if n > -1 : 
+			sharedVars.curTab = messengerWindow.tabs.getTabType(ct.name, n, None)
+
+	# sharedVars.log(None,"Recalculé, curFrame : {}, curTab : {} ".format(sharedVars.curFrame, sharedVars.curTab))
+
+
 # normal function
 # functions for event alert
 def focusAlert (message, oButton) :
@@ -1504,4 +1527,25 @@ def winVerAlert() :
 	currentBuild = currentWinVer.build
 	sharedVars.log(None, "current build : " + str(currentWinVer))
 	return
+import addonHandler
+def getOldVersion(addName, installPth) :
+	sharedVars.log(None, "original installPth : " + installPth)
+	# tests if a version is already installed or not
+	# installPth = installPth.strip()
+	if  installPth.endswith(".pendingInstall") :
+		installPth = installPth.replace(".pendingInstall", "")
+		
+	sharedVars.log(None, "changed installPth : " + installPth)
+
+	if  not os.path.exists(installPth + "\\manifest.ini") :
+		return "0.0.0"
+	# retrive version of installed addon
+	try :
+		for a in addonHandler.getAvailableAddons():
+			if a.name == addName :
+				# dbg("a.name : " + a.name)
+				return a.version
+	except : pass
+
+	return "2099.01.01"
 	

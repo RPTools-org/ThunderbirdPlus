@@ -25,7 +25,7 @@ addon_info = {
 	# Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 	"addon_description": _("""This add-on adds commands to Thunderbird 102.x to make it more accessible, efficient and comfortable to use."""),
 	# version
-	"addon_version": "4.8.3",
+	"addon_version": "4.8.5",
 	# Author(s)
 	"addon_author": u"Pierre-Louis Renaud (Thunderbird v. 78 to 102), Daniel Poiraud (TB v. 68 to 91), Abdelkrim Bensaïd for a part of TB 78, Yannick (TB v. 38 to 60)",
 	# URL for the add-on documentation support
@@ -33,7 +33,7 @@ addon_info = {
 	# URL for the add-on repository where the source code can be found
 	"addon_sourceURL": "https://github.com/RPTools-org/ThunderbirdPlus",
 	# Documentation file name
-	"addon_docFileName": "readme.html",
+	"addon_docFileName": "userManual.html",
 	# Minimum NVDA version supported (e.g. "2018.3.0", minor version is optional)
 	"addon_minimumNVDAVersion": "2019.3.0",
 	# Last NVDA version supported/tested (e.g. "2018.4.0", ideally more recent than minimum version)
