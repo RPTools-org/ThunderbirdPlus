@@ -1,10 +1,11 @@
 # Thunderbird+
+
 * Autoři: Pierre-Louis Renaud (od Thunderbirdu 78 do 102) & Cyrille Bougot (TB 102), Daniel Poiraud (od TB 78 do 91), Yannick (TB 45 až 60);
-* URL: [Uživatelská příručka][4] ;
-  [Historie změn na RPTools.org][5] ;
-  [Kontakt ve francouzštině nebo angličtině][6] ;
+* URL: [Uživatelská příručka][4];
+  [Historie změn na RPTools.org][5];
+  [Kontakt ve francouzštině nebo angličtině][6];
 * Stáhnout [stabilní verze][1]
-* Stáhnout [Nejnovější verze z RPTools.org][3] ;
+* Stáhnout [nejnovější verzi z RPTools.org][3];
 * Kompatibilita s NVDA: 2019.3 a novější;
 * Kompatibilita Thunderbird: verze 102.x;
 * [Zdrojový kód na gitHub][2]
@@ -67,9 +68,14 @@ ThunderbirdPlus obsahuje nezávislý systém automatických aktualizací s funkc
 
 ThunderbirdPlus je navržen tak, aby bezproblémově spolupracoval s Chichi, doplňkem, který se instaluje přímo do Thunderbirdu.
 
-Přečtěte si o tom na [stránce Chichi][7] ;
+Přečtěte si o tom na [stránce Chichi][7];
 
-A mnoho dalších věcí, které zjistíte při čtení [uživatelská příručka][4] ;
+
+A mnoho dalších věcí, které zjistíte při čtení [uživatelská příručka][4];
+
+
+<!-- Translators : in the links 4, 5 and 7 below, where you see lang=en, replace en with your language code -->
+
 
 [1]: https://www.nvaccess.org/addonStore/legacy?file=thunderbirdPlus
 
@@ -81,6 +87,6 @@ A mnoho dalších věcí, které zjistíte při čtení [uživatelská příruč
 
 [5]: https://www.rptools.org/NVDA-Thunderbird/get.php?pg=changes&lang=cs
 
-[6]: https://www.rptools.org/NVDA-Thunderbird/toContact.html
+[6]: https://www.rptools.org/NVDA-Thunderbird/toContact.html
 
 [7]: https://www.rptools.org/NVDA-Thunderbird/get.php?pg=chichi&lang=cs
