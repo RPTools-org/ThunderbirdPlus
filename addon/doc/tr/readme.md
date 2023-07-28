@@ -76,7 +76,7 @@ Ve [kullanım kılavuzunu][4] okuyarak keşfedeceğiniz diğer birçok şey;
 
 <!-- Çevirmenler : aşağıdaki 4, 5 ve 7 numaralı bağlantılarda, lang=en gördüğünüz yerde en kodunu dil kodunuzla değiştirin. TR gibi.-->
 
-[1]: https://www.nvaccess.org/addonStore/legacy?file=thunderbirdPlus
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9/thunderbirdPlus-4.9-TB102.nvda-addon
 
 [2]: https://github.com/RPTools-org/ThunderbirdPlus/
 

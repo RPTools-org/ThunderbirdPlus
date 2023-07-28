@@ -76,7 +76,7 @@ And many other things that you will discover by reading the [user manual][4] ;
 
 <!-- Translators : in the links 4, 5 and 7 below, where you see lang=en, replace en with your language code -->
 
-[1]: https://www.nvaccess.org/addonStore/legacy?file=thunderbirdPlus
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9/thunderbirdPlus-4.9-TB102.nvda-addon
 
 [2]: https://github.com/RPTools-org/ThunderbirdPlus/
 

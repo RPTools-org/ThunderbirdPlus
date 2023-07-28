@@ -740,7 +740,7 @@ Notlar :
 * 64 bit Windows yapılandırmasında, sisteminizde hem 64 bit hem de 32 bit sürümler yüklüyse, eklenti Thunderbird'ün 32 bit sürümünü başlatmaz;
 
 
-[1]: https://www.nvaccess.org/addonStore/legacy?file=thunderbirdPlus
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9/thunderbirdPlus-4.9-TB102.nvda-addon
 
 [2]: https://github.com/RPTools-org/ThunderbirdPlus/
 

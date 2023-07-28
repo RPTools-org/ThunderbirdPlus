@@ -579,7 +579,7 @@ Proceder como se segue para adicionar outro comando:
 * Numa configuração Windows de 64 bits, a extensão não lançará a versão de 32 bits do Thunderbird se ambas as versões de 64 bits e 32 bits estiverem instaladas no seu sistema; 
 
 <!-- secção de links -->
-[1]: https://www.nvaccess.org/addonStore/legacy?file=thunderbirdPlus
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9/thunderbirdPlus-4.9-TB102.nvda-addon
 
 [2]: https://github.com/RPTools-org/ThunderbirdPlus/
 

@@ -726,7 +726,7 @@ Poznámky:
 * Spouštěč Thunderbird je určen pouze pro nainstalovanou verzi Thunderbirdu, jejíž cesty Thunderbird.exe jsou předvídatelné.
 * V 64bitové architektuře Windows tento doplněk nespustí 32bitovou verzi Thunderbirdu, pokud je na vašem systému nainstalována 64bitová i 32bitová verze;<!-- links section -->
 
-[1]: https://www.nvaccess.org/addonStore/legacy?file=thunderbirdPlus
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9/thunderbirdPlus-4.9-TB102.nvda-addon
 
 [2]: https://github.com/RPTools-org/ThunderbirdPlus/
 
