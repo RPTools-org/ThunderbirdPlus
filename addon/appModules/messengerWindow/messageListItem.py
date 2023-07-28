@@ -50,7 +50,6 @@ del sys.path[-1]
 translation.initTranslationWithEnglishFallback()
 
 from time import time, sleep
-from . import contentMailRead
 
 CPC=clientObject.CreatePropertyCondition 
 WM_KEYDOWN, WM_KEYUP, VK_NUMPAD0 = 256, 257, 96
@@ -102,7 +101,7 @@ class MessageListItem(IAccessible):
 		if ID == "threadTree"  :
 			# filtre rapide
 			if  obj.previous.role == controlTypes.Role.EDITABLETEXT : #feditable vide, pas de boutons
-				CallAfter(message, _("Filtre rapide fermé. Tableau"))
+				CallAfter(message, _("Quick Filter Bar closed. Table."))
 				return gesture.send()
 			elif  obj.previous.role ==  controlTypes.Role.BUTTON :
 				#gesture.send() # vide la zone éditable
@@ -146,7 +145,7 @@ class MessageListItem(IAccessible):
 		elif repeats == 1 : delay = 300 # affichage dialogue Copier dans le presse-papiers
 		# message("Read other fields depuis messageListItem")
 		#_timer = CallLater(delay, readHeaders, oFocus, msgHeader, int(gesture.mainKeyName), repeats, delay) # key, repeatCount, delay
-	script_readOtherField.__doc__ = _("Lire différents entêtes d'un message.")
+	script_readOtherField.__doc__ = _("Read different headers of a message.")
 	script_readOtherField.category=sharedVars.scriptCategory
 
 	def script_attachments(self, gesture): # alt+9
@@ -156,7 +155,7 @@ class MessageListItem(IAccessible):
 			return utis.openListAttachment2(self, None) # sans gesture, dit seulement le nombre de PJ.
 		else :
 			return utis.openListAttachment2(self, gesture) 
-	script_attachments.__doc__ = _("Simple frappe : Annonce le nombre de pièces jointes s'il y en a. Double frappe : affiche la liste.")
+	script_attachments.__doc__ = _("Single Press: Announces the number of attachments if any. Double Press: shows the list.")
 	script_attachments.category=sharedVars.scriptCategory
 
 	# begin tags 
@@ -212,19 +211,19 @@ class MessageListItem(IAccessible):
 
 	def getMessageTagStr(self) :
 		TagSet =  self.getMessageTagSet() 
-		return setToStr(TagSet, _("Etiquettes"), _("Pas d'étiquette."))
+		return setToStr(TagSet, _("Tags"), _("No tag."))
 
 	def script_sayMessageTags(self,gesture):
-		lblTags = _(u"étiquettes")
+		lblTags = _("Tags")
 		#Translators: Tags feature
-		lblNoTags = _("Pas d'étiquette.")
+		lblNoTags = _("No tag.")
 		if gesture.mainKeyName == "0" :
 			msgTags = setToStr(self.getMessageTagSet(), lblTags, lblNoTags)
 			return message(msgTags)
 		#translators
-		lblNoMore = _(u"Plus détiquette.")
-		lblAdded = _(u" ajoutée")
-		lblRemoved = _(u" retirée")
+		lblNoMore = _("No More tag.")
+		lblAdded = _("added")
+		lblRemoved = _(" removed")
 		prevTagSet = self.getMessageTagSet() 
 		# 2022-1215 : explicit key name send necessary
 		KeyboardInputGesture.fromName(gesture.mainKeyName).send()
@@ -241,36 +240,36 @@ class MessageListItem(IAccessible):
 		#message(u"étiquettes : " + str(newTagSet))
 		return
 		# translator 
-		lblTag = _(u"étiquette")
-		lblNoMore = _(u"Plus d'étiquette.")
-		lblAdded = _(u"ajoutée")
-		lblRemoved  = _(u"retirée")
+		lblTag = _("tag")
+		lblNoMore = _("No more tag.")
+		lblAdded = _("added")
+		lblRemoved  = _("removed")
 		msgTags = self.getMessageTags()
 		if not msgTags : 
 			msgTags =  lblNoMore
 		newState = (lblAdded if tagName in msgTags else lblRemoved)
 		message("{0} : {1} {2}, {3}".format(lblTag, tagName, newState, msgTags))
-	script_sayMessageTags.__doc__ = _("Maj 1 à 8 : Vocalise les ajouts ou retraits d'étiquettes, Maj+0 annonce les étiquettes du message")
+	script_sayMessageTags.__doc__ = _("Shift + 1 to 8: announces the additions or removals of tags, Shift+0 announces the tags of the message")
 	script_sayMessageTags.category=sharedVars.scriptCategory
 
 	def script_removeMessageTags(self,gesture):
 		# translator
-		lblNoTag = _("Pas d'étiquette à retirer.")
+		lblNoTag = _("No tag to remove.")
 		msgTags = self.getMessageTagSet()
 		if not msgTags :  
 			return message(lblNoTag)
 		rc =  getLastScriptRepeatCount ()
 		if rc == 0 :
 			# translator 
-			lblPressTwice = _(u"Pressez deux fois rapidement cette commande pour supprimer les ") 
+			lblPressTwice = _("Press this command twice quickly to delete the") 
 			msgTags = setToStr(msgTags, lblPressTwice) 
 			return message(msgTags)
 		elif rc   == 1:
 			KeyboardInputGesture.fromName("0").send()
 			# translator
-			lblNoTag = _(u"Toutes les étiquette ont été retirées de ce message.")
+			lblNoTag = _("All tags have been removed from this message.")
 		return CallLater(40, message, lblNoTag)
-	script_removeMessageTags.__doc__ = _(u"Supprime toutes les étiquettes du message sélectionné.")
+	script_removeMessageTags.__doc__ = _("Removes all tags from the selected message.")
 	script_removeMessageTags.category=sharedVars.scriptCategory
 	# end of Message tags
 
@@ -287,7 +286,7 @@ class MessageListItem(IAccessible):
 		oPP = utis.getPropertyPageFromFG() 
 		oPane = utis.getPreviewPane(oPP)
 		if not oPane : 
-			return message(_("Le volet d'aperçu n'est pas affiché. Pressez F8 et recommencez SVP"))
+			return message(_("The preview pane is not displayed. Press F8 and try again please"))
 			# determine how to read the doc
 		rc = getLastScriptRepeatCount ()
 		if _timer is None:
@@ -299,7 +298,7 @@ class MessageListItem(IAccessible):
 		if not _timer and rc > 0 and utis.isChichi() :
 			#beep(0, 40)
 			# sleep(0.3)
-			message(_("Liens"))
+			message(_("Links"))
 			return CallLater(20, chichiLinks, 2)
 
 		if _timer : return
@@ -311,7 +310,7 @@ class MessageListItem(IAccessible):
 		if  "up" in gesture.mainKeyName or("shift" in gesture.modifierNames) :
 			rev = True
 		if rev and not filt :
-			message (_("La lecture non filtrée en sens inverse n'est pas disponible."))
+			message (_("Uncleaned reading in reverse is not available."))
 			return
 		# get   document  object
 		# path : role FRAME=34| i37, role-GROUPING=56, , IA2ID : tabpanelcontainer | i0, role-PROPERTYPAGE=57, , IA2ID : mailContent | i14, role-INTERNALFRAME=115, , IA2ID : messagepane | i0, role-DOCUMENT=52,  , 
@@ -327,39 +326,39 @@ class MessageListItem(IAccessible):
 			i += 1
 
 		if not o :
-			return message(_("Message indisponible. Réessayez."))
+			return message(_("Message unavailable. Try again."))
 		if o.childCount == 0  :
 			return message(self.name + ", " + o.name)
-		contentMailRead.readContentMail(o, rev, filt)
-	script_readPreview.__doc__ = _("Lecture filtrée du volet d'aperçu du message sans quitter la liste.")
+		sharedVars.oQuoteNav.readMail(o, rev, filt)
+	script_readPreview.__doc__ = _("Filtered reading of the message preview pane without leaving the list.")
 	script_readPreview.category=sharedVars.scriptCategory
 
 	def script_sayShortcut (self,gesture):
 		# beep(440, 10)
 		if gesture.mainKeyName == "a" :
 			# no need to check if the button is present in the toolbar
-			message(_("Archivé"))
+			message(_("Archived"))
 			return gesture.send()
 		elif gesture.mainKeyName == "c"  and"shift" in gesture.modifierNames :
 			folder = self.windowText.split (" - ")[0]
 			rc =  getLastScriptRepeatCount ()
-			if rc == 0 : return message(_("Frappez deux fois cette commande pour marquer tous les messages comme lus dans le dossier : " + folder))
+			if rc == 0 : return message(_("Press this command twice to mark all messages as read in the folder:" + folder))
 			else :
 				gesture.send()
-				return message(_("le dossier {name} ne contient plus de message non lu.").format (name = folder))
+				return message(_("the {name} folder no longer contains unread messages.").format (name = folder))
 		elif gesture.mainKeyName == "j" : #   junk mail
-			newState = (_("acceptable") if "shift" in gesture.modifierNames else _("indésirable"))
-			if _("Sélectionnés") in utis.getStatusBarText() :
-				message(_("Le statut {0} a été appliqué à la sélection").format(newState)) 
+			newState = (_("not junk") if "shift" in gesture.modifierNames else _("junk"))
+			if _("selected") in utis.getStatusBarText() :
+				message(_("The status {0} has been applied to the selection").format(newState)) 
 			else :
-				message(_("Le statut {0} a été appliqué à ce message").format(newState))
+				message(_("The {0} status has been applied to this message").format(newState))
 			return			 gesture.send()
 
 	def script_showFilterBar(self, gesture) :
 		#if self.role not in  (controlTypes.Role.TREEVIEWItem, controlTypes.Role.TABLEROW) : return gesture.send()
 		if str(utis.getIA2Attribute(self.parent)) != "threadTree" : return gesture.send()
 		return  KeyboardInputGesture.fromName ("control+shift+k").send()
-	script_showFilterBar.__doc__ = _("Affiche la barre de filtre rapide depuis la liste de messages.")
+	script_showFilterBar.__doc__ = _("Shows the quick filter bar from the message list.")
 	script_showFilterBar.category=sharedVars.scriptCategory
 
 	def script_sayUnreadMessage (self,gesture):
@@ -386,20 +385,20 @@ class MessageListItem(IAccessible):
 		api.processPendingEvents() # ajouté le 12-01-2022
 		#if sharedVars.debug : sharedVars.log(None, u"contenu  col après  changement :" + str(e.name))
 		CallLater(50, self.sayNewReadState, e) # 2022-01-12
-	script_sayUnreadMessage.__doc__ = _("Inverse l'état lu et  non lu  du message sélectionné")
+	script_sayUnreadMessage.__doc__ = _("Reverses the read and unread status of the selected message")
 	script_sayUnreadMessage.category=sharedVars.scriptCategory
 
 	def sayNewReadState(self, e) : # 2022-01-12
 		name = e.name
-		if name == "" : name = _("Lu")
-		elif name == "statusCol" : name = _("non lu")
+		if name == "" : name = _("read")
+		elif name == "statusCol" : name = _("unread")
 		#Translators: bug fixed on 2022-12-15
-		message(_("Message marqué comme ") + name)
+		message(_("Message marked as ") + name)
 
 	def script_showFoldersMessages(self,gesture):	
 		withUnread = sharedVars.oSettings.getOption("messengerWindow", "WwithUnread")
 		foldersMessages.FoldersMessagesList.run(withUnread)		
-	script_showFoldersMessages.__doc__ = _("Affiche un dialogue avec la liste  des dossiers  ")
+	script_showFoldersMessages.__doc__ = _("Shows a dialog with the list of folders")
 	script_showFoldersMessages.category=sharedVars.scriptCategory
 
 	__gestures={
@@ -428,9 +427,9 @@ def getRecip(oParent) : # of role section
 
 def readHeaders(fobj, msgHeader, k, rc, delay) : # key, repeatCount, delay
 	#translators: header labels : "none,From,Subject: ,Date,To,CC,BCC,Reply to" 
-	fieldLabels = _("rien,De,Objet: ,Date,Pour,Copie à,Copie cachée à,Répondre à") 
+	fieldLabels = _("void,From,Subject: ,Date,To,CC,BCC,Reply to") 
 	fldMessageFound = _("{0} {1}") 
-	fldMessageNotFound = _("L'entête {0} est absent de ce message.")
+	fldMessageNotFound = _("The {0} header is missing from this message.")
 	try :
 		sharedVars.objLooping = True
 		#beep(200, 60)
@@ -524,7 +523,7 @@ def readHeaders(fobj, msgHeader, k, rc, delay) : # key, repeatCount, delay
 			#  |1 of 1, name : Agent utilisateur: Microsoft O, role.UNKNOWN=0, IA2ID : expandeduser-agentBox Tag: mail-headerfield,  Chemin : role FRAME=34| i19, role-LANDMARK = 149, , IA2ID : messageHeader | i7, role-SECTION=86, , IA2ID : expandeduser-agentRow | i1, role-UNKNOWN=0, , IA2ID : expandeduser-agentBox , IA2Attr : class : headerValue, explicit-name : true, id : expandeduser-agentBox, display : flex, tag : mail-headerfield, , Actions : click ancestor,  ;
 			oField = utis.findChildByID(msgHeader,"expandeduser-agentRow")
 			if not oField :
-				message(_("Les entêtes complets ne sont pas affichés."))
+				message(_("The complete list of headers is not displayed."))
 				return
 			#| i7, role-SECTION=86, , IA2ID : expandeduser-agentRow | | i1, role-UNKNOWN=0, , IA2ID : expandeduser-
 			oField = oField.getChild(1)
@@ -537,7 +536,7 @@ def readHeaders(fobj, msgHeader, k, rc, delay) : # key, repeatCount, delay
 		if rc  >= 2 : 
 			oField.doAction()
 		elif rc == 1 : 
-			CallLater(100, utis.inputBox , label=fldLabel, title= _("Copier dans le presse-papiers"), postFunction=None, startValue=fldVal)
+			CallLater(100, utis.inputBox , label=fldLabel, title= _("Copy to clipboard"), postFunction=None, startValue=fldVal)
 		elif rc == 0 :
 			message(fldMessage)
 		return
@@ -580,7 +579,7 @@ def checkFocus(obj, gesture=None) :
 				break
 			o = o.parent
 		if not o :
-			message(_("Fenêtre non trouvée"))
+			message(_("Window not found"))
 			return None
 		if o.role == controlTypes.Role.PROPERTYPAGE : # cherche liste messages
 			obj = utis.findChildByID(				o, "threadTree")
@@ -621,7 +620,7 @@ def openListAttachment (fo,gesture=None ):
 		#message(u"Objet trouvé : " + str(oID) + ", role" + str(r))
 
 	if not o: 
-		message (_("Aucune  pièce jointe disponible dans ce contexte."))
+		message (_("No attachments available in this context."))
 		return False
 	isMsgWnd = (True if oID == "messengerWindow" else False)
 	if not isMsgWnd : # fen principale
@@ -638,11 +637,11 @@ def openListAttachment (fo,gesture=None ):
 			pj= True
 			break
 	if not pj:
-		message (_("Pas de pièce jointe."))
+		message (_("No Attachement."))
 		return False
 	# il y a 1 ou plusieurs  PJ
 	st=o.name
-	st = (_("Une pièce jointe") if "1 " in st else st)
+	st = (_("One attachment.") if "1 " in st else st)
 	message(st)
 	if not gesture : # simple  frappe de alt+9
 		return True
@@ -697,21 +696,21 @@ def getTreeID(fo) :
 
 def smartReply(msgHeader, rc) :
 	# beep(440, 20)
-	fldLabel = _("Pour: ")
+	fldLabel = _("To: ")
 	#oField = utis.findChildByID(msgHeader, "expandedreply-toRow")
 	# if not oField :
 	oField = utis.findChildByID(msgHeader, "expandedtoRow")
 	if not oField :
-		message(_("Pas d'entête ") + fldLabel)
+		message(_("No header") + fldLabel)
 		return KeyboardInputGesture.fromName("control+r").send()
 	# sharedVars.debugMess(oField, "SmartReply pour")
 	# return
 	oField, fldLabel, fldVal =  getRecip(oField)
 	# message(str(fldLabel) +" " + str(fldVal))
 	# return
-	isList = (rc == 0 and wordsMatchWord("@googlegroups;@framalist;@freelist", fldVal))
+	isList = (rc == 0 and utis.wordsMatchWord("@googlegroups|@framalist|@freelist", fldVal))
 	if isList : 
-		message(_("A la liste, "))
+		message(_("To the group, "))
 		# display a menu -> return CallLater(150, replyTo, msgHeader, 1)
 		#beep(100, 40)
 		return CallLater(25, KeyboardInputGesture.fromName("control+shift+l").send)
@@ -719,7 +718,7 @@ def smartReply(msgHeader, rc) :
 		delay = 25
 		if "groups.io" in fldVal :
 			fldLabel = fldLabel.split(":")[0]
-			if ";" not in str(fldVal) : message(_("A la liste"))
+			if ";" not in str(fldVal) : message(_("To the list, "))
 			else : 
 				delay = 250
 				message(fldLabel + "2 addresses") #  + fldVal)
@@ -751,11 +750,6 @@ def replyTo(msgHeader, recip) : # 0=correspondent 1=luist
 		gest = ("shift+control+l" if recip == 1 else "control+r") 
 		CallAfter(KeyboardInputGesture.fromName(gest).send)
 
-def wordsMatchWord(words, word) :
-	lst = words.split(";")
-	for e in lst:
-		if e in word : return True
-	return False
 
 def getToolbarButtons() :
 	# ble, role.BUTTON=9, IA2ID : hdrJunkButton Tag: toolbarbutton, états :  Chemin : role FRAME=34| i34, role-GROUPING=56, , IA2ID : tabpanelcontainer | i0, role-PROPERTYPAGE=57, , IA2ID : mailContent | i7, role-BUTTON=9, , IA2ID : hdrJunkButton , IA2Attr : tag : toolbarbutton, explicit-name : true, class : toolbarbutton-1 msgHeaderView-button hdrJunkButton, display : -moz-box, id : hdrJunkButton, setsize : 19, posinset : 8, , Actions : press,  ;
@@ -819,7 +813,10 @@ def readPreview2(oRow, gesture) :
 		return
 
 	rev = False  # reverse 
-	if  "up" in gesture.mainKeyName or("shift" in gesture.modifierNames) :
+	spkMode = 1 # speak only
+	if    gesture.mainKeyName == "downArrow" and("shift" in gesture.modifierNames) :
+		spkMode = 2 # copyToClip + speak
+	elif   gesture.mainKeyName == "upArrow" or("shift" in gesture.modifierNames) :
 		rev = True
 	if  controlTypes.State.SELECTED not in oRow.states :
 		# message(u"Ligne non sélectionnée. Veuillez réitérer votre commande.")
@@ -828,7 +825,6 @@ def readPreview2(oRow, gesture) :
 		KeyboardInputGesture.fromName ("control+space").send ()
 		api.processPendingEvents()
 		return readPreview2(oRow, gesture)
-	#memLog = z.memoryLog(activate=True, basePath="") # 1er param :  True=actif ou Falses=inactif
 	# recherche de l'objet document 
 	# Chemin : role FRAME=34| i37, role-GROUPING=56, , IA2ID : tabpanelcontainer | i0, role-PROPERTYPAGE=57, , IA2ID : mailContent | i14, role-INTERNALFRAME=115, , IA2ID : messagepane | i0, role-DOCUMENT=52,  , 
 	o = oRow
@@ -841,10 +837,8 @@ def readPreview2(oRow, gesture) :
 		elif role == controlTypes.Role.EDITABLETEXT: o=False
 		else : o=o.previous
 	if not o : 
-		if getTreeID(ORow)  == "threadTree": return message(_("Le volet des entêtes et du message n'est pas affiché. Veuillez presser F8 puis réessayer."))
-		else : return message (_("Le corps  du message est absent."))
+		if getTreeID(ORow)  == "threadTree": return message(_("The headers and message pane is not displayed. Please press F8 then try again."))
+		else : return message (_("The body of the message is missing."))
 	#memLog.addprops(o, u"Recherche section")
 	o = o.firstChild
-	#memLog.addprops(o, u"Recherche docment")
-	#memLog.browse("debug readPreview")
-	contentMailRead.readContentMail(o, rev, True)
+	sharedVars.oQuoteNav.readMail(o, rev, spkMode)

@@ -123,7 +123,7 @@ def setLastDisplayed(ts) :
 		# os.startfile(tbLastNotifFile)
 		return True
 	except :
-		msg = _("Erreur d'enregistrement de:\n") + tbLastNotifFile 
+		msg = _("Error saving of :\n") + tbLastNotifFile 
 		pass
 		
 	if msg :

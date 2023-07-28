@@ -2,8 +2,11 @@
 objLooping = False
 oCurFrame = None
 groupingIdx = 35 # index of child object of role grouping in the foregroundObject children  
-curFrame = ""
+curFrame = curSubject = ""
 curTab = "init2"
+oQuoteNav = None
+oEditing = None
+
 prevObj = ""
 chichi = None
 menuCommands = {} # parallel to some menu items
@@ -18,6 +21,10 @@ testMode = False
 debug = False
 debugLog = ""
 
+import quoteNav
+def initQuoteNav() :
+	global oQuoteNav
+	oQuoteNav = quoteNav.QuoteNav()
 import inspect
 oSettings = None # options menu
 import menuSettings
@@ -43,6 +50,10 @@ def setLooping(value) :
 	if not debug : return
 	lastFunction = inspect.stack()[1][3]
 	debugLog = debugLog + "setLooping fonction :{0}, valeur : {1}".format(lastFunction, str(value)) + "\n"
+
+def tlog(msg) :
+	global debugLog
+	debugLog += msg + "\n" 
 
 def log(o, msg="Objet", withStep=False):
 	global debugLog

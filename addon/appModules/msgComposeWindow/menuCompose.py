@@ -47,9 +47,9 @@ import api
 
 
 class ComposeMenu() :
-	kbd =(u"Ctrl+Maj+G,Ctrl+Maj+J,Ctrl+Maj+U,Ctrl+Maj+S,Ctrl+Alt+P,Ctrl+Alt+P,Ctrl+Maj+Alt+P,Ctrl+Maj+D,Ctrl+Maj+"+_(u"inférieur")+",Ctrl+"+_(u"inférieur")+",Ctrl+B,Ctrl+I,Ctrl+U,Ctrl+Maj+"+_(u"point virgule")+",Ctrl+Maj+"+_(u"deux points ")+",Ctrl+Maj+"+_(u"égal")+",Ctrl+"+_(u"égal")+",Ctrl+Maj+T,Ctrl+Maj+B,Ctrl+Maj+M,Ctrl+Maj+E").split (",")
+	kbd =(u"Ctrl+Maj+G,Ctrl+Maj+J,Ctrl+Maj+U,Ctrl+Maj+S,Ctrl+Alt+P,Ctrl+Alt+P,Ctrl+Maj+Alt+P,Ctrl+Maj+D,Ctrl+Maj+"+_("lower than")+",Ctrl+"+_("lower than")+",Ctrl+B,Ctrl+I,Ctrl+U,Ctrl+Maj+"+_("semicolon")+",Ctrl+Maj+"+_("colon")+",Ctrl+Maj+"+_("equal")+",Ctrl+"+_("equal")+",Ctrl+Maj+T,Ctrl+Maj+B,Ctrl+Maj+M,Ctrl+Maj+E").split (",")
 	kbd_replace=[]
-	state_msg_activated=(_("Désactivé"),_("Activé"))
+	state_msg_activated=(_("Disabled"),_("Enabled"))
 	obj_toolBar = {}
 
 	def __init__(self, appMod) :
@@ -60,8 +60,8 @@ class ComposeMenu() :
 		for e in range (1,o.Length):
 			element = o.GetElement (e)
 			role=utis.getElementWalker (element,7).GetCurrentPropertyValue (UIA_ControlTypePropertyId) 
-			if role ==UIA_ButtonControlTypeId :mainMenu.AppendSubMenu (self.getSubMenuForToolBar1(element),_("Barre d'outilTB Courrier"))
-			elif role == UIA_ComboBoxControlTypeId  : mainMenu.AppendSubMenu (self.getSubMenuForToolBar2 (element),_("Mise en forme du texte"))
+			if role ==UIA_ButtonControlTypeId :mainMenu.AppendSubMenu (self.getSubMenuForToolBar1(element),_("TB Mail Toolbar"))
+			elif role == UIA_ComboBoxControlTypeId  : mainMenu.AppendSubMenu (self.getSubMenuForToolBar2 (element),_("Text formatting"))
 			else:continue
 			self.obj_toolBar[role]=element
 		mainMenu.Bind (EVT_MENU,self.onMenuForToolBar )
@@ -92,13 +92,13 @@ class ComposeMenu() :
 		#fin 
 		element = element.GetElement ((evtId-1 if isFirstToolBar else evtId-6))
 		if bool (element.GetCurrentPropertyValue (UIA_LegacyIAccessibleStatePropertyId )&STATE_SYSTEM_UNAVAILABLE ):
-			return message (_("%s indisponible ") % element.CurrentName)
+			return message (_("%s unavailable") % element.CurrentName)
 		CallAfter (element.GetCurrentPattern (10018 ).QueryInterface (IUIAutomationLegacyIAccessiblePattern).DoDefaultAction )
 		if type != "scriptKey" or element.GetCurrentPropertyValue (UIA_ControlTypePropertyId, )!=UIA_ButtonControlTypeId  or utis.getElementWalker (element,7): return 
 		#partie appelée par une touche de raccourci 
 		name =element.CurrentName
 		if evtId in range (11,14):
-			name+=_(u" Activé, Désactivé").split (",")[bool (element.GetCurrentPropertyValue (UIA_LegacyIAccessibleStatePropertyId )&STATE_SYSTEM_PRESSED)]
+			name+=_(" Activated, Déactivated").split (",")[bool (element.GetCurrentPropertyValue (UIA_LegacyIAccessibleStatePropertyId )&STATE_SYSTEM_PRESSED)]
 		CallAfter (message ,name)
 
 	def getSubMenuForToolBar1 (self,obj):
@@ -119,7 +119,7 @@ class ComposeMenu() :
 		for e in ran:
 			element =o.GetElement (e)
 			name =element.CurrentName
-			if not name :name = _("Paragraphe,P&olice de caractère").split(",")[e]
+			if not name :name = _("Paragraph,&font").split(",")[e]
 			kbd =self.kbd[e+5]
 			if ranCount == 15 and e==14 :kbd ="Ctrl+Maj+E"
 			item =MenuItem (menu, e+6,name,kind=ITEM_CHECK ) #+"\t%s" % kbd

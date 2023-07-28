@@ -1,6 +1,0 @@
-userDir = C:\Users\user\AppData\Roaming\NGPad
-userLocalDir = C:\Users\user\AppData\Local\NGPad
-appDir = C:\_PL-SSD\NGPad
-Initializing locale...
-No locale set in the configuration, retrieving system default
-Locale configured to fr_BE

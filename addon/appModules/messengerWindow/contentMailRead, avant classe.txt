@@ -55,10 +55,9 @@ def readContentMail(oDoc, reverse=False, filter = True, title=""):
 	#message ("avant o.firstChild " + str(o.role) + ", " + str(o.name)) # doit être document
 	o=o.firstChild # section ou paragraph
 	# message ("après  o.firstChild " + str(o.role)  + ", " + str(o.name))
-	if not o : return message(_("erreur"))
+	if not o : return message(_("error"))
 	cCount = oDoc.childCount
 	text = title
-	# text += "\pchildCount : " + str(cCount) + "\n"
 
 	if o.next :
 		#o=o.next
@@ -74,7 +73,7 @@ def readContentMail(oDoc, reverse=False, filter = True, title=""):
 				s = "error"
 				pass
 				
-			if s :text+=s
+			if s :text+="\n" + s # 2023.07.04 + br added
 			if winUser.getKeyState(winUser.VK_CONTROL)&32768:
 				beep(100, 30)
 				# CallLater(200, message, text)
@@ -104,21 +103,51 @@ def shortenUrl(lnk, label) :
 	
 
 def filterSpeakDoc(endSubj, text, reverse, filter) :
-	# beep(700, 30)
-	# api.copyToClip (u"endSubj [" + endSubj + "] text=" + text)
+	text=text.replace ("&nbsp;","").replace("<br>\n", u"àbr") # .replace ("</span","") # .replace ("&lt;","<").replace ("&gt;",">")
+	# mailto and clickable links replacements
+	regExp = re.compile ("(\<a .+?\>(.+?)\</a\>)")
+	lbl = _(" link %s ").replace(" %s", "")
+	l=regExp.findall (text)
+	for e in l :
+		text_link = e[1]
+		# sharedVars.log(None,  "text_link " + str(text_link))
+		if "mailto" in e[0]:
+			text = text.replace(e[0], text_link + ":")
+		elif text_link.startswith ("http") :
+			text = text.replace (e[0], shortenUrl(text_link, lbl))
+	# Removes of all remaining HTML tags
+	reg= re.compile ("<.+?>")
+	# text=reg.sub("<",text)
+	text = text.replace("<", "")
 
+	# Reduction of WinMail and OE headers liene 
+	search = _("From|De|Expéditeur")
+	regExp = re.compile("((" + search + ").*\n)")
+	l=regExp.findall (text)
+	for e in l :
+		# sharedVars.log(None,  "header : " + str(e))
+		if utis.wordsMatchWord(search, e[0]) :
+			arr = str(e[0]).split(":")
+			if len(arr) > 2 :
+				repl = "--- " + getSenderName(arr[1]) + " " + _("wrote") + " :\n"
+				sharedVars.log(None,  "replacement : " + repl)
+	beep(700, 30)
+	api.copyToClip (u"endSubj [" + endSubj + "] text=" + text)
+	speech.speakText(text)
+	return
 	if not filter :
-		message(_("Lecture non filtrée."))
+		message(_("Unfiltered reading."))
 	#suppression du pied  de google groupe 
-	s = _(u"Vous recevez ce message, car vous êtes abonné au groupe") #  Google")
+	s = _("You are receiving this message because you are subscribed to the group") #  Google")
 	i =text.find (s)
 	# api.copyToClip (u"Avant suppr google groups\nposition=" + str(i) + "\n" + text)
 	if i !=-1 :text=text[:i]
 
 	#suppression du pied de groups.io
-	if text.find(_("Groups.io Links")) > 0 :
+	if text.find("Groups.io Links") > -1 :
 		i = text.find("-=-=-")
-		if i !=-1 :text=text[:i]
+		if i !=-1 :
+			text=text[:i]
 		# remplacement temporaire  des \n
 	text=text.replace ("\n",u"àn")
 	# suppression style CSS
@@ -126,38 +155,18 @@ def filterSpeakDoc(endSubj, text, reverse, filter) :
 		regExp = re.compile ("\<style\>.+?\</style\>")
 		text=regExp.sub (" ",text)
 
-	# remplacement de la balise lien (<a...</>
-	regExp = re.compile ("(\<a .+?\>(.+?)\</a\>)")
-	lbl = _(" lien %s ").replace(" %s", "")
-
-	# 2023-05-29 : added call to shortenUrl()
-	l=regExp.findall (text)
-	for e in l :
-		text_link = e[1]
-		if "mailto" in e[0]: continue
-		elif text_link.startswith ("http") :
-			text = text.replace (e[0], shortenUrl(text_link, lbl))
 		# else :
-			# text =text.replace (e[0],_(u" lien %s ") % text_link)
-		
+			# text =text.replace (e[0],_(" link %s ") % text_link)
+
 	#remplacement des objets youtube par du texte  (dans le flus rss)
 	reg = re.compile ("\<iframe.+?\</iframe\>")
-	text =reg.sub (_(u"objet youtube présent. "),text)
+	text =reg.sub (_("youtube object present."), text)
 	#suppression du titre dans les flus rss
 	reg = re.compile ("\<title\>.+?\</title\>")
 	text=reg.sub (" ",text)
-	# #suppression de fin de message yahoo
-	# reg = re.compile ("\-{36}")
-	# if reg.search (text):text =text[:text.find ("-"*36)]
-	# s="    <!--~-|**|PrettyHtmlStart|**|-~-->"
-	# i=text.find (s)
-	# if i!=-1:text=text[:i]
 	# suppression caractères entre & et point-virgule
-	text=text.replace ("\n"," ").replace ("&nbsp;","").replace ("&lt;","<").replace ("&gt;",">")
-	# suppression  des <balise> restantes, par exemple <br> ou <br />
-	reg= re.compile ("\<.+?>")
-	text=reg.sub ("<",text)
-	# suppression
+	# text=text.replace ("\n"," ").replace ("&nbsp;","").replace ("&lt;","<").replace ("&gt;",">")
+	# suppression des < > etc.
 	# reg= re.compile ("([\<\> ][\>\< ])+")
 	# text =reg.sub (" ",text)
 	# suppression  de ?
@@ -170,9 +179,20 @@ def filterSpeakDoc(endSubj, text, reverse, filter) :
 	from re import escape
 
 	text =text.replace ("mailto:","")
-	reg = re.compile (_("(\s+|\-{5} ?(E-mail d'origine|Message d'origine|Original Message) ?\-{5})"))
+	# reg = re.compile (_("(\s+|\-{5} ?(E-mail d'origine|Message d'origine|Original Message) ?\-{5})")
+	# Translators : remove or translate the french words | is an expression  separator
+	pattern = "(\s+|\-{5} ?(" + _("Original Message|E-mail d'origine|Message d'origine") + ") ?\-{5})"
+	reg = re.compile(pattern)
+
 	text =reg.sub (" ",text)
-	reg = re.compile(_("((((From|De|Expéditeur):.+?(Sujet|Subject|Objet):.+?%s)))") % escape (endSubj))
+	
+	# reg = re.compile("((((" + _("From|De|Expéditeur") + "):.+?(" + _("Sujet|Subject|Objet") + "):.+?%s)))") % escape (endSubj)
+	# Old pattern 
+	# ((((From|De|Expéditeur):.+?(Sujet|Subject|Objet):.+?%s)))
+	# New pattern 
+	# Translators : remove or translate the french words | is an expression  separator
+	pattern = "((((" + _("From|De|Expéditeur") + "):.+?(" + _("Subject|Sujet|Objet") + "):.+?" + endSubj + ")))"
+	reg = re.compile(pattern)
 	l=reg.findall (text)
 	for e in  l:
 		e= e[0]
@@ -181,25 +201,28 @@ def filterSpeakDoc(endSubj, text, reverse, filter) :
 		if arobase !=-1:x=x[:arobase]
 		x=x.replace ("'","").replace ("\"","")
 		if x.count (" "):x=x[:x.rfind (" ")]
-		text=text.replace (e, _("\n. %s a écrit . ") % x)
+		# à vérifier
+		text=text.replace (e, "\n. " + _("%s wrote . ") % x)
 	#suppression date 
 	#pour le confort 
 	text =text.replace ("<","")
 	#autre champ du style le ... a écrit ...
 	s= _(">> > C'aurait été con. >> > >> > J.-F. >> > >> >")
-	#if text.count (s):text=text[text.find (s)+len (s):]
-	reg = re.compile (_("((\s*(Dans un e\-mail daté du|Le) (\d\d[\-/]\d\d[\-/ ]|\d\d .+? )\d{2,4}( (. )?\d\d:\d\d(:\d\d .+?, .+?)?)?,\s*(.+?)a écrit:))"))
-	l=reg.findall (text)
-	for e in l :
-		x=e[7]
-		if x.count ("@"):
-			x=x.split("@")[0]
-			i=x.rfind (" ")
-			if i !=-1:x=x[:i]
-			text=text.replace (e[0],_("\n. %s a écrit. ") % x)
-		else:
-			text =text.replace (e[0],_("\n. %s a écrit.") % x)
-	text=text.strip ()
+	if text.count (s):text=text[text.find (s)+len (s):]
+	# dans un mail daté du 
+	# reg = re.compile (("((\s*(Dans un e\-mail daté du|Le) (\d\d[\-/]\d\d[\-/ ]|\d\d .+? )\d{2,4}( (. )?\d\d:\d\d(:\d\d .+?, .+?)?)?,\s*(.+?)a écrit:))"))
+	# l=reg.findall (text)
+	# for e in l :
+		# x=e[7]
+		# if x.count ("@"):
+			# x=x.split("@")[0]
+			# i=x.rfind (" ")
+			# if i !=-1:x=x[:i]
+			# text=text.replace (e[0], "\n. " + _("%s wrote. ") % x)
+		# else:
+			# text =text.replace (e[0], "\n. " + _("%s wrote.") % x)
+	# text=text.strip ()
+	
 	#modification de lien  non cliquables
 	reg = re.compile ("https?://.+?\s?.+?\s")
 	l=reg.findall (text)
@@ -211,8 +234,27 @@ def filterSpeakDoc(endSubj, text, reverse, filter) :
 		text =("\n").join (text)
 	#vérifie si le texte est vide 
 	reg = re.compile ("\S")
-	if not reg.search (text):text = _("pas de texte ")
+	if not reg.search (text):text = _("No text")
 	text=text.replace (u"àn","\n")
-	# api.copyToClip (u"endSubj [" + endSubj + "] text=" + text)
 	message(text)
 	# speech.speak  ([text], symbolLevel=SYMLVL_SOME)
+def strBetween2(txt, sep1, sep2) :
+	pos1 = txt.find(sep1) 
+	if pos1 < 0 : return ""
+	pos1 +=  len(sep1)
+	pos2 = txt.find(sep2, pos1)
+	if  pos2 < 0 : return ""
+	return txt[pos1:pos2]
+
+
+def getSenderName(header) :
+	# On Behalf Of Isabelle Delarue via groups.ioSent 
+	if "Behalf Of" in header :
+		return strBetween2(header, "Behalf Of", "via groups").strip() 
+	elif "&lt" in header :
+		return header.split(" &lt")[0].replace('"', '').strip()
+	return u"inchangé" + header.strip()
+	
+# def compressHeaders(txt) :		
+# poos = text.find(_("" 	
+	

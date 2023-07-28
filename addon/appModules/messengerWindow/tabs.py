@@ -25,12 +25,12 @@ from time import sleep
 import globalVars
 
 # translator "Onglet" stands for "tab"
-msgName = _("Onglet  {0} sur {1} {2}")
+msgName = _("Tab {0} of {1} {2}")
 
 def getTabType(nm, idx, oFocused) :
 	# Translator : in getTabType(), the strings come  from the main window title bar when a tab is active. You have to copy   them from the title bar of  Thunderbird in your language.
 	#  Translator : "Chargement en" vient de "Chargement en cours", "Accueil"  vient aussi du nom de l'onglet 
-	if not nm or _("Chargement en") in nm or _("Accueil -") in nm:
+	if not nm or _("Loading") in nm or _("Home -") in nm:
 		return "loading"
 	if idx == 0 : tabType = "main"
 	else : tabType = getMainTabType(idx, oFocused)
@@ -38,26 +38,26 @@ def getTabType(nm, idx, oFocused) :
 		return tabType
 
 		# Translator :  title bar when Address book tab is active. Must be the same as in the user interface of TB
-	if _("Carnet d") in nm :
+	if _("Address Bo") in nm :
 		tabType = "sp:addressbook"
 		# Translators: title bar when Saved tab is active. must be the same as in  the user interface 
-	elif _("Fichiers enregistrés") in nm :
+	elif _("Saved Files") in nm :
 		tabType = "sp:downloads"
 		# 2022-12-96 : paramètres des comptes monté devant paramètres pour corriger erreur
 		# Translators: title bar when Account Settings tab is active.must be the same as in  the user interface 
-	elif _("Paramètres des comptes") in nm :
+	elif _("Account Settings") in nm :
 		tabType = "sp:accounts"
 		# Translators: title bar when Settings tab is active.must be the same as in  the user interface 
-	elif _("Paramètres") in nm :
+	elif _("Settings") in nm :
 		tabType = "sp:preferences"
 		# Translators: titlebar when addons manager tab is active.must be the same as in  the user interface 
-	elif _("Gestionnaire de modules complémentaires") in nm :
+	elif _("Add-ons Manager") in nm :
 		tabType = "sp:addons"
 		# Translators: Title bar when  New account creation tab is active. must be the same as in  the user interface 
-	elif _("Configuration du compte") in nm :
+	elif _("Account Setup") in nm :
 		tabType = "sp:newaccount"
 		#Translators: title bar when addons search results tab is active.  
-	elif _("Modules pour Thunderbird") in nm: 
+	elif _("Add-ons for Thunderbird") in nm: 
 		tabType = "sp:addonsearch"
 	elif "chichi" in nm: 
 		tabType = "sp:chichi"
@@ -172,12 +172,12 @@ def findCurTab(oFrame=None ) :
 			# if sharedVars.debug : sharedVars.log(o, "tab " + str(i))
 			if o.role == controlTypes.Role.TAB and controlTypes.State.SELECTED in o.states :
 				pos = i
-				# if sharedVars.debug : sharedVars.log(o, _(u"tab Sélectionné"))
+				# if sharedVars.debug : sharedVars.log(o, _("tab Sélectionné"))
 				break
 			i += 1
 			o = o.next
 		if o : return o, pos
-		if sharedVars.debug : sharedVars.log(None, _("tab non trouvé"))
+		if sharedVars.debug : sharedVars.log(None, _("tab not found"))
 		return None, -1
 	finally :
 		sharedVars.setLooping(False)
@@ -245,7 +245,7 @@ def showTabMenu(appMod, obj) :
 	if not oTab : return
 	oTabCtrl = oTab.parent
 	if oTabCtrl.childCount == 1 :
-		CallLater(100, message, _("Il n'y a qu'un onglet d'ouvert."))
+		CallLater(100, message, _("There is only one tab open."))
 		return
 	tabObjects = []
 	mainMenu = Menu ()
@@ -281,4 +281,4 @@ def tabContextMenu(appMod, obj) :
 	oTab.setFocus()
 	KeyboardInputGesture.fromName("shift+f10").send() # affiche menu contextuel
 	speech.cancelSpeech
-	CallLater(100, message, _("Onglet actif {0} sur {1} : {2}, ").format(curIdx+1, oTabCtrl.childCount, oTab.name))
+	CallLater(100, message, _("Active tab {0} of {1} : {2}, ").format(curIdx+1, oTabCtrl.childCount, oTab.name))

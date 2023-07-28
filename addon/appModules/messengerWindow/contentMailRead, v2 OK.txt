@@ -1,0 +1,466 @@
+#-*- coding:utf-8 -*
+
+from time import sleep
+from wx import CallLater
+import speech, winUser
+import characterProcessing
+if not hasattr(characterProcessing, "SYMLVL_SOME"):
+	SYMLVL_SOME = characterProcessing.SymbolLevel.SOME
+else:
+	from characterProcessing import SYMLVL_SOME
+
+from comtypes.gen.ISimpleDOM import ISimpleDOMNode
+from NVDAObjects.IAccessible import IAccessible
+import controlTypes
+if not hasattr(controlTypes, "Role"):
+	from controlTypes import ROLE_INTERNALFRAME, ROLE_EDITABLETEXT, ROLE_ALERT, STATE_SELECTED
+else:
+	ROLE_INTERNALFRAME = controlTypes.Role.INTERNALFRAME
+	ROLE_EDITABLETEXT = controlTypes.Role.EDITABLETEXT
+	ROLE_ALERT = controlTypes.Role.ALERT
+	import controlTypes
+if not hasattr(controlTypes, "Role"):
+	from controlTypes import ROLE_INTERNALFRAME, ROLE_EDITABLETEXT, ROLE_ALERT, STATE_SELECTED
+else:
+	ROLE_INTERNALFRAME = controlTypes.Role.INTERNALFRAME
+	ROLE_EDITABLETEXT = controlTypes.Role.EDITABLETEXT
+	ROLE_ALERT = controlTypes.Role.ALERT
+	STATE_SELECTED = controlTypes.State.SELECTED
+from scriptHandler import getLastScriptRepeatCount
+from ui import message
+from tones import beep
+import controlTypes
+import addonHandler,  os, sys , api
+_curAddon=addonHandler.getCodeAddon()
+sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
+sys.path.append(sharedPath)
+import translation, utis, sharedVars
+# import zDevTools as z
+del sys.path[-1]
+translation.initTranslationWithEnglishFallback()
+
+import re # regex
+
+gText = "init"
+lblOn = "init" 
+lblWrote = "init"
+
+def setGVars() :
+	global  lblOn, lblWrote
+	beep(100, 30)
+	# Translators : do not translate nor remove %date_sender%. Replace french words, word 2 and word 5, by your translations. 
+	# The ¨ char is a temporary replacement of \n
+	lbls = _("On|Le%date_sender%wrote|écrit")
+	lbls = lbls.replace("%date_sender%", "|")
+	sharedVars.tlog("mlbls sgStr:" + lbls)
+	lbls =  lbls.split("|")
+	if len(lbls) < 4 : return
+	sharedVars.tlog("splitted lbls:" + str(lbls))
+		# string to get : lblOn = "¨ On | On |¨ Le | Le "
+	lblOn = "¨ {0} | {0} |¨ {1} | {1} ".format(lbls[0], lbls[1])
+	
+	# string to get  : 	lblWrote = " wrote :¨| wrote:¨| écrit :¨| écrit:¨" 
+	lblWrote = " {0} :¨| {0}:¨| {1} :¨| {1}:¨".format(lbls[2], lbls[3])
+	sharedVars.tlog("iniGVars, lblOn {}, lblWrote {}".format(lblOn, lblWrote))
+
+def readContentMail(oDoc, reverse=False, filter = True, title=""): 
+	global gText
+	# return message(title)
+	if not oDoc : return # message(u"Veuillez réitérer votre commande de lecture.")
+	o= oDoc # .firstChild # du document 
+	if title :
+		subjLastWord =  title.split(" - Mozilla ")[0]
+		subjLastWord =subjLastWord.strip ().split (" ")[-1]
+	elif hasattr(oDoc, "name") : 
+		subjLastWord =oDoc.name.strip ().split (" ")[-1]
+	else :
+		subjLastWord =oDoc.IAccessibleObject.accName(0).strip ().split (" ")[-1]
+	#message ("avant o.firstChild " + str(o.role) + ", " + str(o.name)) # doit être document
+	o=o.firstChild # section ou paragraph
+	# message ("après  o.firstChild " + str(o.role)  + ", " + str(o.name))
+	if not o : return message(_("error"))
+	cCount = oDoc.childCount
+	gText = title
+
+	if o.next :
+		#o=o.next
+		i = 1
+		if cCount > 100 : message(str(cCount) + " objects. Press Control to stop.")
+		#html simple
+		while o :
+			try : 
+				obj = o.IAccessibleObject.QueryInterface(ISimpleDOMNode)
+				s=obj.innerHTML
+				if not s :s=o.name
+			except :
+				s = "error"
+				pass
+				
+			if s :gText+="\n" + s # 2023.07.04 + br added
+			if winUser.getKeyState(winUser.VK_CONTROL)&32768:
+				beep(100, 30)
+				# CallLater(200, message, gText)
+				CallLater(200, filterSpeakDoc, 		subjLastWord, reverse, filter)
+				return
+
+			i += 1
+			if cCount > 100 :
+				perc = (i / cCount) * 100
+				if perc % 10 == 0 :
+					if perc == 50.0 : beep(350, 20)
+					else : beep(350, 2) # message(str(int(perc)) + "%")
+			try : o=o.next
+			except : break # fix v 3.4.1
+	else: # Texte brut
+		# beep(500, 30)
+		o = o.IAccessibleObject.QueryInterface(ISimpleDOMNode)
+		#gText= unicode (o.innerHTML) if sys.version_info.major == 2 else str (o.innerHTML)
+		gText += str(o.innerHTML)
+	# api.copyToClip (gText)
+	# message("gTexte dans le presse-papiers")
+	filterSpeakDoc (		subjLastWord, reverse, filter)
+	
+def shortenUrl(lnk, label) :
+	lnk = lnk.replace("https://", label)
+	lnk = lnk.replace("http://", label)
+	return lnk.split("/")[0]
+	
+def sayText(freq=440) :
+	global gText
+	beep(freq, 40)
+	api.copyToClip(gText)
+	speech.speakText(gText)
+
+		
+def filterSpeakDoc(endSubj, reverse, filter) :
+	global gText
+	if lblOn == "init" :
+		setGVars()
+		
+	deleteBlocks()
+	# return  sayText(200)
+	# gText=gText.replace ("&nbsp;", " ") # .replace("<br>\n", u"àbr") # .replace("&lt;", "<") # .replace ("</span","") # .replace ("&lt;","<").replace ("&gt;",">")
+	gText = gText.replace("\n", "¨")
+	# return  sayText(200)
+
+	# removes special &char;
+	reg = re.compile("(&nbsp;|&gt;)") 
+	gText=reg.sub(" ",gText)
+	# return  sayText(200)
+	cleanLinks()
+	# Removes of all remaining HTML tags
+	reg= re.compile ("<.+?>")
+	gText=reg.sub("",gText)
+		# removes multiple spaces 
+	reg = re.compile(" {2,}")
+	gText=reg.sub(" ",gText)
+		# removes multiple pseudo \n ¨
+	reg = re.compile("¨{2,}")
+	gText=reg.sub("¨",gText)
+
+	# return  sayText(200)
+	cleanStdHeaders()
+	cleanMSHeaders(endSubj)
+	# removes multiple  spaces
+	reg = re.compile(" { 2,}")
+	gText = reg.sub(" ", gText)
+	# removes multiple " ¨"
+	reg = re.compile("( ¨){3,}")
+	gText = reg.sub("", gText)
+
+	if reverse :
+		gText = gText.split("\n")
+		gText.reverse ()
+		gText =("\n").join (gText)
+	gText = gText.replace("¨", "\n")
+	return sayText(440)
+	speech.speakText(gText)
+	return
+	if not filter :
+		message(_("Unfiltered reading."))
+
+		# else :
+			# gText =gText.replace (e[0],_(" link %s ") % gText_link)
+
+	#remplacement des objets youtube par du gTexte  (dans le flus rss)
+	reg = re.compile ("\<iframe.+?\</iframe\>")
+	gText =reg.sub (_("youtube object present."), gText)
+	#suppression du titre dans les flus rss
+	reg = re.compile ("\<title\>.+?\</title\>")
+	gText=reg.sub (" ",gText)
+	# suppression caractères entre & et point-virgule
+	# gText=gText.replace ("\n"," ").replace ("&nbsp;","").replace ("&lt;","<").replace ("&gt;",">")
+	# suppression des < > etc.
+	# reg= re.compile ("([\<\> ][\>\< ])+")
+	# gText =reg.sub (" ",gText)
+	# suppression  de ?
+	# reg = re.compile (" *: *")
+	# # gText =reg.sub (":",gText)
+	if not filter :
+		gText=gText.replace ("¨","\n")
+		speech.speak ([gText], symbolLevel=SYMLVL_SOME)
+		return
+	from re import escape
+
+	gText =gText.replace ("mailto:","")
+	# reg = re.compile (_("(\s+|\-{5} ?(E-mail d'origine|Message d'origine|Original Message) ?\-{5})")
+	# Translators : remove or translate the french words | is an expression  separator
+	pattern = "(\s+|\-{5} ?(" + _("Original Message|E-mail d'origine|Message d'origine") + ") ?\-{5})"
+	reg = re.compile(pattern)
+
+	gText =reg.sub (" ",gText)
+	
+	# reg = re.compile("((((" + _("From|De|Expéditeur") + "):.+?(" + _("Sujet|Subject|Objet") + "):.+?%s)))") % escape (endSubj)
+	# Old pattern 
+	# ((((From|De|Expéditeur):.+?(Sujet|Subject|Objet):.+?%s)))
+	# New pattern 
+	# Translators : remove or translate the french words | is an expression  separator
+	pattern = "((((" + _("From|De|Expéditeur") + "):.+?(" + _("Subject|Sujet|Objet") + "):.+?" + endSubj + ")))"
+	reg = re.compile(pattern)
+	l=reg.findall (gText)
+	for e in  l:
+		e= e[0]
+		x=e.split (":")[1]
+		arobase =x.find ("@")
+		if arobase !=-1:x=x[:arobase]
+		x=x.replace ("'","").replace ("\"","")
+		if x.count (" "):x=x[:x.rfind (" ")]
+		# à vérifier
+		gText=gText.replace (e, "\n. " + _("%s wrote . ") % x)
+		gText=gText.replace (e, "\n. " + _("%s wrote . ") % x)
+	#suppression date 
+	#pour le confort 
+	gText =gText.replace ("<","")
+	#autre champ du style le ... a écrit ...
+	s= _(">> > C'aurait été con. >> > >> > J.-F. >> > >> >")
+	if gText.count (s):gText=gText[gText.find (s)+len (s):]
+	# dans un mail daté du 
+	# reg = re.compile (("((\s*(Dans un e\-mail daté du|Le) (\d\d[\-/]\d\d[\-/ ]|\d\d .+? )\d{2,4}( (. )?\d\d:\d\d(:\d\d .+?, .+?)?)?,\s*(.+?)a écrit:))"))
+	# l=reg.findall (gText)
+	# for e in l :
+		# x=e[7]
+		# if x.count ("@"):
+			# x=x.split("@")[0]
+			# i=x.rfind (" ")
+			# if i !=-1:x=x[:i]
+			# gText=gText.replace (e[0], "\n. " + _("%s wrote. ") % x)
+		# else:
+			# gText =gText.replace (e[0], "\n. " + _("%s wrote.") % x)
+	# gText=gText.strip ()
+	
+	#modification de lien  non cliquables
+	reg = re.compile ("https?://.+?\s?.+?\s")
+	l=reg.findall (gText)
+	for e in l : 
+		gText =gText.replace (e, shortenUrl(e, " URL "))
+	if reverse :
+		gText=gText.split ("\n")
+		# veriifie si le gTexte est vide 
+	reg = re.compile ("\S")
+	if not reg.search (gText):gText = _("No gText")
+	gText=gText.replace ("¨","\n")
+	message(gText)
+	# speech.speak  ([gText], symbolLevel=SYMLVL_SOME)
+
+def deleteMetas() :
+	global gText
+	lbl = "<meta "
+	metas = []
+	p, pEnd = findWords(lbl)
+	while p > -1 :
+		p2 = gText.find('">', pEnd) 
+		if p2 == -1 : break
+		b = gText[p:p2] + '">'
+		# sharedVars.tlog("meta:" + b)
+		metas.append(b)
+		# next block
+		p, pEnd = findWords(lbl, p2+2) # +2 is then len of ">
+	if len(metas) == 0 : return
+	for e in metas :
+		# sharedVars.tlog("e:" + e)
+		gText = gText.replace(e, "")
+
+def deleteBlocks() :
+	global gText
+	# Originale message
+	s = _("Original Message|E-mail d'origine|Message d'origine")
+	reg = re.compile("(\-{5} ?(" + s + ") ?\-{5})")
+	gText = reg.sub("", gText)
+
+		# begin code to debug :  and clean
+	# Removes meta tag
+	# if gText.find("<meta name") > -1 :
+		# beep(100, 50)
+		# result = re.findall('(startgText)(.+)((?:\n.+)+)(endgText)',input)
+		# reg = re.compile("<meta name.+>")
+		# reg = re.compile("(<meta name(.+|\s+))")
+		# gText = reg.sub("", gText)
+		# l = reg.findall(gText)
+		# l = re.findall('(<meta)(.+)((?:\n.+)+)(">)', gText)
+		# if len(l) > 0 :
+			# for e in l :
+				# sharedVars.tlog("meta:" + str(e))
+	# end code to debug
+	deleteMetas()
+	#Removes   de google groupe  footer
+	s = _("You are receiving this message because you are subscribed to the group") #  Google")
+	i =gText.find (s)
+	# api.copyToClip (u"Avant suppr google groups\nposition=" + str(i) + "\n" + gText)
+	if i !=-1 :gText=gText[:i]
+
+	#Removes groups.io footer
+	pos, pos2 = findWords("Groups.ioLinks|Groups.io Links")
+	if pos > -1 :
+		pos = gText.find("-=-=")
+		if pos != -1 :
+			gText=gText[:pos]
+	# suppression style CSS
+	if gText.find("<style>") > 0 :
+		regExp = re.compile ("\<style\>.+?\</style\>")
+		gText=regExp.sub (" ",gText)
+
+def cleanLinks() :
+	global gText
+	# mailto and clickable links replacements
+	regExp = re.compile ("(\<a .+?\>(.+?)\</a\>)")
+	lbl = _(" link %s ").replace(" %s", "")
+	l=regExp.findall (gText)
+	for e in l :
+		gText_link = e[1]
+		# sharedVars.tlog( "e: " + str(e))
+		# sharedVars.tlog( "gText_link " + str(gText_link))
+		if "mailto" in e[0]:
+			gText = gText.replace(e[0], gText_link + ":")
+		elif gText_link.startswith ("http") :
+			gText = gText.replace (e[0], shortenUrl(gText_link, lbl))
+
+def cleanStdHeaders() :
+	global gText, lblOn, lblWrote
+	# Compress standard "On date sender wrot :
+	# 1. findAll blocks of headers
+	blocks = []
+	# NVDA.po string : "On|Le%date_sender%wrote|écrit"
+	# lblOn and lblWrote are global vars
+	sharedVars.tlog("cleanStdHeaders iniGvars,lblOn {}, lblWrote {}".format(lblOn, lblWrote))
+	
+	p, pEnd = findWords(lblOn)
+	while p > -1 :
+		p2, p3 = findWords(lblWrote, p) 
+		if p2 == -1 : break
+		b = gText[p:p3] # p3 to include the found lblWrote
+		sharedVars.tlog("stdHeader:" + b)
+		blocks.append(b)
+		# next block
+		p, pEnd = findWords(lblOn, p3)
+
+	if len(blocks) == 0 : return
+	for e in blocks :
+		el = e.split(",")
+		if len (el)  < 2 : el = e
+		else :
+			el = el[1]
+
+		# removes pseudo \n
+		el = el.replace("¨", " ")
+		# removes  multiple spaces
+		reg = re.compile(" {2,}")
+		el = reg.sub(" ", el)
+		sharedVars.tlog("el:" + el)
+		try :
+			gText = gText.replace(e, "\n---" + el)
+		except :
+			beep(100, 30)
+			pass
+		try :
+			print("gText=" + gText) 
+		except :
+			beep(120, 30)
+	
+def cleanMSHeaders(endSubj) :
+	global gText
+	# Reduction of WinMail and OE headers liene 
+	# 1. findAll blocks of headers
+	lenSubj = len(endSubj)
+	blocks = []
+	lbls = _("From|De|Expéditeur") + "|"
+	a = lbls.split("|")
+	lbls = ""
+	for lbl in a :
+		if lbl == "" : break
+		lbls += lbl + ":|" + lbl + " :|"
+	lbls = lbls[:-1]
+	# sharedVars.tlog("from labels:" + lbls)
+
+	p, pEnd = findWords(lbls)
+	while p > -1 :
+		p2 = gText.find(endSubj, pEnd) 
+		if p2 == -1 : break
+		b = gText[p:p2] + endSubj
+		# sharedVars.tlog("MS header:" + b)
+		blocks.append(b)
+		# next block
+		p, pEnd = findWords(lbls, p2+lenSubj)
+	if len(blocks) == 0 : return
+
+	for e in blocks :
+		sharedVars.tlog("to replace:" + e)
+		# e may contain ¨, a pseudo \n 
+		t = "\n---" + getSenderName(e) + " " +   _("wrote")+ " : "
+		sharedVars.tlog("t:" + t)
+		gText = gText.replace(e, t)
+		
+	return
+		# if utis.wordsMatchWord(search, e[0]) :
+			# arr = str(e[0]).split(":")
+			# if len(arr) > 2 :
+				# repl = "--- " + getSenderName(arr[1]) + " " + _("wrote") + " :¨"
+				# sharedVars.tlog( "replacement : " + repl)
+def strBetween(t, sep1, sep2) :
+	pos1 = t.find(sep1) 
+	if pos1 < 0 : return ""
+	pos1 +=  len(sep1)
+	pos2 = t.find(sep2, pos1)
+	if  pos2 < 0 : return ""
+	return t[pos1:pos2]
+
+# optimization :the function  strBetween2  acts directly on the gText global var
+def strBetween2(sep1, sep2) :
+	global gText
+	pos1 = gText.find(sep1) 
+	if pos1 < 0 : return ""
+	pos1 +=  len(sep1)
+	pos2 = txt.find(sep2, pos1)
+	if  pos2 < 0 : return ""
+	return gText[pos1:pos2]
+
+def findWords(words, start=0) :
+	global gText
+	lWords = words.split("|")
+	for e in lWords :
+		pos = gText.find(e, start)
+		if pos > -1 :
+			return pos, pos + len(e) + 1
+	return pos, pos
+	
+
+def getSenderName(header) :
+	#  header may contain ¨
+	
+
+	# On Behalf Of Isabelle Delarue via groups.ioSent 
+	if "Behalf Of" in header :
+		s = strBetween(header, "Behalf Of", "via groups").strip()  
+	elif  "via groups.io" in header : 
+		# to replace:From: ¨  Jeremy T. via groups.io: 
+		s = strBetween(header, ":", "via")
+	else :
+		# s = "à revoir : " + header
+		header  = header.split(":") 
+		s = (header[1] if len(header) > 1 else header[0])
+		if "&lt;" in s :
+			s = s.split("&lt;")[0]
+
+	s = s.replace("¨", " ").strip()
+	sharedVars.tlog("retour getSenderName :" + s)
+	return s
+	

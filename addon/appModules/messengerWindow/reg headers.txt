@@ -1,0 +1,12 @@
+s = "(( |¨){1,}(Le|On) .* (wrote|a écrit)(:| :))"
+avec lblOn et lblWrote :
+s = "(( |¨){1,}(" + lblOn + ") .* (" + lblWrote + ")(:| :))"
+# compilation
+self.regStdHdr = re.compile(stdHdr)
+
+Quand on fait cela, cela le fait.
+ Le 10/07/2023 à 11:00, JF¨colas a écrit:
+Oui, en anglais, a écrit se dit wrote:
+¨ On 07-11-2023, Noelia Ruiz wrote:
+yess ! 
+ 

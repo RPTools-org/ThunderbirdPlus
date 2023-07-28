@@ -45,7 +45,7 @@ class AddonsPage(IAccessible):
 		# gesture.send()
 		# TB 91 : CallLater(100, trackResult, str(self.value) + " :: Recherche") # tracks the fralme which the name contains the expression. 
 		# translator : in TB 102, tab name   that will open is  : Recherche :: Modules
-		trackText = _("Recherche :: Mod")
+		trackText = _("Search :: Add-ons")
 		# if sharedVars.debug : sharedVars.log(None, "avant appel trackResult")
 		CallLater(20, trackResult, trackText) 
 		gesture.send()

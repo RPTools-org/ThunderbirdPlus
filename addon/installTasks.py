@@ -1,11 +1,29 @@
 # -*- coding	: UTF-8 -*-
 # This file is covered by the GNU General Public License.
 # ThunderbirdPlus 4.x
-import addonHandler
 import os
+import gui
+import wx
+import addonHandler
+
 addonHandler.initTranslation()
 
+# This  code comes from TeleNVDA and is adapted
 def onInstall():
+	for addon in addonHandler.getAvailableAddons():
+		if addon.name == "Mozilla" and not addon.isDisabled:
+			getMAEUrl()
+			result = gui.messageBox(
+				# Translators: message asking the user wether Mozilla whould be disabled or not
+				_("""Mozilla Apps Enhancements has been detected on your NVDA installation. In order for thunderbirdPlus to work without conflicts, Mozilla Apps Enhancements must be disabled. Would you like to disable Mozilla Apps Enhancements now and install ThunderbirdPlus ? \nIf you answer No, the installation will fail."""),
+				# Translators: question title
+				_("Running Mozilla Apps Enhancements detected"),
+				wx.YES_NO|wx.ICON_QUESTION, gui.mainFrame)
+			if result == wx.YES :
+				addon.enable(False)
+			elif  result == wx.NO :
+				raise RuntimeError(_("Installation cancelled"))
+				return
 	installPath = os.path.dirname(__file__)
 	addonName, addonNewVersion = getNewAddonInfo(installPath)
 	addonOldVersion = getOldVersion(addonName, installPath)
@@ -93,3 +111,14 @@ def getKL() :
 		val = buf.value
 		return val[4:]
 	return "0000"
+
+def getMAEUrl() :
+	from languageHandler import getLanguage
+	from wx import CallLater
+	lang = getLanguage() 
+	url  = "https://www-rptools-org.translate.goog/NVDA-Thunderbird/mozApps_en.html?_x_tr_sl=en&_x_tr_tl=@lg&_x_tr_hl=@lg&_x_tr_pto=sc"
+	url = url.replace("@lg", lang)
+	try :  CallLater(2000, os.startfile, url)
+	except : return
+	
+

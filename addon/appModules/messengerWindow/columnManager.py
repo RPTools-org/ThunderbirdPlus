@@ -39,7 +39,7 @@ def manageColumns(self):
 	if len(columnHeaders) == 0 : return 
 	if  len(columnHeaders) == 1:
 		#TRANSLATORS: this is a message list without column headers
-		ui.message(_("Entêtes de colonnes non trouvés."))
+		ui.message(_("Column headers not found."))
 		return
 	if not dlgCols:
 		dlgCols = manageColumnsDialog(gui.mainFrame)
@@ -54,7 +54,7 @@ def getColumnHeaders():
 	fo = api.getFocusObject()
 	o = fo
 	if o.role not in (controlTypes.Role.TREEVIEWITEM, controlTypes.Role.TABLEROW) : #treeviewItem, tablerow
-		ui.message(_("Veuillez d'abord sélectionner la liste de messages ou l'arborescence des dossiers."))
+		ui.message(_("Please select the message list or folder tree first."))
 		return []
 	#  à faire : vérifier qu'il s'agit bien de threadTree
 	o = o.parent # threadTree ou folderTree
@@ -93,7 +93,7 @@ class ChooseColumns(IAccessible) :
 		KeyboardInputGesture.fromName ("escape").send()
 		wx.CallLater(50, manageColumns, self)
 	# TRANSLATORS: message shown in Input gestures dialog for this script
-	script_orderColumns.__doc__ = _("Ouvre un dialogue pour agencer les colonnes")
+	script_orderColumns.__doc__ = _("Opens a dialog to manage the order of columns")
 	script_orderColumns.category = sharedVars.scriptCategory
 
 	def script_tabOrder(self, gesture) :
@@ -105,7 +105,7 @@ class ChooseColumns(IAccessible) :
 		KeyboardInputGesture.fromName ("enter").send()
 		# trop bavard :speech.speakObject(self)
 		if controlTypes.State.CHECKED in self.states :
-			st = _("Coché, ")
+			st = _("Checked, ")
 		else :
 			st = ("Non coché, ")
 		ui.message(st + self.name)
@@ -124,7 +124,7 @@ class manageColumnsDialog(wx.Dialog):
 	clip = -1
 	def __init__(self, parent):
 		#TRANSLATORS: manage columns dialog title
-		super(manageColumnsDialog, self).__init__(parent, title= _("Agencement des colonnes"))
+		super(manageColumnsDialog, self).__init__(parent, title= _("Column layout"))
 		# Build interface
 		mainSizer = wx.BoxSizer(wx.HORIZONTAL)  #<<  VERTICAL
 
@@ -134,15 +134,15 @@ class manageColumnsDialog(wx.Dialog):
 		buttonsSizer = wx.BoxSizer(wx.VERTICAL)  #<< HORIZONTAL
 
 		helpButtonID = wx.NewId()
-		self.helpButton = wx.Button(self, helpButtonID, _("&Aide"), size=(80,25))  #<<
+		self.helpButton = wx.Button(self, helpButtonID, _("&Help"), size=(80,25))  #<<
 		buttonsSizer.Add(self.helpButton, flag=wx.BOTTOM, border=10)  #<<
 
 		optionsButtonID = wx.NewId()
 		#TRANSLATORS: options button in the columns dialog
-		self.optionsButton = wx.Button(self, optionsButtonID, _("&Colonnes ..."), size=(80,25))  #<< 
+		self.optionsButton = wx.Button(self, optionsButtonID, _("&Columns ..."), size=(80,25))  #<< 
 		buttonsSizer.Add(self.optionsButton, flag=wx.BOTTOM, border=10)  #<<
 		#TRANSLATORS: close button in the columns dialog
-		cancelButton = wx.Button(self, wx.ID_CANCEL, _("&Fermer"), size=(80,25))  #<<
+		cancelButton = wx.Button(self, wx.ID_CANCEL, _("C&lose"), size=(80,25))  #<<
 		buttonsSizer.Add(cancelButton)
 		mainSizer.Add(buttonsSizer, flag=wx.ALL, border=10)  #<<
 		mainSizer.Fit(self)
@@ -204,12 +204,12 @@ class manageColumnsDialog(wx.Dialog):
 		if self.clip ==  -1 : 
 			# cut in clip
 			self.clip = self.listBox.GetSelections()[0]
-			wx.CallLater(50, ui.message,_("%s coupée.") % self.columns[self.clip].name)
+			wx.CallLater(50, ui.message,_("%s Cut") % self.columns[self.clip].name)
 			return
 		# paste opération
 		destC = self.listBox.GetSelections()[0]
 		if destC == self.clip :
-			wx.CallLater(50, ui.message,_("La colonne %s ne peut pas être déplacée sur elle-même.") % self.columns[self.clip].name)
+			wx.CallLater(50, ui.message,_("Column %s cannot be moved on itself.") % self.columns[self.clip].name)
 			return
 		msg =  self.moveColumn(self.clip, destC)
 		if msg :
@@ -228,7 +228,7 @@ class manageColumnsDialog(wx.Dialog):
 		else :
 			destC = max(0, c - number)
 		if c == 0:
-			wx.CallLater(50, ui.message,_(u"%s, est déjà la première colonne.") % self.columns[c].name)
+			wx.CallLater(50, ui.message,_("%s, is already the first column.") % self.columns[c].name)
 			return
 		utis.setSpeech(False)
 		msg =  self.moveColumn(c, destC)
@@ -248,7 +248,7 @@ class manageColumnsDialog(wx.Dialog):
 		destC = min(c+number, len(self.columns) - 1)
 		if c == len(self.columns)- 1 :
 			#TRANSLATOR: this is the last column and can't be moved
-			wx.CallLater(50, ui.message,_(u"%s, est déjà la dernière colonne.") % self.columns[c].name)
+			wx.CallLater(50, ui.message,_("%s, is already the last column.") % self.columns[c].name)
 			return
 		msg =  self.moveColumn(c, destC)
 		if msg :
@@ -283,7 +283,7 @@ class manageColumnsDialog(wx.Dialog):
 		helpPath=os.path.join(curAddon.path,"doc", lang, "Column layout.txt")
 		# ui.message(helpPath)
 		# os.startfile (helpPath)
-		utis.showTextFile(helpPath, _("Aide Agencement des colonnes"))
+		utis.showTextFile(helpPath, _("Help on Column layout"))
 		return	
 
 	def onOptionsButton(self, event):
@@ -303,7 +303,7 @@ class manageColumnsDialog(wx.Dialog):
 	def moveColumn(self, srcIndex, targIndex) :
 		if self.columns[0].windowText != self.folder:
 			#TRANSLATORS: the folder content has changed while this dialog was opened
-			ui.message(_("Le dossier a changé, retournez à %s pour agencer les colonnes ou relancez cette boîte de dialogue") % self.folder[:-22])
+			ui.message(_("Folder has changed, return to %s to manage columns or restart this dialog") % self.folder[:-22])
 			return False
 		self.Hide()
 		try:

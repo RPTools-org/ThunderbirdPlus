@@ -67,7 +67,7 @@ class MessageListItemFields(IAccessible):
 			#return speak ("{columnText}  {name}".format (columnText = columnText, name =name), symbolLevel =0)
 			# version braille
 			return message ("{columnText}  {name}".format (columnText = columnText, name =name))
-		speak (_("{columnText} copié dans le presse papier").format (columnText =columnText), symbolLevel =0)
+		speak (_("{columnText} copied to clipboard").format (columnText =columnText), symbolLevel =0)
 		api.copyToClip (""+name)
 
 	def script_readField(self,gesture):
@@ -75,8 +75,8 @@ class MessageListItemFields(IAccessible):
 		# index, cols, i, options, currentScriptKeyName, lastScriptRepeatCount = int (gesture.mainKeyName), self.columnID(), -1, self.appModule.options["messengerWindow"], gesture.displayName, getLastScriptRepeatCount () 
 		# if not self.appModule.date_firstMessage :self.appModule.date_firstMessage ="oui"
 		if index ==0:index=10
-		if index >len (cols):return  message (_("Pas de colonne de rang %s") %(index)) 
-		elif not cols :return message (_("aucun en tête "))
+		if index >len (cols):return  message (_("No column in position %s") %(index)) 
+		elif not cols :return message (_("No header"))
 		if not cols[0] in self.fields : return self.readField_default (currentScriptKeyName, lastScriptRepeatCount ) 
 		if not cols[1] in self.fields : return self.readField_default (currentScriptKeyName, lastScriptRepeatCount )
 		e0=0
@@ -89,7 +89,7 @@ class MessageListItemFields(IAccessible):
 		indix =  cols.index (field)
 		self.lastCellCalledAndTime =[index,time (),field]
 		o = self.getChild (indix)
-		if not o :return message (_("Le champ %s n'est pas disponible ") %champ)
+		if not o :return message (_("%s field is not available") %champ)
 		value, columnHeaderText, columnHeaderText_original, add_doublePoint  =o.name, o.columnHeaderText,o.columnHeaderText, " : "
 		if value in self.appModule.columnID : value =""
 		# if value in self.columnID(): value =""
@@ -118,7 +118,7 @@ class MessageListItemFields(IAccessible):
 			value = self.appModule.regExp_AnnotationResponse.sub (" ",value)
 		if field in ("receivedCol","dateCol") : value = utis.formatDateTime(value)  
 		if field =="threadCol":
-			value = _(u"Les fil de discussion sont {state}").format (state = (u"Affichée",u"Masquée")[self.role == controlTypes.Role.TABLEROW])
+			value = _("Threads are {state}").format (state = (u"Affichée",u"Masquée")[self.role == controlTypes.Role.TABLEROW])
 			columnHeaderText, add_doublePoint ="",""
 		elif field =="junkStatusCol":value ={"0":"acceptable","100":u"indésirable"}.get (value, "acceptable ");columnHeaderText="status "
 		elif field == "statusCol" and value =="":
@@ -135,7 +135,7 @@ class MessageListItemFields(IAccessible):
 		if value :
 			s =u"{columnHeaderText} {value}".format (columnHeaderText = columnHeaderText, value= value)
 		else:
-			s= _("Pas de {columnHeaderText}").format (columnHeaderText= columnHeaderText)
+			s= _("No No {columnHeaderText}").format (columnHeaderText= columnHeaderText)
 		o= self
 		while o and not "id" in o.IA2Attributes.keys () :o=o.container
 		o=o.firstChild.getChild (index)
@@ -155,16 +155,16 @@ class MessageListItemFields(IAccessible):
 			return message (s)
 		if  self.chrono :self.chrono.Stop ()
 		self.chrono =CallLater (150,self.copyOrSpell, columnHeaderText_original,value, lastScriptRepeatCount )
-	script_readField.__doc__ = _("Lire les entêtes des colonnes dans la fenêtre principale")
+	script_readField.__doc__ = _("Read column headers in main window")
 	script_readField.category=sharedVars.scriptCategory
 
 	def copyOrSpell (self,columnHeaderText_original , value, lastScriptRepeatCount ):
 		if lastScriptRepeatCount ==1 :speakSpelling (value)
 		else:
 			if api.copyToClip  (utis._unicode (value)): 
-				message (_("%s copié dans le presse papier ") % columnHeaderText_original)
+				message (_("%s copied to clipboard ") % columnHeaderText_original)
 			else:
-				message (_("le champ %s n'a pas pu être copié dans le presse papier ") % columnHeaderText_original)
+				message (_("field %s could not be copied to clipboard") % columnHeaderText_original)
 
 	def attachments (self, value, repeats):
 		if utis.getMessageHeadersFromFG(False) :

@@ -1,11 +1,13 @@
-;@echo off
+@echo off
 title Build Thhunderbird+ add-on
 
 
 rem if exist .\addon\buildVars.py (
 rem 	copy .\addon\buildVars.py .
 rem 	)
+ECHO COPY DOC_EN
 call copy-doc-en.cmd
+ECHO CONSTRUCT
 call scons -s
 SET /P PR=Press Enter to continue...
 ren *.nvda-addon *.nvda-addonTMP

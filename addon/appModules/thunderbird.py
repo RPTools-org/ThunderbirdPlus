@@ -73,8 +73,8 @@ class AppModule(thunderbird.AppModule):
 		#self.curFrame = "messengerWindow"
 		self.TTActivated = False
 		self.needReading = False
-		sharedVars.initSettingsMenu(self) # utiliser ensuite sharedVars.oSettings.*
-		self.regExp_date =compile ("^(\d\d/\d\d/\d{4} \d\d:\d\d|\d\d:\d\d)$")
+		sharedVars.initSettingsMenu(self) # then use  sharedVars.oSettings.*
+		sharedVars.initQuoteNav() # then use  sharedVars.oQuoteNav.*		self.regExp_date =compile ("^(\d\d/\d\d/\d{4} \d\d:\d\d|\d\d:\d\d)$")
 		self.regExp_nameListGroup, self.regExp_AnnotationResponse, self.regExp_mailAddress  =compile ("\[.*\]|\{.*\}"), compile ("re[ ]*:[ ]", IGNORECASE), compile ("\S+?@\S+?\.\S+")
 		# self.regExp_listGroupName = compile ("\[(.*)\]") # |\{?*\}") # first occurrence of the list group name
 		self.regExp_removeMultiBlank =compile (" {2,}")
@@ -117,11 +117,13 @@ class AppModule(thunderbird.AppModule):
 		if role in (controlTypes.Role.WINDOW, controlTypes.Role.DIALOG, controlTypes.Role.FRAME) :
 			if sharedVars.debug : sharedVars.log(obj, "frame courant : " + sharedVars.curFrame)
 
-		# traitement des des frames
+		# traitement des  frames
 		#objID = utis.getIA2Attribute(obj)
 		if sharedVars.curFrame == "messengerWindow" :
+			# change for oQuoteNav
 			if  role == controlTypes.Role.DOCUMENT and controlTypes.State.READONLY in obj.states  and controlTypes.State.FOCUSED in obj.states: 
 				if sharedVars.curTab in ("main", "message") :
+					sharedVars.curSubject = obj.name
 					obj.name = ""
 					return
 			if sharedVars.curTab == "main" :
@@ -129,7 +131,7 @@ class AppModule(thunderbird.AppModule):
 				# TB 102+ : no more IA2Attrbutes nor window class
 				if role == controlTypes.Role.CHECKMENUITEM : # removed for menus optimizations -> in (controlTypes.Role.CHECKMENUITEM, controlTypes.Role.POPUPMENU) : # not useful here controlTypes.Role.MENUITEM, 
 					o = obj.parent.parent
-					if o and _("Choisir les col")  in str(o.name) :
+					if o and _("Select columns to")  in str(o.name) :
 						# beep(700, 20)
 						clsList.insert (0,messengerWindow.columnManager.ChooseColumns)
 
@@ -192,7 +194,7 @@ class AppModule(thunderbird.AppModule):
 			if qfb:
 				setattr(obj, "pointedObj", None)
 				#TRANSLATORS: additional description for the search field
-				obj.description = _("(Appuyez sur flèche bas pour afficher plus d'options)")
+				obj.description = _("(Press down arrow to display more options)")
 				clsList.insert(0, SearchBox)
 		# end of choose overlay
 
@@ -216,13 +218,13 @@ class AppModule(thunderbird.AppModule):
 		# return
 		# if obj.role ==  controlTypes.Role.FRAME :
 			# nm = str(obj.name)
-			# if nm.startswith(_(u"Rédaction")) : return
+			# if nm.startswith(_("Rédaction")) : return
 			# if nm  == self.prevTitle : obj.name = self.prevTitle =""
 			# else : self.prevTitle = nm
 		# return
 		# # if sharedVars.curFrame == "1messageWindow" and  obj.role in (controlTypes.Role.WINDOW, controlTypes.Role.APPLICATION, controlTypes.Role.FRAME) :  # , controlTypes.Role.DOCUMENT) : 
 			# # if 		hasattr(obj, "name") : 
-				# # if  _(u"Rédaction")  in obj.name : return # self.prevTitle = "in"
+				# # if  _("Rédaction")  in obj.name : return # self.prevTitle = "in"
 				# # if obj.name == self.prevTitle : obj.name = ""
 				# # else : self.prevTitle = obj.name
 				# # # obj.name = str(obj.role)
@@ -239,14 +241,14 @@ class AppModule(thunderbird.AppModule):
 		if sharedVars.oSettings.getOption("messengerWindow", "WithoutAutoRead") :
 			ui.message(utis.cleanedWinTitle(self)) 
 		else :
-			messengerWindow.document.readDoc(obj, utis.cleanedWinTitle(self) )
+			sharedVars.oQuoteNav.readMail(obj, False) # messengerWindow.document.readDoc(obj, utis.cleanedWinTitle(self) )
 
 	def focus1message(self, obj) :
 		# speech.cancelSpeech()
 		o = api.getFocusObject()
 		if o.role == controlTypes.Role.DOCUMENT :
 			beep(440, 30)
-			messengerWindow.document.readDoc(o, _("sujet")) # o.name)
+			messengerWindow.document.readDoc(o, _("Subject")) # o.name)
 		else :
 			ui.message(obj.name + ", " + str(o.name))
 		# ui.message(str(o.role))
@@ -303,10 +305,17 @@ class AppModule(thunderbird.AppModule):
 			if  obj.role ==  controlTypes.Role.DOCUMENT : 
 				obj.name = ""
 				wx.CallLater(sharedVars.delayReadWnd, self.read1Message, obj)
-			# elif  obj.role in (controlTypes.Role.FRAME, controlTypes.Role.WINDOW, controlTypes.Role.APPLICATION) : 			obj.name = ""
+			elif  obj.role in (controlTypes.Role.FRAME, controlTypes.Role.WINDOW, controlTypes.Role.APPLICATION) : 			obj.name = ""
 		try : nextHandler()
 		except : return
 
+	def event_loseFocus(self,obj,nextHandler):
+		# sharedVars.log(obj, "loseFocus :")
+		if  obj.role == controlTypes.Role.DOCUMENT and controlTypes.State.READONLY not in obj.states :
+			sharedVars.oEditing = obj
+			# sharedVars.log(sharedVars.oEditing, "loseFocus  editingDoc:")
+		nextHandler()
+		
 	def event_focusEntered (self,obj,nextHandler):
 		role, objID  = obj.role, utis.getIA2Attribute (obj)  
 		# sharedVars.log(obj, " event focusEntered , " + sharedVars.curFrame)
@@ -380,12 +389,12 @@ class AppModule(thunderbird.AppModule):
 			#print("ui.message alerte : " + msg)
 			#print (u"évén alerte : " + msg)
 			#Translators: alert : this is a draft
-			if _("brouillon") in msg :
+			if _("draft") in msg :
 				return
 				#Translator:  alert : Reply to sub thread. Occurs after   pressed control+r on collapsed thread with severa messages.
-			elif _("réponses au sous-fil de di, ") in msg :  
+			elif _("replies to the sub-thread,") in msg :  
 				#Translators: Close button of the alert in TB
-				oBtn = findButtonByName(obj, _("Fermer"))
+				oBtn = findButtonByName(obj, _("Close"))
 				if oBtn :
 					close = True
 					#if sharedVars.oSettings.getOption("messengerWindow", "withoutReceipt") :
@@ -396,21 +405,21 @@ class AppModule(thunderbird.AppModule):
 					else :
 						wx.CallLater (30, focusAlert, msg, oBtn)
 			#Translators: 2022-12-12 alert X @gmail.com has asked to be notified when you read this message.
-			elif _("notification quand") in msg :  # demande accusé réception
+			elif _("notified when you") in msg :  # demande accusé réception
 				if sharedVars.oSettings.getOption("messengerWindow", "withoutReceipt") :
 					return
 					#Translators:  Ignore button in alert in TB
-				oBtn = findButtonByName(obj, _("Ignorer"))
+				oBtn = findButtonByName(obj, _("Ignore"))
 				if oBtn :
 					wx.CallLater (30, focusAlert, msg, oBtn)
 				nextHandler()
 				return
 				#Translators: alert : Thunderbird thinks this message is fraudulent
-			elif _("ird pense que") in msg : # indésirable
+			elif _("bird thinks this message is Junk") in msg : # indésirable
 				beep (200, 2)
 				return
 				#Translators: alert : remote content 
-			elif _("contenu distant") in msg :
+			elif _("remote content") in msg :
 				# beep(120, 70)
 				return
 				# désact 2022-09-02 cette alerte s'affiche parfois quand html simple activé et contenu distant désactivé dans paramètres de TB
@@ -499,7 +508,7 @@ class AppModule(thunderbird.AppModule):
 				return KeyboardInputGesture.fromName ("shift+f6").send () 
 		# quick filter bar edit
 		if role==controlTypes.Role.EDITABLETEXT and o.parent.role == controlTypes.Role.PROPERTYPAGE :
-			if o.value is not None : ui.message(_(u"Mot-clé supprimé."))
+			if o.value is not None : ui.message(_("Keyword removed."))
 			gesture.send()
 			return 
 			# quick filter bar edit
@@ -521,7 +530,7 @@ class AppModule(thunderbird.AppModule):
 
 	def script_sharedAltEnd(self, gesture) :
 		msg = utis.getStatusBarText()
-		if not msg : msg = _("Ligne d'état sans données")
+		if not msg : msg = _("Status line without data")
 		if sharedVars.curTab != "main" : 
 			return ui.message(msg)
 
@@ -530,7 +539,7 @@ class AppModule(thunderbird.AppModule):
 		if fo.role==controlTypes.Role.EDITABLETEXT and fo.parent.role == controlTypes.Role.PROPERTYPAGE :
 			msg = ""
 		sayFilterInfos(self, sbar=msg)
-	script_sharedAltEnd.__doc__ = _("Annonce la ligne d'état abrégée et les informations de filtrage de messages s'il y a lieu")
+	script_sharedAltEnd.__doc__ = _("Announces abbreviated status line and message filtering information if applicable")
 	script_sharedAltEnd.category = sharedVars.scriptCategory
 
 	def script_sharedCtrlTab(self, gesture) :
@@ -598,7 +607,7 @@ class AppModule(thunderbird.AppModule):
 			# return KeyboardInputGesture.fromName ("control+r").send()
 		# beep(440, 20)
 		_timer =  wx.CallLater(300, messengerWindow.messageListItem.smartReply, msgHeader, repeats)
-	script_sharedCtrlR.__doc__ = _("Smart reply pour répondre à un destinataire ou à une liste de diffusion")
+	script_sharedCtrlR.__doc__ = _("Smart reply to reply to a recipient or mailing list")
 	script_sharedCtrlR.category = sharedVars.scriptCategory
 
 	def  script_sharedAltEqual(self, gesture) : # native context menu of active tab
@@ -613,7 +622,7 @@ class AppModule(thunderbird.AppModule):
 				lang = utis.getLang()
 				helpPath=os.path.join(curAddon.path, "doc", lang, "Control Backspace conflict.txt")
 				# os.startfile (helpPath)
-				utis.showTextFile(helpPath, _("Conflit de raccourci contrôle+Retour Arrière"))
+				utis.showTextFile(helpPath, _("Control+Backspace shortcut conflict"))
 				return	
 			if gesture.mainKeyName == "w" : return gesture.send()
 		elif sharedVars.curFrame == "messengerWindow" :
@@ -626,7 +635,7 @@ class AppModule(thunderbird.AppModule):
 			wx.CallLater(150, setCurTab, self)
 		else :
 			KeyboardInputGesture.fromName("control+w").send()
-	script_sendCtrlF4.__doc__ = _("Envoie Control+F4 à la fenêtre courante.")
+	script_sendCtrlF4.__doc__ = _("Sends Control+F4 to the current window.")
 	script_sendCtrlF4.category=sharedVars.scriptCategory
 
 	def script_sharedAltN(self, gesture) :
@@ -639,7 +648,7 @@ class AppModule(thunderbird.AppModule):
 		# ui.message("Recalculé, curFrame : {}, curTab : {} ".format(sharedVars.curFrame, sharedVars.curTab))
 		# return
 		if sharedVars.curTab == "main" and not utis.getPreviewPane() :			
-			ui.message(_("Le volet des entêtes n'est pas affiché. Veuillez presser F8 puis réessayer"))
+			ui.message(_("The headers pane is not displayed. Please press F8 then try again"))
 			return 
 		fo = globalVars.focusObject # api.getFocusObject()
 		if hasattr(fo, "script_readAttachField") : 
@@ -663,7 +672,7 @@ class AppModule(thunderbird.AppModule):
 			#if sharedVars.debug : sharedVars.log(msgHeader, " messsageHeader ")
 			if not msgHeader :
 				if messengerWindow.messageListItem.getTreeID(globalVars.focusObject) != "threadTree" :
-					return ui.message(_("Le volet des entêtes ne contient pas d'informations ou est absent"))
+					return ui.message(_("Header pane contains no information or is missing"))
 			if repeats == 1 : 
 				#beep(440, 20)
 				delay = 300 # affichage dialogue Copier dans le presse-papiers
@@ -675,7 +684,7 @@ class AppModule(thunderbird.AppModule):
 		else : #autres frames
 			ui.message("Context error")
 			# beep(440, 20)
-	script_sharedAltN.__doc__ = _("Dans la fenêtre principale,  1 appui : Alt+1  à 8: lit l'entête  du message, Alt+9 annonce le nombre de pièces jointes, 2 appuis : affiche l'entête dans une boîte d'édition ou pour Alt+9, atteint la liste des pièces jointes, 3 appuis : atteint l'entête dans la zone des entêtes. Dans la fenêtre de rédaction, Alt1 à 4, lit les entêtes,  2 appuis atteint l'entête.")
+	script_sharedAltN.__doc__ = _("In the main window, 1 press: Alt+1 to 8: reads the message header, Alt+9 announces the number of attachments, 2 presses: displays the header in an edit box or for Alt+9, reaches the list of attachments, 3 presses: reaches the header in the headers area. In the Write window, Alt1 to 4, reads the headers, 2 presses reaches the header.")
 	script_sharedAltN.category=sharedVars.scriptCategory
 
 	def script_sharedAltArrow(self, gesture) :
@@ -700,48 +709,64 @@ class AppModule(thunderbird.AppModule):
 				elif mainKey == "upArrow" and hasattr(o, "script_altUp") : o.script_altUp(gesture) 
 			elif parID== "threadTree" :
 				if mainKey in "upArrow,downArrow" : 
-					try : messengerWindow.messageListItem.MessageListItem.script_readPreview(o, gesture)
-					except :  messengerWindow.messageListItem.readPreview2(o, gesture)
+					messengerWindow.messageListItem.readPreview2(o, gesture)
 				elif mainKey == "rightArrow" : wx.CallAfter(messengerWindow.messageListItem.gotoUnread, o, gesture)  
 			elif role in  (controlTypes.Role.DOCUMENT, controlTypes.Role.LINK) :
-				if mainKey in "upArrow,downArrow" : messengerWindow.document.Document.script_readDocument(o, gesture)
+				if mainKey == "downArrow" : sharedVars.oQuoteNav.readMail(o,False)
+				elif mainKey == "upArrow" : sharedVars.oQuoteNav.readMail(o,True) # with quote list
 		elif role == controlTypes.Role.DOCUMENT  and sharedVars.curFrame == "msgcomposeWindow" :
-			if mainKey in "upArrow,downArrow" : messengerWindow.document.Document.script_readDocument(o, gesture)
+			if mainKey == "downArrow" : sharedVars.oQuoteNav.readMail(o,False)
+			elif mainKey == "upArrow" : sharedVars.oQuoteNav.readMail(o,True) # with quote list
 		elif  hasattr(o, "script_reportFocus") : # role == controlTypes.Role.EDITABLETEXT and sharedVars.curFrame == "spellCheckDlg" :
 			return o.script_reportFocus(gesture)
 		return gesture.send() 
 
 	def script_sharedF4(self, gesture) :
-		# lecture document 
+		# document or preview reading
+		if sharedVars.curTab not in  ("main", "message", "comp") :
+			return gesture.send()
+
 		o = api.getFocusObject() # globalVars.focusObject api.getFocusObject()
 		role = o.role
-
-		if sharedVars.curTab in  ("main", "message") :
-			if role not in (controlTypes.Role.TREEVIEWITEM , controlTypes.Role.TABLEROW, controlTypes.Role.DOCUMENT) : return gesture.send()
-
+		if role in  (controlTypes.Role.DOCUMENT, controlTypes.Role.LINK) :
+			beep(440, 20)
+			return sharedVars.oQuoteNav.readMail(o, ("shift" in gesture.modifierNames))
+		if role  in (controlTypes.Role.TREEVIEWITEM , controlTypes.Role.TABLEROW) :
 			parID = str(utis.getIA2Attribute(o.parent))
 			#if sharedVars.debug : sharedVars.log(o, "altArrow " + mainKey)
 			if parID== "folderTree" : 
 				return gesture.send()
 			elif parID== "threadTree" :
 				try : 
-					messengerWindow.messageListItem.MessageListItem.script_readPreview(o, gesture)
+					return messengerWindow.messageListItem.MessageListItem.script_readPreview(o, gesture)
 				except : 
 					api.setFocusObject(o)					
-					messengerWindow.messageListItem.readPreview2(o, gesture)
-					return # ui.message(str(o.role))
-			elif role in  (controlTypes.Role.DOCUMENT, controlTypes.Role.LINK) :
-				messengerWindow.document.Document.script_readDocument(o, gesture)
-		elif role == controlTypes.Role.DOCUMENT  and sharedVars.curFrame == "msgcomposeWindow" :
-			messengerWindow.document.Document.script_readDocument(o, gesture)
-		return gesture.send() 
-	script_sharedF4.__doc__ = _("Lecture filtrée du  document dans  le volet d'aperçu, l'onglet de lecture, la fenêtre de lecture ou de rédaction, depuis la liste de messages ou le document.")
+					return messengerWindow.messageListItem.readPreview2(o, gesture)
+
+		# if sharedVars.curTab in  ("main", "message") :
+			# if role not in (controlTypes.Role.TREEVIEWITEM , controlTypes.Role.TABLEROW, controlTypes.Role.DOCUMENT) : return gesture.send()
+
+			# parID = str(utis.getIA2Attribute(o.parent))
+			# if parID== "folderTree" : 
+				# return gesture.send()
+			# elif parID== "threadTree" :
+				# try : 
+					# messengerWindow.messageListItem.MessageListItem.script_readPreview(o, gesture)
+				# except : 
+					# api.setFocusObject(o)					
+					# messengerWindow.messageListItem.readPreview2(o, gesture)
+					# return # ui.message(str(o.role))
+			# elif role in  (controlTypes.Role.DOCUMENT, controlTypes.Role.LINK) :
+				# beep(440, 20)
+				# sharedVars.oQuoteNav.readMail(o, ("shift" in gesture.modifierNames))
+		# return gesture.send() 
+	script_sharedF4.__doc__ = _("Filtered reading of the document in the preview pane, reading tab, reading or Write window, from the list of messages or the document.")
 	script_sharedF4.category = sharedVars.scriptCategory
 
 	def script_sharedAltPageDown(self, gesture) :
 		#beep(440, 20)
 		if sharedVars.curTab == "main" and not utis.getPreviewPane() :
-			return ui.message(_("Le volet des entêtes n'est pas affiché. Veuillez presser F8 puis réessayer"))
+			return ui.message(_("The headers pane is not displayed. Please press F8 then try again"))
 
 		fo = globalVars.focusObject
 		if sharedVars.curTab in ("main", "message") :
@@ -749,6 +774,23 @@ class AppModule(thunderbird.AppModule):
 			else : repeats = getLastScriptRepeatCount ()
 			#messengerWindow.messageListItem.openListAttachment(fo, gesture)
 			utis.openListAttachment2(fo, repeats)
+
+	def script_sharedWinArrow(self, gesture) :
+		# quote navigator
+		#beep(440, 5)
+		mainKey = gesture.mainKeyName
+		if not sharedVars.oQuoteNav :
+			return ui.message(_("Press alt+upArrow before navigating through quotes in a message."))
+		if mainKey == "upArrow" :
+			sharedVars.oQuoteNav.skip(-1)
+		elif mainKey == "downArrow" :
+			sharedVars.oQuoteNav.skip()
+		if mainKey == "leftArrow" :
+			sharedVars.oQuoteNav.skipQuote(-1)
+		elif mainKey == "rightArrow" :
+			sharedVars.oQuoteNav.skipQuote()
+	script_sharedWinArrow.__doc__ = _("Navigates through quotes in a message")
+	script_sharedWinArrow.category = sharedVars.scriptCategory
 
 	def script_showContextMenu(self, gesture) :
 		global _timer
@@ -778,7 +820,7 @@ class AppModule(thunderbird.AppModule):
 			return
 		# elif sharedVars.curFrame == "addressbookWindow" :
 			# globalVars.focusObject.script_showMenu(gesture)
-	script_showContextMenu.__doc__ = _("Affiche le menu contextuel des actions  disponibles dans les différentes fenêtres de Thunderbird.")
+	script_showContextMenu.__doc__ = _("Shows the context menu of actions available in the various Thunderbird windows.")
 	script_showContextMenu.category =sharedVars.scriptCategory
 
 	def script_showOptionMenu(self, gesture) :
@@ -804,7 +846,7 @@ class AppModule(thunderbird.AppModule):
 					_timer = wx.CallLater(200, sharedVars.oSettings.showOptionsMenu, sharedVars.curFrame) # menu dépendant du frame acti
 			return
 
-	script_showOptionMenu.__doc__ = _("Affiche le menu contextuel des options de Thunderbird+")
+	script_showOptionMenu.__doc__ = _("Shows the Options context menu of Thunderbird+")
 	script_showOptionMenu.category = sharedVars.scriptCategory
 
 	def script_sharedAltC(self,gesture):
@@ -815,7 +857,7 @@ class AppModule(thunderbird.AppModule):
 			# fo = globalVars.focusObject
 			#if hasattr(fo, "script_setFocus_objMain") : return fo.script_setFocus_objMain(gesture)
 		return gesture.send()
-	script_sharedAltC.__doc__ = _("Agencement des colonnes dans la liste de messages.")
+	script_sharedAltC.__doc__ = _("Column layout in the message list.")
 	script_sharedAltC.category = sharedVars.scriptCategory
 
 	def script_sharedAltD(self,gesture):
@@ -823,7 +865,7 @@ class AppModule(thunderbird.AppModule):
 			wx.CallLater(10, sharedVars.oSettings.editDelay)
 			return
 		return gesture.send()
-	script_sharedAltD.__doc__ = _("Affiche le dialogue d'édition du délai avant lecture du message de la fenêtre séparée de lecture.")
+	script_sharedAltD.__doc__ = _("Shows the dialog for editing the delay before reading the message of the separate reading window.")
 	script_sharedAltD.category = sharedVars.scriptCategory
 
 	def script_previewPane(self, gesture) :
@@ -832,36 +874,33 @@ class AppModule(thunderbird.AppModule):
 		KeyboardInputGesture.fromName ("f8").send()
 		exp =  utis.getMessageHeadersFromFG(reportNotOpen=False)
 		if exp :
-			ui.message(_("Présent : volet des entêtes et du message."))
+			ui.message(_("Present: Headers and message pane."))
 		else :
-			ui.message(_("Absent : volet des entêtes et du message."))
-	script_previewPane.__doc__ = _("Affiche ou masque le volet des entêtes et d'aperçu du message.")
+			ui.message(_("Missing : headers and message pane."))
+	script_previewPane.__doc__ = _("Turn on or off the preview messages panel")
 	script_previewPane.category = sharedVars.scriptCategory
 
 	def script_showHelp(self, gesture) :
 		utis.showHelp()
-	script_showHelp.__doc__ = _("Affiche l'aide de l'extension dans une page web")
+	script_showHelp.__doc__ = _("Shows the add-on help in a web page")
 	script_showHelp.category = sharedVars.scriptCategory
 
 	def script_displayDebug(self, gesture) :
-		p = r"C:\Users\user\AppData\Roaming\nvda\addons\filezilla.pendingInstall"
-		oldVer = getOldVersion("filezilla", p)
-		sharedVars.log(None, "filezilla oldVersion : "  + oldVer)
 		# utis.listGestFromScanCodes()
 		# return
 		# winVerAlert()
 		if sharedVars.curFrame == "messengerWindow" :
 			utis.isChichi()
 			sharedVars.debugLog += "\nChichi : " + str(sharedVars.chichi)
-		sharedVars.debugLog += "\nObjLooping : " + str(sharedVars.objLooping) + "\n"
-		sharedVars.debugLog += "\nvirtualSpellChk : " + str(sharedVars.virtualSpellChk) + "\n"
+		# sharedVars.debugLog += "\nObjLooping : " + str(sharedVars.objLooping) + "\n"
+		# sharedVars.debugLog += "\nvirtualSpellChk : " + str(sharedVars.virtualSpellChk) + "\n"
 		debugShow(self, False)
 
 	def script_initDebug(self, gesture) :
 		sharedVars.testMode = (not sharedVars.testMode)
 		mode = ("Activation" if sharedVars.testMode else u"Désactivation")
 		sharedVars.debugLog = "TestMode = " + str(sharedVars.testMode) + "\n"
-		ui.message(mode + _("du mode de test"))
+		ui.message(mode + _("of the test mode"))
 	
 	__gestures = {
 		#"kb(desktop):NVDA+End": "statusBar",
@@ -876,11 +915,16 @@ class AppModule(thunderbird.AppModule):
 		"kb:alt+8": "sharedAltN",
 		"kb:alt+9": "sharedAltPageDown", # attachments
 		"kb:alt+pagedown":"sharedAltPageDown",
-		"kb:alt+leftarrow": "sharedAltArrow",
-		"kb:alt+rightarrow": "sharedAltArrow",
-		"kb:alt+downarrow": "sharedAltArrow",
-		"kb:alt+uparrow": "sharedAltArrow",
+		"kb:alt+leftArrow": "sharedAltArrow",
+		"kb:alt+rightArrow": "sharedAltArrow",
+		"kb:alt+downArrow": "sharedAltArrow",
+		"kb:alt+shift+downArrow": "sharedAltArrow",
+		"kb:alt+upArrow": "sharedAltArrow",
 		"kb:f4": "sharedF4",
+		"kb:windows+downarrow": "sharedWinArrow",
+		"kb:windows+uparrow": "sharedWinArrow",
+		"kb:windows+leftarrow": "sharedWinArrow",
+		"kb:windows+rightarrow": "sharedWinArrow",
 		"kb:shift+f4": "sharedF4",
 		"kb:alt+End": "sharedAltEnd",
 		utis.gestureFromScanCode(12, "kb:alt+") : "sharedAltEnd", # 2th  key at the left  of backspace
@@ -905,8 +949,8 @@ class AppModule(thunderbird.AppModule):
 		"kb:control+backspace": "sendCtrlF4",
 		utis.gestureFromScanCode(41, "kb:") :"showContextMenu", # 41 is the scancode of the key above Tab
 		utis.gestureFromScanCode(41, "kb:shift+") :"showOptionMenu", 
-		# _(u"kb:shift+control+²") :"showOptionMenu",
-		# _(u"kb:control+²") :"showContextMenu",
+		# _("kb:shift+control+²") :"showOptionMenu",
+		# _("kb:control+²") :"showContextMenu",
 		"kb:alt+c":"sharedAltC",
 		"kb:alt+d":"sharedAltD",
 		"kb:f8":"previewPane",
@@ -929,7 +973,7 @@ class SearchBox(IAccessible):
 			if self.pointedObj.IA2Attributes["tag"] == "toolbarbutton":
 				isToolBarButton = True
 				if "qfb-qs-" in self.pointedObj.IA2Attributes["id"]:
-					self.pointedObj.name = _("Rechercher dans ")+self.pointedObj.name
+					self.pointedObj.name = _("Search in ") +self.pointedObj.name
 		except (KeyError, AttributeError):
 			pass
 		while not isToolBarButton :
@@ -938,12 +982,12 @@ class SearchBox(IAccessible):
 				if self.pointedObj.IA2Attributes["tag"] == "toolbarbutton":
 					isToolBarButton = True
 					if "qfb-qs-" in self.pointedObj.IA2Attributes["id"]:
-						self.pointedObj.name = _("Rechercher dans ")+self.pointedObj.name
+						self.pointedObj.name = _("Search in ")+self.pointedObj.name
 			except:
 				pass
 			if not self.pointedObj or self.pointedObj.role == controlTypes.Role.TREEVIEW:
 				#TRANSLATORS: message spoken when leaving the search box in Thunderbird
-				ui.message(_('Sorti du champ de recherche'))
+				ui.message(_("Leaving search box"))
 				self.pointedObj = self.parent.parent.firstChild
 				gesture.send()
 				return
@@ -962,7 +1006,7 @@ class SearchBox(IAccessible):
 			if self.pointedObj.IA2Attributes["tag"] == "toolbarbutton":
 				isToolBarButton = True
 				if "qfb-qs-" in self.pointedObj.IA2Attributes["id"]:
-					self.pointedObj.name = _("Rechercher dans ")+self.pointedObj.name
+					self.pointedObj.name = _("Search in ")+self.pointedObj.name
 		except (KeyError, AttributeError):
 			pass
 		while not isToolBarButton :
@@ -972,7 +1016,7 @@ class SearchBox(IAccessible):
 					isToolBarButton = True
 					if "qfb-qs-" in self.pointedObj.IA2Attributes["id"]:
 						#TRANSLATORS: Thunderbird search box name
-						self.pointedObj.name = _("Rechercher dans ")+self.pointedObj.name
+						self.pointedObj.name = _("Search in ")+self.pointedObj.name
 			except KeyError:
 				pass
 			except AttributeError:
@@ -990,10 +1034,10 @@ class SearchBox(IAccessible):
 		if self.pointedObj:
 			if controlTypes.State.PRESSED in self.pointedObj.states:
 				#TRANSLATORS: a button has been unchecked
-				ui.message(_("décocher"))
+				ui.message(_("Uncheck"))
 			else:
 				#TRANSLATORS: a button has been checked
-				ui.message(_("cocher"))
+				ui.message(_("Check"))
 			ui.message(self.pointedObj.name)
 			api.moveMouseToNVDAObject(self.pointedObj)
 			api.setMouseObject(self.pointedObj)
@@ -1003,10 +1047,10 @@ class SearchBox(IAccessible):
 	def readCheckButton(self):
 		if controlTypes.State.PRESSED in self.pointedObj.states:
 			#TRANSLATORS: a button is checked
-			state = _("coché")
+			state = _("checked")
 		else:
 			#TRANSLATORS: a button is not checked
-			state = _("non coché")
+			state = _("not checked")
 		if self.pointedObj.description:
 			ui.message("%s, %s, %s" % (self.pointedObj.name, state, self.pointedObj.description))
 		else:
@@ -1115,7 +1159,7 @@ def debugShow(appMod, auto) :
 	if auto :
 		if globalVars.TBStep > 2 : return
 
-	ui.browseableMessage (message = sharedVars.debugLog, title = _("Journal TB+4"), isHtml = False)
+	ui.browseableMessage (message = sharedVars.debugLog, title = _("TB+4 log"), isHtml = False)
 	if not auto : 
 		sharedVars.debugLog = ""
 
@@ -1173,7 +1217,7 @@ def focusPage(appMod, frame=None, inStartup=False) :
 		utis.sendKey("tab", 4)
 	elif sharedVars.curTab == "sp:preferences" and fo.role == controlTypes.Role.EDITABLETEXT :
 		speech.cancelSpeech()
-		wx.CallLater(600, ui.message, _("Préférences"))  # il faudrait lire la barre de titre
+		wx.CallLater(600, ui.message, _("Settings"))  # il faudrait lire la barre de titre
 		utis.sendKey("shift+tab", 4)
 	elif sharedVars.curTab == "sp:addressbook" and fo.role == controlTypes.Role.DOCUMENT:
 		speech.cancelSpeech()
@@ -1340,7 +1384,7 @@ def buildRowName2(appMod, oRow):
 			# beep(700, 2)
 			# sharedVars.log(oRow, "* lenColID : {0}, LenCells : {1}, ColID : {2}, Name : {3}".format(lenColID, lenCells, str(appMod.columnID), oRow.name))
 		#TRANSLATORS: "Réduit " stands for a collapsed branch in the  tree  in the message panel. In portugese : recolhido
-		if controlTypes.State.COLLAPSED in oRow.states : l = _("Réduit ")
+		if controlTypes.State.COLLAPSED in oRow.states : l = _("Collapsed")
 		else : l = ""
 		i = 0
 		try : o = oRow.firstChild
@@ -1353,16 +1397,16 @@ def buildRowName2(appMod, oRow):
 			# # if sharedVars.testMode :
 				# message ("colonne : " + str(ID) + ", chaine  : " + str(s))
 			if ID =="statusCol" :  
-				if s=="statusCol " : s=_("Non lu ")
-				elif s==_("Lu ") : s=" "
+				if s=="statusCol " : s=_("Unread ")
+				elif s==_("Read ") : s=" "
 			elif ID == "attachmentCol" :
-				if s != " " : s = _("PJ") + colSepar
+				if s != " " : s = _("attachment") + colSepar
 			elif ID =="junkStatusCol" :
-				if s=="100 "  and junkStatusCol: s = _(" indésirable ")
+				if s=="100 "  and junkStatusCol: s = _("Junk")
 				elif s=="100 "  and  not junkStatusCol: s = " "
 				elif s=="0 ": s=" "
 			elif ID == "subjectCol" :
-				if  ID in s : s = _("pas de sujet")
+				if  ID in s : s = _("No subject")
 				s=removeResponseMention (appMod, s,1).strip (" -_*#").replace(" - "," ")
 
 				if sharedVars.oSettings.regex_removeInSubject is not None : 
@@ -1375,7 +1419,8 @@ def buildRowName2(appMod, oRow):
 					s= appMod.regExp_nameListGroup.sub (" ",s)
 					if  not listGroupName :
 						s =  grp + " : " +  s 
-
+				# for oQuoteNav = s
+				sharedVars.curSubject = s
 				#  v4.0.1 add separator 
 				s = s + colSepar
 			elif ID in ("dateCol","receivedCol") :
@@ -1386,7 +1431,7 @@ def buildRowName2(appMod, oRow):
 					s = appMod.regExp_removeSymbols.sub (" ",s) 
 					# v4.0.1 add col separator
 				s =s.strip() + colSepar
-			elif id =="junkStatusCol"  and s== "100 " and junkStatusCol : s = _(" indésirable ")
+			elif id =="junkStatusCol"  and s== "100 " and junkStatusCol : s = _("Junk")
 			l +=  s + " "
 			i += 1
 			o = o.next
@@ -1400,7 +1445,7 @@ def removeResponseMention (appMod,s,mode):
 	s = s.replace(" ", " ") # 2023-04-23 unbrekable space
 	s , n= appMod.regExp_AnnotationResponse.subn(" ",s)
 	if  mode == 1 : # "responseMentionGroup"
-		s=(str (n) if n>1 else "")+(_("Ré ") if n else "")+s
+		s=(str (n) if n>1 else "")+(_("Re ") if n else "")+s
 	elif   mode == 3 : # "messengerWindow", "responseMentionDelColon" 
 		s="Re"*n+" "+s
 	return s 
@@ -1428,12 +1473,12 @@ def sayFilterInfos(appMod, sbar="") :
 	o = utis.findChildByIDRev(o, "tabpanelcontainer") # role grouping
 	o = utis.findChildByID(o,"mailContent") # property page
 	o = utis.findChildByID(o,"qfb-results-label")
-	if not o or not o.name : return ui.message(sbar + _("Pas de filtrage  rapide."))
-	ui.message (sbar + str(o.name) + _(" filtrés"))
+	if not o or not o.name : return ui.message(sbar + _("No quick filter."))
+	ui.message (sbar + str(o.name) + _("filtered"))
 	st= o.next.value
-	if st is None : ui.message (_("Zone de recherche vide. "))
+	if st is None : ui.message (_("Empty search box."))
 	else :
-		ui.message(_("Expression entrée: %s")  %st)
+		ui.message(_("Expression input: %s")  %st)
 		if len(st)>1 :speakSpelling (st) 
 	# otpion buttons
 	o=o.parent.firstChild.next
@@ -1447,9 +1492,9 @@ def sayFilterInfos(appMod, sbar="") :
 		o = o.next 
 		i = i+1
 	if k==0 :
-		ui.message( _("Aucune option  activée. "))
+		ui.message( _("No option enabled."))
 	else :
-		ui.message(_("Les options activées sont: ") + st)		
+		ui.message(_("The enabled options are:") + st)		
 
 def getFilterInfos(appMod) :
 	# fullPath : role FRAME=34| i37, role-GROUPING=56, , IA2ID : tabpanelcontainer | i0, role-PROPERTYPAGE=57, , IA2ID : mailContent | i11, role-EDITABLETEXT=8,  ,  
@@ -1457,12 +1502,12 @@ def getFilterInfos(appMod) :
 	o = utis.findChildByIDRev(o, "tabpanelcontainer") # role grouping
 	o = utis.findChildByID(o,"mailContent") # property page
 	o = utis.findChildByID(o,"qfb-results-label")
-	if not o :  return _("Pas de filtrage  rapide.")
-	t = o.name + _(" filtrés")
+	if not o :  return _("No quick filter.")
+	t = o.name + _("filtered")
 	st= o.next.value
-	if st is None : t += _("Zone de recherche vide. ")
+	if st is None : t += _("Empty search box.")
 	else :
-		t += _("Expression entrée: %s")  %st
+		t += _("Expression input: %s")  %st
 	# otpion buttons
 	o=o.parent.firstChild.next
 	iMax = 20
@@ -1475,9 +1520,9 @@ def getFilterInfos(appMod) :
 		o = o.next 
 		i = i+1
 	if k==0 :
-		t += _("Aucune option  activée. ")
+		t += _("No option enabled.")
 	else :
-		t += _("Les options activées sont: ") + st
+		t += _("The enabled options are:") + st
 	return t
 
 def setDialogID(o,wndClass ) :
@@ -1525,17 +1570,17 @@ def winVerAlert() :
 	# WindowsVersion 22H2 (build 19045.2728)© 
 	# parts = str(currentWinVer).split(".")  
 	currentBuild = currentWinVer.build
-	sharedVars.log(None, "current build : " + str(currentWinVer))
+	# sharedVars.log(None, "current build : " + str(currentWinVer))
 	return
 import addonHandler
 def getOldVersion(addName, installPth) :
-	sharedVars.log(None, "original installPth : " + installPth)
+	# sharedVars.log(None, "original installPth : " + installPth)
 	# tests if a version is already installed or not
 	# installPth = installPth.strip()
 	if  installPth.endswith(".pendingInstall") :
 		installPth = installPth.replace(".pendingInstall", "")
 		
-	sharedVars.log(None, "changed installPth : " + installPth)
+	# sharedVars.log(None, "changed installPth : " + installPth)
 
 	if  not os.path.exists(installPth + "\\manifest.ini") :
 		return "0.0.0"

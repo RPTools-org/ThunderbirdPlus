@@ -181,6 +181,11 @@ def formatDateTime (d):
 	date, time = date[0].split ("/"), date[1].split (":")
 	date =datetime (int (date[2]), int (date[1]), int (date[0]))
 	return weekDay[date.weekday ()]+" "+date_original+u" à " +formatTime (time)"""
+def wordsMatchWord(words, word) :
+	lst = words.split("|")
+	for e in lst:
+		if e in word : return True
+	return False
 
 def hasTabPanel(frame=None) :
 	try :
@@ -436,7 +441,7 @@ def getStatusBarText() :
 		if o.role == controlTypes.Role.STATUSBAR :
 			break
 		o = o.previous
-	if not o : return _("La barre d'état n'est pas affichée.")
+	if not o : return _("The status bar is not displayed.")
 	o = o.firstChild
 	while o :
 		if o.role != controlTypes.Role.BUTTON :
@@ -535,7 +540,7 @@ def inputBox (label, title, postFunction, startValue=""):
 				wx.CallAfter(postFunction, d.Value)
 			else : 
 				copyToClip(d.Value)
-				message(_("Copié"))
+				message(_("Copied"))
 				sleep(0.4)
 		else :
 			wx.CallAfter(postFunction, "ibCancel")
@@ -559,7 +564,7 @@ def openListAttachment2 (fo, repeat ):
 	# 8 sur 12, name : 1 pièce jointe :, role.LABEL=73, IA2ID : attachmentCount    Chemin : role FRAME=34| i46, role-GROUPING=56, , IA2ID : tabpanelcontainer | i0, role-PROPERTYPAGE=57, , IA2ID : mailContent | i8, role-LABEL=73, , IA2ID : attachmentCount , IA2Attr : explicit-name : true, id : attachmentCount, tag : label, display : inline-block, , Actions : click,  ;
 	o = findChildByIDRev(oPP, "attachmentCount")	
 	if not o :
-		message (_("Pas de pièce jointe."))
+		message (_("No Attachement."))
 		return False
 	# il y a 1 ou plusieurs  PJ
 	message(o.name)
@@ -623,7 +628,7 @@ def showHelp() :
 		helpPath = helpPath.replace("@lg", lang)
 	# message(_("Ouverture de  l'aide dans votre navigateur"))
 	try :  os.startfile (helpPath)
-	except : message(_("Fichier non trouvé : ") + helpPath)
+	except : message(_("File not found") + helpPath)
 	
 def toSupport(tbVersion) :
 	a = "ma" + "il" + "to:"

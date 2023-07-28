@@ -27,7 +27,7 @@ del sys.path[-1]
 translation.initTranslationWithEnglishFallback()
 
 from re import compile,IGNORECASE
-regExp_excludeFolders =compile (_("brouillons|corbeille|\- \("), IGNORECASE)
+regExp_excludeFolders =compile (_("Drafts|Deleted") + "|\- \(", IGNORECASE )
 
 lastSearch = ""
 
@@ -57,11 +57,11 @@ class FolderTreeItem (IAccessible):
 		self.spacePressed = True
 		if unread and  sharedVars.oSettings.getOption("messengerWindow", "TTFirstUnread") :
 			o = self.parent.next # threadTree
-			if not o : 				return message(_("Liste de messages non trouvée."))
+			if not o : 				return message(_("Message list not found."))
 			o = o.getChild(1)
-			if not o : 				return message(_("Liste de messages non trouvée."))
+			if not o : 				return message(_("Message list not found."))
 			fstUnread = False
-			if _("Non lu") in o.name or "statusCol  " in o.name : fstUnread = True
+			if _("Not read") in o.name or "statusCol  " in o.name : fstUnread = True
 			o.setFocus()
 			# sharedVars.log(o, "ThreadTree : ")
 			if not fstUnread : CallLater(20, KeyboardInputGesture.fromName ("n").send )
@@ -70,13 +70,13 @@ class FolderTreeItem (IAccessible):
 			return KeyboardInputGesture.fromName ("n").send ()
 		elif unread and isChichi:
 			o = self.parent.next # threadTree
-			if not o : 				return message(_("Liste de messages non trouvée."))
+			if not o : 				return message(_("Message list not found."))
 			o.setFocus()
 			# # sharedVars.log(o, "ThreadTree : ")
 			CallLater(20, KeyboardInputGesture.fromName ("n").send )
 		elif  not unread and isChichi : 
 			CallLater(20, KeyboardInputGesture.fromName ("alt+f1").send ) # commande chichi
-	script_tviNextUnread.__doc__ = _("sélectionne le premier message non lu dans la liste depuis l'arborescence des dossiers.")
+	script_tviNextUnread.__doc__ = _("selects the first unread message in the list from the folder tree.")
 	script_tviNextUnread.category = sharedVars.scriptCategory
 
 	def script_altDown(self, gesture) :
@@ -123,10 +123,10 @@ class FolderTreeItem (IAccessible):
 
 	def getAccountName(self, ti) :
 		if not ti : return ""
-		if utis.getIA2Attribute(ti,"1", "level") : return _(" compte") # (" compte." if sharedVars.directKeyNav else ", compte.")
+		if utis.getIA2Attribute(ti,"1", "level") : return _("Account") # (" compte." if sharedVars.directKeyNav else ", compte.")
 		while ti :
 			if utis.getIA2Attribute(ti,"1", "level") :
-				return _(" dans ") + ti.name
+				return _(" in ") + ti.name
 			ti = ti.previous
 		return ""
 
@@ -219,10 +219,10 @@ class FolderTreeItem (IAccessible):
 	def script_findFolder(self, gesture) :
 		global lastSearch
 		if "shift" in gesture.modifierNames :
-			utis.inputBox(label= _("mot-clé : "), title= _("Recherche en arrière d'un dossier"), postFunction=self.searchPreviousFolder, startValue=lastSearch)
+			utis.inputBox(label= _("keyword :"), title= _("Search backwards for a folder"), postFunction=self.searchPreviousFolder, startValue=lastSearch)
 		else :
-			utis.inputBox(label= _("mot-clé : "), title= _("Recherche en avant d'un dossier"), postFunction=self.searchNextFolder, startValue=lastSearch)
-	script_findFolder.__doc__ = _("Active le dialogue de recherche par mot-clé dans l'arborescence des dossiers.")
+			utis.inputBox(label= _("keyword :"), title= _("Seek forward a folder"), postFunction=self.searchNextFolder, startValue=lastSearch)
+	script_findFolder.__doc__ = _("Show the keyword search dialog in the folder tree.")
 	script_findFolder.category= sharedVars.scriptCategory
 
 	def searchNextFolder(self, searchStr) :

@@ -70,15 +70,15 @@ class FoldersMessagesList(wx.Dialog):
 	def doGui(self):		
 		panel = self
 		panelSizer = wx.GridBagSizer (6,4)
-		self.taggedObjectsCB = wx.CheckBox(panel, wx.ID_ANY, label =_("Afficher seulement les dossiers avec &non lus"))
+		self.taggedObjectsCB = wx.CheckBox(panel, wx.ID_ANY, label =_("Show only folders with &unread"))
 		self.taggedObjectsCB.SetValue(avecNonLus)   #<<<< False  True
 		panelSizer.Add(self.taggedObjectsCB, pos=(0,0), span= (1,1), flag=wx.EXPAND|wx.LEFT|wx.TOP,border=10)
-		self.rechercheLabel=wx.StaticText(panel, wx.ID_ANY, label= _("Expression de &filtrage : "))
+		self.rechercheLabel=wx.StaticText(panel, wx.ID_ANY, label= _("&Filter expression:"))
 		panelSizer.Add(self.rechercheLabel,pos=(0,1), span= (1,1), flag=wx.EXPAND|wx.LEFT|wx.TOP,border=15)
 		self.zoneRecherche = wx.TextCtrl(panel, wx.ID_ANY)
 		self.zoneRecherche.Value ="" 
 		panelSizer.Add(self.zoneRecherche, pos=(0,2), span= (1,1), flag=wx.EXPAND|wx.TOP,border=10)
-		self.typeLabel = wx.StaticText(panel, wx.ID_ANY, label= _("&Comptes de messagerie: "))
+		self.typeLabel = wx.StaticText(panel, wx.ID_ANY, label= _("Email &accounts: "))
 		panelSizer.Add(self.typeLabel, pos=(1,0), span= (1,1), flag=wx.EXPAND|wx.LEFT,border=15)
 		#the list boxes
 		self.lbComptes = wx.ListBox(panel, wx.ID_ANY, style = wx.LB_SINGLE, size = (260, 400))
@@ -86,7 +86,7 @@ class FoldersMessagesList(wx.Dialog):
 			self.lbComptes.SetItems([obj[0] for obj in self.getlisteComptes()])  
 			self.lbComptes.Select(0) 
 		panelSizer.Add(self.lbComptes, pos=(2,0), span= (5,1), flag=wx.EXPAND|wx.LEFT|wx.BOTTOM, border=10)	
-		self.elemLabel = wx.StaticText(panel, wx.ID_ANY, label= _("Do&ssiers des comptes: "))
+		self.elemLabel = wx.StaticText(panel, wx.ID_ANY, label= _("Account &Folders : "))
 		panelSizer.Add(self.elemLabel, pos=(1,1), span= (1,1), flag=wx.EXPAND|wx.LEFT,border=15)
 		self.lbDossiers = wx.ListBox(panel, wx.ID_ANY,  style = wx.LB_SINGLE, size = (400, 400))
 		if len(self.getlisteDossiers())>0:   
@@ -95,8 +95,8 @@ class FoldersMessagesList(wx.Dialog):
 		panelSizer.Add(self.lbDossiers, pos=(2,1), span=(5,2), flag=wx.EXPAND|wx.LEFT|wx.BOTTOM,
 			border=10)
 		# the buttons
-		self.rightClickButton=wx.Button(panel, wx.NewId(), label = _("Simple clic &droit"), size = (120, 30)) 
-		self.leftClickButton=wx.Button(panel, wx.NewId(), label = _("Simple clic &gauche"), size = (120, 30))
+		self.rightClickButton=wx.Button(panel, wx.NewId(), label = _("Single &right-click"), size = (120, 30)) 
+		self.leftClickButton=wx.Button(panel, wx.NewId(), label = _("Single &left-click"), size = (120, 30))
 		self.infosButton=wx.Button(panel, wx.NewId(), label = _("&Informations"), size = (120, 30))
 		self.leftClickButton.SetDefault()
 		self.cancelButton =wx.Button(panel,wx.ID_CANCEL, size = (120, 30))
@@ -133,11 +133,11 @@ class FoldersMessagesList(wx.Dialog):
 				if not self.lbComptes.HasFocus and not self.lbDossiers.HasFocus : return
 			except RuntimeError: return
 			if count == 0 :
-				msg = _("aucun élément")
+				msg = _("no element")
 			elif count == 1 :
-				msg = _("1 élément")
+				msg = _("1 element")
 			else :
-				msg = _("%s éléments") % str(count) 
+				msg = _("%s elements") % str(count) 
 			message(msg)
 
 		if self._timer is not None: self._timer.Stop()
@@ -213,8 +213,8 @@ class FoldersMessagesList(wx.Dialog):
 		evt.Skip()
 		
 	def onCaseChange(self, evt): 
-		if self.taggedObjectsCB.GetValue(): message (_("Dossiers avec non lus, coché"))
-		else :message (_("Dossiers avec non lus, non coché"))
+		if self.taggedObjectsCB.GetValue(): message (_("Folders with unread, checked"))
+		else :message (_("Folders with unread, not checked"))
 		self.lbComptes.Clear()
 		self.lbComptes.SetItems([obj[0] for obj in self.getlisteComptes() ]) 
 		self.lbComptes.Select(0) 
@@ -228,10 +228,10 @@ class FoldersMessagesList(wx.Dialog):
 				self.lbDossiers.Select(0) 
 			else :
 				 self.lbComptes.SetFocus() 
-				 return message (_("Aucun résultat."))
+				 return message (_("No result."))
 		except : 
 			self.lbComptes.SetFocus() 
-			return message (_("Aucun résultat."))
+			return message (_("No result."))
 		evt.Skip()  		 
 
 	def onObjectTypeListBoxFocus(self,evt):
@@ -253,12 +253,12 @@ class FoldersMessagesList(wx.Dialog):
 		except: pass  #return
 
 	def onKeydownButton0(self, evt):
-		if self.taggedObjectsCB.GetValue() : message(_("Affichage des dossiers non lus ")) 
-		else :message(_("Affichage de tous les dossiers "))
+		if self.taggedObjectsCB.GetValue() : message(_("unread folders view")) 
+		else :message(_("All folders view"))
 		st= self.zoneRecherche.GetValue()
-		if st=="": message(_("pas d'expression de filtrage "))
+		if st=="": message(_("no filter expression"))
 		else :
-			message(_("expression de filtrage : %s ") %st)
+			message(_("filter expression : %s") %st)
 			if len(st)>1 :speakSpelling (st) 
 		wx.CallAfter(self.sayNumberOfElements)
 		return
@@ -337,7 +337,7 @@ class FoldersMessagesList(wx.Dialog):
 				filtre = self.zoneRecherche.GetValue()
 				if filtre =="" :
 					if keyCode ==wx.WXK_F11 : beep (330, 75) 
-					message(_("Pas d'expression entrée"))
+					message(_("No expression entered"))
 					self.lbDossiers.SetFocus() 
 					return 
 				self.lbDossiers.Clear()
@@ -348,7 +348,7 @@ class FoldersMessagesList(wx.Dialog):
 					self.sayNumberOfElements()
 					self.lbDossiers.SetFocus()
 				else : 
-					message(_("Aucun résultat, modifiez votre recherche."))
+					message(_("No results, edit your search."))
 				self.changeSelectionComptes()
 				return 					
 		evt.Skip()		
@@ -411,7 +411,7 @@ class FoldersMessagesList(wx.Dialog):
 		l=[] 
 		o=oDeb
 		max=(1 if avecNonLus else o.childCount)
-		l.append((_("Tous les comptes"), o.children[1].location,False))   
+		l.append((_("All accounts"), o.children[1].location,False))   
 		for i in range (1,max) :
 			o1=o.children[i]
 			if  utis.getIA2Attribute (o1,attribute_value=False,attribute_name ="level") =="1" : 
@@ -456,16 +456,16 @@ class FoldersMessagesList(wx.Dialog):
 			o1=o.children[i]
 			name= o1.name
 			if (utis.getIA2Attribute (o1,attribute_value=False,attribute_name ="level") =="1" ) :
-				name=o1.name + _(", compte de messagerie")
+				name=o1.name + _(", Email account")
 				o2=o1
 			if (avecNonLus and not "(" in o1.name ) or (filtre1 and  not filtre1 in o1.name.lower()) : continue
 			if  (utis.getIA2Attribute (o1,attribute_value=False,attribute_name ="level") !="1") and (indx==0    or (avecNonLus and "(" in o1.name ) or (filtre1 and  filtre1 in o1.name.lower())) :	
 				if o2:
-					name =o1.name+ _(", dans  ") +o2.name
+					name =o1.name+ _(", in  ") +o2.name
 			locat = o1.location
 			visible=(o1 and not (controlTypes.State.INVISIBLE if hasattr(controlTypes, "State") else controlTypes.STATE_INVISIBLE)  in o1.states) 
 			# "- ("  permet d'exclure les dossiers dont le nom se termine par un tiret (dossiers oubliettes)
-			if _("Corbeille") not in o1.name or _("Brouillons") not in o1.name or "- (" not in o1.name :
+			if _("Deleted") not in o1.name or _("Drafts") not in o1.name or "- (" not in o1.name :
 				l.append((name,locat,visible)) 
 			# l.append((name,locat,visible)) 
 		sharedVars.objLooping =False
@@ -503,16 +503,16 @@ class FoldersMessagesList(wx.Dialog):
 			o1=o.children[i]
 			name= o1.name
 			if (utis.getIA2Attribute (o1,attribute_value=False,attribute_name ="level") =="1" ) :
-				name=o1.name+ _(", compte de messagerie")
+				name=o1.name+ _(", Email account")
 				o2=o1
 			if (avecNonLus and not "(" in o1.name ) or (filtre1 and  not filtre1 in o1.name.lower()) : continue
 			if  (utis.getIA2Attribute (o1,attribute_value=False,attribute_name ="level") !="1") and (indx==0    or (avecNonLus and "(" in o1.name ) or (filtre1 and  filtre1 in o1.name.lower())) :	
 				if o2:
-					name =o1.name+ _(", dans  ")+o2.name
+					name =o1.name+ _(", in  ")+o2.name
 			locat = o1.location
 			visible=(o1 and not (controlTypes.State.INVISIBLE if hasattr(controlTypes, "State") else controlTypes.STATE_INVISIBLE)  in o1.states) 
 			# "- ("  permet d'exclure les dossiers dont le nom se termine par un tiret (dossiers oubliettes)
-			if _("Corbeille") not in o1.name or _("Brouillons") not in o1.name or "- (" not in o1.name :
+			if _("Deleted") not in o1.name or _("Drafts") not in o1.name or "- (" not in o1.name :
 				l.append((name,locat,visible)) 
 			# l.append((name,locat,visible)) 
 		sharedVars.objLooping =False
@@ -529,7 +529,7 @@ class FoldersMessagesList(wx.Dialog):
 		o = o.firstChild.firstChild  
 		while o and o.role!= controlTypes.Role.TREEVIEW : o=o.next 
 		oDeb=o
-		bdd = cls(None,wx.ID_ANY,_("Dossiers de l'arborescence"), True) 
+		bdd = cls(None,wx.ID_ANY,_("Treeview folders"), True) 
 		sharedVars.objLooping = False
 		config.conf["keyboard"]["speechInterruptForEnter"]=False
 		bdd.CenterOnScreen()

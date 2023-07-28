@@ -79,6 +79,7 @@ And many other things that you will discover by reading the [user manual][4] ;
 [1]: https://www.nvaccess.org/addonStore/legacy?file=thunderbirdPlus
 
 [2]: https://github.com/RPTools-org/ThunderbirdPlus/
+
 [3]: https://www.rptools.org/?p=8610
 
 [4]: https://www.rptools.org/NVDA-Thunderbird/get.php?pg=manual&lang=en

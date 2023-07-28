@@ -52,7 +52,7 @@ class AttachmentList (IAccessible):
 		ogp = self.parent.parent
 		oID = getIA2Attr  (ogp)
 		#message ("cetest ogp : " + str(oID) + ", role : " + str(ogp.role))
-		message (_("Objets précédents"))
+		message (_("Previous objects"))
 		o = self.parent
 		i = 0
 		while o :

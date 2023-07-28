@@ -86,11 +86,11 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	def script_startTB(self, gesture) :
 		# beep(440, 30)
 		if getProcessIDFromExe("thunderbird.exe") != 0 :
-			ui.message(_("Thunderbird est déjà en cours d'utilisation."))
+			ui.message(_("Thunderbird is already in use."))
 			return
 		#wx.CallLater(50, speech.speakMessage , "Hello everyone !", priority = speech.priorities.Spri.NOW)		
 		focusTaskButton()
-		ui.message(_("Démarrage  de Thunderbird."))
+		ui.message(_("Starting Thunderbird."))
 		tbPaths = ("C:\\Program Files\\Mozilla Thunderbird\\thunderbird.exe", "C:\\Program Files (x86)\\Mozilla Thunderbird\\thunderbird.exe")
 		idx = -1
 		if  os.path.exists(tbPaths[0]) :
@@ -99,12 +99,12 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			idx = 1
 		else :
 			#messageBox("Thunderbird.exe non trouvé dans C:\Program files", "Lanceur de Thunderbird", wx.CLOSE|wx.ICON_WARNING)
-			ui.message(_("Thunderbird.exe non trouvé dans C:\\Program files"))
+			ui.message(_("Thunderbird.exe not found in C:\\Program files"))
 			return
 		startProgramMaximized(tbPaths[idx])
 		return
-	script_startTB.__doc__ = _("Lance Thunderbird")
-	script_startTB.category=_("Thunderbird+, lanceur et mise àjour")
+	script_startTB.__doc__ = _("Starts Thunderbird")
+	script_startTB.category=_("Thunderbird+, launcher and update")
 
 	def  script_searchUpdate(self, gesture) :
 		repeat = getLastScriptRepeatCount()
@@ -113,8 +113,8 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			self.timer = wx.CallLater(300, updateLite.checkUpdate, False)
 		elif repeat == 2 : # 3 press, force update
 			self.timer = wx.CallLater(300, updateLite.forceUpdate)
-	script_searchUpdate.__doc__ = _("Recherche une mise à jour de Thunderbird+")
-	script_searchUpdate.category=_("Thunderbird+, lanceur et mise àjour")
+	script_searchUpdate.__doc__ = _("Check for Thunderbird+ update")
+	script_searchUpdate.category=_("Thunderbird+, launcher and update")
 
 	__gestures={
 		gestureFromScanCode(41, "kb:control+alt+"): "startTB",

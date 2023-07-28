@@ -38,16 +38,16 @@ class MainMenu() :
 	def showMenu (self, fo):
 		mainMenu = Menu ()
 		# 4 Choose columns
-		mainMenu.Append (4, _("Choisir et agencer les colonnes de la liste de messages"))
-		mainMenu.Append (8, _("Aide\tCtrlF1"))
+		mainMenu.Append (4, _("Choose and arrange the columns of the message list"))
+		mainMenu.Append (8, _("Help\tCtrlF1"))
 
-		mainMenu.Append (12, _("Historique des changements"))
-		mainMenu.Append (13, _("Page de notifications"))
-		mainMenu.Append (14, _("Faire un don"))
+		mainMenu.Append (12, _("Change log"))
+		mainMenu.Append (13, _("Notification page"))
+		mainMenu.Append (14, _("Donate"))
 
-		mainMenu.Append (11, _("Page de Chichi"))
-		mainMenu.Append (9, _("Ecrire au support"))
-		mainMenu.Append (10, _("Rejoindre la liste thunderbird-dv"))
+		mainMenu.Append (11, _("Chichi's page"))
+		mainMenu.Append (9, _("Write to support"))
+		mainMenu.Append (10, _("Join the thunderbird-dv mailing list (French)"))
 		# #divers		
 		# subMenu =Menu ()
 		# #s=u"Convertir un lien &vidéo en flu RSS,Choisir et agencer les colonnes de la liste de messages".split (",")
@@ -85,7 +85,7 @@ class MainMenu() :
 		o2=self.focused.parent # threadTree
 		#sharedVars.debugMess(o2, " parent ")
 		if  utis.getIA2Attribute(o2)  != "threadTree" : 
-			CallLater (10, message, _("Veuillez vous placer dans la liste des messages puis réessayez."))
+			CallLater (10, message, _("Please select  the message list and try again."))
 			utis.setSpeech(True)
 			return
 		else : 
@@ -104,12 +104,12 @@ class MainMenu() :
 			condition2=clientObject.CreateOrCondition (CPC(30005,"Enregistrer"),CPC(30005,"Tout enregistrer"))	 #Tout enregistrer	
 			o =objFirstGrouping.FindFirst (TreeScope_Children,clientObject.CreateAndCondition (condition1, condition2))
 			if not o :
-				message(_("Pas de pièce jointe à enregistrer"))
+				message(_("No attachment to save"))
 				# ne pas faire ici de gesture.send () car ctrl+alt+p peut-être défini comme un raccourci global du bureau Windows.
 				return 
 			o.GetCurrentPattern (10000 ).QueryInterface (IUIAutomationInvokePattern).Invoke ()
 		if not getObjAttachment (self) : return gesture.send ()
-	script_clickToolBarAttachment.__doc__ = _("Ouvrir la barre d'outilTB des pièces jointes")
+	script_clickToolBarAttachment.__doc__ = _("Open attachments toolbar")
 	script_clickToolBarAttachment.category = sharedVars.scriptCategory
 
 	def getSubMenuAttachment (self,objFirstGrouping):
@@ -126,26 +126,26 @@ class MainMenu() :
 		self.objSizeAttachment  = o
 		oPrevious = o.previous
 		if oPrevious.role  == controlTypes.Role.LINK :
-			menu.Append (400, _("Ouvrir"))
-			menu.Append(401, _("plus d'option \tControl+alt+p"))
-			return  (menu, _("pièce jointe \"") + oPrevious.name + "\". " + o.name)
+			menu.Append (400, _("Open"))
+			menu.Append(401, _("More options \tControl+alt+p"))
+			return  (menu, _("attachment \"") + oPrevious.name + "\". " + o.name)
 		objFirstGrouping=(utis.getObjFirstGrouping(self) if utis.getObjFirstGrouping(self) else utis.getObjFirstGrouping2(self))
 		buttonAttachment = objFirstGrouping.FindAll (TreeScope_Children, CPC( UIA_ControlTypePropertyId, UIA_ButtonControlTypeId))
-		while not _("jointe") in o.name :o=o.previous  # ajout 
+		while not _("attached") in o.name :o=o.previous  # ajout 
 		name =o.name  # ajout 
 		name = name+ " " + o.next.name  # ajout
 		#name =o.previous.name
 		#name = name+" "+o.name
-		menu.Append (501, _("tout ... \tControl+Alt+p. "))
-		menu.Append (500, _("se déplacer à la liste alt+p"))
+		menu.Append (501, _("All ... \tControl+Alt+p. "))
+		menu.Append (500, _("move to list alt+p"))
 		if  not buttonAttachment.GetElement (buttonAttachment.Length-1).GetCurrentPropertyValue (UIA_LegacyIAccessibleStatePropertyId) &STATE_SYSTEM_PRESSED:
 			return (menu,name)
 		attachments  = objFirstGrouping.FindFirst(TreeScope_Children, CPC(UIA_ControlTypePropertyId, UIA_ListControlTypeId)).FindAll (TreeScope_Children, CPC(UIA_ControlTypePropertyId, UIA_ListItemControlTypeId))
 		max =attachments.Length*2
 		for e in range (max,0,-2 ):
 			menuSingleAttachment = Menu ()
-			menuSingleAttachment.Append (e+600, _("ouvrir"))
-			menuSingleAttachment.Append (e+601, _("plus d'options"))
+			menuSingleAttachment.Append (e+600, _("Open"))
+			menuSingleAttachment.Append (e+601, _("More options"))
 			menu.AppendSubMenu  (menuSingleAttachment,attachments.GetElement (e/2-1).CurrentName)
 		return (menu,name)
 
@@ -245,7 +245,7 @@ def headersToFile (lstHeaders) : # v 2.1.3
 	#pth = config.getUserDefaultConfigPath() + u"\\addons\\thunderbird+\\Entêtes-mail.txt"
 	pth =  sharedVars.oSettings.addonPath + "\\Entêtes-mail.txt"
 	if lstHeaders.count("\n") < 15 :
-		lstHeaders = _("Pour obtenir tous les entêtes, veuillez ouvrir le Menu Affichage, descendre sur Entêtes puis presser sur Complets dans le sous-menu. Ensuite, affichez à nouveau le menu puissance2.")
+		lstHeaders = _("To get all headers, please open the View Menu, go down to 'Headers' and then press Enter on 'All'  in the submenu. Then display the grave menu again.")
 	oFile = open (pth, "w")
 	if not oFile : return
 	n = oFile.write(lstHeaders)

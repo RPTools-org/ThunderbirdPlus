@@ -40,11 +40,11 @@ class availableUpdateDialog(wx.Dialog):
 		# except: releaseNoteURL =None  
 		if releaseNoteURL:
 			self.releaseNoteURL = releaseNoteURL
-			infoButton = bHelper.addButton(self, label=_("&Quoi de neuf"))
+			infoButton = bHelper.addButton(self, label=_("&What's new"))
 			infoButton .Bind(wx.EVT_BUTTON, self.onInfoButton)   #onInfoButton onReleaseNotesButton2
-		yesButton = bHelper.addButton(self, wx.ID_YES, label=_("&Oui"))
-		laterButton = bHelper.addButton(self,  label=_("&Plus tard"))  #wx.NewId(),
-		noButton = bHelper.addButton(self, wx.ID_NO, label=_("&Désactiver"))
+		yesButton = bHelper.addButton(self, wx.ID_YES, label=_("&Yes"))
+		laterButton = bHelper.addButton(self,  label=_("&Later"))  #wx.NewId(),
+		noButton = bHelper.addButton(self, wx.ID_NO, label=_("&Disable"))
 		cancelButton = bHelper.addButton(self, wx.ID_CANCEL) 
 		#events
 		yesButton.Bind(wx.EVT_BUTTON, self.onYesButton)  # onYesButton
@@ -125,11 +125,11 @@ def checkUpdate(autoUp) :
 		if not hasToUpdate(nm) : return
 	name, remoteVer =  getRemoteVersion()
 	if not isNewVersion(curVer, remoteVer) : 
-		if not autoUp : message(name + " " + curVer + _(" est à jour."))
+		if not autoUp : message(name + " " + curVer + _("is up to date."))
 		return
 	isDlg = True
-	msg = _("Voulez-vous mettre à jour la version {0} vers la version {1} ?").format(curVer, remoteVer)
-	with availableUpdateDialog(gui.mainFrame,_("Mise à jour de l'extension Thunderbird+"), msg, releaseNoteURL=urlHelp) as dlg:  
+	msg = _("Do you want to update version {0} to version {1}?").format(curVer, remoteVer)
+	with availableUpdateDialog(gui.mainFrame,_("Thunderbird+ addon update"), msg, releaseNoteURL=urlHelp) as dlg:  
 		result=dlg.ShowModal()
 	if result ==  6666 : # later
 		wx.CallLater(40, setNextUpdate, nm)
@@ -138,7 +138,7 @@ def checkUpdate(autoUp) :
 	elif result ==  wx.ID_YES :
 		result, msg = doUpdate(curVer)
 		if result < 1 :
-			browseableMessage (message = msg, title = _("Mise à jour de l'extension") + name, isHtml = False)
+			browseableMessage (message = msg, title = _("Addon update") + name, isHtml = False)
 	isDlg = False
 
 def getRemoteVersion() :
@@ -149,10 +149,10 @@ def getRemoteVersion() :
 		with urlopen  (urlFileInfos) as data :
 			data = data.read().decode()
 	except :
-		return _("Erreur de vérification de la version"), "1.0"
+		return _("Version check error"), "1.0"
 	if len(data)  < 10 : # v 3.4.2 si longueur du contenu fileInfos < 10 dans le cas de TB+
 		#beep(100, 20)
-		return _("Erreur de lecture du file Infos"), "1.0"
+		return _("Error reading Info file"), "1.0"
 	lines = data.split("\n")
 	v = lines[0].split("=")[1] # version
 	v = v.split(" ")[0]
@@ -166,9 +166,9 @@ def doUpdate(oldVer, forced="") :
 		with urlopen  (urlFileInfos) as data :
 			data = data.read().decode()
 	except :
-		return -1, _("Erreur de récupération des informations du fichier")
+		return -1, _("Error retrieving file information")
 	if len(data) < 10 :
-		return -1, _("Erreur de récupération des informations du fichier")
+		return -1, _("Error retrieving file information")
 	lines = data.split("\n")
 	ver = lines[0].split("=")[1]
 	# return -1, "oldVer={0}, ver={1}".format(oldVer, ver)
@@ -185,9 +185,9 @@ def doUpdate(oldVer, forced="") :
 		with urlopen  (urlFile) as data :
 			data = data.read()
 	except :
-		return -2, _("Erreur de téléchargement de:\n") + urlFile
+		return -2, _("Error downloading of :\n") + urlFile
 	lenData = len(data) # v 3.4.2
-	if lenData < 10000 : return -3, _("Erreur de fichier vide")
+	if lenData < 10000 : return -3, _("Empty file error")
 	# sauvegarde dans fichier
 	beep(337, 1)
 	if ".html" in dlFile: 
@@ -199,16 +199,16 @@ def doUpdate(oldVer, forced="") :
 		try : 
 			os.remove(filePath)
 		except OSError as error:
-			return -4, error + _(", ne peut supprimer : ") + filePath
+			return -4, error + _(", cannot delete : ") + filePath
 	# écriture
 	try :
 		with open(filePath, mode="wb") as fileObj :
 			fileObj.write(data)
 	except :
-		return -4, _("Erreur d'enregistrement de:\n") + filePath
+		return -4, _("Saving error of :\n") + filePath
 	# v 3.4.2 vérif taille fichier écrit 
 	if os.path.getsize(filePath)  < lenData :
-		return  - -4, _("Erreur d'enregistrement de l'extension dans un fichier temporaire.")
+		return  - -4, _("Error saving addon to temporary file.")
 	# update infos
 	try:
 		from urllib import parse
@@ -248,7 +248,7 @@ def forceUpdate() :
 	nm, ver = getCurVersion()
 	result, msg = doUpdate(ver, "Forc")
 	if result < 1 :
-		browseableMessage (message = msg, title = _("Mise à jour de l'extension") + name, isHtml = False)
+		browseableMessage (message = msg, title = _("Addon update") + name, isHtml = False)
 
 import addonHandler
 import time
@@ -266,12 +266,12 @@ def setNextUpdate(addonName, disable=False) :
 	if not disable :
 		# anciien ut = str(time.time() + 3600 * 72) 
 		ut = time.time() + 3600 * 72 
-		msg = _("La   mise à jour  sera à nouveau proposée dans 3 jours. Entretemps, vous pourrez presser AltGr+Maj+puissance2 pour effectuer une recherche de mise à jour.")
+		msg = _("The update will be offered again in 3 days. In the meantime, you can press AltGr+Shift+grave to perform an update search.")
 		fMode = "wb"
 	else :  # disable auto update
 		ut = "0"
 		fMode = "w"
-		msg = _("La mise à jour automatique a été désactivée. presser    AltGr+Maj+puissance2 pour une mise à jour manuelle.")
+		msg = _("Automatic update has been disabled. press AltGr+Shift+grave for a manual update.")
 
 	try :
 		with open(nextUpdateFile, mode=fMode) as fileObj :
@@ -280,7 +280,7 @@ def setNextUpdate(addonName, disable=False) :
 			else :
 					pickle.dump(ut, fileObj)  #, protocol=0
 	except :
-		msg = _("Erreur d'enregistrement de:\n") + nextUpdateFile
+		msg = _("Saving error of :\n") + nextUpdateFile
 		pass
 	#os.startfile(nextUpdateFile)
 	wx.CallAfter(message, msg)

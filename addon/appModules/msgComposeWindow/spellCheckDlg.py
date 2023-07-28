@@ -23,7 +23,7 @@ import addonHandler,  os, sys
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import translation, utis, sharedVars
+import translation, utis, sharedVars 
 del sys.path[-1]
 translation.initTranslationWithEnglishFallback()
 
@@ -36,8 +36,8 @@ class SpellCheckDlg (IAccessible):
 		id =(self.IA2Attributes["id"] if hasattr (self,"IA2Attributes") and "id" in self.IA2Attributes else None)
 		if role == controlTypes.Role.EDITABLETEXT :
 			#beep(150, 30)
-			if _("Aucun") in self.parent.getChild (1).name :
-				message(_("Aucun mot mal écrit n'a été trouvé"))
+			if _("None") in self.parent.getChild (1).name :
+				message(_("No misspelled words were found"))
 			#self.name = ""
 			self.bindGestures ({"kb:nvda+tab":"reportFocus","kb:ALT+UPARROW":"reportFocus", "kb:enter":"enterFromEdit", "kb:shift+enter":"enterFromEdit", "kb:control+enter":"enterFromEdit", "kb:control+shift+enter":"enterFromEdit", "kb:alt+enter":"enterFromEdit", "kb:alt+i":"altLetter", "kb:alt+n":"altLetter", "kb:alt+r":"altLetter", "kb:alt+t":"altLetter", "kb:alt+a":"altLetter"})
 		""" elif role == (controlTypes.Role.LISTITEM if hasattr(controlTypes, "Role") else controlTypes.ROLE_LISTITEM) and not self.previous :self.keyboardShortcut =self.container.keyboardShortcut """
@@ -69,18 +69,18 @@ class SpellCheckDlg (IAccessible):
 		#global lastWord, newWord
 		#newWord=self.parent.getChild (1).name
 		misp = self.parent.getChild (1).name
-		if _("Vérification") in misp : return message(_("Vérification de l'orthographe terminée"))
+		if _("Check Spelling ") in misp : return message(_("Spell check complete."))
 		spell = sharedVars.oSettings.getOption("msgcomposeWindow", "spellWords")
 		replace= self.value
 		if replace :
-			#if lastWord != newWord : message ("Mot mal orthographié : %s" % misp)
-			message (_("Mot mal orthographié : %s") % misp)
+			#if lastWord != newWord : message ("Mispelled word : %s" % misp)
+			message (_("Misspelled word: %s") % misp)
 			if spell: speakSpelling (misp)
 			#if  lastWord != newWord : message ("Remplacer par : %s" % replace)
-			message(_("Remplacer par : %s") % replace)
+			message(_("Replace with: %s") % replace)
 			if spell : speakSpelling (replace)
 		else :
-			message(_("Mot mal orthographié : %s, pas de suggestion.") % misp)
+			message(_("Misspelled word : %s, no suggestion.") % misp)
 		#lastWord = newWord
 
 	def script_altLetter (self, gesture) :
@@ -88,9 +88,9 @@ class SpellCheckDlg (IAccessible):
 		mk = gesture.mainKeyName
 		# mk letters : language dependant
 		if mk == _("i") : btn = "ignore"
-		elif mk  == _("n") : btn = "ignoreAll"
-		elif mk == _("a") : btn = "addtodictionary"
-		elif mk == _("t") : btn = "replaceAll"
+		elif mk  == _("l") : btn = "ignoreAll"
+		elif mk == _("d") : btn = "addtodictionary"
+		elif mk == _("a") : btn = "replaceAll"
 		elif mk == _("r") : btn = "replace"
 		self.pressButton (btn, sayMisp=True)
 		# v3 & v2.1.1 announcement of the following mispelled word if not None
@@ -128,18 +128,23 @@ class SpellCheckDlg (IAccessible):
 		misp = self.parent.getChild (1).name
 		#print (misp)
 		message(misp)
-		if c == 1 :
+		if c == 2 :
 			#speak ([u"Mot mal orthographié : " + misp])
-			speak ([(_("remplacé, {0} . par . {1}")).format((" . ").join (list (self.parent.getChild(1).name)), (" . ").join (list (self.value)))],symbolLevel  =0)
+			speak ([(_("replaced, {0} . by . {1}")).format((" . ").join (list (self.parent.getChild(1).name)), (" . ").join (list (self.value)))],symbolLevel  =0)
 		elif c == 0 :
-			a = _("Remplacer  : ") + misp + " : "
+			a = _("Replace : ") + misp + " : "
 			message  (a)
 			speakSpelling (misp)
-			a = _(" par : ") + self.value + " : "
+			a = _(" with : ") + self.value + " : "
 			message  (a)
 			speakSpelling (self.value)
-		else :
-			copyToClip (misp)
-			message(misp + _(", copié dans le presse-papiers"))
+		elif c == 1 :
+			if not sharedVars.oQuoteNav : sharedVars.initQuoteNav()
+			sharedVars.oQuoteNav.setDoc(sharedVars.oEditing,  nav=True)
+			sharedVars.oQuoteNav.setText(0) # speakMode=0 silent
+			sharedVars.oQuoteNav.findItem(misp)
+		# else :
+			# copyToClip (misp)
+			# message(misp + _(", copied to clipboard"))
 	script_reportFocus.__doc__ = u"Lire ou épeler le mot mal orthographié et le mot proposé par NVDA+Tab"
 

@@ -41,7 +41,8 @@ Vylepšení se týkají následujících aspektů:
 ### Seznam zpráv
 
 * Výběr sloupců a jejich rozložení v seznamu zpráv je zpřístupněn prostřednictvím jednoduchého dialogu;
-* Zobrazení sloupců seznamu zpráv: klávesové zkratky vám umožňují snadno poslouchat, hláskovat nebo kopírovat jméno odesílatele, předmět zprávy nebo její datum zadáním číslice na alfanumerické klávesnici. Například jediné stisknutí tlačítka 1 nebo & oznámí odesílatele, dvě stisknutí vyhláskují jméno a tři stisknutí jej zkopírují do schránky;* Zobrazení záhlaví v podokně záhlaví zobrazeného pomocí F8: s Alt + číslice, 1 stisknutí oznámí jakékoli záhlaví obsahující adresy odesílatele nebo příjemce, 2 stisknutí otevře dialog pro jejich zkopírování, 3 stisknutí otevře nativní kontextovou nabídku Thunderbirdu spojenou se záhlavím ;
+* Zobrazení sloupců seznamu zpráv: klávesové zkratky vám umožňují snadno poslouchat, hláskovat nebo kopírovat jméno odesílatele, předmět zprávy nebo její datum zadáním číslice na alfanumerické klávesnici. Například jediné stisknutí 1 nebo & oznámí odesílatele, dvě stisknutí vyhláskují jméno a tři stisknutí jej zkopírují do schránky;
+* Zobrazení záhlaví v podokně záhlaví zobrazeného pomocí F8: s Alt + číslice, 1 stisknutí oznámí jakékoli záhlaví obsahující adresy odesílatele nebo příjemce, 2 stisknutí otevře dialog pro jejich zkopírování, 3 stisknutí otevře nativní kontextovou nabídku Thunderbirdu spojenou se záhlavím ;
 * Vyčištěný rychlý náhled textu zprávy pomocí mezerníku, Alt+šipka dolů nebo F4: Velké bloky záhlaví v uvozovkách zprávy jsou nahrazeny frází „Jméno odesílatele napsal“. NVDA také oznámí "klikací odkaz" místo dlouhé adresy odkazu.
 * Rychlý přehled citací v chronologickém pořadí zdola nahoru pomocí Shift+Mezerník, Alt+šipka nahoru nebo Shift+F4;
 * Snadný přístup k přílohám pomocí zkratky Alt+page down nebo pomocí čísla 1 na alfanumerické klávesnici;
@@ -73,9 +74,7 @@ Přečtěte si o tom na [stránce Chichi][7];
 
 A mnoho dalších věcí, které zjistíte při čtení [uživatelská příručka][4];
 
-
 <!-- Translators : in the links 4, 5 and 7 below, where you see lang=en, replace en with your language code -->
-
 
 [1]: https://www.nvaccess.org/addonStore/legacy?file=thunderbirdPlus
 

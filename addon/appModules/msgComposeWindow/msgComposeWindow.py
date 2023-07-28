@@ -55,7 +55,7 @@ class MsgComposeWindow():
 		self.labelsID = ["", "identityLabel", "toAddrLabel", "attach", "ccAddrLabel", "bccAddrLabel", "subjectLabel", "replyAddrLabel"] 
 		self.fieldGestures = ["", "Alt+e", "toAddrLabel", "attach", "control+shift+c", "control+shift+b", "alt+s", "replyAddrLabel"] 
 		#translators: compose field labels : "none, From, To, Attachement, CC, BCC, Subject, Reply to"
-		self.fieldLabels = _("rien, De, Pour, Pièce jointe, Copie à, Copie cachée à, Sujet, Réponse à")
+		self.fieldLabels = _("void, From, To, Attachement, CC, BCC, Subject, Reply to")
 
 	def update(self) :
 		if self.frame==  globalVars.foregroundObject : return
@@ -94,7 +94,7 @@ class MsgComposeWindow():
 							o = o.next
 						return oFocus, lbl + val
 			o = o.next # caution : 3 tabs 
-		return None, _(u"pas d'entête.")
+		return None, _("No header.")
 
 	def readField(self, mainKeyName, repeats) :
 		mainKeyName = int(mainKeyName)
@@ -106,10 +106,10 @@ class MsgComposeWindow():
 		oField, fieldText = self.getMsgHeader(self.headersToolbar, mainKeyName, (repeats > 0))
 		# if sharedVars.debug : sharedVars.log(oField, fieldText)
 		if not oField : 
-			if repeats == 0 : message(_("Le champ {0} est absent, refrappez deux fois rapidement cette commande pour l'afficher.").format(self.fieldLabels.split(",")[mainKeyName]))
+			if repeats == 0 : message(_("The field {0} is missing, type this command twice quickly to show it.").format(self.fieldLabels.split(",")[mainKeyName]))
 			elif repeats > 0 : 
 				try : KeyboardInputGesture.fromName(self.fieldGestures[mainKeyName]).send()
-				except : message(_("Vous trouverez ce champ en actionnant le bouton : Autres champs d'adressage à afficher."))
+				except : message(_("You will find this field by pressing the button: Other addressing fields to show"))
 			return
 		if not repeats :
 			message(fieldText)
@@ -128,7 +128,7 @@ class MsgComposeWindow():
 		o = utis.findChildByID(o, "attachmentArea")
 		if not o : 
 			# translator
-			return None, _(u"La zone des pièces jointes est absente. Pressez Control+Maj+A pour en ajouter.")
+			return None, _("The attachments area is missing. Press Control+Shift+A to add attachements.")
 		#0 sur 1, name : 1 pièce jointe 155 octets, role.BUTTON=9 Tag: summary, états : , EXPANDED, FOCUSABLE, childCount  : 3 
 		# path : role FRAME=34| i13, role-SECTION=86, , IA2ID : composeContentBox | i4, role-GROUPING=56, , IA2ID : attachmentArea | i0, role-BUTTON=9,  , IA2Attr : display : flex, tag : summary, , Actions : collapse,  ;
 		o = o.firstChild

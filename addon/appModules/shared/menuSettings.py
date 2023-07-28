@@ -56,28 +56,28 @@ class  Settings() :
 		adPath = self.addonPath
 		# adPath is the root of the addon path
 		self.option_messengerWindow ={
-		"responseMentionGroup" : _("Regrouper les mentions 'RE' multiples en une seule"),
-		"responseMentionRemove" : _("Supprimer les mentions 'RE' dans la colonne sujet"),
-		"responseMentionDelColon" : _("Supprimer les 2 points dans les mentions 'RE', "),
-		"namesCleaned" : _("Nettoyer les noms des correspondants dans la liste de messages"),
-		"separateCols" : _("Ajouter une ponctuation entre les colonnes"),
-		"listGroupName" : _("Masquer les noms de listes de diffusion"),
-		"editWords_str" : _("Editer les mots à masquer dans l'objet de messages"),
-		"junkStatusCol" : _("Annoncer 'indésirable' si affiché dans la colonne 'Statut indésirable' "),
-		"TTFirstUnread" : _("Espace sur un dossier avec non lus  cherche le premier message non lu depuis le début de la liste"),
-		"withoutFolderKeyNav" : _("Ne pas utiliser la navigation par initiale dans l'arborescence des dossiers"),
-		"noDirectKeyNav" : _("Navigation par initiales indirecte, via une zone d'édition"),
-		"withoutReceipt" : _("Ignorer les demandes d'accusé de réception"),
-		"WwithUnread" : _("Afficher seulement les dossiers avec non lus dans la boite de dialogue 'Dossiers de l'arborescence'"),
-		"WithoutAutoRead" : _("fenêtre séparée de lecture : ne pas lire automatiquement le  mmessage si provoque des blocages de NVDA"),
-		"editDelay_str" : _("Editer le délai avant la lecture automatique de la fenêtre séparée du message.\tAlt+d,n ")
+		"responseMentionGroup" : _("Combine multiple 'RE' mentions into one"),
+		"responseMentionRemove" : _("Delete the 'Re' mentions in the subject column"),
+		"responseMentionDelColon" : _("Delete the colons  in the 'Re:' mentions"),
+		"namesCleaned" : _("Clean the names of correspondents in the message list"),
+		"separateCols" : _("Add punctuation between columns"),
+		"listGroupName" : _("Hide mailing list names"),
+		"editWords_str" : _("Edit words to hide in message subject"),
+		"junkStatusCol" : _("Announce 'junk' if displayed in the 'junk Status' column"),
+		"TTFirstUnread" : _("Spacebar on a folder with unread searches for the first unread message from the beginning of the list"),
+		"withoutFolderKeyNav" : _("Do not use first character navigation in the folder tree"),
+		"noDirectKeyNav" : _("Character navigation via an edit box"),
+		"withoutReceipt" : _("Ignore acknowledgment requests"),
+		"WwithUnread" : _("Show only folders with unread in the 'Folders in Tree' dialog"),
+		"WithoutAutoRead" : _("separate reading window: do not automatically read the mmessage if it causes NVDA hangs"),
+		"editDelay_str" : _("Edit the delay before the automatic reading of the separate message window.\\tAlt+d,n")
 		}
 
 		self.option_msgcomposeWindow={
-		"spellWords" : _("Vérification orthographique : épeler le mot mal orthographié et le mot suggéré."),
-		"virtualSpellChk" : _("Activer l'amélioration de la Vérification orthographique pendant la saisie."),
-		"closeMessageWithEscape" : _("La touche Échap ferme le message en cours de rédaction"),
-		"onePress" : _("Simple frappe pour  afficher  les menu contextuel, double frappe pour écrire ² ou ³ ou leurs remplaçants.")
+		"spellWords" : _("Spell Check: Spell the misspelled word and the suggested word."),
+		"virtualSpellChk" : _("Enable improved Spell Check while typing."),
+		"closeMessageWithEscape" : _("The Esc key closes the message being written"),
+		"onePress" : _("Single press to show the context menus, double press to write a grave accent  or Tilde or ¬¬.")
 	}
 
 		self.option_startup= {}
@@ -86,16 +86,16 @@ class  Settings() :
 		# }
 
 		self.option_chichi = {
-			"FTnoSpace" : _("Dossiers : Espace ne sélectionne pas le prochain message non lu dans la liste et n'affiche pas la liste de dossiers non lus"),
-			"FTnoNavLetter" : _("Dossiers : pas de navigation par initiales"),
-			"TTnoSpace" : _("Liste messages : Espace ne lit pas le message du volet d'aperçu"),
-			"TTNoExpand" : _("Liste messages : Espace lit le résumé de la conversation du volet d'aperçu"),
-			"TTnoSmartReply" : _("Liste messages : pas de  SmartReply"),
-			"TTnoFilterBar" : _("Liste messages : ne pas gérer la barre de filtrage rapide"),
-			"TTnoEscape" : _("Liste messages : Echappe ne revient pas à l'arborescence"),
-			"MainNoTab" : _("fenêtre principale : Tab ne passe pas au volet suivant"),
-			"mainNoEscape" : _("Fenêtre principale : rétablir le comportement par défaut de la touche échappe"),
-			"closeTBWithCtrlF4" : _("Permettre    la fermeture de Thunderbird avec control+w ou control+F4")
+			"FTnoSpace" : _("Folders: Spacebar does not select the next unread message in the list and does not show the list of unread folders"),
+			"FTnoNavLetter" : _("Folders: no first character navigation "),
+			"TTnoSpace" : _("Message list: Spacebar does not read message from preview pane"),
+			"TTNoExpand" : _("Message list: Spacebar reads the preview pane conversation summary."),
+			"TTnoSmartReply" : _("Message list : No SmartReply"),
+			"TTnoFilterBar" : _("Message list: do not manage the quick filter bar"),
+			"TTnoEscape" : _("Message list: Escape does not return to folder tree"),
+			"MainNoTab" : _("main window: Tab does not move to next pane"),
+			"mainNoEscape" : _("Main window: restore the default behavior of the escape key"),
+			"closeTBWithCtrlF4" : _("Allow Thunderbird to close with control+w or control+F4")
 		}
 
 		self.options = ConfigObj(self.iniFile)
@@ -147,10 +147,10 @@ class  Settings() :
 		return
 	def editWords(self) :
 		wrds = self.options["messengerWindow"]["removeInSubject"] 
-		utis.inputBox(label=_("Mots séparés par des points-virgule : "), title= _("Edition des mots à masquer  dans l'objet des messages"), postFunction=saveWords, startValue=wrds)
+		utis.inputBox(label=_("Words separated by semicolons :"), title= _("Edit words to hide in the subject of messages"), postFunction=saveWords, startValue=wrds)
 
 	def editDelay(self) :
-		utis.inputBox(label=_("Délai entre 20 et 2000 milli secondes  avant  lecture épurée (défaut : 100) : "), title= _("Fenêtre séparée de lecture"), postFunction=saveDelay, startValue=sharedVars.delayReadWnd)
+		utis.inputBox(label=_("Delay between 20 and 2000 milliseconds before filtered reading (default: 100):"), title= _("Separate reading window"), postFunction=saveDelay, startValue=sharedVars.delayReadWnd)
 
 	def backup(self) :
 		bakFile = api.config.getUserDefaultConfigPath() + "\\" + self.addonName + ".inibak"
@@ -165,7 +165,7 @@ class  Settings() :
 			self.load()
 			CallLater(30, utis.noSpeechMessage,u"La configuration sauvegardée a été restaurée.")
 		else :
-			CallLater(30, utis.noSpeechMessage,_("Fichier de sauvegarde inexistant."))
+			CallLater(30, utis.noSpeechMessage,_("Backup file does not exist."))
 
 	def reset(self) :
 		bakFile = api.config.getUserDefaultConfigPath() + "\\" + self.addonName + ".inibak"
@@ -176,7 +176,7 @@ class  Settings() :
 				os.remove(self.iniFile) 
 			self.load()
 			self.initDefaults()
-			CallLater(30, utis.noSpeechMessage,_("La configuration a été réinitialisée à ses valeurs par défaut"))
+			CallLater(30, utis.noSpeechMessage,_("The configuration has been reset to its default values"))
 
 	def copyTB4Ini(self) :
 		if   os.path.exists(self.iniFile) : return
@@ -215,13 +215,13 @@ class  Settings() :
 				else : 
 					menu.AppendCheckItem (0 + e, lbl).Check (options["messengerWindow"].as_bool (keys[e]))
 				
-			mainMenu.AppendSubMenu (menu, _("Options pour la fenêtre principale"))
+			mainMenu.AppendSubMenu (menu, _("Mmain window options"))
 		# msgCompose submenu
 		if frame in ("messengerWindow", "msgcomposeWindow") :
 			menu, options, keys = Menu (), self.options, list(self.option_msgcomposeWindow.keys())
 			#keys.sort ()
 			for e in range (len (keys)): menu.AppendCheckItem (100+e, self.option_msgcomposeWindow[keys[e]]).Check (options["msgcomposeWindow"].as_bool (keys[e]))	
-			mainMenu.AppendSubMenu (menu, _("Options pour la fenêtre de rédaction"))
+			mainMenu.AppendSubMenu (menu, _("Write window options"))
 			mainMenu.Bind (EVT_MENU,self.onOptMenu)
 		# startup submenu)
 		if frame == "messengerWindow" :
@@ -230,18 +230,18 @@ class  Settings() :
 			for e in range (len (keys)): menu.AppendCheckItem (200+e, self.option_startup[keys[e]]).Check (options["startup"].as_bool (keys[e]))
 			# ajout de activer/ désactiver mise à jour
 			menu.Append(200+e+1, getUpdateLabel())
-			mainMenu.AppendSubMenu (menu, _("Options de  Mise à jour"))
+			mainMenu.AppendSubMenu (menu, _("Update options"))
 			mainMenu.Bind (EVT_MENU,self.onOptMenu)
 		# Chichi submenu
 		if frame == "messengerWindow" :
 			menu, options, keys = Menu (), self.options, list(self.option_chichi.keys())
 			for e in range (len (keys)): menu.AppendCheckItem (300+e, self.option_chichi[keys[e]]).Check (options["chichi"].as_bool (keys[e]))	
-			mainMenu.AppendSubMenu (menu, _("Désactivations   pour Chichi et pour Thunderbird+"))
+			mainMenu.AppendSubMenu (menu, _("Deactivations for Chichi and for Thunderbird+"))
 			mainMenu.Bind (EVT_MENU,self.onOptMenu)
 
-			mainMenu.Append(900, _("Sauvegarder la configuration actuelle"))
-			mainMenu.Append(901, _("Restaurer la configuration sauvegardée"))
-			mainMenu.Append(902, _("Réinitialiser la configuration"))
+			mainMenu.Append(900, _("Backup current configuration file"))
+			mainMenu.Append(901, _("Restore backed up configuration file"))
+			mainMenu.Append(902, _("Reset configuration"))
 	# mainMenu.Bind (EVT_MENU,self.onOptMenu)
 
 		utis.showNVDAMenu  (mainMenu)	
@@ -261,7 +261,7 @@ class  Settings() :
 			if key ==  "editDelay_str" :  # is not a check item
 				return CallLater(30, self.editDelay)
 # =====
-			toFind = _("mentions")
+			toFind = _("Mentions")
 			if evt.EventObject.GetLabelText(eID).find (toFind)!=-1 :
 				for k in ("responseMentionGroup","responseMentionRemove","responseMentionDelColon"):
 					options[section][k] = False
@@ -319,8 +319,8 @@ def getUpdateLabel() :
 	nextUpdateFile = api.config.getUserDefaultConfigPath()+"\\addons\\" +  addonName + "-nextUpdate.pickle"
 	exists =  (True if  os.path.exists(nextUpdateFile) else False)
 	if exists and  os.path.getsize(nextUpdateFile) < 5 : # mise à jour désactivée # maj désactivée
-		return  _("Activer la mise à jour automatique")
-	return _("Désactiver la mise à jour automatique")
+		return  _("Enable automatic update")
+	return _("Disable automatic update")
 
 def toggleUpdateState() :
 	addonName = "Thunderbird+4"
@@ -328,7 +328,7 @@ def toggleUpdateState() :
 	if  os.path.exists(nextUpdateFile) and   os.path.getsize(nextUpdateFile) < 5 : 
 		os.remove(nextUpdateFile) # réactive la maj
 		cancelSpeech()
-		CallAfter(message, _("La mise à jour automatique a bien été activée. Vous pouvez redémarrer NVDA pour rechercher une mise à jour."))
+		CallAfter(message, _("Automatic update has been enabled. You can restart NVDA to check for an update."))
 		return 1
 	# désactivation maj : écrit le fichier de longueur < 5 et contenant 0
 	cancelSpeech()
@@ -338,8 +338,8 @@ def toggleUpdateState() :
 			#pickle.dump(ut, fileObj)  #, protocol=0
 			fileObj.write(ut)
 	except :
-		return CallAfter(message, _("Erreur d'enregistrement du fichier de paramètres de mise à jour."))
-	CallAfter(message, _("La mise à jour automatique a bien été désactivée."))
+		return CallAfter(message, _("Error saving update settings file."))
+	CallAfter(message, _("Automatic update has been disabled."))
 	return
 
 	def removeLabel(value, label) :

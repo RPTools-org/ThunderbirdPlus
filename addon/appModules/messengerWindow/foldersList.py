@@ -47,10 +47,10 @@ def isNotExpandable (element: NVDAObjects.NVDAObject) -> bool:
 class ElementsListDialog (browseMode.ElementsListDialog):
 
 	ELEMENT_TYPES = (
-	("withUnread", _("Avec messages &non-lus seulement (liste plate)")),
-	("allItems", _("&Tous les dossiers (liste plate)")),
-	("treeWithUnread", _("Avec messages n&on-lus seulement (arborescence complète)")),
-	("treeWithAllItems", _("To&us les dossiers (arborescence complète)")),
+	("withUnread", _("With &unread messages only (flat list)")),
+	("allItems", _("&All Folders (flat list)")),
+	("treeWithUnread", _("With u&nread messages only (tree view)")),
+	("treeWithAllItems", _("A&ll folders (tree view)")),
 	)
 
 	def initElementType(self, elType):
@@ -169,7 +169,7 @@ class ThunderbirdWithUnreadFolderItemsQuickNavIterator (ThunderbirdAllFolderItem
 				if element.IA2Attributes.get("level") == "1":
 					if not controlTypes.State.COLLAPSED  in element.states:
 						account = element
-				if all (not element.name.startswith(x) for x in (_("Brouillons"), _("Envoyés"), _("Archives"), _("Corbeille"))) and not element.name.endswith("-") and regexp.search(element.name):
+				if all (not element.name.startswith(x) for x in (_("Drafts"), _("Sent"), _("Archives"), _("Deleted"))) and not element.name.endswith("-") and regexp.search(element.name):
 					itemLabel = f"{element.name} {'dans ' if account else ''}{account.name}"
 					item = self.QuickNavItemClass(self.nodeType, self.document, element=element, itemLabel = itemLabel)
 					yield item
@@ -211,7 +211,7 @@ class ThunderbirdWithUnreadFolderTreeQuickNavIterator (ThunderbirdAllFolderTreeQ
 				break
 		for element in treeView.children:
 			if element.role == (controlTypes.Role.TREEVIEWITEM if hasattr (controlTypes, "Role") else controlTypes.ROLE_TREEVIEWITEM) and element.name is not None:
-				if all (not element.name.startswith(x) for x in (_("Brouillons"), _("Envoyés"), _("Archives"), _("Corbeille"))) and not element.name.endswith("-"):
+				if all (not element.name.startswith(x) for x in (_("Drafts"), _("Sent"), _("Archives"), _("Deleted"))) and not element.name.endswith("-"):
 					if controlTypes.State.EXPANDED in element.states or (isNotExpandable(element) and regexp.search(element.name)) or ((controlTypes.State.COLLAPSED if hasattr(controlTypes, "State") else controlTypes.STATE_COLLAPSED) in element.states and int(element.IA2Attributes.get("level")) > 1 and regexp.search(element.name)):
 						item = self.QuickNavItemClass(self.nodeType, self.document, element = element)
 						yield item
@@ -233,7 +233,7 @@ class FoldersListItem (IAccessible):
 			return ThunderbirdAllFolderTreeQuickNavIterator(nodeType, self, direction, pos).iterate()
 
 	@scriptHandler.script(
-	description = _("Afficher la liste des dossiers de l'arborescence principale de Thunderbird, selon plusieurs types."),
+	description = _("Show the list of folders of the main foldertree , according to four types."),
 	gestures = ["kb:nvda+f7", "kb:f7", "kb:shift+f12"],
 	category = sharedVars.scriptCategory
 	)
