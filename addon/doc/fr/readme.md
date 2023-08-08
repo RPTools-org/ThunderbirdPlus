@@ -8,9 +8,7 @@
 * Télécharger la [Dernière version sur RPTools.org][3] ;
 * Compatibilité NVDA : 2019.3 et supérieur ;
 * Compatibilité  Thunderbird  : versions 102.x ;
-* [Ccode source sur gitHub][2]
-
-Note : Cette extension n'est pas compatible avec l'extension Mozilla Apps Enhancements. Si cette dernière est  installée, vous devez la désactiver ou la désinstaller avant d'installer  ThunderbirdPlus ;
+* [Code source sur gitHub][2]
 
 ## Description
 
@@ -76,7 +74,7 @@ Et bien d'autres choses que vous découvrirez en lisant le [manuel de l'utilisat
 
 <!-- Traducteurs : Dans les liens 4, 5 et 7 ci-dessous, où vous voyez lang=en,  remplacez en par le code de votre langue -->
 
-[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9/thunderbirdPlus-4.9-TB102.nvda-addon
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9.5/thunderbirdPlus-4.9.5-TB102.nvda-addon
 
 [2]: https://github.com/RPTools-org/ThunderbirdPlus/
 

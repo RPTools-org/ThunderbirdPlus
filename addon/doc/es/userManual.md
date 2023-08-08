@@ -10,7 +10,6 @@
 * Compatibilidad con Thunderbird: versiones 102.x;
 * [Código fuente en GitHub][2];
 
-Nota: este complemento no es compatible con la extensión Mozilla Apps Enhancements. Si este último está instalado, debe deshabilitarlo o desinstalarlo antes de instalar ThunderbirdPlus;
 <br>
 
 ## Descripción
@@ -737,7 +736,7 @@ Observaciones:
 * En una configuración de Windows 64 bits, el complemento no iniciará la versión de 32 bits de Thunderbird si ambas versiones, 64 y 32 bits, están instaladas en su sistema; 
 
 
-[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9/thunderbirdPlus-4.9-TB102.nvda-addon
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9.5/thunderbirdPlus-4.9.5-TB102.nvda-addon
 
 [2]: https://github.com/RPTools-org/ThunderbirdPlus/
 

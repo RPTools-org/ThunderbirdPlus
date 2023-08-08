@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: thunderbirdPlus\n"
-"POT-Creation-Date: 2023-07-25 16:06+0200\n"
+"POT-Creation-Date: 2023-07-31 15:55+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Pierre-Louis R. <plr.listes@rptools.org>\n"
 "Language-Team: Rémy Ruiz\n"
@@ -15,37 +15,12 @@ msgstr ""
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: appModules/messengerWindow/QuoteNav.py:14 appModules/shared/quoteNav.py:29 appModules/shared/z QuoteNav.py:23
-msgid "On|Le%date_sender%wrote|écrit"
-msgstr "El|On%date_sender%escribió|wrote"
-
-#: appModules/messengerWindow/QuoteNav.py:99 appModules/shared/quoteNav.py:249 appModules/shared/z QuoteNav.py:235
-msgid "Original Message|E-mail d'origine|Message d'origine"
-msgstr "Mensaje original|Original Message|Correo electrónico original"
-
-#: appModules/messengerWindow/QuoteNav.py:119 appModules/shared/quoteNav.py:268 appModules/shared/z QuoteNav.py:255
-msgid "You are receiving this message because you are subscribed to the group"
-msgstr "Has recibido este mensaje porque estás suscrito al grupo"
-
-#: appModules/messengerWindow/QuoteNav.py:138 appModules/shared/quoteNav.py:297 appModules/shared/z QuoteNav.py:274
-#, python-format
-msgid " link %s "
-msgstr " enlace %s "
-
-#: appModules/messengerWindow/QuoteNav.py:182 appModules/shared/quoteNav.py:373 appModules/shared/z QuoteNav.py:325
-msgid "From|De|Expéditeur"
-msgstr "De|From|Remitente"
-
-#: appModules/messengerWindow/QuoteNav.py:205 appModules/shared/quoteNav.py:397 appModules/shared/z QuoteNav.py:348
-msgid "wrote"
-msgstr "escribió"
-
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: appModules/messengerWindow/attachmentList.py:55
+#: appModules/messengerWindow/attachmentList.py:54
 msgid "Previous objects"
 msgstr "Objetos anteriores"
 
@@ -286,79 +261,79 @@ msgstr ", en  "
 msgid "Treeview folders"
 msgstr "Carpetas en vista de árbol"
 
-#: appModules/messengerWindow/menuMain.py:41
+#: appModules/messengerWindow/menuMain.py:39
 msgid "Choose and arrange the columns of the message list"
 msgstr "Elija y organice las columnas de la lista de mensajes"
 
-#: appModules/messengerWindow/menuMain.py:42
+#: appModules/messengerWindow/menuMain.py:40
 msgid "Help\tCtrlF1"
 msgstr "Ayuda\tCtrlF1"
 
-#: appModules/messengerWindow/menuMain.py:44
+#: appModules/messengerWindow/menuMain.py:42
 msgid "Change log"
 msgstr "Historial de cambios"
 
-#: appModules/messengerWindow/menuMain.py:45
+#: appModules/messengerWindow/menuMain.py:43
 msgid "Notification page"
 msgstr "Página de notificación"
 
-#: appModules/messengerWindow/menuMain.py:46
+#: appModules/messengerWindow/menuMain.py:44
 msgid "Donate"
 msgstr "Hacer una donación"
 
-#: appModules/messengerWindow/menuMain.py:48
+#: appModules/messengerWindow/menuMain.py:46
 msgid "Chichi's page"
 msgstr "Página de Chichi"
 
-#: appModules/messengerWindow/menuMain.py:49
+#: appModules/messengerWindow/menuMain.py:47
 msgid "Write to support"
 msgstr "Escriba al soporte"
 
-#: appModules/messengerWindow/menuMain.py:50
+#: appModules/messengerWindow/menuMain.py:48
 msgid "Join the thunderbird-dv mailing list (French)"
 msgstr "Únete a la lista thunderbird-dv (Francés)"
 
-#: appModules/messengerWindow/menuMain.py:88
+#: appModules/messengerWindow/menuMain.py:86
 msgid "Please select  the message list and try again."
 msgstr "Por favor, colóquese en la lista de mensajes y luego vuelva a intentarlo."
 
-#: appModules/messengerWindow/menuMain.py:107
+#: appModules/messengerWindow/menuMain.py:105
 msgid "No attachment to save"
 msgstr "No hay adjuntos a guardar"
 
-#: appModules/messengerWindow/menuMain.py:112
+#: appModules/messengerWindow/menuMain.py:110
 msgid "Open attachments toolbar"
 msgstr "Abra la barra de herramientasTB de adjuntos"
 
-#: appModules/messengerWindow/menuMain.py:129 appModules/messengerWindow/menuMain.py:147
+#: appModules/messengerWindow/menuMain.py:127 appModules/messengerWindow/menuMain.py:145
 msgid "Open"
 msgstr "abrir"
 
-#: appModules/messengerWindow/menuMain.py:130
+#: appModules/messengerWindow/menuMain.py:128
 msgid "More options \tControl+alt+p"
 msgstr "más opciones \tControl+alt+p"
 
-#: appModules/messengerWindow/menuMain.py:131
+#: appModules/messengerWindow/menuMain.py:129
 msgid "attachment \""
 msgstr "adjunto \""
 
-#: appModules/messengerWindow/menuMain.py:134
+#: appModules/messengerWindow/menuMain.py:132
 msgid "attached"
 msgstr "adjunto"
 
-#: appModules/messengerWindow/menuMain.py:139
+#: appModules/messengerWindow/menuMain.py:137
 msgid "All ... \tControl+Alt+p. "
 msgstr "todo ... \tControl+Alt+p. "
 
-#: appModules/messengerWindow/menuMain.py:140
+#: appModules/messengerWindow/menuMain.py:138
 msgid "move to list alt+p"
 msgstr "moverse a la lista alt+p"
 
-#: appModules/messengerWindow/menuMain.py:148
+#: appModules/messengerWindow/menuMain.py:146
 msgid "More options"
 msgstr "más opciones"
 
-#: appModules/messengerWindow/menuMain.py:248
+#: appModules/messengerWindow/menuMain.py:246
 msgid "To get all headers, please open the View Menu, go down to 'Headers' and then press Enter on 'All'  in the submenu. Then display the grave menu again."
 msgstr "Para obtener todas las cabeceras, abra el Menú Ver, baja hasta  Cabeceras luego pulse Todas en el submenú. Luego, mostrar de nuevo el menú ordinal."
 
@@ -535,7 +510,7 @@ msgstr "Ventana no encontrada"
 msgid "No attachments available in this context."
 msgstr "No hay adjuntos disponibles en este contexto."
 
-#: appModules/messengerWindow/messageListItem.py:640 appModules/shared/utis.py:567
+#: appModules/messengerWindow/messageListItem.py:640 appModules/shared/utis.py:571
 msgid "No Attachement."
 msgstr "No hay adjuntos."
 
@@ -651,15 +626,15 @@ msgstr "Configuración de cuenta"
 msgid "Add-ons for Thunderbird"
 msgstr "Complementos para Thunderbird"
 
-#: appModules/messengerWindow/tabs.py:180
+#: appModules/messengerWindow/tabs.py:186
 msgid "tab not found"
 msgstr "pestaña no encontrada"
 
-#: appModules/messengerWindow/tabs.py:248
+#: appModules/messengerWindow/tabs.py:254
 msgid "There is only one tab open."
 msgstr "Solo hay una pestaña abierta \"."
 
-#: appModules/messengerWindow/tabs.py:284
+#: appModules/messengerWindow/tabs.py:290
 #, python-brace-format
 msgid "Active tab {0} of {1} : {2}, "
 msgstr "Pestaña activa {0} de {1} : {2}, "
@@ -990,7 +965,11 @@ msgstr "Error de registro del archivo de configuración de actualización."
 msgid "Automatic update has been disabled."
 msgstr "La actualización automática ha sido desactivada correctamente."
 
-#: appModules/shared/quoteNav.py:97 appModules/shared/z QuoteNav.py:80
+#: appModules/shared/quoteNav.py:29
+msgid "On|Le%date_sender%wrote|écrit"
+msgstr "El|On%date_sender%escribió|wrote"
+
+#: appModules/shared/quoteNav.py:97
 msgid "error"
 msgstr "error"
 
@@ -998,12 +977,12 @@ msgstr "error"
 msgid " text elements. Press Control to stop."
 msgstr " elementos de texto Presione Control para detener."
 
-#: appModules/shared/quoteNav.py:183 appModules/shared/z QuoteNav.py:172
+#: appModules/shared/quoteNav.py:183
 #, python-brace-format
 msgid "{0} messages in chronological order, "
 msgstr "{0} mensajes en orden cronológico,"
 
-#: appModules/shared/quoteNav.py:189 appModules/shared/z QuoteNav.py:179
+#: appModules/shared/quoteNav.py:189
 #, python-brace-format
 msgid "{0} messages, {1} lines, "
 msgstr "{0} mensajes, {1} líneas,"
@@ -1012,15 +991,36 @@ msgstr "{0} mensajes, {1} líneas,"
 msgid "Preview copied: "
 msgstr "Vista previa copiada: "
 
-#: appModules/shared/utis.py:444
+#: appModules/shared/quoteNav.py:249
+msgid "Original Message|E-mail d'origine|Message d'origine"
+msgstr "Mensaje original|Original Message|Correo electrónico original"
+
+#: appModules/shared/quoteNav.py:268
+msgid "You are receiving this message because you are subscribed to the group"
+msgstr "Has recibido este mensaje porque estás suscrito al grupo"
+
+#: appModules/shared/quoteNav.py:297
+#, python-format
+msgid " link %s "
+msgstr " enlace %s "
+
+#: appModules/shared/quoteNav.py:373
+msgid "From|De|Expéditeur"
+msgstr "De|From|Remitente"
+
+#: appModules/shared/quoteNav.py:397
+msgid "wrote"
+msgstr "escribió"
+
+#: appModules/shared/utis.py:448
 msgid "The status bar is not displayed."
 msgstr "La barra de estado no se muestra."
 
-#: appModules/shared/utis.py:543
+#: appModules/shared/utis.py:547
 msgid "Copied"
 msgstr "Copiado"
 
-#: appModules/shared/utis.py:631
+#: appModules/shared/utis.py:635
 msgid "File not found"
 msgstr "Archivo no encontrado: "
 
@@ -1246,8 +1246,14 @@ msgid "Thunderbird+"
 msgstr "Thunderbird+"
 
 #: buildVars.py:26
-msgid "This add-on adds commands to Thunderbird 102.x to make it more accessible, efficient and comfortable to use."
-msgstr "Este complemento agrega órdenes a Thunderbird 102 y superior para que sea más accesible, eficiente y cómodo de usar."
+msgid ""
+"This add-on adds commands to Thunderbird 102.x to make it more accessible, efficient and comfortable to use.\n"
+"For more information, visit :\n"
+"https://www.rptools.org/NVDA-Thunderbird/get.php?pg=manual&lang=en"
+msgstr ""
+"Este complemento agrega órdenes a Thunderbird 102 y superior para que sea más accesible, eficiente y cómodo de usar.\n"
+"Para más información visite :\n"
+"https://www.rptools.org/NVDA-Thunderbird/get.php?pg=manual&lang=es"
 
 #: globalPlugins/ThunderbirdGlob.py:89
 msgid "Thunderbird is already in use."
@@ -1273,95 +1279,103 @@ msgstr "Thunderbird+, lanzador y actualización"
 msgid "Check for Thunderbird+ update"
 msgstr "Búsqueda de una actualización de Thunderbird+"
 
-#: globalPlugins/shared/notif.py:126
+#: globalPlugins/shared/notif.py:125
 msgid "Error saving of :\n"
 msgstr "Error de registro de:\n"
 
-#: globalPlugins/shared/updateLite.py:43
+#: globalPlugins/shared/updateLite.py:41
 msgid "&What's new"
 msgstr "&Qué hay de Nuevo "
 
-#: globalPlugins/shared/updateLite.py:45
+#: globalPlugins/shared/updateLite.py:43
 msgid "&Yes"
 msgstr "&Sí"
 
-#: globalPlugins/shared/updateLite.py:46
+#: globalPlugins/shared/updateLite.py:44
 msgid "&Later"
 msgstr "Más &tarde"
 
-#: globalPlugins/shared/updateLite.py:47
+#: globalPlugins/shared/updateLite.py:45
 msgid "&Disable"
 msgstr "&Desactivar"
 
-#: globalPlugins/shared/updateLite.py:128
+#: globalPlugins/shared/updateLite.py:126
 msgid "is up to date."
 msgstr " está al día."
 
-#: globalPlugins/shared/updateLite.py:131
+#: globalPlugins/shared/updateLite.py:129
 #, python-brace-format
 msgid "Do you want to update version {0} to version {1}?"
 msgstr "¿Quieres actualizar la versión {0} a la versión {1}?"
 
-#: globalPlugins/shared/updateLite.py:132
+#: globalPlugins/shared/updateLite.py:130
 msgid "Thunderbird+ addon update"
 msgstr "Actualización del complemento Thunderbird+"
 
-#: globalPlugins/shared/updateLite.py:141 globalPlugins/shared/updateLite.py:251
+#: globalPlugins/shared/updateLite.py:139 globalPlugins/shared/updateLite.py:249
 msgid "Addon update"
 msgstr "Actualización del complemento"
 
-#: globalPlugins/shared/updateLite.py:152
+#: globalPlugins/shared/updateLite.py:150
 msgid "Version check error"
 msgstr "Error de comprobación de la versión"
 
-#: globalPlugins/shared/updateLite.py:155
+#: globalPlugins/shared/updateLite.py:153
 msgid "Error reading Info file"
 msgstr "Error de lectura del file Infos"
 
-#: globalPlugins/shared/updateLite.py:169 globalPlugins/shared/updateLite.py:171
+#: globalPlugins/shared/updateLite.py:167 globalPlugins/shared/updateLite.py:169
 msgid "Error retrieving file information"
 msgstr "Error de recuperación de información del archivo"
 
-#: globalPlugins/shared/updateLite.py:188
+#: globalPlugins/shared/updateLite.py:186
 msgid "Error downloading of :\n"
 msgstr "Error de descarga de:\n"
 
-#: globalPlugins/shared/updateLite.py:190
+#: globalPlugins/shared/updateLite.py:188
 msgid "Empty file error"
 msgstr "Error de archivo vacío"
 
-#: globalPlugins/shared/updateLite.py:202
+#: globalPlugins/shared/updateLite.py:200
 msgid ", cannot delete : "
 msgstr ", no se puede eliminar: "
 
-#: globalPlugins/shared/updateLite.py:208 globalPlugins/shared/updateLite.py:283
+#: globalPlugins/shared/updateLite.py:206 globalPlugins/shared/updateLite.py:281
 msgid "Saving error of :\n"
 msgstr "Error al guardar de:\\n\n"
 
-#: globalPlugins/shared/updateLite.py:211
+#: globalPlugins/shared/updateLite.py:209
 msgid "Error saving addon to temporary file."
 msgstr "Error de registro del complemento en un archivo temporal."
 
-#: globalPlugins/shared/updateLite.py:269
+#: globalPlugins/shared/updateLite.py:267
 msgid "The update will be offered again in 3 days. In the meantime, you can press AltGr+Shift+grave to perform an update search."
 msgstr "La actualización se propondrá nuevamente en 3 días. Mientras tanto, puede pulsar AltGr+Shift+ordinal para realizar una búsqueda de actualización."
 
-#: globalPlugins/shared/updateLite.py:274
+#: globalPlugins/shared/updateLite.py:272
 msgid "Automatic update has been disabled. press AltGr+Shift+grave for a manual update."
 msgstr "La actualización automática ha sido desactivada. Pulse AltGr+Shift+ordinal para una actualización manual."
 
-#: installTasks.py:19
+#: installTasks.py:17
 msgid ""
-"Mozilla Apps Enhancements has been detected on your NVDA installation. In order for thunderbirdPlus to work without conflicts, Mozilla Apps Enhancements must be disabled. Would you like to disable Mozilla Apps Enhancements now and install ThunderbirdPlus ? \n"
+"Mozilla Apps Enhancements has been detected on your NVDA installation. In order for thunderbirdPlus to work without conflicts, the thunderbird module of Mozilla Apps Enhancements must be disabled. Would you like to do so now and install ThunderbirdPlus ? \n"
 "If you answer No, the installation will fail."
 msgstr ""
-"Se ha detectado MozillaAppsEnhancements en tu instalación de NVDA. Para que ThunderbirdPlus funcione sin conflictos, MozillaAppsEnhancements debe estar deshabilitado. ¿Le gustaría desactivar MozillaAppsEnhancements ahora e instalar ThunderbirdPlus? \\no\n"
-"Si responde No, esta instalación fallará."
+"Mozilla Apps Enhancements ha sido detectado en tu instalación de NVDA. Para que thunderbirdPlus funcione sin conflictos, el módulo MozillaAppsEnhancements Thunderbird debe estar deshabilitado.\n"
+"¿Le gustaría hacerlo ahora e instalar ThunderbirdPlus?\n"
+"Si responde No, se cancelará la instalación."
 
-#: installTasks.py:21
+#: installTasks.py:19
 msgid "Running Mozilla Apps Enhancements detected"
 msgstr "Ejecutando Mozilla Apps Enhancementsdetectado"
 
-#: installTasks.py:26
+#: installTasks.py:27
 msgid "Installation cancelled"
 msgstr "Instalación cancelada"
+
+#~ msgid ""
+#~ "Mozilla Apps Enhancements has been detected on your NVDA installation. In order for thunderbirdPlus to work without conflicts, Mozilla Apps Enhancements must be disabled. Would you like to disable Mozilla Apps Enhancements now and install ThunderbirdPlus ? \n"
+#~ "If you answer No, the installation will fail."
+#~ msgstr ""
+#~ "Se ha detectado MozillaAppsEnhancements en tu instalación de NVDA. Para que ThunderbirdPlus funcione sin conflictos, MozillaAppsEnhancements debe estar deshabilitado. ¿Le gustaría desactivar MozillaAppsEnhancements ahora e instalar ThunderbirdPlus? \\no\n"
+#~ "Si responde No, esta instalación fallará."

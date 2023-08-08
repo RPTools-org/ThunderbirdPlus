@@ -14,10 +14,10 @@ import addonHandler,  os, sys
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import translation, utis, sharedVars
+import  utis, sharedVars
 from utis import getIA2Attribute, showNVDAMenu , versionTB,  getElementWalker
 del sys.path[-1]
-translation.initTranslationWithEnglishFallback()
+addonHandler.initTranslation()
 from time import sleep
 from oleacc import STATE_SYSTEM_PRESSED, ROLE_SYSTEM_PUSHBUTTON
 from keyboardHandler import KeyboardInputGesture, passNextKeyThrough
@@ -163,6 +163,17 @@ def focusDoc() :
 def getComposeDoc() :
 	sharedVars.objLooping = True
 	o = globalVars.foregroundObject
+	# recent version of TB > 102.10
+	# level 4,     0 of 0, name : Corps du message, Role.DOCUMENT Tag: body, States : , FOCUSED, FOCUSABLE, EDITABLE, childCount  : 5 Path : Role-FRAME
+	# search child  i13, Role-SECTION, , IA2ID : composeContentBox 
+	o = utis.findChildByRoleID(o, "composeContentBox", controlTypes.Role.SECTION, 10)
+	# search i5, Role-SECTION, , IA2ID : messageArea 
+	o = utis.findChildByRoleID(o, "messageArea", controlTypes.Role.SECTION)
+	if o :
+		# select  i0, Role-INTERNALFRAME, , IA2ID : messageEditor | i0, Role-DOCUMENT,  , IA2Attr : display : block, explicit-name : true, tag : body, line-number : 1,  ;
+		o = o.firstChild.firstChild
+		if o : return o
+	# below, old versions of TB
 	#beep(120, 20)
 	#if sharedVars.debug : sharedVars.log(o, "cadre ?")
 	o = utis.findChildByIDRev(o, "content-frame")

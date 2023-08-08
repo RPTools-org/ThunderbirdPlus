@@ -21,13 +21,13 @@ if not hasattr(controlTypes, "Role"):
 	setattr(controlTypes, "role", type("role", (), {"_roleLabels": controlTypes.roleLabels}))
 # End of compatibility fixes
 import addonHandler,  os, sys
-import translation, utis, sharedVars
+import  utis, sharedVars
 import core
 from tones import beep
 from speech import speakSpelling 
 import scriptHandler
 import globalCommands
-translation.initTranslationWithEnglishFallback()
+addonHandler.initTranslation()
 
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")

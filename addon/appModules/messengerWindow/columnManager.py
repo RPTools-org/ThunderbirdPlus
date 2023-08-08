@@ -26,9 +26,9 @@ import os, sys
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import translation, utis, sharedVars
+import  utis, sharedVars
 del sys.path[-1]
-translation.initTranslationWithEnglishFallback()
+addonHandler.initTranslation()
 
 dlgCols = None
 

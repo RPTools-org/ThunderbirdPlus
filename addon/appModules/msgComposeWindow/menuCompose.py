@@ -14,10 +14,10 @@ import addonHandler,  os, sys
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import translation, utis, sharedVars
+import  utis, sharedVars
 from utis import getIA2Attribute, showNVDAMenu , versionTB,  getElementWalker
 del sys.path[-1]
-translation.initTranslationWithEnglishFallback()
+addonHandler.initTranslation()
 
 from time import sleep
 from oleacc import STATE_SYSTEM_PRESSED, ROLE_SYSTEM_PUSHBUTTON

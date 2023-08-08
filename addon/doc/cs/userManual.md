@@ -9,8 +9,6 @@
 * Kompatibilita Thunderbird: verze 102.x;
 * [Zdrojový kód na gitHub][2]
 
-Poznámka: Tento doplněk není kompatibilní s doplňkem Mozilla Apps Enhancements. Pokud je nainstalován druhý, budete jej muset před instalací Thunderbird+ deaktivovat nebo odinstalovat;
-
 <!-- [Přejít na obsah](#toc) -->
 
 ## Popis
@@ -726,7 +724,7 @@ Poznámky:
 * Spouštěč Thunderbird je určen pouze pro nainstalovanou verzi Thunderbirdu, jejíž cesty Thunderbird.exe jsou předvídatelné.
 * V 64bitové architektuře Windows tento doplněk nespustí 32bitovou verzi Thunderbirdu, pokud je na vašem systému nainstalována 64bitová i 32bitová verze;<!-- links section -->
 
-[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9/thunderbirdPlus-4.9-TB102.nvda-addon
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9.5/thunderbirdPlus-4.9.5-TB102.nvda-addon
 
 [2]: https://github.com/RPTools-org/ThunderbirdPlus/
 

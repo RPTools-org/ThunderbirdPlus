@@ -10,8 +10,6 @@
 * Thunderbird uyumluluğu: 102.x sürümleri;
 * [GitHub'daki kaynak kodu][2]
 
-Not: Bu eklenti, Mozilla Apps Enhancements eklentisi ile uyumlu değildir. İkincisi kuruluysa, Thunderbird+'ı kurmadan önce onu devre dışı bırakmanız veya kaldırmanız gerekir;
-
 ## Açıklama
 
 Bu eklenti, Mozilla Thunderbird e-posta istemcisinin rahatlığını ve NVDA ile verimli kullanımını büyük ölçüde geliştirir.
@@ -76,7 +74,7 @@ Ve [kullanım kılavuzunu][4] okuyarak keşfedeceğiniz diğer birçok şey;
 
 <!-- Çevirmenler : aşağıdaki 4, 5 ve 7 numaralı bağlantılarda, lang=en gördüğünüz yerde en kodunu dil kodunuzla değiştirin. TR gibi.-->
 
-[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9/thunderbirdPlus-4.9-TB102.nvda-addon
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9.5/thunderbirdPlus-4.9.5-TB102.nvda-addon
 
 [2]: https://github.com/RPTools-org/ThunderbirdPlus/
 

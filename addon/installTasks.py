@@ -5,22 +5,26 @@ import os
 import gui
 import wx
 import addonHandler
-
 addonHandler.initTranslation()
 
 # This  code comes from TeleNVDA and is adapted
 def onInstall():
 	for addon in addonHandler.getAvailableAddons():
 		if addon.name == "Mozilla" and not addon.isDisabled:
-			getMAEUrl()
+			# getMAEUrl()
+			if  not os.path.exists(os.path.join(addon.path, "appModules", "thunderbird.py")) :
+				break
 			result = gui.messageBox(
 				# Translators: message asking the user wether Mozilla whould be disabled or not
-				_("""Mozilla Apps Enhancements has been detected on your NVDA installation. In order for thunderbirdPlus to work without conflicts, Mozilla Apps Enhancements must be disabled. Would you like to disable Mozilla Apps Enhancements now and install ThunderbirdPlus ? \nIf you answer No, the installation will fail."""),
+				_("""Mozilla Apps Enhancements has been detected on your NVDA installation. In order for thunderbirdPlus to work without conflicts, the thunderbird module of Mozilla Apps Enhancements must be disabled. Would you like to do so now and install ThunderbirdPlus ? \nIf you answer No, the installation will fail."""),
 				# Translators: question title
 				_("Running Mozilla Apps Enhancements detected"),
 				wx.YES_NO|wx.ICON_QUESTION, gui.mainFrame)
 			if result == wx.YES :
-				addon.enable(False)
+				# addon.enable(False)
+				#  Solution given  by Javie Dominguez himself
+				os.rename(os.path.join(addon.path, "appModules", "thunderbird.py"), os.path.join(addon.path, "appModules", "thunderbird.py.disabled"))
+				# This way you would disable the thunhderbird appModule without having to disable the whole Mozilla addon.
 			elif  result == wx.NO :
 				raise RuntimeError(_("Installation cancelled"))
 				return
@@ -109,7 +113,14 @@ def getKL() :
 	res = windll.User32.GetKeyboardLayoutNameW(buf)
 	if res:
 		val = buf.value
-		return val[4:]
+		val = val[4:]
+		if val == "040C" :
+			val = "FR"
+		elif val == "080C" :
+			val = "BE"
+		elif val == "0C09" :
+			val = "AU" # australia
+		return val
 	return "0000"
 
 def getMAEUrl() :

@@ -13,8 +13,8 @@ if not hasattr(controlTypes, "Role"):
 # End of compatibility fixes
 import globalPluginHandler, addonHandler
 from scriptHandler import getLastScriptRepeatCount
-from .shared import translation
-translation.initTranslationWithEnglishFallback()
+
+addonHandler.initTranslation()
 import api
 import ui
 import speech

@@ -24,8 +24,7 @@ import speech
 from wx import CallAfter, CallLater, Menu, MessageBox
 from winUser import setCursorPos, getKeyNameText 
 import addonHandler,  os, sys
-import translation
-translation.initTranslationWithEnglishFallback()
+addonHandler.initTranslation()
 
 import api
 from api import copyToClip
@@ -50,7 +49,7 @@ def isChichi() :
 	o =  findChildByID(o, "mail-bar3")
 	# sharedVars.log(o, "Toolbar : ")
 	if not o : return False
-	o = findChildByID(o, "chichi_free_fr-browserAction-toolbarbutton")
+	o = findChildByRoleID(o, "chichi_free_fr-browserAction-toolbarbutton", controlTypes.Role.BUTTON)
 	# sharedVars.log(o, "Bouton  : ")
 	sharedVars.chichi = (True if o else False)
 	# sharedVars.log(o, "Chichi : " + str(sharedVars.chichi))
@@ -117,7 +116,32 @@ def getIA2Attribute (obj,attribute_value=False,attribute_name ="id"):
 	r =obj.IA2Attributes[attribute_name]
 	return r if not attribute_value  else r ==attribute_value
 
+def findChildByRoleID(obj,ID, role, startIdx=0) : # attention : valeurs role de controlTypes.py
+	if obj  is None : return None
+
+	try : 
+		prevLooping = sharedVars.objLooping
+		sharedVars.objLooping = True
+		try:
+			if startIdx : o = obj.getChild(startIdx)
+			else : o = obj.firstChild
+		except :
+			o = obj.firstChild
+			pass
+		while o:
+			if o.role == role :
+				if  str(getIA2Attribute(o)) ==  ID:
+					# sharedVars.log(o, "toolbar found ")
+					return o
+			o = o.next
+		return None
+	finally :
+		sharedVars.objLooping = prevLooping
+
+
 def findChildByID(obj,id) : # attention : valeurs role de controlTypes.py
+	# 2023-07-31 : added folowin line
+	if obj  is None : return None
 	try : 
 		prevLooping = sharedVars.objLooping
 		sharedVars.objLooping = True
@@ -138,6 +162,9 @@ def findChildByID(obj,id) : # attention : valeurs role de controlTypes.py
 		sharedVars.objLooping = prevLooping
 
 def findChildByIDRev(obj,id) : # attention : valeurs role de controlTypes.py
+	# 2023-07-31 : added folowin line
+	if obj  is None : return None
+
 	try : 
 		prevLooping = sharedVars.objLooping
 		sharedVars.objLooping = True

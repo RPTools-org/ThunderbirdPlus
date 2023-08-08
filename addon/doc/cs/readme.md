@@ -10,8 +10,6 @@
 * Kompatibilita Thunderbird: verze 102.x;
 * [Zdrojový kód na gitHub][2]
 
-Poznámka: Tento doplněk není kompatibilní s doplňkem Mozilla Apps Enhancements. Pokud je nainstalován druhý, budete jej muset před instalací Thunderbird+ deaktivovat nebo odinstalovat;
-
 ## Popis
 
 Tento doplněk výrazně zlepšuje pohodlí a efektivní použití klienta pro zasílání zpráv Mozilla Thunderbird s NVDA.
@@ -76,7 +74,7 @@ A mnoho dalších věcí, které zjistíte při čtení [uživatelská příruč
 
 <!-- Translators : in the links 4, 5 and 7 below, where you see lang=en, replace en with your language code -->
 
-[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9/thunderbirdPlus-4.9-TB102.nvda-addon
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9.5/thunderbirdPlus-4.9.5-TB102.nvda-addon
 
 [2]: https://github.com/RPTools-org/ThunderbirdPlus/
 

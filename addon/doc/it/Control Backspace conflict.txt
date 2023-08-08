@@ -1,0 +1,20 @@
+In Thunderbird+, la scorciatoia control+backspace è assegnata per chiudere le schede e alcune finestre.
+Ciò causa un conflitto di tasti di scelta rapida durante la composizione di un messaggio.
+
+Per ripristinare la cancellazione della parola che precede il cursore in un messaggio in scrittura, è necessario eliminare questa assegnazione.
+
+Per fare ciò, attenersi alla seguente procedura:
+* Posizionarsi nella finestra principale di Thunderbird;
+* Premere NVDA+n per aprire il menu NVDA;
+* Premere la lettera: p, per posizionarsi nel sottomenu Preferenze;
+* Quindi premere la lettera: G, per aprire la finestra di dialogo Gesti e tasti di immissione;
+* Nella visualizzazione ad albero, selezionare il ramo: Thunderbird+ e aprirlo con la freccia destra;
+* Premere la lettera: S, per selezionare il ramo: Invia Control+F4 alla finestra corrente, e aprila;
+* Seleziona il ramo inferiore: control+backspace;
+* e infine, premi TAB finché non senti "Elimina, pulsante", quindi premi Invio;
+* È importante chiudere questa finestra di dialogo con il pulsante OK per salvare le modifiche.
+
+Attenzione :
+Dopo questa modifica, può succedere che la scorciatoia non funzioni come previsto.
+Per qualche motivo sconosciuto, NVDA inserisce di nuovo il comando Control+Backspace.
+In questo caso, ripetere la procedura sopra descritta per risolvere il problema.

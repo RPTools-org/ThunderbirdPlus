@@ -1,6 +1,6 @@
 #-*- coding:utf-8 -*
-import translation
-translation.initTranslationWithEnglishFallback()
+import addonHandler
+addonHandler.initTranslation()
 
 import re, speech, winUser
 from tones import beep

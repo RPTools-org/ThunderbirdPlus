@@ -34,12 +34,12 @@ import addonHandler,  os, sys
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import translation, utis, sharedVars # , sendInput
+import utis, sharedVars # , sendInput
 # dbg = sharedVars.log
 # from  py3compatibility import *
 # from  py3compatibility import utis._unicode
 del sys.path[-1]
-translation.initTranslationWithEnglishFallback()
+addonHandler.initTranslation()
 import api
 
 sharedVars.scriptCategory = _curAddon.manifest['summary']
@@ -74,7 +74,7 @@ class AppModule(thunderbird.AppModule):
 		self.TTActivated = False
 		self.needReading = False
 		sharedVars.initSettingsMenu(self) # then use  sharedVars.oSettings.*
-		sharedVars.initQuoteNav() # then use  sharedVars.oQuoteNav.*		self.regExp_date =compile ("^(\d\d/\d\d/\d{4} \d\d:\d\d|\d\d:\d\d)$")
+		# initQuotenav  will be run at first use of quote Navigator >sharedVars.initQuoteNav() # then use  sharedVars.oQuoteNav.*		self.regExp_date =compile ("^(\d\d/\d\d/\d{4} \d\d:\d\d|\d\d:\d\d)$")
 		self.regExp_nameListGroup, self.regExp_AnnotationResponse, self.regExp_mailAddress  =compile ("\[.*\]|\{.*\}"), compile ("re[ ]*:[ ]", IGNORECASE), compile ("\S+?@\S+?\.\S+")
 		# self.regExp_listGroupName = compile ("\[(.*)\]") # |\{?*\}") # first occurrence of the list group name
 		self.regExp_removeMultiBlank =compile (" {2,}")
@@ -91,12 +91,14 @@ class AppModule(thunderbird.AppModule):
 		# Niveau 2,   0 sur 0, name : Corps du message, role.DOCUMENT=controlTypes.Role.DOCUMENT Tag: body, états : , FOCUSED, MULTILINE, FOCUSABLE, EDITABLE, childCount  : 6 Chemin : role FRAME=34| i23, role-INTERNALFRAME=115, , IA2ID : content-frame | i0, role-DOCUMENT=52,  , IA2Attr : explicit-name : true, display : block, tag : body, line-number: 2,;
 		if  role == controlTypes.Role.DOCUMENT  and  controlTypes.State.EDITABLE in obj.states :
 			# beep(500, 3)
+			sharedVars.oEditing = obj
 			sharedVars.curFrame = "msgcomposeWindow"
 			sharedVars.curTab = "comp"
 			if sharedVars.virtualSpellChk :
 				clsList.insert(0, msgComposeWindow.virtualSpellCheck.ThunderbirdEditDocument)
 			return
 		if role == controlTypes.Role.FRAME  : # and "Thunderb" in str(obj.name) : #obj.windowClassName: # or (self.curFrame == "messengerWindow" and self.curTab == "init") : # or not self.curFrame  :
+			if "Mozilla" not in obj.windowClassName : return # 2023-08-01
 			sharedVars.oCurFrame = obj
 			# if sharedVars.debug : sharedVars.log(obj)
 			sharedVars.curFrame = getFrameID(obj)
@@ -198,40 +200,6 @@ class AppModule(thunderbird.AppModule):
 				clsList.insert(0, SearchBox)
 		# end of choose overlay
 
-	# def event_NVDAObject_init(self, obj):
-		# if sharedVars.curFrame != "1messageWindow" : return
-		# if hasattr(obj, "value") :
-			# obj.value = "object_init : role {0}, name {1}".format(str(obj.role), obj.value)
-		# return
-		# # if obj.role in (controlTypes.Role.WINDOW, controlTypes.Role.APPLICATION, controlTypes.Role.FRAME) :  # , controlTypes.Role.DOCUMENT) : 
-		# sharedVars.log(obj, "object init  , " + sharedVars.curFrame)
-		# if  sharedVars.curFrame == "1messageWindow" :
-			# if  obj.role ==  controlTypes.Role.DOCUMENT : obj.name = "message " + obj.name
-			# if  obj.role in (controlTypes.Role.WINDOW, controlTypes.Role.APPLICATION) : 			obj.name = ""
-			# return
-		# if obj.role == controlTypes.Role.FRAME : 
-			# o = utis.findChildByIDRev(obj, "messagepane")
-			# sharedVars.log(o,"recherche message pane")
-			# if o : 
-				# beep(500, 30)
-				# obj.name = ""
-		# return
-		# if obj.role ==  controlTypes.Role.FRAME :
-			# nm = str(obj.name)
-			# if nm.startswith(_("Rédaction")) : return
-			# if nm  == self.prevTitle : obj.name = self.prevTitle =""
-			# else : self.prevTitle = nm
-		# return
-		# # if sharedVars.curFrame == "1messageWindow" and  obj.role in (controlTypes.Role.WINDOW, controlTypes.Role.APPLICATION, controlTypes.Role.FRAME) :  # , controlTypes.Role.DOCUMENT) : 
-			# # if 		hasattr(obj, "name") : 
-				# # if  _("Rédaction")  in obj.name : return # self.prevTitle = "in"
-				# # if obj.name == self.prevTitle : obj.name = ""
-				# # else : self.prevTitle = obj.name
-				# # # obj.name = str(obj.role)
-
-	# begin Thunderbird+ 
-	# events and associated
-
 	def TBExited() : # à supprimer ?
 		# globalVars.TBStep = 0
 		beep(150, 20)	
@@ -309,12 +277,14 @@ class AppModule(thunderbird.AppModule):
 		try : nextHandler()
 		except : return
 
-	def event_loseFocus(self,obj,nextHandler):
-		# sharedVars.log(obj, "loseFocus :")
-		if  obj.role == controlTypes.Role.DOCUMENT and controlTypes.State.READONLY not in obj.states :
-			sharedVars.oEditing = obj
-			# sharedVars.log(sharedVars.oEditing, "loseFocus  editingDoc:")
-		nextHandler()
+	# def event_loseFocus(self,obj,nextHandler):
+		# # sharedVars.log(obj, "loseFocus :")
+		# try :
+			# if obj.role == controlTypes.Role.DOCUMENT and controlTypes.State.READONLY not in obj.states :
+				# sharedVars.oEditing = obj
+		# except :
+			# pass
+		# nextHandler()
 		
 	def event_focusEntered (self,obj,nextHandler):
 		role, objID  = obj.role, utis.getIA2Attribute (obj)  
@@ -352,7 +322,6 @@ class AppModule(thunderbird.AppModule):
 			# oTT must be the threadTree
 			sharedVars.objLooping = True
 			o =  oTT.firstChild.firstChild # first headers of threadTree
-			# sharedVars.log(o, "Premier entete : ")
 			self.columnID =[]
 			while o and o.role == controlTypes.Role.TABLECOLUMNHEADER :
 				if int(o.location[2]) > 0 :
@@ -716,7 +685,9 @@ class AppModule(thunderbird.AppModule):
 				elif mainKey == "upArrow" : sharedVars.oQuoteNav.readMail(o,True) # with quote list
 		elif role == controlTypes.Role.DOCUMENT  and sharedVars.curFrame == "msgcomposeWindow" :
 			if mainKey == "downArrow" : sharedVars.oQuoteNav.readMail(o,False)
-			elif mainKey == "upArrow" : sharedVars.oQuoteNav.readMail(o,True) # with quote list
+			elif mainKey == "upArrow" : 
+				if not sharedVars.oQuoteNav : sharedVars.initQuoteNav() # then use  sharedVars.oQuoteNav.*		self.regExp_date =compile ("^(\d\d/\d\d/\d{4} \d\d:\d\d|\d\d:\d\d)$")
+				sharedVars.oQuoteNav.readMail(o,True) # with quote list
 		elif  hasattr(o, "script_reportFocus") : # role == controlTypes.Role.EDITABLETEXT and sharedVars.curFrame == "spellCheckDlg" :
 			return o.script_reportFocus(gesture)
 		return gesture.send() 
@@ -1284,11 +1255,14 @@ def getParentByRole(obj, role) :
 def getFrameID(o) :
 	# o is the frame object
 	# language independant version and optimizes for main Windows and compose window
+	f = "NA" # fix for bug 2023 04 03
+	if not o or o.role !=  controlTypes.Role.FRAME :
+		o =  globalVars.foregroundObject
+		# 2023-08-01 : added 2 next lines
+		if "Mozilla" not in o.windowClassName : 
+			return sharedVars.curFrame
 	try :
 		sharedVars.objLooping = True
-		f = "NA" # fix for bug 2023 04 03
-		if not o or o.role !=  controlTypes.Role.FRAME :
-			o =  globalVars.foregroundObject
 		t = o.name
 		ID = str(utis.getIA2Attribute(o.firstChild))
 		f = ID
@@ -1461,7 +1435,9 @@ def getDocType(o) :
 def filterSound() :
 	# fullPath : role FRAME=34| i37, role-GROUPING=56, , IA2ID : tabpanelcontainer | i0, role-PROPERTYPAGE=57, , IA2ID : mailContent | i11, role-EDITABLETEXT=8,  ,  
 	o=globalVars.foregroundObject # frame
-	o = utis.findChildByIDRev(o, "tabpanelcontainer") # role grouping
+	# level 1,  46 of 58, Role.GROUPING, IA2ID : tabpanelcontainer Tag: tabpanels, States : , childCount  : 4 Path : Role-FRAME| i46, Role-GROUPING, , IA2ID : tabpanelcontainer , IA2Attr : id : tabpanelcontainer, display : -moz-deck, tag : tabpanels, class : plain, , Actions : click ancestor,  ;
+	# o = utis.findChildByIDRev(o, "tabpanelcontainer") # role grouping
+	o = utis.findChildByRoleID(o, "tabpanelcontainer", controlTypes.Role.GROUPING, 35) # role grouping
 	o = utis.findChildByID(o,"mailContent") # property page
 	o = utis.findChildByID(o,"qfb-results-label")
 	if o and o.name : utis.playSound("filter")
@@ -1470,7 +1446,8 @@ def sayFilterInfos(appMod, sbar="") :
 	from speech import speakSpelling 
 	# fullPath : role FRAME=34| i37, role-GROUPING=56, , IA2ID : tabpanelcontainer | i0, role-PROPERTYPAGE=57, , IA2ID : mailContent | i11, role-EDITABLETEXT=8,  ,  
 	o=globalVars.foregroundObject # frame
-	o = utis.findChildByIDRev(o, "tabpanelcontainer") # role grouping
+	# o = utis.findChildByIDRev(o, "tabpanelcontainer") # role grouping
+	o = utis.findChildByRoleID(o, "tabpanelcontainer", controlTypes.Role.GROUPING, 35) # role grouping
 	o = utis.findChildByID(o,"mailContent") # property page
 	o = utis.findChildByID(o,"qfb-results-label")
 	if not o or not o.name : return ui.message(sbar + _("No quick filter."))
@@ -1499,7 +1476,10 @@ def sayFilterInfos(appMod, sbar="") :
 def getFilterInfos(appMod) :
 	# fullPath : role FRAME=34| i37, role-GROUPING=56, , IA2ID : tabpanelcontainer | i0, role-PROPERTYPAGE=57, , IA2ID : mailContent | i11, role-EDITABLETEXT=8,  ,  
 	o=globalVars.foregroundObject # frame
-	o = utis.findChildByIDRev(o, "tabpanelcontainer") # role grouping
+	o = utis.findChildByRoleID(o, "tabpanelcontainer", controlTypes.Role.GROUPING, 35) # role grouping
+	# o = utis.findChildByIDRev(o, "	") # role grouping
+	
+	
 	o = utis.findChildByID(o,"mailContent") # property page
 	o = utis.findChildByID(o,"qfb-results-label")
 	if not o :  return _("No quick filter.")
@@ -1564,33 +1544,33 @@ def ttResetFocus(oRow) :
 		# oRow.setFocus()
 		# api.processPendingEvents()
 
-def winVerAlert() :
-	import winVersion
-	currentWinVer = winVersion.getWinVer()
-	# WindowsVersion 22H2 (build 19045.2728)© 
-	# parts = str(currentWinVer).split(".")  
-	currentBuild = currentWinVer.build
-	# sharedVars.log(None, "current build : " + str(currentWinVer))
-	return
-import addonHandler
-def getOldVersion(addName, installPth) :
-	# sharedVars.log(None, "original installPth : " + installPth)
-	# tests if a version is already installed or not
-	# installPth = installPth.strip()
-	if  installPth.endswith(".pendingInstall") :
-		installPth = installPth.replace(".pendingInstall", "")
+# def winVerAlert() :
+	# import winVersion
+	# currentWinVer = winVersion.getWinVer()
+	# # WindowsVersion 22H2 (build 19045.2728)© 
+	# # parts = str(currentWinVer).split(".")  
+	# currentBuild = currentWinVer.build
+	# # sharedVars.log(None, "current build : " + str(currentWinVer))
+	# return
+# import addonHandler
+# def getOldVersion(addName, installPth) :
+	# # sharedVars.log(None, "original installPth : " + installPth)
+	# # tests if a version is already installed or not
+	# # installPth = installPth.strip()
+	# if  installPth.endswith(".pendingInstall") :
+		# installPth = installPth.replace(".pendingInstall", "")
 		
-	# sharedVars.log(None, "changed installPth : " + installPth)
+	# # sharedVars.log(None, "changed installPth : " + installPth)
 
-	if  not os.path.exists(installPth + "\\manifest.ini") :
-		return "0.0.0"
-	# retrive version of installed addon
-	try :
-		for a in addonHandler.getAvailableAddons():
-			if a.name == addName :
-				# dbg("a.name : " + a.name)
-				return a.version
-	except : pass
+	# if  not os.path.exists(installPth + "\\manifest.ini") :
+		# return "0.0.0"
+	# # retrive version of installed addon
+	# try :
+		# for a in addonHandler.getAvailableAddons():
+			# if a.name == addName :
+				# # dbg("a.name : " + a.name)
+				# return a.version
+	# except : pass
 
-	return "2099.01.01"
+	# return "2099.01.01"
 	

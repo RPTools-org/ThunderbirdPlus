@@ -13,10 +13,10 @@ import addonHandler,  os, sys
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import translation, utis, sharedVars
+import  utis, sharedVars
 from api import getForegroundObject
 del sys.path[-1]
-translation.initTranslationWithEnglishFallback()
+addonHandler.initTranslation()
 from ui import message
 from wx import Menu, EVT_MENU, ITEM_CHECK, MenuItem,CallAfter,CallLater
 from keyboardHandler import KeyboardInputGesture
@@ -153,12 +153,18 @@ def findCurTab(oFrame=None ) :
 	# v5 path  : role FRAME=34| i41, role-TOOLBAR=35, , IA2ID : tabs-toolbar | i1, role-TABCONTROL=23, , IA2ID : tabmail-tabs , IA2Attr : id : tabmail-tabs, display : -moz-box, child-item-count : 1, tag : tabs, , Actions : click ancestor,  ;  
 	try :
 		sharedVars.setLooping(True)
-		# if oFrame and oFrame.role == controlTypes.Role.FRAME: o = oFrame 
-		# else : o = globalVars.foregroundObject 
+		# 2023-07-31 = ensures that sharedVars.oCurTab is still valid
+		try :
+			c =  sharedVars.oCurFrame.windowClassName
+			if "Mozilla" not in  c :
+				return  None, -1
+		except :
+			beep(440, 30)
+			return None, -1
 		o = sharedVars.oCurFrame
 		# sharedVars.debugLog = ""
 		# | i41, role-TOOLBAR=35, , IA2ID : tabs-toolbar 
-		o = utis.findChildByIDRev(o, "tabs-toolbar")
+		o = utis.findChildByRoleID(o, "tabs-toolbar", controlTypes.Role.TOOLBAR, 40) # 40 is startIdx
 		# if sharedVars.debug : sharedVars.log(o, " tabstool bar 35 ? ")
 		# | i1, role-TABCONTROL=23, , IA2ID : tabmail-tabs 
 		o = utis.findChildByID(o, "tabmail-tabs") # if spacesbar is displayed, the child is noy yhe same 
@@ -190,7 +196,9 @@ def getTabCount(oFrame=None) :
 		o = SharedVars.oCurFrame
 		# sharedVars.debugLog = ""
 		# | i41, role-TOOLBAR=35, , IA2ID : tabs-toolbar 
-		o = utis.findChildByIDRev(o, "tabs-toolbar")
+		# replaced by the line vbelow : o = utis.findChildByIDRev
+		(o, "tabs-toolbar")
+		o = utis.findChildByRoleID(o, "tabs-toolbar", controlTypes.Role.TOOLBAR, 40)
 		# if sharedVars.debug : sharedVars.log(o, " tabstool bar 35 ? ")
 		# | i1, role-TABCONTROL=23, , IA2ID : tabmail-tabs 
 		o = utis.findChildByID(o, "tabmail-tabs") # if spacesbar is displayed, the child is noy yhe same 

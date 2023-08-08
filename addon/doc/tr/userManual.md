@@ -11,8 +11,6 @@
 * [RPTools.org'daki değişikliklerin geçmişi][3]
 * [gitHub'daki kaynak kodu][2]
 
-Not 1: Bu Eklenti, Mozilla Apps Enhancements Eklentisiyle uyumlu değildir. İkincisi kuruluysa, ThunderbirdPlus'ı kurmadan önce onu devre dışı bırakmalı veya kaldırmalısınız;
-
 Not 2: Bu belge Fransızcadan Türkçeye Google Translate tarafından çevrilmiştir. İnsan tarafından tercüme edilmiş bir versiyon yakında gelecek.
 
 ## Tanım
@@ -740,7 +738,7 @@ Notlar :
 * 64 bit Windows yapılandırmasında, sisteminizde hem 64 bit hem de 32 bit sürümler yüklüyse, eklenti Thunderbird'ün 32 bit sürümünü başlatmaz;
 
 
-[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9/thunderbirdPlus-4.9-TB102.nvda-addon
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9.5/thunderbirdPlus-4.9.5-TB102.nvda-addon
 
 [2]: https://github.com/RPTools-org/ThunderbirdPlus/
 

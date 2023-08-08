@@ -13,9 +13,7 @@ from ui import  message, browseableMessage
 import addonHandler
 import core
 
-
-from . import translation
-translation.initTranslationWithEnglishFallback()
+addonHandler.initTranslation()
 import api
 import time, winUser
 import config
@@ -209,21 +207,7 @@ def doUpdate(oldVer, forced="") :
 	# v 3.4.2 vérif taille fichier écrit 
 	if os.path.getsize(filePath)  < lenData :
 		return  - -4, _("Error saving addon to temporary file.")
-	# update infos
-	try:
-		from urllib import parse
-	except Exception:
-		from urllib.request import parse
-	if ver > oldVer :
-		if forced : forced =  "%20" + forced + "%20"
-		oldV = forced + str(oldVer)
-		urlFile = baseUrl + "updateInfos.php?p=" + dbID + "&a=" + name + "-" + ver + "-old%20" + oldV + "&u=" + parse.quote(os.getenv('username') .encode('latin-1'))
-		try :
-			with urlopen  (urlFile) as data :
-				data = data.read()
-		except :
-			pass
-	# lance l'installation de l'extension ou le fichier HTML
+	# starts  addon install
 	# os.startfile (filePath)
 	installAddon(filePath)
 	return 1, "OK"

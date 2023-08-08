@@ -1,0 +1,29 @@
+{
+	"addonId": "thunderbirdPlus",
+	"displayName": "Thunderbird+",
+	"URL": "",
+	"description": "This add-on adds commands to Thunderbird 102.x to make it more accessible, efficient and comfortable to use.",
+	"sha256": "73f956981eb409fb29470b38bf2fae12d45b9e40b94ba018b668ac670efe33ac",
+	"homepage": "https://\u0013\u0013www.rptools.org/NVDA-Thunderbird/toContact.html",
+	"addonVersionName": "4.9.1",
+	"addonVersionNumber": {
+		"major": 4,
+		"minor": 9,
+		"patch": 1
+	},
+	"minNVDAVersion": {
+		"major": 2019,
+		"minor": 3,
+		"patch": 0
+	},
+	"lastTestedVersion": {
+		"major": 2023,
+		"minor": 1,
+		"patch": 0
+	},
+	"channel": "stable",
+	"publisher": "",
+	"sourceURL": "https://github.com/RPTools-org/ThunderbirdPlus",
+	"license": null,
+	"licenseURL": null
+}

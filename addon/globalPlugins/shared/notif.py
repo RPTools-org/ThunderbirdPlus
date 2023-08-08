@@ -11,8 +11,7 @@ import os, wx
 # import  gui
 from ui import  message, browseableMessage
 import addonHandler
-from . import translation
-translation.initTranslationWithEnglishFallback()
+addonHandler.initTranslation()
 import api
 import time, datetime, winUser
 import config
@@ -92,7 +91,7 @@ def showNotif() :
 	#  the translated content is displayeed via javascript so it cannot be displayed with ui.browseableMessage()
 	os.startfile (url)
 
-import addonHandler
+# import addonHandler
 import time
 
 def getLastDisplayed() :

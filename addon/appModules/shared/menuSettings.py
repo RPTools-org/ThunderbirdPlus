@@ -4,12 +4,12 @@ import api, config, sys, glob, shutil
 from configobj import ConfigObj
 import re
 import addonHandler,  os, sys
-import translation, sharedVars, utis
+import  sharedVars, utis
 from wx import Menu, EVT_MENU, CallAfter, CallLater 
 from ui import  message
 from speech import cancelSpeech
 from tones import beep
-translation.initTranslationWithEnglishFallback()
+addonHandler.initTranslation()
 
 
 class  Settings() :

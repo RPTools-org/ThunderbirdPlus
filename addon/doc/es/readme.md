@@ -10,8 +10,6 @@
 * Compatibilidad con Thunderbird: versiones 102.x;
 * [Código fuente en GitHub][2]
 
-Nota: este complemento no es compatible con el complemento Mozilla Apps Enhancements. Si tienes instalado el complemento Mozilla Apps Enhancements, deberás deshabilitarlo o desinstalarlo antes de usar Thunderbird+;
-
 ## Descripción
 
 Este complemento mejora increíblemente la accesibilidad, eficiencia y comodidad a la hora de usar el cliente de correo Mozilla Thunderbird con NVDA.
@@ -76,7 +74,7 @@ Y muchas otras cosas que descubrirás leyendo el [manual de usuario][4];
 
 <!-- Traductores: en los enlaces 4, 5 y 7 a continuación, donde ves lang=en, reemplace en por el código de tu idioma -->
 
-[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9/thunderbirdPlus-4.9-TB102.nvda-addon
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9.5/thunderbirdPlus-4.9.5-TB102.nvda-addon
 
 [2]: https://github.com/RPTools-org/ThunderbirdPlus/
 

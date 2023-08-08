@@ -1,0 +1,18 @@
+Disposizione delle colonne nell'elenco dei messaggi;
+
+Questa funzione consente di scegliere l'ordine delle colonne nell'elenco dei messaggi, nonché di aggiungerne o rimuoverne.
+
+Per usarlo, posizionarsi sull'l'elenco dei messaggi o sull'l'albero delle cartelle e premere Alt+c;
+Viene visualizzata la finestra di dialogo "Disposizione colonne". Consiste nell'elenco delle colonne e nei pulsanti "Aiuto", "colonne..." e "Chiudi". Il pulsante "colonne..." mostra il menu "Selezionare le colonne da mostrare" nativo di Thunderbird
+Quando ci si trova nell'elenco delle colonne, sono disponibili le seguenti scorciatoie da tastiera:
+• Freccia sinistra: visualizza il menu denominato "Selezionare le colonne da mostrare". Questa scorciatoia corrisponde al pulsante "Colonne...";
+• Spazio: per spostare la colonna selezionata, premi Spazio, quindi vai su un'altra colonna e premi nuovamente Spazio per posizionare la colonna. Questa operazione è simile a un'operazione taglia e incolla. La colonna sulla quale è stato premuto spazio verrà posizionata sopra a quella selezionata al momento della seconda pressione. ;
+È possibile usare anche queste scorciatoie per spostare le colonne:
+• Ctrl + freccia su o Ctrl+freccia giù: sposta la colonna selezionata in alto o in basso di una posizione ;
+• Ctrl + Inizio o Fine: posiziona la colonna selezionata come prima o ultima dell'elenco;
+• Ctrl + Pagina precedente o Pagina successiva: sposta di tre posizioni la colonna selezionata ;
+Le colonne possono anche essere spostate trascinandole con il mouse. Viene emesso un segnale acustico di un millisecondo ogni 10 movimenti del cursore ;
+Aprendo il menu"Selezionare le colonne da mostrare" sono disponibili queste scorciatoie da tastiera:
+• Freccia destra: visualizza la finestra di dialogo "Disposizione delle colonne". ;
+• Spazio: seleziona o deseleziona la colonna sulla quale si trova il cursore;
+Con le frecce sinistra e destra è quindi molto semplice passare dal menu di scelta delle colonne alla finestra di dialogo per la loro disposizione.

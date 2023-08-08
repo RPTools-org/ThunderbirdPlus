@@ -42,12 +42,12 @@ import addonHandler,  os, sys
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import translation, utis, sharedVars
+import  utis, sharedVars
 from utis import versionTB
 from . import foldersMessages
 # import zDevTools as z
 del sys.path[-1]
-translation.initTranslationWithEnglishFallback()
+addonHandler.initTranslation()
 
 from time import time, sleep
 
@@ -329,6 +329,7 @@ class MessageListItem(IAccessible):
 			return message(_("Message unavailable. Try again."))
 		if o.childCount == 0  :
 			return message(self.name + ", " + o.name)
+		if not sharedVars.oQuoteNav : sharedVars.initQuoteNav() 
 		sharedVars.oQuoteNav.readMail(o, rev, filt)
 	script_readPreview.__doc__ = _("Filtered reading of the message preview pane without leaving the list.")
 	script_readPreview.category=sharedVars.scriptCategory
@@ -841,4 +842,5 @@ def readPreview2(oRow, gesture) :
 		else : return message (_("The body of the message is missing."))
 	#memLog.addprops(o, u"Recherche section")
 	o = o.firstChild
+	if not sharedVars.oQuoteNav : sharedVars.initQuoteNav() # then use  sharedVars.oQuoteNav.*		self.regExp_date =compile ("^(\d\d/\d\d/\d{4} \d\d:\d\d|\d\d:\d\d)$")
 	sharedVars.oQuoteNav.readMail(o, rev, spkMode)

@@ -10,8 +10,6 @@
 * Thunderbird compatibility: versions 102.x;
 * [Source code on gitHub][2]
 
-Note: This add-on is not compatible with the Mozilla Apps Enhancements add-on. If the latter is installed, you will have to disable or uninstall it before installing Thunderbird+;
-
 <!-- [Jump to table of contents](#toc) -->
 
 ## Description
@@ -741,7 +739,7 @@ Notes:
 
 <!-- links section -->
 
-[1]: https://www.nvaccess.org/addonStore/legacy?file=thunderbirdPlus
+[1]: https://github.com/RPTools-org/ThunderbirdPlus/releases/download/v4.9.5/thunderbirdPlus-4.9.5-TB102.nvda-addon
 
 [2]: https://github.com/RPTools-org/ThunderbirdPlus/
 

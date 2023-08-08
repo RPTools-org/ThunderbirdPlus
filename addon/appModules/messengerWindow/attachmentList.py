@@ -7,13 +7,12 @@ from ui import message
 from wx import CallAfter
 from tones import beep
 import addonHandler,  os, sys
-_curAddon=addonHandler.getCodeAddon()
-sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
-sys.path.append(sharedPath)
-import translation
-del sys.path[-1]
-translation.initTranslationWithEnglishFallback()
-
+# _curAddon=addonHandler.getCodeAddon()
+# sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
+# sys.path.append(sharedPath)
+# import translation
+# del sys.path[-1]
+addonHandler.initTranslation()
 
 
 class AttachmentList (IAccessible):

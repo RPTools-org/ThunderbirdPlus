@@ -24,9 +24,7 @@ from keyboardHandler import KeyboardInputGesture
 from tones import beep
 import os
 import addonHandler
-# addonHandler.initTranslation()
-import translation
-translation.initTranslationWithEnglishFallback()
+addonHandler.initTranslation()
 
 class MainMenu() :
 	def __init__(self, appMod) :

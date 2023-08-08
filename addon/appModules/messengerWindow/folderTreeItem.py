@@ -22,9 +22,9 @@ from tones import  beep
 _curAddon=addonHandler.getCodeAddon()
 sharedPath=os.path.join(_curAddon.path,"AppModules", "shared")
 sys.path.append(sharedPath)
-import translation, utis, sharedVars
+import  utis, sharedVars
 del sys.path[-1]
-translation.initTranslationWithEnglishFallback()
+addonHandler.initTranslation()
 
 from re import compile,IGNORECASE
 regExp_excludeFolders =compile (_("Drafts|Deleted") + "|\- \(", IGNORECASE )
