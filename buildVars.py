@@ -1,3 +1,4 @@
+4.9
 # -*- coding: UTF-8 -*-
 # for ThunderbirdPlus
 # Build customizations
@@ -20,16 +21,16 @@ addon_info = {
 	# Add-on summary, usually the user visible name of the addon.
 	# Translators: Summary for this add-on
 	# to be shown on installation and add-on information found in Add-ons Manager.
-	"addon_summary": _("Thunderbird+"),
+	"addon_summary": "Thunderbird+ (G4, TB 102)",
 	# Add-on description
 	# Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 	"addon_description": _("This add-on adds commands to Thunderbird 102.x to make it more accessible, efficient and comfortable to use.\nFor more information, visit :\nhttps://www.rptools.org/NVDA-Thunderbird/get.php?pg=manual&lang=en"),
 	# version
-	"addon_version": "4.9.5",
+	"addon_version": "4.9.7",
 	# Author(s)
 	"addon_author": u"Pierre-Louis Renaud (Thunderbird v. 78 to 102), Daniel Poiraud (TB v. 68 to 91), Abdelkrim Bensaïd for a part of TB 78, Yannick (TB v. 38 to 60)",
 	# URL for the add-on documentation support
-	"addon_url": "https://www.rptools.org/NVDA-Thunderbird/toContact.html",
+	"addon_url": "https://www.rptools.org/NVDA-Thunderbird/index.html",
 	# URL for the add-on repository where the source code can be found
 	"addon_sourceURL": "https://github.com/RPTools-org/ThunderbirdPlus",
 	# Documentation file name

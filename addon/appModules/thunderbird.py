@@ -246,7 +246,7 @@ class AppModule(thunderbird.AppModule):
 					if sharedVars.lockEditMenu :
 						utis.setSpeech(True)
 						sharedVars.lockEditMenu = False
-					if controlTypes.State.SELECTED not in obj.states : 
+					if controlTypes.State.SELECTED not in obj.states and not (winUser.getKeyState(winUser.VK_CONTROL)&32768) : # 2023-09-10 added vk_control not pressed test
 						# beep(600, 5)
 						obj.doAction() 
 						# sleep(0.2)
