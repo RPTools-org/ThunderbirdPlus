@@ -26,7 +26,7 @@ addon_info = {
 	# Translators: Long description to be shown for this add-on on add-on information from add-ons manager
 	"addon_description": _("This add-on adds commands to Thunderbird 102.x to make it more accessible, efficient and comfortable to use.\nFor more information, visit :\nhttps://www.rptools.org/NVDA-Thunderbird/get.php?pg=manual&lang=en"),
 	# version
-	"addon_version": "4.9.7",
+	"addon_version": "4.9.8",
 	# Author(s)
 	"addon_author": u"Pierre-Louis Renaud (Thunderbird v. 78 to 102), Daniel Poiraud (TB v. 68 to 91), Abdelkrim Bensaïd for a part of TB 78, Yannick (TB v. 38 to 60)",
 	# URL for the add-on documentation support
@@ -38,7 +38,7 @@ addon_info = {
 	# Minimum NVDA version supported (e.g. "2018.3.0", minor version is optional)
 	"addon_minimumNVDAVersion": "2019.3.0",
 	# Last NVDA version supported/tested (e.g. "2018.4.0", ideally more recent than minimum version)
-	"addon_lastTestedNVDAVersion": "2023.1.0",
+	"addon_lastTestedNVDAVersion": "2024.1.0",
 	# Add-on update channel (default is None, denoting stable releases,
 	# and for development releases, use "dev".)
 	# Do not change unless you know what you are doing!
